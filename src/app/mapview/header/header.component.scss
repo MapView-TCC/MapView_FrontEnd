@@ -1,0 +1,160 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 100vw;
+    gap: 2px; 
+}
+
+header .container {
+    background: linear-gradient(to right, #011D94, #6338AF, #DA203C);
+    padding: 9px;
+    width: 100%;
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 25px; 
+}
+
+.logo-container .heading {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container .heading img {
+    height: 20px; 
+    margin-right: 5px; 
+}
+
+.logo-container .heading-border {
+    flex-grow: 1;
+    height: 2px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
+
+}
+
+.search-container form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative; /* Permite posicionar a lupa dentro do input */
+}
+
+.search-container input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 25px; 
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    padding-right: 40px; /* Espaço para o ícone da lupa */
+    background-color: #F2F4F5;
+    border: none;
+    color: #837777;
+
+}
+
+.search-container input[type="text"]:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    font-size: 18px;
+    color: #011D94;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container button:hover{
+    color: #6338AF;
+}
+
+
+.navbar{
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    width: 100%;
+    padding: 0 15px; 
+    margin: 5px;
+}
+
+.navbar h3 {
+    margin: 0 45px;
+    cursor: pointer;
+    font-weight: normal;
+    position: relative;
+}
+
+.navbar h3::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background:#6338AF;
+    margin-top: 5px; /* Espaço entre o texto e a linha */
+    position: absolute;
+    bottom: -10px; /* Posiciona a linha logo abaixo do texto */
+    left: 0;
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.3s; /* Adiciona uma transição suave */
+}
+
+.navbar h3:hover::after,
+.navbar h3.selected::after {
+    opacity: 1; /* Torna a linha visível no hover e quando selecionado */
+}
+
+.notification-icon {
+    color: #011D94; 
+    font-size: 26px; 
+    margin-left: 15px; 
+    cursor: pointer; 
+    width: 100%;
+}
+
+.notification-icon:hover {
+    color: #6338AF; 
+}
+
+.circle-user {
+    color: #011D94; 
+    font-size: 26px; 
+    margin-left: 15px; 
+    cursor: pointer; 
+    width: 100%;
+}
+
+.circle-user:hover {
+    color: #6338AF; 
+}
+
+
