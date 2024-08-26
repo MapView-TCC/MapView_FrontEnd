@@ -12,14 +12,16 @@
                 <button type="submit"><mat-icon>search</mat-icon></button>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
-            <mat-icon class="circle-user">account_circle</mat-icon>
+            <mat-icon class="circle-user" (click)="toggleProfileCard()">account_circle</mat-icon>
         </div>
     </div>
 
     <div class="navbar">
-        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">Ambientes</h3>
-        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">Cadastro</h3>
-        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">Histórico</h3>
-        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">Inventário</h3>
+        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'ENVIRONMENTS' | translate }}</h3>
+        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">{{ 'REGISTER' | translate }}</h3>
+        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">{{ 'HISTORY' | translate }}</h3>
+        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">{{ 'INVENTORY' | translate }}</h3>
       </div>
+
+      <app-profile-card *ngIf="showProfileCard"></app-profile-card>
 </header>

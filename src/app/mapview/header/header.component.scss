@@ -5,7 +5,7 @@ header {
     justify-content: center;
     width: 100%;
     min-width: 100vw;
-    gap: 2px; 
+    gap: 2px;
 }
 
 header .container {
@@ -14,14 +14,12 @@ header .container {
     width: 100%;
 }
 
-
 .logo-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px;
-    padding: 0 25px; 
+    padding: 0 25px;
 }
 
 .logo-container .heading {
@@ -30,8 +28,8 @@ header .container {
 }
 
 .logo-container .heading img {
-    height: 20px; 
-    margin-right: 5px; 
+    height: 20px;
+    margin-right: 5px;
 }
 
 .logo-container .heading-border {
@@ -44,7 +42,6 @@ header .container {
     justify-content: flex-end;
     align-items: center;
     height: 60px;
-
 }
 
 .search-container form {
@@ -53,21 +50,20 @@ header .container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    position: relative; /* Permite posicionar a lupa dentro do input */
+    position: relative; 
 }
 
 .search-container input[type="text"] {
     flex: 1;
     padding: 10px 15px;
     font-size: 14px;
-    border-radius: 25px; 
+    border-radius: 25px;
     outline: none;
     transition: box-shadow 0.3s ease;
-    padding-right: 40px; /* Espaço para o ícone da lupa */
+    padding-right: 45px; /* Espaço suficiente para o ícone da lupa */
     background-color: #F2F4F5;
     border: none;
     color: #837777;
-
 }
 
 .search-container input[type="text"]:focus {
@@ -76,7 +72,7 @@ header .container {
 
 .search-container button {
     position: absolute;
-    right: 0;
+    right: 15px; /* Posição do ícone da lupa mais controlada */
     top: 50%;
     transform: translateY(-50%);
     padding: 8px;
@@ -91,19 +87,18 @@ header .container {
     justify-content: center;
 }
 
-.search-container button:hover{
+.search-container button:hover {
     color: #6338AF;
 }
 
-
-.navbar{
+.navbar {
     position: relative;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 100%;
-    padding: 0 15px; 
+    padding: 0 15px;
     margin: 5px;
 }
 
@@ -119,42 +114,128 @@ header .container {
     display: block;
     width: 100%;
     height: 2px;
-    background:#6338AF;
-    margin-top: 5px; /* Espaço entre o texto e a linha */
+    background: #6338AF;
+    margin-top: 5px;
     position: absolute;
-    bottom: -10px; /* Posiciona a linha logo abaixo do texto */
+    bottom: -10px;
     left: 0;
-    opacity: 0; /* Inicialmente invisível */
-    transition: opacity 0.3s; /* Adiciona uma transição suave */
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .navbar h3:hover::after,
 .navbar h3.selected::after {
-    opacity: 1; /* Torna a linha visível no hover e quando selecionado */
+    opacity: 1;
 }
 
-.notification-icon {
-    color: #011D94; 
-    font-size: 26px; 
-    margin-left: 15px; 
-    cursor: pointer; 
-    width: 100%;
-}
-
-.notification-icon:hover {
-    color: #6338AF; 
-}
-
+/* Ajuste dos ícones */
+.notification-icon,
 .circle-user {
-    color: #011D94; 
-    font-size: 26px; 
-    margin-left: 15px; 
-    cursor: pointer; 
-    width: 100%;
+    color: #011D94;
+    font-size: 26px;
+    margin-left: 15px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    flex-shrink: 0;
 }
 
+.notification-icon:hover,
 .circle-user:hover {
-    color: #6338AF; 
+    color: #6338AF;
 }
 
+/* Media query para dispositivos com largura máxima de 768px */
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 15px;
+    }
 
+    .logo-container .heading {
+        margin-bottom: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 10px;
+    }
+
+    .search-container form {
+        width: 100%;
+        max-width: none;
+        position: relative;
+    }
+
+    .search-container input[type="text"] {
+        width: 100%;
+        padding-right: 50px;
+    }
+
+    .search-container button {
+        right: 10px; /* Mantém o botão da lupa sempre visível */
+        font-size: 16px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .navbar h3 {
+        margin: 10px 0;
+    }
+
+    .notification-icon,
+    .circle-user {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+}
+
+/* Media query para dispositivos com largura máxima de 480px */
+@media (max-width: 480px) {
+    .logo-container {
+        padding: 0 10px;
+    }
+
+    .logo-container .heading img {
+        height: 18px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container input[type="text"] {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .search-container button {
+        font-size: 14px;
+        padding: 6px;
+        right: 5px; /* Ajuste fino do botão para telas menores */
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .navbar h3 {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .notification-icon,
+    .circle-user {
+        font-size: 22px;
+        margin-left: 8px;
+    }
+}
