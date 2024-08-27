@@ -1,7 +1,7 @@
 {
     "HELLO": "Hello",
-    "LANGUAGE_EN": "Switch to English",
-    "LANGUAGE_PT": "Switch to Portuguese",
+    "LANGUAGE_EN": "English",
+    "LANGUAGE_PT": "Portuguese",
     "ACCESSIBILITY": "Accessibility",
     "SEARCH_PLACEHOLDER": "Search for a notebook",
     "NOTIFICATIONS": "Notifications",

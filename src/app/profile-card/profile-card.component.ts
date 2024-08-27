@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { TranslationService } from '../translation.service';
 import { TranslateModule ,TranslateService } from '@ngx-translate/core';
+import { MatCommonModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatButtonModule}from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-profile-card',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule,MatCommonModule,MatButtonModule,MatMenuModule,CommonModule,MatIconModule],
   templateUrl: './profile-card.component.html',
   styleUrl: './profile-card.component.scss'
 })

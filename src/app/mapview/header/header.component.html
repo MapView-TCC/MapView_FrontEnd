@@ -8,7 +8,7 @@
         
         <div class="search-container">
             <form>
-                <input type="text" placeholder="Pesquise um notebook" name="search">
+                <input type="text" [attr.placeholder]="'SEARCH_PLACEHOLDER' | translate" name="search">
                 <button type="submit"><mat-icon>search</mat-icon></button>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
