@@ -16,15 +16,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ProfileCardComponent {
 
+  
+
   constructor(private translationService: TranslationService) {}
 
-  // Método para trocar o idioma usando o serviço de tradução
   changeLanguage(language: string) {
+    console.log('Mudando idioma para:', language); // Adicione log para depuração
     this.translationService.changeLanguage(language);
   }
-
-  toggleAccessibility() {
-    console.log('Acessibilidade ativada/desativada');
-  }
-
 }
+

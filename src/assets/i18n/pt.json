@@ -1,14 +1,15 @@
 {
-    "HELLO": "Olá",
-    "LANGUAGE_EN": "Inglês",
-    "LANGUAGE_PT": "Português",
-    "ACCESSIBILITY": "Acessibilidade",
-    "SEARCH_PLACEHOLDER": "Pesquise um notebook",
-    "NOTIFICATIONS": "Notificações",
-    "PROFILE": "Perfil",
-    "ENVIRONMENTS": "Ambientes",
-    "REGISTER": "Cadastro",
-    "HISTORY": "Histórico",
-    "INVENTORY": "Inventário"
+    "OLÁ": "Olá",
+    "IDIOMA_EN": "Inglês",
+    "IDIOMA_PT": "Português",
+    "ACESSIBILIDADE": "Acessibilidade",
+    "PESQUISE_UM_NOTEBOOK": "Pesquise um notebook",
+    "NOTIFICAÇÕES": "Notificações",
+    "PERFIL": "Perfil",
+    "AMBIENTES": "Ambientes",
+    "CADASTRO": "Cadastro",
+    "HISTÓRICO": "Histórico",
+    "INVENTÁRIO": "Inventário",
+    "SAIR": "Sair"
   }
   

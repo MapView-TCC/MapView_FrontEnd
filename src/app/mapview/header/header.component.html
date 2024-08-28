@@ -8,7 +8,7 @@
         
         <div class="search-container">
             <form>
-                <input type="text" [attr.placeholder]="'SEARCH_PLACEHOLDER' | translate" name="search">
+                <input type="text" [attr.placeholder]="'PESQUISE_UM_NOTEBOOK' | translate" name="search">
                 <button type="submit"><mat-icon>search</mat-icon></button>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
@@ -17,10 +17,10 @@
     </div>
 
     <div class="navbar">
-        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'ENVIRONMENTS' | translate }}</h3>
-        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">{{ 'REGISTER' | translate }}</h3>
-        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">{{ 'HISTORY' | translate }}</h3>
-        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">{{ 'INVENTORY' | translate }}</h3>
+        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'AMBIENTES' | translate }}</h3>
+        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">{{ 'CADASTRO' | translate }}</h3>
+        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">{{ 'HISTÓRICO' | translate }}</h3>
+        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">{{ 'INVENTÁRIO' | translate }}</h3>
       </div>
 
       <app-profile-card *ngIf="showProfileCard"></app-profile-card>

@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./mapview/header/header.component";
-import { TranslateService } from '@ngx-translate/core';
+import {  TranslateModule, TranslateService } from '@ngx-translate/core';
+import {  HttpClientModule } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent,HttpClientModule,TranslateModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent{
   title = 'mapview';
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, @Inject(DOCUMENT) private document: Document) {
     // Defina o idioma padrão
-    this.translate.setDefaultLang('en');
-    
+    this.translate.setDefaultLang('pt');
     // Use um idioma ao inicializar
-    this.translate.use('en');
+    this.translate.use('pt');
+
+    const localStorage = document.defaultView?.localStorage;
+    localStorage?.setItem('language', 'pt');
   }
+
 }

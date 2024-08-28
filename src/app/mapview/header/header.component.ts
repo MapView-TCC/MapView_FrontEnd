@@ -19,7 +19,9 @@ export class HeaderComponent {
 
   toggleProfileCard() {
     this.showProfileCard = !this.showProfileCard;
+    console.log('Profile card toggled:', this.showProfileCard); // Adicione log para depuração
   }
+
 
   selectedItem: string = 'Ambientes'; // Item padrão selecionado
 
