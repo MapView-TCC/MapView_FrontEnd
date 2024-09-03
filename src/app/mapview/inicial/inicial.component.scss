@@ -72,7 +72,7 @@
     font-weight: bolder;
     text-align: center;
     font-size: 36px;
-    margin-top: 35px;
+    margin-top: 50px;
 }
 
 .texto {
@@ -109,6 +109,16 @@
     text-align: center;
     position: relative;
     overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #837777;
+    cursor: pointer;
+    outline: none;
+}
+
+.card1:focus, .card2:focus, .card3:focus,
+.card1:active, .card2:active, .card3:active {
+    transform: scale(0.95); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
 }
 
 .card1::after {
@@ -141,6 +151,7 @@
     background-color: #6338AF; 
 }
 
+
 img {
     max-width: 100%;
     height: auto;
@@ -170,84 +181,80 @@ hr.color {
     width: 100%;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 1629px) {
-    .idioma {
-        // padding-left: 1850px; 
-        //  padding-right: auto; 
-      
-    }
-}
 
-@media (max-width: 1200px) {
-    .conteiner {
-        padding-left: 20px;
-        padding-right: 20px;
+//responsividade pc
+@media (min-width: 1700px) {
+    .idioma{
+        margin-top: 15px;
+         padding-left: 1800px;
+        display: flex;
+        
+        
     }
 
-    .conteiner h1 {
-        font-size: 60px;
-        padding: 120px;
-    }
-
-    .conteiner p {
-        padding-left: 0;
-        max-width: 100%;
-    }
-
-    .conteiner button {
-        margin-left: 0;
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .btc img {
-        height: 350px;
+    .btc img{
         margin-top: -450px;
-        padding-left: 900px;
+        padding-left: 1000px;
+        height: 350px;
     }
 
-    .texto {
-        padding-left: 0;
-        padding-right: 0;
-    }
+    .conteiner{
+        
+        .h1{
+            padding: 240px;
+            font-size: 80px;
+            font-weight: normal;
+            margin-left: 220px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: lighter;
+            margin: 5px 0;
+            line-height: 1.5; 
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            max-width: 47%; 
+            padding-left: 220px; 
+        }
     
-    .cards {
-        gap: 20px;
-        padding: 20px;
+        button {
+            background-color: darkblue;
+            color: white; 
+            padding: 10px 47px; 
+            font-size: 16px; 
+            border: none; 
+            border-radius: 25px; 
+            transition: background-color 0.3s ease; 
+            margin-bottom: 15px; 
+            margin-left: 220px;
+            margin-top: 15px;
+        }
+    
+        button:hover {
+            background-color: #6338AF; 
+        }
+    
+        img {
+            display: block;
+            height: 72px;
+            padding-left: 220px;
+            margin-top: -210px;
+        }
     }
-
-    .card1, .card2, .card3 {
-        width: 100%;
-        height: auto;
-        max-width: 300px;
+    .texto{
+        .texto {
+            font-size: 22px;
+            margin-bottom: 5px; 
+            text-align: center;
+            font-weight: normal;
+            padding-right: 70px;
+            line-height: 1.9; 
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            max-width: 40%; 
+            padding-left: 300px;
+        }
+        
     }
 }
 
-@media (max-width: 768px) {
-    .conteiner h1 {
-        font-size: 40px;
-        padding: 80px 0;
-    }
-
-    .btc img {
-        height: 150px;
-    }
-    
-    .texto {
-        font-size: 18px;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card1, .card2, .card3 {
-        width: 90%;
-        max-width: 300px;
-    }
-}

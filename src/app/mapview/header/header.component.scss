@@ -60,7 +60,7 @@ header .container {
     border-radius: 25px;
     outline: none;
     transition: box-shadow 0.3s ease;
-    padding-right: 45px; /* Espaço suficiente para o ícone da lupa */
+    padding-right: 45px; 
     background-color: #F2F4F5;
     border: none;
     color: #837777;
@@ -72,7 +72,7 @@ header .container {
 
 .search-container button {
     position: absolute;
-    right: 15px; /* Posição do ícone da lupa mais controlada */
+    right: 15px; 
     top: 50%;
     transform: translateY(-50%);
     padding: 8px;
