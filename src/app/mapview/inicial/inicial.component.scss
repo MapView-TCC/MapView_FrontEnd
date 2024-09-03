@@ -4,32 +4,31 @@
     width: 100%;
 }
 
-.idioma{
+.idioma {
     color: #011D94;
     margin-top: 15px;
-    margin-left: 1215px;
+    padding-left: 1200px;
+  
+
 }
 
-.conteiner{
+.conteiner {
     h1 {
         padding: 240px;
         font-size: 80px;
         font-weight: normal;
         margin-left: -140px;
-      
     }
 
     p {
-            font-size: 20px;
-            font-weight: lighter;
-            margin: 5px 0;
-            line-height: 1.5; 
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            max-width: 47%; 
-            padding-left: 110px; 
-        
-
+        font-size: 20px;
+        font-weight: lighter;
+        margin: 5px 0;
+        line-height: 1.5; 
+        word-wrap: break-word; 
+        overflow-wrap: break-word; 
+        max-width: 47%; 
+        padding-left: 110px; 
     }
 
     button {
@@ -43,63 +42,57 @@
         margin-bottom: 15px; 
         margin-left: 120px;
         margin-top: 15px;
-     
-        button:hover {
-            background-color:  #6338AF; 
-        }
+    }
+
+    button:hover {
+        background-color: #6338AF; 
     }
 
     img {
         display: block;
         height: 72px;
         padding-left: 120px;
-         margin-top: -210px;
-          
-
+        margin-top: -210px;
     }
 
-    btc img{
+    .btc img {
         height: 100px;
     }
-
 }
 
-.btc img{
-    margin-top: -430px;
-    padding-left: 680px;
-    height: 320px;
+.btc img {
+    margin-top: -450px;
+    padding-left: 600px;
+    height: 350px;
 }
-    
 
-.sobre-nos h2{
+.sobre-nos h2 {
     color: #011D94;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: bolder;
     text-align: center;
     font-size: 36px;
     margin-top: 35px;
 }
 
-.texto{
+.texto {
     font-size: 22px;
     margin-bottom: 5px; 
     text-align: center;
     font-weight: normal;
     padding-right: 50px;
-    line-height: 1.5; /* Ajusta o espaçamento entre linhas para melhorar a legibilidade */
-    word-wrap: break-word; /* Quebra palavras longas para evitar overflow */
-    overflow-wrap: break-word; /* Garante que palavras longas quebrem quando necessário */
-    max-width:90%; 
-   align-items: center;
-   padding-left: 170px;
-   
+    line-height: 1.5; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    max-width: 90%; 
+    padding-left: 170px;
 }
 
 .cards {
     display: flex;
     gap: 120px; 
     flex-wrap: wrap;
-    justify-content: center; // Centraliza os cards horizontalmente
+    justify-content: center; /* Centraliza os cards horizontalmente */
     padding: 70px;
 }
 
@@ -128,7 +121,7 @@
     background-color: #DA203C; 
 }
 
-.card2::after{
+.card2::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -138,7 +131,7 @@
     background-color: #011D94; 
 }
 
-.card3::after{
+.card3::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -166,16 +159,95 @@ hr.color {
     margin: 10px 0;
 }
 
-.logo_bosch{
-  margin-bottom: -4px;
-padding-left: 40px;
-
+.logo_bosch {
+    margin-bottom: -4px;
+    padding-left: 40px;
 }
 
-.footer{
+.footer {
     background: linear-gradient(to right, #011D94, #6338AF, #DA203C);
     padding: 9px; 
     width: 100%;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 1629px) {
+    .idioma {
+        // padding-left: 1850px; 
+        //  padding-right: auto; 
+      
+    }
+}
 
+@media (max-width: 1200px) {
+    .conteiner {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .conteiner h1 {
+        font-size: 60px;
+        padding: 120px;
+    }
+
+    .conteiner p {
+        padding-left: 0;
+        max-width: 100%;
+    }
+
+    .conteiner button {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btc img {
+        height: 350px;
+        margin-top: -450px;
+        padding-left: 900px;
+    }
+
+    .texto {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .cards {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card1, .card2, .card3 {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .conteiner h1 {
+        font-size: 40px;
+        padding: 80px 0;
+    }
+
+    .btc img {
+        height: 150px;
+    }
+    
+    .texto {
+        font-size: 18px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card1, .card2, .card3 {
+        width: 90%;
+        max-width: 300px;
+    }
+}

@@ -25,7 +25,7 @@ export class InicialComponent {
 
 
   onInicial() {
-    this.router.navigate(['/mapview/inicial']);
+    this.router.navigate(['']);
   }
 
 }

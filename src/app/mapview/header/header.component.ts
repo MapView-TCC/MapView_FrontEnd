@@ -47,19 +47,19 @@ export class HeaderComponent {
   }
 
   onAmbiente() {
-    this.router.navigate(['/mapview/ambiente']);
+    this.router.navigate(['/ambiente']);
   }
 
   onCadastro() {
-    this.router.navigate(['/mapview/cadastro']);
+    this.router.navigate(['/cadastro']);
   }
 
   onHistorico() {
-    this.router.navigate(['/mapview/historico']);
+    this.router.navigate(['/historico']);
   }
 
   onIventario() {
-    this.router.navigate(['/mapview/iventario']);
+    this.router.navigate(['/iventario']);
   }
 }
 
