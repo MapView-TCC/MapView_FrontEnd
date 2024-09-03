@@ -10,6 +10,15 @@
     "CADASTRO": "Register",
     "HISTÓRICO": "History",
     "INVENTÁRIO": "Inventory",
-    "SAIR": "Exit"
+    "SAIR": "Exit",
+    "BEM VINDO AO": "Welcome to",
+    "ENTRE NA SUA CONTA PRA VIZUALIZAR OS NOTEBOOKS LOCALIZADOS NO PRÉDIO CA 600(BTC)": "Log in to your account to view the notebooks located in Building CA 600 (BTC).",
+    "ENTRAR": "Log In",
+    "SOBRE NÓS": "About Us",
+    "UMA TECNOLOGIA BOSCH DESENVOLVIDA PARA RASTREAR EQUIPAMENTOS EM AMBIENTES INTERNOS.O MAPVIEW FOI PENSADO PARA OS MEBROS DA ETS LOCALIZAR NOTEBOOKS": "A Bosch technology developed for tracking equipment in indoor environments. Mapview was designed for ETS members to locate notebooks.",
+    "REPRODUÇÃO DE AMBIENTES 3D": "3D Environment Reproduction",
+    "VISUALMENTE PENSADO PARA OS USUÁRIOS": "Visually designed for users.",
+    "INTEGRAÇÃO DE IOT COM PROCESSOS DO COTIDIANO": "Integration of IoT with everyday processes."
+
   }
   
