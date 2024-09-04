@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
-import { ProfileCardComponent } from '../../profile-card/profile-card.component';
+import { ProfileCardComponent } from '../profile-card/profile-card.component';
 import { TranslateLoader, TranslateModule,TranslateService  } from '@ngx-translate/core';
 
 

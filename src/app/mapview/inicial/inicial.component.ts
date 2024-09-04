@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, NavigationEnd } from '@angular/router';
-import { ProfileCardComponent } from '../../profile-card/profile-card.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { TraduzirComponent } from '../traduzir/traduzir.component';
 
