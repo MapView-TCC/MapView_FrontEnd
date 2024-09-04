@@ -20,7 +20,6 @@ export class InicialComponent {
 
   toggleProfileCard() {
     this.showProfileCard = !this.showProfileCard;
-    console.log('Profile card toggled:', this.showProfileCard); // Adicione log para depuração
   }
 
 

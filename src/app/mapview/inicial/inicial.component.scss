@@ -93,7 +93,7 @@
     gap: 120px; 
     flex-wrap: wrap;
     justify-content: center; /* Centraliza os cards horizontalmente */
-    padding: 70px;
+    padding: 80px;
 }
 
 .card1, .card2, .card3 {
@@ -109,17 +109,20 @@
     text-align: center;
     position: relative;
     overflow: hidden; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #837777;
     cursor: pointer;
     outline: none;
 }
 
-.card1:focus, .card2:focus, .card3:focus,
-.card1:active, .card2:active, .card3:active {
-    transform: scale(0.95); 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+.card2 img{
+    padding-top: 13px;
+    
 }
+.card1:hover, .card2:hover, .card3:hover{
+     transform: scale(1.025); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+ }
 
 .card1::after {
     content: '';
@@ -149,6 +152,7 @@
     width: 100%;
     height: 4px;
     background-color: #6338AF; 
+
 }
 
 
@@ -186,7 +190,7 @@ hr.color {
 @media (min-width: 1700px) {
     .idioma{
         margin-top: 15px;
-         padding-left: 1800px;
+         padding-left: 1860px;
         display: flex;
         
         
@@ -195,25 +199,32 @@ hr.color {
     .btc img{
         margin-top: -450px;
         padding-left: 1000px;
-        height: 350px;
+        height: 450px;
     }
 
+
+  
     .conteiner{
-        
-        .h1{
+
+        margin-top: 34px;
+
+        .titulo{
             padding: 240px;
-            font-size: 80px;
+            font-size: 95px;
             font-weight: normal;
-            margin-left: 220px;
+           padding-left: 350px;
+          
         }
+        
+      
         p {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: lighter;
             margin: 5px 0;
             line-height: 1.5; 
             word-wrap: break-word; 
             overflow-wrap: break-word; 
-            max-width: 47%; 
+            max-width: 40%; 
             padding-left: 220px; 
         }
     
@@ -221,7 +232,7 @@ hr.color {
             background-color: darkblue;
             color: white; 
             padding: 10px 47px; 
-            font-size: 16px; 
+            font-size: 20px; 
             border: none; 
             border-radius: 25px; 
             transition: background-color 0.3s ease; 
@@ -236,25 +247,88 @@ hr.color {
     
         img {
             display: block;
-            height: 72px;
+            height: 86px;
             padding-left: 220px;
             margin-top: -210px;
         }
     }
-    .texto{
-        .texto {
-            font-size: 22px;
-            margin-bottom: 5px; 
-            text-align: center;
-            font-weight: normal;
-            padding-right: 70px;
-            line-height: 1.9; 
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            max-width: 40%; 
-            padding-left: 300px;
+
+    .sobre-nos{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 200px;
+
+
+        .sobre-nos h2 {
+            font-size: 42px;
+            
         }
         
+        .texto {
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            padding: 0;
+            line-height: 1.8;
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            max-width: 48%; /* Define a largura máxima para o container do texto */
+            margin: 0 auto; /* Centraliza o container horizontalmente */
+        }
+        
+        .texto p {
+            text-align: center; /* Centraliza o texto dentro do parágrafo */
+        }
+            
+
+        
+        }
+
+
     }
-}
+   
+    
+        
+
+        .cards {
+            display: flex;
+            gap: 140px; 
+            flex-wrap: wrap;
+            justify-content: center; /* Centraliza os cards horizontalmente */
+            padding: 90px;
+        }
+
+
+        .card1, .card2, .card3 {
+            width: 240px;
+            height: 265px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #837777;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .logo_bosch {
+            margin-bottom: -140px;
+            padding-left: 40px;
+        }
+
+        .footer {
+            margin-top:140px;
+            background: linear-gradient(to right, #011D94, #6338AF, #DA203C);
+            padding: 9px; 
+            width: 100%;
+        }
+        
+    
 
