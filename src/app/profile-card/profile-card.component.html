@@ -12,7 +12,7 @@
   </button>
 
   <!-- Menu abre para a esquerda -->
-  <mat-menu #idioma="matMenu" xPosition="before" yPosition="below">
+  <mat-menu #idioma="matMenu" xPosition="before" yPosition="below" class="customize">
     <button mat-menu-item (click)="changeLanguage('en')">{{ 'IDIOMA_EN' | translate }}</button>
     <button mat-menu-item (click)="changeLanguage('pt')">{{ 'IDIOMA_PT' | translate }}</button>
   </mat-menu>

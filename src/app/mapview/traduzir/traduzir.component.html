@@ -1,0 +1,16 @@
+<div class="profile-card">
+
+    <button mat-menu-item class="customize">
+        <div class="valign-center" (click)="changeLanguage('pt')">
+            <span class="dropdown-text">
+                {{ 'IDIOMA_PT' | translate }}
+            </span>
+        </div>
+    </button>
+    <button mat-menu-item class="customize">
+        <div class="valign-center sair-container" (click)="changeLanguage('en')">
+            <span>{{ 'IDIOMA_EN' | translate }}</span>
+        </div>
+    </button>
+
+</div>
