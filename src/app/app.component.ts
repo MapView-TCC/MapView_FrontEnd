@@ -17,14 +17,11 @@ import { InicialComponent } from "./mapview/inicial/inicial.component";
 export class AppComponent{
   title = 'mapview';
 
-  constructor(private translate: TranslateService, @Inject(DOCUMENT) private document: Document) {
+  constructor(private translate: TranslateService) {
     // Defina o idioma padrão
     this.translate.setDefaultLang('pt');
     // Use um idioma ao inicializar
     this.translate.use('pt');
-
-    const localStorage = document.defaultView?.localStorage;
-    localStorage?.setItem('language', 'pt');
   }
 
 }

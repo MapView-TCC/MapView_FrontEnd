@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -6,11 +7,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TranslationService {
 
-  constructor(private translate: TranslateService) {
-    const storedLanguage = localStorage.getItem('language') || 'pt';
+  constructor(private translate: TranslateService, @Inject(DOCUMENT) private document: Document) {
+    const localStorage = this.document.defaultView?.localStorage as Storage;
+    const storedLanguage = localStorage?.getItem('language') || 'pt';
     this.translate.setDefaultLang('pt');
     this.translate.use(storedLanguage);
-    console.log('Idioma inicial:', this.translate.currentLang);
+    // console.log('Idioma inicial:', this.translate.currentLang);
   }
 
   changeLanguage(language: string) {

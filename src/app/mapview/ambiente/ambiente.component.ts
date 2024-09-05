@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-ambiente',
@@ -8,6 +9,13 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss'
 })
-export class AmbienteComponent {
+export class AmbienteComponent implements OnInit{
 
+  constructor(private translator: TranslationService){}
+
+  ngOnInit(): void {
+    this.translator.getCurrentLanguage();
+  }
+
+  
 }

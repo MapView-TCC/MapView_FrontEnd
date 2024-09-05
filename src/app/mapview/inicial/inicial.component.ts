@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { TraduzirComponent } from '../traduzir/traduzir.component';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-inicial',
@@ -12,7 +13,7 @@ import { TraduzirComponent } from '../traduzir/traduzir.component';
   templateUrl: './inicial.component.html',
   styleUrl: './inicial.component.scss'
 })
-export class InicialComponent {
+export class InicialComponent implements OnInit {
   router: any;
 
   showCard = false;
@@ -24,6 +25,13 @@ export class InicialComponent {
 
   onInicial() {
     this.router.navigate(['']);
+  }
+
+  constructor(private translator: TranslationService){}
+
+  ngOnInit(): void {
+    this.translator.getCurrentLanguage();
+    console.log(this.translator.getCurrentLanguage());
   }
 
 }
