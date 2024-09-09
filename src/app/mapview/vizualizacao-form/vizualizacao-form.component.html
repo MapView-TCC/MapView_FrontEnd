@@ -1,1 +1,71 @@
-<p>vizualizacao-form works!</p>
+<div class="conteiner">
+    <mat-icon class="fechar" (click)="generalService.showFormlog = false">close</mat-icon>
+    <div class="icon-text">
+        <mat-icon class="configuraoes">settings</mat-icon>
+        <h3>Dados do equipamento</h3>
+      </div>
+
+      <form [formGroup]="equipamentoForm" class="formulario">
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>ID do equipamento</mat-label>
+            <input matInput formControlName="idEquipamento" readonly>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>RFID</mat-label>
+            <input matInput formControlName="rfid" readonly>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo do equipamento</mat-label>
+            <input matInput formControlName="tipoEquipamento" readonly>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Modelo</mat-label>
+            <input matInput formControlName="modelo" readonly>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Usuário principal</mat-label>
+            <input matInput formControlName="usuarioPrincipal" readonly>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>ID do usuário principal</mat-label>
+            <input matInput formControlName="idUsuarioPrincipal" readonly>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Data de Substituição</mat-label>
+            <input matInput formControlName="dataSubstituicao" readonly>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Admin Rights</mat-label>
+            <input matInput formControlName="adminRights" readonly>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Centro de Custo</mat-label>
+            <input matInput formControlName="centroCusto" readonly>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Observação</mat-label>
+            <input matInput formControlName="observacao" readonly>
+          </mat-form-field>
+        </div>
+      </form>
+    
+     
+</div>

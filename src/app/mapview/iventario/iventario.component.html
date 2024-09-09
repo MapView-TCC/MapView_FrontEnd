@@ -1,1 +1,7 @@
 <app-header></app-header>
+
+<app-excluir-popup *ngIf="generalService.showDialog" ></app-excluir-popup>
+<app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form>
+
+<button  class="botao-excluir" (click)="generalService.showDialog = true">Excluir</button>
+<button class="botao-vizualizar" (click)="generalService.showFormlog = true" >Vizualizar</button>
