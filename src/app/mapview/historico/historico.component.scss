@@ -82,6 +82,14 @@
     
             background-color: #FAFAFB;
             border-radius: 15px;
+<<<<<<< HEAD
+=======
+
+            app-calendario{
+                width: 20px;
+                
+            }
+>>>>>>> feature/tela_Historico
         }
     
         .warning-filter{
@@ -214,6 +222,7 @@
             background-color: #FAFAFB;
             border-radius: 15px;
 
+<<<<<<< HEAD
             align-items: center;
 
             form{
@@ -245,6 +254,44 @@
                     
             // padding: 18px 0 18px;
             width: 500px !important;
+=======
+            .equipament-form{
+                width: 400px;
+                padding-left: 20px;
+
+                .form-field{
+
+                    position: relative;
+
+                    & input{
+                        width: 100%;
+                        height: 44px;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 16px;
+
+                        background-color: #FFFFFF;
+                        padding-left: 15px;
+                        padding-right: 40px; /* Adicione espaço para o ícone */
+
+                        border-radius: 20px;
+                        border: none;
+                        outline: none;
+                        
+                    }
+                    .arrow-icon{
+                        position: absolute;
+                        right: 10px; /* Ajuste a distância do ícone do lado direito conforme necessário */
+                        top: 50%;
+                        transform: translateY(-50%); /* Centraliza verticalmente */
+                        pointer-events: none; /* Evita que o ícone interfira na interação com o input */
+                        color: #B6B2B2;      
+                    
+                    }
+
+                }
+            }
+
+>>>>>>> feature/tela_Historico
         }
     
     }

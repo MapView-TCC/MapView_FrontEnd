@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { NotificationCardComponent } from '../notification-card/notification-card.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,11 @@ import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+<<<<<<< HEAD
+=======
+import { CalendarioComponent } from "../calendario/calendario.component";
+
+>>>>>>> feature/tela_Historico
 
 export interface StateGroup {
   letter: string;
@@ -28,7 +33,11 @@ export const _filter = (opt: string[], value: string): string[] => {
   selector: 'app-historico',
   standalone: true,
   imports: [
+<<<<<<< HEAD
     HeaderComponent, 
+=======
+    HeaderComponent,
+>>>>>>> feature/tela_Historico
     NotificationCardComponent,
     CommonModule,
     MatIconModule,
@@ -38,7 +47,12 @@ export const _filter = (opt: string[], value: string): string[] => {
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
+<<<<<<< HEAD
   ],
+=======
+    CalendarioComponent
+],
+>>>>>>> feature/tela_Historico
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })
@@ -164,4 +178,9 @@ export class HistoricoComponent implements OnInit {
   
       return this.stateGroups;
     }
+<<<<<<< HEAD
   }
+=======
+    
+  }
+>>>>>>> feature/tela_Historico

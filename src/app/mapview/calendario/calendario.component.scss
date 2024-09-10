@@ -1,0 +1,38 @@
+.calendar {
+    max-width: 300px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    width: 14.28%;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  td.today {
+    background-color: #f0f8ff;
+    font-weight: bold;
+  }
+ 
+  h3{
+    font-size: 24px;
+    font-weight: 500; //corresponde a medium
+    color: #011D94;
+    
+    padding: 30px 0px 0px 30px;
+
+}
