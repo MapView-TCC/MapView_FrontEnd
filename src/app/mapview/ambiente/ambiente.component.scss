@@ -1,0 +1,68 @@
+.container{
+    margin-top: 100px;
+    margin-bottom: 400px;
+}
+
+
+.div {
+    border: solid 1px blue;
+      padding: 3px;
+      margin: 0 auto;
+      width: 1009px;
+      height: 708px;
+      
+  }
+
+#webgl{
+    position: absolute;
+}
+
+.point{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+}
+
+.point:hover .text{
+    opacity: 1;
+}
+
+.point .label{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00000077;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 10px;
+    cursor: pointer;
+    transform: scale(0.001, 0.001);
+}
+
+.point.visible .label{
+    transform: scale(1,1);
+}
+
+.point .text{
+    position: absolute;
+    top: 25px;
+    left: -120px;
+    width: 200px;
+    padding: 20px;
+    border-radius:  4px;
+    background: #00000077;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
