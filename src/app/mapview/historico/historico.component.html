@@ -16,12 +16,8 @@
 
             <!-- Calendário mensal -->
             <div class="monthly-calendar">
-<<<<<<< HEAD
-                <h3>Julho 2024</h3>
-
-=======
                 <app-calendario></app-calendario>
->>>>>>> feature/tela_Historico
+
             </div>
 
             <!-- Filtro de avisos -->
@@ -49,28 +45,14 @@
             <!-- Filtro de notrbooks -->
             <div class="equipament-filter">
                 <h3>Equipamento</h3>
-<<<<<<< HEAD
-
-                <!-- Autocomplete  -->
-                <form [formGroup]="stateForm">
-                    <mat-form-field>
-                      <mat-label>States Group</mat-label>
-=======
                 <!-- Autocomplete  -->
                 <form class="equipament-form" [formGroup]="stateForm">
                     <div class="form-field">
->>>>>>> feature/tela_Historico
                       <input type="text"
                              matInput
                              formControlName="stateGroup"
                              required
-<<<<<<< HEAD
                              [matAutocomplete]="autoGroup">
-=======
-                             [matAutocomplete]="autoGroup"
-                             placeholder="Selecione um notebook">
-                        <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
->>>>>>> feature/tela_Historico
                         <mat-autocomplete #autoGroup="matAutocomplete">
                           @for (group of stateGroupOptions | async; track group) {
                             <mat-optgroup [label]="group.letter">
@@ -80,13 +62,8 @@
                             </mat-optgroup>
                           }
                       </mat-autocomplete>
-<<<<<<< HEAD
-                    </mat-form-field>
-=======
                     </div>
->>>>>>> feature/tela_Historico
-                  </form>
-
+                </form>
             </div>
         </section>
 
