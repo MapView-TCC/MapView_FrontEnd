@@ -37,7 +37,15 @@ export class VizualizacaoFormComponent implements OnInit {
       dataSubstituicao: [''],
       adminRights: [''],
       centroCusto: [''],
-      observacao: ['']
+      observacao: [''],
+      predio:[''],
+      setor:[''],
+      laboratorio:[''],
+      posto:[''],
+      nomedoresponsavel:[''],
+      edv:[''],
+      curso:[''],
+      turma:['']
     });
 
     // Exemplo de dados pré-definidos (normalmente, esses dados vêm de uma API)
@@ -47,16 +55,24 @@ export class VizualizacaoFormComponent implements OnInit {
   loadDados(): void {
     // Simulação de dados que você obteria de uma API
     const data = {
-      idEquipamento: '12345',
-      rfid: 'RF123456',
-      tipoEquipamento: 'Computador',
-      modelo: 'Dell XPS 13',
-      usuarioPrincipal: 'Ana Maria',
-      idUsuarioPrincipal: '67890',
-      dataSubstituicao: '2024-09-01',
-      adminRights: 'Sim',
-      centroCusto: 'Centro A',
-      observacao: 'Em bom estado'
+      idEquipamento: 'JVL-C-0009X',
+      rfid: '00000001234',
+      tipoEquipamento: 'Notebook',
+      modelo: 'Standard',
+      usuarioPrincipal: 'Amber Cristina Forte',
+      idUsuarioPrincipal: 'AAA1CA',
+      dataSubstituicao: '2024.Q1',
+      adminRights: 'RITM0123456789',
+      centroCusto: '123456789',
+      observacao: 'Em bom estado',
+      predio:'Ca600',
+      setor:'ETS',
+      laboratorio:'Laboratório 4/5',
+      posto:'PC 29',
+      nomedoresponsavel:'Sarah Silva dos Santos',
+      edv:'999999',
+      curso:'Digital Solutions',
+      turma:'08'
     };
 
     // Atualiza os valores do formulário com os dados recebidos
