@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { NotificationCardComponent } from '../notification-card/notification-card.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,8 @@ import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CalendarioComponent } from "../calendario/calendario.component";
+
 
 export interface StateGroup {
   letter: string;
@@ -28,7 +30,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   selector: 'app-historico',
   standalone: true,
   imports: [
-    HeaderComponent, 
+    HeaderComponent,
     NotificationCardComponent,
     CommonModule,
     MatIconModule,
@@ -38,7 +40,8 @@ export const _filter = (opt: string[], value: string): string[] => {
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
-  ],
+    CalendarioComponent
+],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })
@@ -164,4 +167,5 @@ export class HistoricoComponent implements OnInit {
   
       return this.stateGroups;
     }
+    
   }

@@ -82,6 +82,11 @@
     
             background-color: #FAFAFB;
             border-radius: 15px;
+
+            app-calendario{
+                width: 20px;
+                
+            }
         }
     
         .warning-filter{
@@ -214,37 +219,42 @@
             background-color: #FAFAFB;
             border-radius: 15px;
 
-            align-items: center;
+            .equipament-form{
+                width: 400px;
+                padding-left: 20px;
 
-            form{
-                background-color: #1EA01E;
-            }
-            // mat-form-field{
-            //     background-color: #38afaf;
-            // }
+                .form-field{
 
-            input{
-                background-color: #FFB650;
-            }
+                    position: relative;
 
-            mat-autocomplete{
-                background-color: #ebdc10;
-            }
+                    & input{
+                        width: 100%;
+                        height: 44px;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 16px;
 
-            mat-optgroup{
-                background-color:  #eb10a2;
-            }
-        }
+                        background-color: #FFFFFF;
+                        padding-left: 15px;
+                        padding-right: 40px; /* Adicione espaço para o ícone */
 
-
-
-        .ng-pristine .ng-invalid .ng-touched{
-            display: flex;
-            align-items: center;
+                        border-radius: 20px;
+                        border: none;
+                        outline: none;
+                        
+                    }
+                    .arrow-icon{
+                        position: absolute;
+                        right: 10px; /* Ajuste a distância do ícone do lado direito conforme necessário */
+                        top: 50%;
+                        transform: translateY(-50%); /* Centraliza verticalmente */
+                        pointer-events: none; /* Evita que o ícone interfira na interação com o input */
+                        color: #B6B2B2;      
                     
-                    
-            // padding: 18px 0 18px;
-            width: 500px !important;
+                    }
+
+                }
+            }
+
         }
     
     }
