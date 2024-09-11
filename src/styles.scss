@@ -67,6 +67,13 @@ $mapview_teste-theme: mat.define-light-theme((
 
 @font-face {
   font-family:'Inter' ;
+  src: url('assets/fonts/inter/Inter_18pt-Medium.ttf');
+  font-weight: 400;
+  font-style: normal;
+} 
+
+@font-face {
+  font-family:'Inter' ;
   src: url('assets/fonts/inter/Inter_24pt-Regular.ttf');
   font-weight: 500;
   font-style: normal;

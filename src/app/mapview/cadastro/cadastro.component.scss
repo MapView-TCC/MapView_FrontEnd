@@ -1,0 +1,165 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+.main-cadastro {
+    margin: 0;    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:60px;
+
+    flex-direction: column;
+
+    .container-forms-equipamento {
+        width: 800px;
+        height: auto;
+        
+   
+        background-color: #F2F4F5;
+        border-radius: 15px; 
+
+        padding-bottom: 60px; /* Para dar espaço antes do botão */
+   
+        .icon-cad-forms {
+           display: flex;
+           align-items: center;
+           padding-left: 35px;
+           
+       
+           .settings{
+                width: 45px;
+                height: 45px;
+                margin-top: -18px;
+                
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                
+                background-color: #011D94;
+                border-radius: 50%;
+                color: white;
+                font-size: 30px;
+           }
+          
+         }
+        
+        .title-cad-forms {
+           font-family: 'Inter', sans-serif;
+           font-weight: 'Medium'; 
+           font-size: 24px;
+           
+           padding-left: 35px;
+           margin-top: 18px;
+   
+           color: #011D94;
+         }
+   
+         .content-cad-forms {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+
+           font-family: 'Inter', sans-serif;
+           font-weight: 300;
+   
+           .cad-forms {
+               display: grid;
+               grid-template-columns: 1fr 1fr; /* Dois inputs lado a lado */
+               gap: 40px; /* Espaçamento entre os inputs */
+               
+               .label-dados{
+                 font-size: 18px;
+                 padding-left: 20px;
+         
+                 color: #4B4545;
+               }
+   
+               .input-cad-forms {
+                   display: flex;
+                   flex-direction: column;
+                   width: 330px;
+
+                   .input-dados{
+                     width: 100%;
+                     height: 47px;
+                     border-radius: 20px;
+                     border: none;
+                     outline: none;
+                     margin-top: 10px; 
+                     padding: 20px;
+  
+                     font-size: 18px;
+                     font-family: 'Inter', sans-serif;
+  
+
+                     &::placeholder{
+                      font-size: 18px;
+                      font-family: 'Inter', sans-serif;
+                      font-weight: 100;
+                      color: #969090;
+                     }
+
+                    }
+    
+                }
+           
+                 .input-cad-obs {
+                   grid-column: span 2; /* Faz com que ocupe duas colunas inteiras */
+                   width: 100%; /* Ocupa toda a largura disponível */
+
+
+                   .input-obs {
+                     width: 100%; /* Faz o input de observação ocupar toda a largura */
+                     height: 47px;
+                     border-radius: 20px;
+                     border: none;
+                     outline: none;
+                     margin-top: 10px; 
+                     padding-bottom: 20px;
+                     padding: 20px;
+  
+                     font-size: 18px;
+                     font-family: 'Inter', sans-serif;
+  
+
+                     &::placeholder{
+                      font-size: 18px;
+                      font-family: 'Inter', sans-serif;
+                      font-weight: 100;
+                      color: #969090;
+                     }
+                    }
+                }  
+            }
+         
+         }
+   
+    }
+
+    .btn-content{
+        width: 800px; /* Mesma largura do formulário */
+        display: flex;
+        justify-content: flex-end; /* Alinha o botão à direita */
+        margin-top: 20px; /* Espaçamento entre o formulário e o botão */
+
+        .btn-next{
+            margin-top: 18px;
+            background-color: #011D94;
+            color: #FFFF;
+            width: 125px;
+            height: 45px;
+    
+            border-radius: 20px;
+            border: none;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+    } 
+}
+
+
+
+ 

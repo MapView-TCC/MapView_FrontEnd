@@ -1,1 +1,74 @@
 <app-header></app-header>
+<main class="main-cadastro">
+    <!-- Primeira Etapa do formulário -->
+    <form class="container-forms-equipamento" [formGroup]="cadastroEquipamento">
+
+        <div class="icon-cad-forms">
+            <mat-icon class="settings">settings</mat-icon>
+        </div>
+
+        <h3 class="title-cad-forms">Dados do Equipamento</h3>
+
+        <div class="content-cad-forms">
+
+            <div class="cad-forms">
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">ID do equipamento</label>
+                    <input class="input-dados" type="text" placeholder="Número localizado na etiqueta" >
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">RFID</label>
+                    <input class="input-dados" type="text" placeholder="Numeração da etiqueta RFID">
+                </div>
+            
+
+            
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Tipo de equipamento</label>
+                    <input class="input-dados" type="text" placeholder="Selecione um equipamento">
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Modelo</label>
+                    <input class="input-dados" type="text" placeholder="Ex. Standard">
+                </div>
+           
+
+            
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">ID do usuário principal</label>
+                    <input class="input-dados" type="text" placeholder="Ex. AAA1CA">
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Centro de custos</label>
+                    <input class="input-dados" type="text" placeholder="Ex. 123456">
+                </div>
+          
+
+            
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Data de Substituiçao</label>
+                    <input class="input-dados" type="text" placeholder="Ex. 2024.Q1">
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Admin Rigths</label>
+                    <input class="input-dados" type="text" placeholder="Ex. RITMO0123456789">
+                </div>
+        
+                <div class="input-cad-obs">
+                    <label class="label-dados" for="">Observação</label>
+                    <input class="input-obs" type="text" placeholder="Comentários sobre o equipamento">
+                </div>
+            </div>
+        </div>
+    </form>   
+
+   <div class="btn-content">
+        <button class="btn-next">Avançar</button>
+   </div>
+</main>
+<app-footer></app-footer>
+
