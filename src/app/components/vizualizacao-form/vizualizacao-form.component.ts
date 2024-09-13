@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { GeneralService } from '../services/general.service';
+import { GeneralService } from '../../services/general.service';
 
 @Component({
   selector: 'app-vizualizacao-form',

@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { NotificationCardComponent } from '../notification-card/notification-card.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +13,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import { CalendarioComponent } from "../calendario/calendario.component";
+import { CalendarioComponent } from "../../mapview/calendario/calendario.component";
 
 export interface StateGroup {
   letter: string;

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { ExcluirPopupComponent } from '../excluir-popup/excluir-popup.component';
-import { GeneralService } from '../services/general.service';
+import { HeaderComponent } from '../../components/header/header.component';
+import { ExcluirPopupComponent } from '../../mapview/excluir-popup/excluir-popup.component';
+import { GeneralService } from '../../services/general.service';
 import { CommonModule } from '@angular/common';
-import { VizualizacaoFormComponent } from '../vizualizacao-form/vizualizacao-form.component';
+import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
 
 
 @Component({

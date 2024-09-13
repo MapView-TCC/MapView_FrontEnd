@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { TraduzirComponent } from '../traduzir/traduzir.component';
-import { TranslationService } from '../services/translation.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-inicial',

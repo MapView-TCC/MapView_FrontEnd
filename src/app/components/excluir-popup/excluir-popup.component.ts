@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { GeneralService } from '../services/general.service';
+import { GeneralService } from '../../services/general.service';
 
 @Component({
   selector: 'app-excluir-popup',
