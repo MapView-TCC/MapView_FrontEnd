@@ -67,7 +67,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "MapView:build",
+            "buildTarget": "mapview_teste:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
