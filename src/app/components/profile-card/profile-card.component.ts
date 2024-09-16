@@ -5,7 +5,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatButtonModule}from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+
+//Imports from our components
 import { TranslationService } from '../../services/translation.service';
+
 
 @Component({
   selector: 'app-profile-card',

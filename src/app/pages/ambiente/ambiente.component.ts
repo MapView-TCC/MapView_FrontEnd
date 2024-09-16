@@ -1,11 +1,15 @@
+//Imports for Angular
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui';
 import gsap from 'gsap';
+
+//Imports for our components 
+import { HeaderComponent } from '../../components/header/header.component';
  
+
 @Component({
   selector: 'app-ambiente',
   standalone: true,
@@ -13,6 +17,8 @@ import gsap from 'gsap';
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss'
 })
+
+
 export class AmbienteComponent implements OnInit{
   ngOnInit(): void {
     this.createThreeJsBox();

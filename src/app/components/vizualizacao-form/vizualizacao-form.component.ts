@@ -1,9 +1,12 @@
+//Imports from Angular 
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
+//Imports from our components 
 import { GeneralService } from '../../services/general.service';
 
 @Component({

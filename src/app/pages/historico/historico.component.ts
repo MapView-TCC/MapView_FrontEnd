@@ -1,9 +1,7 @@
+//Imports for angular
 import { Component} from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-
 import { OnInit, inject} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -13,7 +11,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import { CalendarioComponent } from "../../mapview/calendario/calendario.component";
+//Imports for our components
+import { HeaderComponent } from '../../components/header/header.component';
+import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
+import { CalendarioComponent } from '../../components/calendario/calendario.component';
+
+
+
 
 export interface StateGroup {
   letter: string;

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'; // Criar formulários reativos
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from '../footer/footer.component';
+import { FormsModule } from '@angular/forms';  // Importar FormsModule
 
 @Component({
   selector: 'app-cadastro',
@@ -13,7 +14,8 @@ import { FooterComponent } from '../footer/footer.component';
     CommonModule,
     ReactiveFormsModule,
     MatIconModule, 
-    FooterComponent
+    FooterComponent,
+    FormsModule,
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
@@ -22,7 +24,9 @@ export class CadastroComponent {
 
   currentStep: number = 1; // Etapa inicial
   responsaveis: Array<any> = [{}]; // Inicia com um responsável
+  // responsaveis: { nome: string, edv: string, curso: string, turma: string }[] = []
   cadastroEquipamento: FormGroup;
+  showForm: boolean = false;
 
   constructor(private fb: FormBuilder) {
     // Inicialize o FormGroup com os controles necessários
@@ -44,22 +48,16 @@ export class CadastroComponent {
     // if (this.currentStep < 2) { // Ajuste conforme o número de etapas
     // }
   }
-
-  goToPreviousStep() {
-    if (this.currentStep > 1) {
-      this.currentStep--;
-    }
-  }
-
+ 
+  // Função para adicionar um novo responsável
   addResponsavel() {
-    this.responsaveis.push({});
+    //this.responsaveis.push({});
+    this.showForm = true;
+ 
   }
-
-  removeResponsavel(index: number) {
-    if (this.responsaveis.length > 1) {
-      this.responsaveis.splice(index, 1);
-    }
+ 
+  removeResponsavel() {
+    this.showForm = false;
   }
-
 }
 

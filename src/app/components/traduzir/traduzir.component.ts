@@ -5,6 +5,8 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
+//Imports from our componentes
 import { TranslationService } from '../../services/translation.service';
 
 @Component({

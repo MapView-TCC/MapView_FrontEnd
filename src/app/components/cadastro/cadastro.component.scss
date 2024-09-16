@@ -36,20 +36,35 @@
     padding-left: 35px;
   }
 
-  .settings {
+  
+  
+  .fa-solid{
     width: 45px;
     height: 45px;
     margin-top: -18px;
-
+  
     display: inline-flex;
     justify-content: center;
     align-items: center;
-
+  
     background-color: #011D94;
     border-radius: 50%;
     color: white;
-    font-size: 30px;
+
+    &.fa-gear {
+      font-size: 30px;
+    }
+
+    &.fa-location-dot{
+      font-size: 25px;
+    }
+    
+    &.fa-user {
+      font-size: 23px;
+    }
   }
+  
+
 
   .title-cad-forms {
     font-family: 'Inter', sans-serif;
@@ -205,7 +220,7 @@
     /* Organiza o conteúdo em uma coluna vertical */
     align-items: center;
     /* Centraliza horizontalmente o conteúdo */
-    justify-content: center;
+    justify-content: start;
     /* Centraliza verticalmente o conteúdo */
     width: 60px;
     /* Ajuste a largura para criar a linha vertical */
@@ -219,11 +234,18 @@
     /* Espaçamento no topo */
     padding-bottom: 20px;
     /* Espaçamento na parte inferior */
-    /* Ajuste conforme necessário */
-  
+    
+    
   }
-
-  .addResponsavel {
+  
+  .addResponsavel, .removerResponsavel{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 12px;
+  }
+  
+  .btn-addResponsavel, .btn-removeResponsavel {
     background-color: #011D94;
     color: #fff;
     border: none;
@@ -232,9 +254,29 @@
     border-radius: 5px;
     display: flex;
     justify-content: flex-end; /* Alinha o botão à direita */
+    border: none;
+    background-color: transparent;
 
 }
 
+.fa-x, .fa-plus{
+  width: 40px;
+  height: 40px;
+  margin-top: -18px;
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #F2F4F5;
+  border-radius: 50%;
+  color: #011D94;
 
+  font-size: 16px;
+
+  &.fa-plus{
+    font-size: 20px;
+  }
+}
 
 }

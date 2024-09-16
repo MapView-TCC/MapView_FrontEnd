@@ -10,7 +10,12 @@ import { TranslateLoader, TranslateModule,TranslateService  } from '@ngx-transla
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,MatIconModule,ProfileCardComponent,TranslateModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    ProfileCardComponent,
+    TranslateModule,
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
