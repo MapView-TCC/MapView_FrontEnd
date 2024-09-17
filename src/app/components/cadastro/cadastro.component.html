@@ -15,53 +15,55 @@
                 <div class="cad-forms">
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">ID do equipamento</label>
-                        <input class="input-dados" type="text" placeholder="Número localizado na etiqueta">
+                        <input  class="input-dados" type="text" placeholder="Número localizado na etiqueta"  formControlName="idEquipamento" >
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">RFID</label>
-                        <input class="input-dados" type="text" placeholder="Numeração da etiqueta RFID">
+                        <input class="input-dados" type="text" placeholder="Numeração da etiqueta RFID" formControlName="rfid" >
                     </div>
 
 
 
                     <div class="input-cad-forms">
-                        <label class="label-dados" for="">Tipo de equipamento</label>
-                        <input class="input-dados" type="text" placeholder="Selecione um equipamento">
+                        <label class="label-dados" for="equipamento">Tipo de equipamento</label>
+                        <app-dropdow [id]="'equipamento-dropdow'" [options]="equipamentOptions"
+                            [(selectedValue)]="selectedEquipament" >
+                        </app-dropdow>
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Modelo</label>
-                        <input class="input-dados" type="text" placeholder="Ex. Standard">
+                        <input class="input-dados" type="text" placeholder="Ex. Standard" formControlName="modelo">
                     </div>
 
 
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">ID do usuário principal</label>
-                        <input class="input-dados" type="text" placeholder="Ex. AAA1CA">
+                        <input class="input-dados" type="text" placeholder="Ex. AAA1CA" formControlName="idUsuario">
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Centro de custos</label>
-                        <input class="input-dados" type="text" placeholder="Ex. 123456">
+                        <input class="input-dados" type="text" placeholder="Ex. 123456" formControlName="centroCustos">
                     </div>
 
 
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Data de Substituiçao</label>
-                        <input class="input-dados" type="text" placeholder="Ex. 2024.Q1">
+                        <input class="input-dados" type="text" placeholder="Ex. 2024.Q1" formControlName="dataSubstituicao">
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Admin Rigths</label>
-                        <input class="input-dados" type="text" placeholder="Ex. RITMO0123456789">
+                        <input class="input-dados" type="text" placeholder="Ex. RITMO0123456789" formControlName="adminRights">
                     </div>
 
                     <div class="input-cad-obs">
                         <label class="label-dados" for="">Observação</label>
-                        <input class="input-obs" type="text" placeholder="Comentários sobre o equipamento">
+                        <input class="input-obs" type="text" placeholder="Comentários sobre o equipamento" formControlName="observacao">
                     </div>
                 </div>
             </div>
@@ -80,7 +82,9 @@
                     <div class="cad-forms">
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Prédio</label>
-                            <input class="input-dados" type="text" placeholder="Selecione o prédio">
+                            <app-dropdow [id]="'predio-dropdow'" [options]="buldingOptions"
+                                [(selectedValue)]="selectedBulding">
+                            </app-dropdow>
                         </div>
 
                         <div class="input-cad-forms">
@@ -91,7 +95,9 @@
 
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Laboratório</label>
-                            <input class="input-dados" type="text" placeholder="Selecione o Labortório">
+                            <app-dropdow [id]="'environment-dropdow'" [options]="environmentOptions"
+                                [(selectedValue)]="selectedEnvironment">
+                            </app-dropdow>
                         </div>
 
                         <div class="input-cad-forms">
@@ -108,92 +114,97 @@
         <!-- Dados do Responsável -->
         <div *ngIf="currentStep >= 3">
             <div *ngIf="responsaveis.length < 5"></div>
-                <div class="step-3"></div>
-                <div class="addResponsavel">
-                    <button type="button" class="btn-addResponsavel" (click)="addResponsavel()">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                </div>
-            <div  class="container-forms-responsavel">
+            <div class="step-3"></div>
+            <div class="addResponsavel">
+                <button type="button" class="btn-addResponsavel" (click)="addResponsavel()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="container-forms-responsavel">
                 <div class="icon-cad-forms">
                     <i class="fa-solid fa-user"></i>
                 </div>
- 
+
+                <h3 class="title-cad-forms">Dados do Responsável</h3>
+
+                <div class="content-cad-forms">
+                    <div class="cad-forms" *ngFor="let responsavel of responsaveis; let i = index">
+                        <div class="input-cad-forms">
+                            <label class="label-dados">Nome do responsável</label>
+                            <input class="input-dados" type="text" placeholder="Nome completo">
+                        </div>
+
+                        <div class="input-cad-forms">
+                            <label class="label-dados">EDV</label>
+                            <input class="input-dados" type="text" placeholder="EX.99999999">
+                        </div>
+
+                        <div class="input-cad-forms">
+                            <label class="label-dados">Curso</label>
+                            <app-dropdow [id]="'environment-dropdow'" [options]="courseOptions"
+                                [(selectedValue)]="selectedCourse">
+                            </app-dropdow>
+                        </div>
+
+                        <div class="input-cad-forms">
+                            <label class="label-dados">Turma</label>
+                            <input class="input-dados" type="text" placeholder="Insira o número da turma">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="showForm">
+                <div class="step-3"></div>
+                <div class="removerResponsavel">
+                    <button type="button" class="btn-removeResponsavel" (click)="removeResponsavel()">
+                        <!--remover responsavel-->
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+                </div>
+
+                <div class="container-forms-responsavel">
+                    <div class="icon-cad-forms">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
                     <h3 class="title-cad-forms">Dados do Responsável</h3>
- 
+
                     <div class="content-cad-forms">
                         <div class="cad-forms" *ngFor="let responsavel of responsaveis; let i = index">
                             <div class="input-cad-forms">
                                 <label class="label-dados">Nome do responsável</label>
                                 <input class="input-dados" type="text" placeholder="Nome completo">
                             </div>
-   
+
                             <div class="input-cad-forms">
                                 <label class="label-dados">EDV</label>
                                 <input class="input-dados" type="text" placeholder="EX.99999999">
                             </div>
-   
+
                             <div class="input-cad-forms">
                                 <label class="label-dados">Curso</label>
-                                <input class="input-dados" type="text" placeholder="Selecione o curso da turma">
+                                <app-dropdow [id]="'environment-dropdow'" [options]="courseOptions"
+                                    [(selectedValue)]="selectedCourse">
+                                </app-dropdow>
                             </div>
-   
+
                             <div class="input-cad-forms">
                                 <label class="label-dados">Turma</label>
                                 <input class="input-dados" type="text" placeholder="Insira o número da turma">
                             </div>
-                    </div>
-                </div>  
-            </div>
-
-            <div *ngIf="showForm">
-                <div class="step-3"></div>
-                <div class="removerResponsavel">
-                    <button type="button" class="btn-removeResponsavel" (click)="removeResponsavel()"> <!--remover responsavel-->
-                        <i class="fa-solid fa-x"></i>
-                    </button>
-                </div>
-
-                    <div class="container-forms-responsavel">
-                        <div class="icon-cad-forms">
-                            <i class="fa-solid fa-user"></i>
                         </div>
-                            <h3 class="title-cad-forms">Dados do Responsável</h3>
-       
-                            <div class="content-cad-forms">
-                                <div class="cad-forms" *ngFor="let responsavel of responsaveis; let i = index">
-                                    <div class="input-cad-forms">
-                                        <label class="label-dados">Nome do responsável</label>
-                                        <input class="input-dados" type="text" placeholder="Nome completo">
-                                    </div>
-           
-                                    <div class="input-cad-forms">
-                                        <label class="label-dados">EDV</label>
-                                        <input class="input-dados" type="text" placeholder="EX.99999999">
-                                    </div>
-           
-                                    <div class="input-cad-forms">
-                                        <label class="label-dados">Curso</label>
-                                        <input class="input-dados" type="text" placeholder="Selecione o curso da turma">
-                                    </div>
-           
-                                    <div class="input-cad-forms">
-                                        <label class="label-dados">Turma</label>
-                                        <input class="input-dados" type="text" placeholder="Insira o número da turma">
-                                    </div>
-                            </div>
-                        </div>  
                     </div>
                 </div>
-            </div>  
+            </div>
+        </div>
         <div class="btn-content">
-            <button class="btn-next" (click)="goToNextStep()">Avançar</button>
+            <button class="btn-next" [disabled]="cadastroEquipamento.invalid" (click)="goToNextStep()">Avançar</button>
         </div>
     </form>
-    
+
     <!-- <div *ngIf="currentStep >= 4">
         <p>etapa 4</p>
     </div>  -->
-    
+
 </main>
 <app-footer></app-footer>

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';  // Importar FormsModule
 
+import { DropdowComponent } from '../dropdow/dropdow.component';
+
 @Component({
   selector: 'app-cadastro',
   standalone: true,
@@ -16,10 +18,14 @@ import { FormsModule } from '@angular/forms';  // Importar FormsModule
     MatIconModule, 
     FooterComponent,
     FormsModule,
+    DropdowComponent
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
+
+
+
 export class CadastroComponent {
 
   currentStep: number = 1; // Etapa inicial
@@ -31,20 +37,30 @@ export class CadastroComponent {
   constructor(private fb: FormBuilder) {
     // Inicialize o FormGroup com os controles necessários
     this.cadastroEquipamento = this.fb.group({
-      idEquipamento: ['', Validators.required],
-      rfid: ['', Validators.required],
-      tipoEquipamento: ['', Validators.required],
-      modelo: ['', Validators.required],
-      idUsuario: ['', Validators.required],
-      centroCustos: ['', Validators.required],
-      dataSubstituicao: ['', Validators.required],
-      adminRights: ['', Validators.required],
-      observacao: ['']
+      idEquipamento: new FormControl ('', Validators.required),
+      rfid: new FormControl ('', Validators.required),
+      // tipoEquipamento: new FormControl ('', Validators.required),
+      modelo: new FormControl ('', Validators.required),
+      idUsuario: new FormControl ('', Validators.required),
+      centroCustos: new FormControl ('', Validators.required),
+      dataSubstituicao: new FormControl ('', Validators.required),
+      adminRights: new FormControl ('', Validators.required),
+      observacao: new FormControl ('')  // Aqui não precisa de validador
     });
+  }
+
+  
+
+  changeButton(){
+    console.log('Dados do formulário:', this.cadastroEquipamento.value);
   }
 
   goToNextStep() {
     this.currentStep++;
+    console.log("STEPS " + this.currentStep)
+    if(this.currentStep >= 3){
+      this.changeButton()
+    }
     // if (this.currentStep < 2) { // Ajuste conforme o número de etapas
     // }
   }
@@ -59,5 +75,44 @@ export class CadastroComponent {
   removeResponsavel() {
     this.showForm = false;
   }
+
+  
+  
+
+
+  //Área de DropDow
+  equipamentOptions = [
+    {value: 'Desktop', label: 'Desktop'},
+    {value: 'Notebook', label: 'Notebook'}, 
+    {value: 'Outro', label: 'Outro'}
+  ];
+
+  //Valor selecionado 
+  selectedEquipament: string = '';
+
+  buldingOptions =[
+    {value: 1, label: 'Ca300'},
+    {value: 2, label: 'Ca400'}, 
+    {value: 3, label: 'Ca600'},
+    {value: 3, label: 'Ca700'}
+  ];
+  selectedBulding: string = '';
+
+  environmentOptions =[
+    {value: 1, label: 'Laboratório 01'},
+    {value: 2, label: 'Laboratório 02'}, 
+    {value: 3, label: 'Laboratório 03'},
+    {value: 3, label: 'Laboratório 04'}
+  ];
+  selectedEnvironment: string = '';
+
+  courseOptions =[
+    {value: 1, label: 'Administração'},
+    {value: 2, label: 'Digital Solutions'}, 
+    {value: 3, label: 'Manufatura Digital'},
+    {value: 3, label: 'Mecatrônica'}
+  ];
+  selectedCourse: string = '';
+  
 }
 
