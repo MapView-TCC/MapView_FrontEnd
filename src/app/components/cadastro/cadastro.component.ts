@@ -7,6 +7,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';  // Importar FormsModule
 
 import { DropdowComponent } from '../dropdow/dropdow.component';
+import { BuildingDrp } from '../../models/BuldingDrp';
+import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -34,7 +36,7 @@ export class CadastroComponent {
   cadastroEquipamento: FormGroup;
   showForm: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService) {
     // Inicialize o FormGroup com os controles necessários
     this.cadastroEquipamento = this.fb.group({
       idEquipamento: new FormControl ('', Validators.required),
@@ -50,6 +52,16 @@ export class CadastroComponent {
   }
 
   
+  buildingDrpList:Array<BuildingDrp>  = [];
+
+  ngOnInit(): void{
+    this.buldingDrp.getBulding().subscribe({
+      next: res => {
+        this.buildingDrpList = res;
+      },
+      error: err => console.error(err)
+    })
+  }
 
   changeButton(){
     console.log('Dados do formulário:', this.cadastroEquipamento.value);
@@ -64,7 +76,11 @@ export class CadastroComponent {
     // if (this.currentStep < 2) { // Ajuste conforme o número de etapas
     // }
   }
- 
+
+  submitForm(){
+    console.log('enviou!')
+  }
+
   // Função para adicionar um novo responsável
   addResponsavel() {
     //this.responsaveis.push({});

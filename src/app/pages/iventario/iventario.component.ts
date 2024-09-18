@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Import for our components
-import { GeneralService } from '../../services/general.service';
+import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
 import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-popup.component';

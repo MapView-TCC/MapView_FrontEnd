@@ -27,7 +27,7 @@
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="equipamento">Tipo de equipamento</label>
-                        <app-dropdow [id]="'equipamento-dropdow'" [options]="equipamentOptions"
+                        <app-dropdow [id]="'equipamento-dropdow'" [options]="buildingDrpList"
                             [(selectedValue)]="selectedEquipament" >
                         </app-dropdow>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="cad-forms">
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Prédio</label>
-                            <app-dropdow [id]="'predio-dropdow'" [options]="buldingOptions"
+                            <app-dropdow [id]="'predio-dropdow'" [options]="buildingDrpList"
                                 [(selectedValue)]="selectedBulding">
                             </app-dropdow>
                         </div>
@@ -95,7 +95,7 @@
 
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Laboratório</label>
-                            <app-dropdow [id]="'environment-dropdow'" [options]="environmentOptions"
+                            <app-dropdow [id]="'environment-dropdow'" [options]="buildingDrpList"
                                 [(selectedValue)]="selectedEnvironment">
                             </app-dropdow>
                         </div>
@@ -141,7 +141,7 @@
 
                         <div class="input-cad-forms">
                             <label class="label-dados">Curso</label>
-                            <app-dropdow [id]="'environment-dropdow'" [options]="courseOptions"
+                            <app-dropdow [id]="'environment-dropdow'" [options]="buildingDrpList"
                                 [(selectedValue)]="selectedCourse">
                             </app-dropdow>
                         </div>
@@ -183,7 +183,7 @@
 
                             <div class="input-cad-forms">
                                 <label class="label-dados">Curso</label>
-                                <app-dropdow [id]="'environment-dropdow'" [options]="courseOptions"
+                                <app-dropdow [id]="'environment-dropdow'" [options]="buildingDrpList"
                                     [(selectedValue)]="selectedCourse">
                                 </app-dropdow>
                             </div>
@@ -198,7 +198,8 @@
             </div>
         </div>
         <div class="btn-content">
-            <button class="btn-next" [disabled]="cadastroEquipamento.invalid" (click)="goToNextStep()">Avançar</button>
+            <button class="btn-next" *ngIf="currentStep<3" [disabled]="cadastroEquipamento.invalid" (click)="goToNextStep()">Avançar</button>
+            <button class="btn-next" *ngIf="currentStep==3"  [disabled]="cadastroEquipamento.invalid" (click)="submitForm()">Enviar</button>
         </div>
     </form>
 

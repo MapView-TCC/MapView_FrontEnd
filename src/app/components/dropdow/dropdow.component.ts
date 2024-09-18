@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter, EnvironmentInjector} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
+import { BuildingDrp } from '../../models/BuldingDrp';
 
 @Component({
   selector: 'app-dropdow',
@@ -11,15 +13,25 @@ import { CommonModule } from '@angular/common';
 
 
 export class DropdowComponent {
+  
+  constructor(private buldingDrp: BuildingDrpService){ }
+  
   @Input() id: string = '';
-  @Input() options: { value: number | string; label: string }[] = []; // Array de opções
+  @Input() options: Array<BuildingDrp> = []; // Array de opções
   @Input() selectedValue: string = ''; // Valor selecionado inicialmente, pode ser vazio ou predefinido
+  @Input() table: string=''; //passar qual tabela ele puxa do banco 
 
-  // Output para emitir mudanças no valor selecionado
   @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
- 
+
+  
   onChange(event:Event): void{
     const selectElement = event.target as HTMLSelectElement;
     this.selectedValue = selectElement.value;
   }
+
+  
+  //Área de DropDow
+ 
+
+
 }
