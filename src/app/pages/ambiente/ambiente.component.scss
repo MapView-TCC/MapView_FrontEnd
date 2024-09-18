@@ -18,8 +18,8 @@
 
 ::ng-deep {
     .tooltip {
-        background-color: blue;
-        color: white;
+        background-color: white;
+        color: black;
         content: '';
         padding: 10px;
         position: relative;
@@ -27,6 +27,8 @@
         opacity: 0;
         transition-duration: 0.2s;
         transition-property: opacity, transform;
+        font-weight: 600;
+        font-family:'Inter', sans-serif;
     }
 
     .hide {
@@ -35,7 +37,7 @@
     }
 
     .show {
-        opacity: 1;
+        opacity: .8;
         transform: translateY(0px);
     }
 }
