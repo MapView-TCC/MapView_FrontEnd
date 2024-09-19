@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';  // Importar FormsModule
 import { DropdowComponent } from '../dropdow/dropdow.component';
 import { BuildingDrp } from '../../models/BuldingDrp';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
+import { Enviroment } from '../../models/Enviroment';
 
 @Component({
   selector: 'app-cadastro',
@@ -53,6 +54,7 @@ export class CadastroComponent {
 
   
   buildingDrpList:Array<BuildingDrp>  = [];
+  enviromentDrpList: Array<Enviroment> = [];
 
   ngOnInit(): void{
     this.buldingDrp.getBulding().subscribe({
