@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdowComponent } from './dropdow.component';
+import { DropdowDynamicComponent } from './dropdow-dynamic.component';
 
-describe('DropdowComponent', () => {
-  let component: DropdowComponent;
-  let fixture: ComponentFixture<DropdowComponent>;
+describe('DropdowDynamicComponent', () => {
+  let component: DropdowDynamicComponent;
+  let fixture: ComponentFixture<DropdowDynamicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropdowComponent]
+      imports: [DropdowDynamicComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DropdowComponent);
+    fixture = TestBed.createComponent(DropdowDynamicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

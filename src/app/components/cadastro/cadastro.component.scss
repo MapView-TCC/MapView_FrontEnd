@@ -237,7 +237,8 @@
     
     
   }
-  
+
+
   .addResponsavel, .removerResponsavel{
     display: flex;
     align-items: flex-end;
@@ -278,5 +279,49 @@
     font-size: 20px;
   }
 }
+.step-4{
+  display: flex;
+  flex-direction: column;
+  /* Organiza o conteúdo em uma coluna vertical */
+  align-items: center;
+  /* Centraliza horizontalmente o conteúdo */
+  justify-content: start;
+  /* Centraliza verticalmente o conteúdo */
+  width: 60px;
+  /* Ajuste a largura para criar a linha vertical */
+  height: 10vh;
+  /* Faz com que ocupe a altura total da viewport */
+  border-right: 4px solid #011D94;
+  /* Borda vertical à direita */
+  box-sizing: border-box;
+  /* Inclui padding e border no cálculo da largura e altura */
+  padding-top: 20px;
+  /* Espaçamento no topo */
+  padding-bottom: 20px;
+  /* Espaçamento na parte inferior */
+  
+  
+}
+
+.card-confirmacao{
+  padding: 15px;
+  background-color: #F2F4F5;
+  height: 160px;
+  width: 800px;
+  border-radius: 15px;
+ 
+
+}
+.confirmacao{
+  font-family: 'Inter', sans-serif;
+  font-weight: 'Regular';
+  font-size: 20px;
+
+  padding-left: 35px;
+  margin-top: 18px;
+}
+
+
+
 
 }

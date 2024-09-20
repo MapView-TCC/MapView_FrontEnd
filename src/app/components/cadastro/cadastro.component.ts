@@ -5,8 +5,8 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } 
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';  // Importar FormsModule
+import { DropdowLocalComponent } from '../dropdow-local/dropdow-local.component';
 
-import { DropdowComponent } from '../dropdow/dropdow.component';
 import { BuildingDrp } from '../../models/BuldingDrp';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { Enviroment } from '../../models/Enviroment';
@@ -21,7 +21,8 @@ import { Enviroment } from '../../models/Enviroment';
     MatIconModule, 
     FooterComponent,
     FormsModule,
-    DropdowComponent
+    DropdowLocalComponent
+
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
@@ -30,27 +31,42 @@ import { Enviroment } from '../../models/Enviroment';
 
 
 export class CadastroComponent {
+  constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService) {
+    // Inicialize o FormGroup com os controles necessários
+  }
 
   currentStep: number = 1; // Etapa inicial
   responsaveis: Array<any> = [{}]; // Inicia com um responsável
-  // responsaveis: { nome: string, edv: string, curso: string, turma: string }[] = []
-  cadastroEquipamento: FormGroup;
+
+  cadastroEquipamento = this.fb.group({
+    idEquipamento: new FormControl ('', Validators.required),
+    rfid: new FormControl ('', Validators.required),
+    tipoEquipamento: [{value: '', disabled: false}, Validators.required],
+    modelo: new FormControl ('', Validators.required),
+    idUsuario: new FormControl ('', Validators.required),
+    centroCustos: new FormControl ('', Validators.required),
+    dataSubstituicao: new FormControl ('', Validators.required),
+    adminRights: new FormControl ('', Validators.required),
+    observacao: new FormControl ('')  // Aqui não precisa de validador
+  });
+
+  cadastroLocalizacao = this.fb.group({
+    id_building: new FormControl(0, Validators.required),
+    id_enviroment: new FormControl(0, Validators.required),
+    area: new FormControl ('', Validators.required),
+    posto: new FormControl ('', Validators.required)
+  });
+
+  cadastroResponsavel = this.fb.group({
+    nome_responsavel: new FormControl('',Validators.required),
+    edv: new FormControl('',Validators.required),
+    curso:[{value: '', disabled:false},Validators.required],
+    turma: new FormControl ('',Validators.required)
+  });
+
+
   showForm: boolean = false;
 
-  constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService) {
-    // Inicialize o FormGroup com os controles necessários
-    this.cadastroEquipamento = this.fb.group({
-      idEquipamento: new FormControl ('', Validators.required),
-      rfid: new FormControl ('', Validators.required),
-      // tipoEquipamento: new FormControl ('', Validators.required),
-      modelo: new FormControl ('', Validators.required),
-      idUsuario: new FormControl ('', Validators.required),
-      centroCustos: new FormControl ('', Validators.required),
-      dataSubstituicao: new FormControl ('', Validators.required),
-      adminRights: new FormControl ('', Validators.required),
-      observacao: new FormControl ('')  // Aqui não precisa de validador
-    });
-  }
 
   
   buildingDrpList:Array<BuildingDrp>  = [];
@@ -81,6 +97,8 @@ export class CadastroComponent {
 
   submitForm(){
     console.log('enviou!')
+    this.goToNextStep();
+    console.log(this.currentStep);
   }
 
   // Função para adicionar um novo responsável
@@ -94,43 +112,6 @@ export class CadastroComponent {
     this.showForm = false;
   }
 
-  
-  
-
-
-  //Área de DropDow
-  equipamentOptions = [
-    {value: 'Desktop', label: 'Desktop'},
-    {value: 'Notebook', label: 'Notebook'}, 
-    {value: 'Outro', label: 'Outro'}
-  ];
-
-  //Valor selecionado 
-  selectedEquipament: string = '';
-
-  buldingOptions =[
-    {value: 1, label: 'Ca300'},
-    {value: 2, label: 'Ca400'}, 
-    {value: 3, label: 'Ca600'},
-    {value: 3, label: 'Ca700'}
-  ];
-  selectedBulding: string = '';
-
-  environmentOptions =[
-    {value: 1, label: 'Laboratório 01'},
-    {value: 2, label: 'Laboratório 02'}, 
-    {value: 3, label: 'Laboratório 03'},
-    {value: 3, label: 'Laboratório 04'}
-  ];
-  selectedEnvironment: string = '';
-
-  courseOptions =[
-    {value: 1, label: 'Administração'},
-    {value: 2, label: 'Digital Solutions'}, 
-    {value: 3, label: 'Manufatura Digital'},
-    {value: 3, label: 'Mecatrônica'}
-  ];
-  selectedCourse: string = '';
   
 }
 
