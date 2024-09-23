@@ -1,43 +1,78 @@
-
 * {
     margin: 0;
     padding: 0;
+  
 }
 
 .container {
-    display: flex;
+    display: flex; /* Mantém o layout flexível */
     justify-content: center;
-    align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    padding-top: 30px;
+   
+
+}
+
+.grid_salas {
+    display: flex;
+    flex-direction: column; /* Mantenha a grid em coluna */
+    align-items: center;
+    justify-content: flex-start; /* Alinha os itens no topo */
+    margin-right: 20px; /* Espaço entre a grid e o canvas */
+    width: 400px;
+    height: 260px;
+    gap: 40px;
+    
+}
+
+#webglContainer {
+    display: flex; /* Para que o canvas ocupe o espaço corretamente */
+    justify-content: center; /* Centraliza o canvas dentro do contêiner */
 }
 
 #webgl {
-    position: absolute;
+    width: 400px; /* Defina uma largura para o canvas */
+    height: 400px; /* Defina uma altura para o canvas */
+    border-radius: 15px;
 }
 
-::ng-deep {
-    .tooltip {
-        background-color: white;
-        color: black;
-        content: '';
-        padding: 10px;
-        position: relative;
-        transform: translateY(-10px);
-        opacity: 0;
-        transition-duration: 0.2s;
-        transition-property: opacity, transform;
-        font-weight: 600;
-        font-family:'Inter', sans-serif;
+    ::ng-deep {
+        .tooltip {
+            background-color: white;
+            color: black;
+            content: '';
+            padding: 10px;
+            position: relative;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition-duration: 0.2s;
+            transition-property: opacity, transform;
+            font-weight: 600;
+            font-family:'Inter', sans-serif;
+        }
+    
+        .hide {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    
+        .show {
+            opacity: .8;
+            transform: translateY(0px);
+        }
+
+
     }
 
-    .hide {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
 
-    .show {
-        opacity: .8;
-        transform: translateY(0px);
-    }
+.lab_01 img,
+.lab_02 img,
+.lab_03 img {
+    max-width: 100%; /* Para garantir que as imagens não ultrapassem o contêiner */
+    border-radius: 15px;
+}
+
+.lab_01 button {
+    
 }
