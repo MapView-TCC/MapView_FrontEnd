@@ -9,6 +9,14 @@ import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vi
 import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-popup.component';
 
 
+
+interface item{
+  usuario: string;
+  laboratorio: string;
+  posto: string;
+  validade: string
+}
+
 @Component({
   selector: 'app-iventario',
   standalone: true,
@@ -17,13 +25,16 @@ import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-po
   styleUrl: './iventario.component.scss'
 })
 export class IventarioComponent  implements OnInit{
-
+  itens: item[] =[
+    {usuario: 'Joao joao', laboratorio: 'Laboratorio 01', posto: 'Mesa 31', validade: '02/05/2025' },
+    {usuario: 'Joao joao', laboratorio: 'Laboratorio 01', posto: 'Mesa 31', validade: '02/05/2025'}
+  ]
   constructor(public generalService: GeneralService){
 
   }
 
   ngOnInit(): void{
-
+   
   }
 
 }

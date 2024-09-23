@@ -1,5 +1,29 @@
 <app-header></app-header>
 
+
+
+<div class="container_inventario">
+    <h2>Equipamentos Registrados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Laboratório</th>
+                <th>Posto</th>
+                <th>Validade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itens">
+                <td>{{ item.usuario }}</td>
+                <td>{{ item.laboratorio }}</td>
+                <td>{{ item.posto }}</td>
+                <td>{{ item.validade }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <app-excluir-popup *ngIf="generalService.showDialog" ></app-excluir-popup>
 <app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form>
 
