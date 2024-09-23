@@ -1,17 +1,15 @@
-<app-header></app-header>
 <main class="main-cadastro">
-    <!-- Primeira Etapa do formulário -->
+    <!-- 1° Cadastro Equipamento -->
     <form [formGroup]="cadastroEquipamento">
         <div class="container-forms-equipamento">
+
             <div class="icon-cad-forms">
                 <i class="fa-solid fa-gear"></i>
-                <!-- <mat-icon>settings_applications</mat-icon> -->
             </div>
 
             <h3 class="title-cad-forms">Dados do Equipamento</h3>
 
             <div class="content-cad-forms">
-
                 <div class="cad-forms">
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">ID do equipamento</label>
@@ -25,8 +23,7 @@
                             formControlName="rfid">
                     </div>
 
-
-
+                    <!-- Dropdow local: Tipo do equipamento -->
                     <div class="input-cad-forms">
                         <label class="label-dados" for="equipamento">Tipo de equipamento</label>
                         <app-dropdow-local id='id-typeEquipament' table='typeEquipament'
@@ -39,8 +36,6 @@
                         <input class="input-dados" type="text" placeholder="Ex. Standard" formControlName="modelo">
                     </div>
 
-
-
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">ID do usuário principal</label>
                         <input class="input-dados" type="text" placeholder="Ex. AAA1CA" formControlName="idUsuario">
@@ -50,8 +45,6 @@
                         <label class="label-dados" for="">Centro de custos</label>
                         <input class="input-dados" type="text" placeholder="Ex. 123456" formControlName="centroCustos">
                     </div>
-
-
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Data de Substituiçao</label>
@@ -70,14 +63,17 @@
                         <input class="input-obs" type="text" placeholder="Comentários sobre o equipamento"
                             formControlName="observacao">
                     </div>
-                </div>
-            </div>
+
+                 </div> <!--Fim do cad-forms -->
+            </div> <!--Fim do content-cad-forms-->
         </div>
     </form>
-    <!-- localização dos notebooks -->
+
+    <!-- 2° Cadastro Localização do equipamento -->
     <form [formGroup]="cadastroLocalizacao">
         <div *ngIf="currentStep >= 2">
             <div class="step-2"></div>
+
             <div class="container-forms-localizacao">
                 <div class="icon-cad-forms">
                     <i class="fa-solid fa-location-dot"></i>
@@ -87,6 +83,8 @@
 
                 <div class="content-cad-forms">
                     <div class="cad-forms">
+
+                        <!-- Dropdoq dynamic: Bulding -->
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Prédio</label>
                             <p>AQUI API</p>
@@ -96,8 +94,8 @@
                             <label class="label-dados" for="">Setor</label>
                             <input class="input-dados" type="text" placeholder="EX.ETS" formControlName="area">
                         </div>
-
-
+                        
+                        <!-- Dropdoq dynamic: Environment -->
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Laboratório</label>
                             <p>API AQUI</p>
@@ -107,21 +105,26 @@
                             <label class="label-dados" for="">Posto</label>
                             <input class="input-dados" type="text" placeholder="EX. PC 01" formControlName="posto">
                         </div>
-                    </div>
-                </div>
+
+                    </div><!--Fim do cad-forms -->
+                </div><!--Fim do content-cad-forms -->
             </div>
         </div>
     </form>
-    <!-- Dados do Responsável -->
+
+    <!--3° Cadastro do Responsável -->
     <form [formGroup]="cadastroResponsavel">
         <div *ngIf="currentStep >= 3">
             <div *ngIf="responsaveis.length < 5"></div>
             <div class="step-3"></div>
+
+            <!-- Botão de adicionar responsável -->
             <div class="addResponsavel">
                 <button type="button" class="btn-addResponsavel" (click)="addResponsavel()">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
+            
             <div class="container-forms-responsavel">
                 <div class="icon-cad-forms">
                     <i class="fa-solid fa-user"></i>
@@ -131,6 +134,7 @@
 
                 <div class="content-cad-forms">
                     <div class="cad-forms" *ngFor="let responsavel of responsaveis; let i = index">
+
                         <div class="input-cad-forms">
                             <label class="label-dados">Nome do responsável</label>
                             <input class="input-dados" type="text" placeholder="Nome completo">
@@ -141,6 +145,7 @@
                             <input class="input-dados" type="text" placeholder="EX.99999999">
                         </div>
 
+                        <!-- Dropdow local: Curso -->
                         <div class="input-cad-forms">
                             <label class="label-dados">Curso</label>
                             <app-dropdow-local id='course' table="course"
@@ -151,15 +156,16 @@
                             <label class="label-dados">Turma</label>
                             <input class="input-dados" type="text" placeholder="Insira o número da turma">
                         </div>
-                    </div>
-                </div>
+
+                    </div><!--Fim do cad-forms -->
+                </div> <!--Fim do content-cad-forms -->
             </div>
 
             <div *ngIf="showForm">
                 <div class="step-3"></div>
+                <!-- Botão de remover responsável -->
                 <div class="removerResponsavel">
                     <button type="button" class="btn-removeResponsavel" (click)="removeResponsavel()">
-                        <!--remover responsavel-->
                         <i class="fa-solid fa-x"></i>
                     </button>
                 </div>
@@ -168,10 +174,12 @@
                     <div class="icon-cad-forms">
                         <i class="fa-solid fa-user"></i>
                     </div>
+
                     <h3 class="title-cad-forms">Dados do Responsável</h3>
 
                     <div class="content-cad-forms">
                         <div class="cad-forms" *ngFor="let responsavel of responsaveis; let i = index">
+
                             <div class="input-cad-forms">
                                 <label class="label-dados">Nome do responsável</label>
                                 <input class="input-dados" type="text" placeholder="Nome completo">
@@ -185,37 +193,40 @@
                             <div class="input-cad-forms">
                                 <label class="label-dados">Curso</label>
                                 <app-dropdow-local id='course' table="course"
-                                [control]="cadastroEquipamento.controls.tipoEquipamento"></app-dropdow-local>
+                                    [control]="cadastroEquipamento.controls.tipoEquipamento"></app-dropdow-local>
                             </div>
 
                             <div class="input-cad-forms">
                                 <label class="label-dados">Turma</label>
                                 <input class="input-dados" type="text" placeholder="Insira o número da turma">
                             </div>
-                        </div>
-                    </div>
+
+                        </div> <!--Fim do cad-forms -->
+                    </div><!--Fim do content-cad-forms -->
                 </div>
             </div>
         </div>
+
+        <!-- Card de confirmação do cadastro -->
+        <div *ngIf="currentStep >= 4">
+            <div class="step-4"></div>
+            <div class="card-confirmacao">
+                <div class="icon-cad-forms">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h3 class="title-cad-forms">Confirmação de Cadastro</h3>
+                <p class="confirmacao">Equipamento cadastrado com sucesso!</p>
+            </div>
+        </div>
+
         <div class="btn-content">
+            <!-- Botão de avançar -->
             <button class="btn-next" *ngIf="currentStep<3"
                 [disabled]="cadastroEquipamento.invalid && cadastroLocalizacao.invalid && cadastroResponsavel.invalid"
                 (click)="goToNextStep()">Avançar</button>
+            <!-- Botão de cadastrar -->
             <button class="btn-next" *ngIf="currentStep==3" [disabled]="cadastroEquipamento.invalid"
                 (click)="submitForm()">Cadastrar</button>
         </div>
     </form>
-
-    <div *ngIf="currentStep >= 4">
-        <div class="step-4"></div>
-        <div class="card-confirmacao">
-            <div class="icon-cad-forms">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <h3 class="title-cad-forms">Confirmação de Cadastro</h3>
-            <p class="confirmacao">Equipamento cadastrado com sucesso!</p>
-        </div>
-    </div>
-
 </main>
-<app-footer></app-footer>

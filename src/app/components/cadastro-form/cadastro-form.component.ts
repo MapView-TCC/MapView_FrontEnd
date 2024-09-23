@@ -1,9 +1,7 @@
-import { HeaderComponent } from '../header/header.component';
 import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'; // Criar formulários reativos
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';  // Importar FormsModule
 import { DropdowLocalComponent } from '../dropdow-local/dropdow-local.component';
 
@@ -12,25 +10,23 @@ import { BuildingDrpService } from '../../services/dropdow-building/building-drp
 import { Enviroment } from '../../models/Enviroment';
 
 @Component({
-  selector: 'app-cadastro',
+  selector: 'app-cadastro-form',
   standalone: true,
   imports: [
-    HeaderComponent,
     CommonModule,
     ReactiveFormsModule,
     MatIconModule, 
-    FooterComponent,
     FormsModule,
     DropdowLocalComponent
 
   ],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss'
+  templateUrl: './cadastro-form.component.html',
+  styleUrl: './cadastro-form.component.scss'
 })
 
 
 
-export class CadastroComponent {
+export class CadastroFormComponent {
   constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService) {
     // Inicialize o FormGroup com os controles necessários
   }

@@ -15,19 +15,28 @@
 
   .container-forms-equipamento,
   .container-forms-localizacao,
-  .container-forms-responsavel {
+  .container-forms-responsavel{
     width: 800px;
     height: auto;
 
 
-    background-color: #F2F4F5;
+    background-color: var(--background-gray);
     border-radius: 15px;
 
     padding-bottom: 60px;
     /* Para dar espaço antes do botão */
 
+  }
+
+  .card-confirmacao{
+    width: 800px;
+    height: auto;
 
 
+    background-color: var(--background-gray);
+    border-radius: 15px;
+
+    padding-bottom: 50px;
   }
 
   .icon-cad-forms {
@@ -36,8 +45,6 @@
     padding-left: 35px;
   }
 
-  
-  
   .fa-solid{
     width: 45px;
     height: 45px;
@@ -47,9 +54,9 @@
     justify-content: center;
     align-items: center;
   
-    background-color: #011D94;
+    background-color: var(--blue);
     border-radius: 50%;
-    color: white;
+    color: var(--white);
 
     &.fa-gear {
       font-size: 30px;
@@ -63,8 +70,6 @@
       font-size: 23px;
     }
   }
-  
-
 
   .title-cad-forms {
     font-family: 'Inter', sans-serif;
@@ -74,7 +79,7 @@
     padding-left: 35px;
     margin-top: 18px;
 
-    color: #011D94;
+    color: var(--blue);
   }
 
   .content-cad-forms {
@@ -84,32 +89,26 @@
 
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-
-
   }
 
   .cad-forms {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Dois inputs lado a lado */
     gap: 40px;
-    /* Espaçamento entre os inputs */
-
   }
 
   .label-dados {
     font-size: 18px;
     padding-left: 20px;
+    font-weight: 400;
 
-    color: #4B4545;
+    color: var(--dark-brown-gray);
   }
 
   .input-cad-forms {
     display: flex;
     flex-direction: column;
     width: 330px;
-
-
   }
 
   .input-dados {
@@ -129,23 +128,18 @@
       font-size: 18px;
       font-family: 'Inter', sans-serif;
       font-weight: 100;
-      color: #969090;
+      color: var(--muted-brown);
     }
 
   }
 
   .input-cad-obs {
     grid-column: span 2;
-    /* Faz com que ocupe duas colunas inteiras */
     width: 100%;
-    /* Ocupa toda a largura disponível */
-
-
   }
 
   .input-obs {
     width: 100%;
-    /* Faz o input de observação ocupar toda a largura */
     height: 47px;
     border-radius: 20px;
     border: none;
@@ -157,30 +151,25 @@
     font-size: 18px;
     font-family: 'Inter', sans-serif;
 
-
     &::placeholder {
       font-size: 18px;
       font-family: 'Inter', sans-serif;
       font-weight: 100;
-      color: #969090;
+      color: var(--muted-brown);
     }
   }
 
   .btn-content {
     width: 800px;
-    /* Mesma largura do formulário */
     display: flex;
     justify-content: flex-end;
-    /* Alinha o botão à direita */
     margin-top: 20px;
-    /* Espaçamento entre o formulário e o botão */
-
   }
 
   .btn-next {
     margin-top: 18px;
-    background-color: #011D94;
-    color: #FFFF;
+    background-color: var(--blue);
+    color: var(--white);
     width: 125px;
     height: 45px;
 
@@ -190,55 +179,46 @@
     font-size: 18px;
     font-weight: bold;
   }
-
-  .step-2 {
+  
+  
+  .step-2{
     display: flex;
     flex-direction: column;
-    /* Organiza o conteúdo em uma coluna vertical */
     align-items: center;
-    /* Centraliza horizontalmente o conteúdo */
     justify-content: center;
-    /* Centraliza verticalmente o conteúdo */
     width: 60px;
-    /* Ajuste a largura para criar a linha vertical */
     height: 10vh;
-    /* Faz com que ocupe a altura total da viewport */
-    border-right: 4px solid #011D94;
-    /* Borda vertical à direita */
+    border-right: 4px solid var(--blue);
     box-sizing: border-box;
-    /* Inclui padding e border no cálculo da largura e altura */
     padding-top: 20px;
-    /* Espaçamento no topo */
     padding-bottom: 20px;
-    /* Espaçamento na parte inferior */
-    /* Ajuste conforme necessário */
   }
 
-  .step-3{
+  .step-3 {
     display: flex;
     flex-direction: column;
-    /* Organiza o conteúdo em uma coluna vertical */
     align-items: center;
-    /* Centraliza horizontalmente o conteúdo */
     justify-content: start;
-    /* Centraliza verticalmente o conteúdo */
     width: 60px;
-    /* Ajuste a largura para criar a linha vertical */
     height: 10vh;
-    /* Faz com que ocupe a altura total da viewport */
-    border-right: 4px solid #011D94;
-    /* Borda vertical à direita */
+    border-right: 4px solid var(--blue);
     box-sizing: border-box;
-    /* Inclui padding e border no cálculo da largura e altura */
     padding-top: 20px;
-    /* Espaçamento no topo */
     padding-bottom: 20px;
-    /* Espaçamento na parte inferior */
-    
-    
   }
 
-
+  .step-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px; 
+    height: 10vh; 
+    border-right: 4px solid var(--blue); 
+    box-sizing: border-box; 
+    padding-top: 20px; 
+  }
+  
   .addResponsavel, .removerResponsavel{
     display: flex;
     align-items: flex-end;
@@ -247,8 +227,8 @@
   }
   
   .btn-addResponsavel, .btn-removeResponsavel {
-    background-color: #011D94;
-    color: #fff;
+    background-color: var(--blue);
+    color: var(--white);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -257,7 +237,6 @@
     justify-content: flex-end; /* Alinha o botão à direita */
     border: none;
     background-color: transparent;
-
 }
 
 .fa-x, .fa-plus{
@@ -269,9 +248,9 @@
   justify-content: center;
   align-items: center;
   
-  background-color: #F2F4F5;
+  background-color: var(--background-gray);
   border-radius: 50%;
-  color: #011D94;
+  color: var(--blue);
 
   font-size: 16px;
 
@@ -279,49 +258,15 @@
     font-size: 20px;
   }
 }
-.step-4{
-  display: flex;
-  flex-direction: column;
-  /* Organiza o conteúdo em uma coluna vertical */
-  align-items: center;
-  /* Centraliza horizontalmente o conteúdo */
-  justify-content: start;
-  /* Centraliza verticalmente o conteúdo */
-  width: 60px;
-  /* Ajuste a largura para criar a linha vertical */
-  height: 10vh;
-  /* Faz com que ocupe a altura total da viewport */
-  border-right: 4px solid #011D94;
-  /* Borda vertical à direita */
-  box-sizing: border-box;
-  /* Inclui padding e border no cálculo da largura e altura */
-  padding-top: 20px;
-  /* Espaçamento no topo */
-  padding-bottom: 20px;
-  /* Espaçamento na parte inferior */
-  
-  
-}
 
-.card-confirmacao{
-  padding: 15px;
-  background-color: #F2F4F5;
-  height: 160px;
-  width: 800px;
-  border-radius: 15px;
- 
-
-}
 .confirmacao{
   font-family: 'Inter', sans-serif;
-  font-weight: 'Regular';
+  font-weight: 400;
+  
   font-size: 20px;
-
+  margin-top: 25px;
   padding-left: 35px;
-  margin-top: 18px;
+  color: var(--dark-brown-gray);
 }
-
-
-
 
 }
