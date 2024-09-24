@@ -122,6 +122,7 @@
 
     font-size: 18px;
     font-family: 'Inter', sans-serif;
+    margin-bottom: 5px;
 
 
     &::placeholder {
@@ -273,6 +274,10 @@
   margin-top: 25px;
   padding-left: 35px;
   color: var(--dark-brown-gray);
+}
+
+app-error-message{
+  padding-left: 20px;
 }
 
 }

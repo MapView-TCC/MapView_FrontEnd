@@ -9,6 +9,7 @@ import { BuildingDrp } from '../../models/BuldingDrp';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { Enviroment } from '../../models/Enviroment';
 import { DropdowDynamicComponent } from "../dropdow-dynamic/dropdow-dynamic.component";
+import { ErrorMessageComponent } from "../error-message/error-message.component";
 
 @Component({
   selector: 'app-cadastro-form',
@@ -19,7 +20,8 @@ import { DropdowDynamicComponent } from "../dropdow-dynamic/dropdow-dynamic.comp
     MatIconModule,
     FormsModule,
     DropdowLocalComponent,
-    DropdowDynamicComponent
+    DropdowDynamicComponent,
+    ErrorMessageComponent
 ],
   templateUrl: './cadastro-form.component.html',
   styleUrl: './cadastro-form.component.scss'
@@ -35,30 +37,33 @@ export class CadastroFormComponent {
   currentStep: number = 1; // Etapa inicial
   responsaveis: Array<any> = [{}]; // Inicia com um responsável
 
+  //Form group equipamento
   cadastroEquipamento = this.fb.group({
-    idEquipamento: new FormControl ('', Validators.required),
-    rfid: new FormControl ('', Validators.required),
+    idEquipamento: new FormControl ('', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]),
+    rfid: new FormControl ('', [Validators.required, Validators.minLength(16), Validators.maxLength(16),  Validators.pattern('^[0-9]*$')]),
     tipoEquipamento: [{value: '', disabled: false}, Validators.required],
     modelo: new FormControl ('', Validators.required),
-    idUsuario: new FormControl ('', Validators.required),
-    centroCustos: new FormControl ('', Validators.required),
-    dataSubstituicao: new FormControl ('', Validators.required),
-    adminRights: new FormControl ('', Validators.required),
+    idUsuario: new FormControl ('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+    centroCustos: new FormControl ('', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]), // Aceita apenas dígitos 0-9
+    dataSubstituicao: new FormControl ('',  [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
+    adminRights: new FormControl ('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
     observacao: new FormControl ('')  // Aqui não precisa de validador
   });
 
+  //Form Group localização
   cadastroLocalizacao = this.fb.group({
     id_building: [{value: '', disabled: false}, Validators.required],
     id_enviroment: [{value: '', disabled: false}, Validators.required],
     area: new FormControl ('', Validators.required),
-    posto: new FormControl ('', Validators.required)
+    posto: new FormControl ('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
   });
 
+  //Form Group Responsável
   cadastroResponsavel = this.fb.group({
-    nome_responsavel: new FormControl('',Validators.required),
-    edv: new FormControl('',Validators.required),
+    nome_responsavel: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    edv: new FormControl('',[Validators.required, Validators.minLength(8), Validators.minLength(8), Validators.pattern('^[0-9]*$')]),
     curso:[{value: '', disabled:false},Validators.required],
-    turma: new FormControl ('',Validators.required)
+    turma: new FormControl ('',[Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
   });
 
 
