@@ -1,4 +1,13 @@
 {
+  "/backend-mapview-api": {
+      "target": "http://10.234.82.71:8082",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/backend-mapview-api": ""
+      }
+    },
+    
     "/oauth2/authorization/azure": {
       "target": "http://localhost:8000",
       "changeOrigin": true,

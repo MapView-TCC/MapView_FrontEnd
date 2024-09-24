@@ -29,7 +29,7 @@ export class DropdowDynamicComponent implements OnInit{
 
 
   ngOnInit(){
-    if(this.table === 'bulding'){
+    if(this.table === 'building'){
       this.loadBuildings();
     }
     else if(this.table === 'enviroment'){
@@ -69,7 +69,7 @@ export class DropdowDynamicComponent implements OnInit{
     this.enviromentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
       this.enviromentOptions = enviroments.map(data =>({
         value: data.id_enviroment,
-        label: data.enviroment_name
+        label: data.environment_name
       }))
       this.options = this.enviromentOptions;
     })
