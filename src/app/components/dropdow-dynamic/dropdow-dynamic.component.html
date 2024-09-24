@@ -4,7 +4,7 @@
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
         <!-- Adicionar o botão para cadastrar novos ambientes -->
         <ng-container *ngIf="table === 'enviroment'">
-            <option value="custom"><button>Click Here</button></option>
+            <option class="" value="custom"><button>Click Here</button></option>
         </ng-container>
     </select>
 </div>

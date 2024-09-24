@@ -15,12 +15,30 @@
                         <label class="label-dados" for="">ID do equipamento</label>
                         <input class="input-dados" type="text" placeholder="Número localizado na etiqueta"
                             formControlName="idEquipamento">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'minlength'"
+                            [errorMessage]="'O campo deve conter 10 caracteres'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'maxlength'"
+                            [errorMessage]="'O campo deve conter até 15 caracteres'"></app-error-message>
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">RFID</label>
-                        <input class="input-dados" type="text" placeholder="Numeração da etiqueta RFID"
-                            formControlName="rfid">
+                        <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                            placeholder="Numeração da etiqueta RFID" formControlName="rfid">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                            [errorType]="'minlength'"
+                            [errorMessage]="'O campo deve conter 16 números'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                            [errorType]="'maxlength'"
+                            [errorMessage]="'O campo deve conter 16 números'"></app-error-message>
                     </div>
 
                     <!-- Dropdow local: Tipo do equipamento -->
@@ -29,33 +47,71 @@
                         <app-dropdow-local id='id-typeEquipament' table='typeEquipament'
                             [control]="cadastroEquipamento.controls.tipoEquipamento">
                         </app-dropdow-local>
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'tipoEquipamento'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Modelo</label>
                         <input class="input-dados" type="text" placeholder="Ex. Standard" formControlName="modelo">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'modelo'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">ID do usuário principal</label>
                         <input class="input-dados" type="text" placeholder="Ex. AAA1CA" formControlName="idUsuario">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                        [errorType]="'minlength'" [errorMessage]="'O campo deve conter 6 caracteres'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                        [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 6 caracteres'"></app-error-message>
+
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Centro de custos</label>
-                        <input class="input-dados" type="text" placeholder="Ex. 123456" formControlName="centroCustos">
+                        <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                            placeholder="Ex. 123456" formControlName="centroCustos">
+
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                        [errorType]="'minlength'" [errorMessage]="'O campo deve conter 6 números'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                        [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 6 números'"></app-error-message>
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Data de Substituiçao</label>
                         <input class="input-dados" type="text" placeholder="Ex. 2024.Q1"
                             formControlName="dataSubstituicao">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                        [errorType]="'minlength'" [errorMessage]="'O campo deve conter 7 caracteres'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                        [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 7 caracteres'"></app-error-message>
                     </div>
 
                     <div class="input-cad-forms">
                         <label class="label-dados" for="">Admin Rigths</label>
                         <input class="input-dados" type="text" placeholder="Ex. RITMO0123456789"
                             formControlName="adminRights">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                        [errorType]="'minlength'" [errorMessage]="'O campo deve conter 13 caracteres'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                        [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 13 caracteres'"></app-error-message>
                     </div>
 
                     <div class="input-cad-obs">
@@ -87,27 +143,41 @@
                         <!-- Dropdoq dynamic: Bulding -->
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Prédio</label>
-                            <!-- <app-dropdow-dynamic table="building" 
+                            <app-dropdow-dynamic table="building" 
                                 [control]="cadastroLocalizacao.controls.id_building">
-                            </app-dropdow-dynamic> -->
+                            </app-dropdow-dynamic>
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_building'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                         </div>
 
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Setor</label>
-                            <input class="input-dados" type="text" placeholder="EX.ETS" formControlName="area">
+                            <input class="input-dados" type="text" placeholder="EX.ETS" formControlName="'area'">
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_building'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                         </div>
 
                         <!-- Dropdoq dynamic: Enviroment -->
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Laboratório</label>
-                            <!-- <app-dropdow-dynamic table="enviroment"
+                            <app-dropdow-dynamic table="enviroment"
                                 [control]="cadastroLocalizacao.controls.id_enviroment">
-                            </app-dropdow-dynamic> -->
+                            </app-dropdow-dynamic>
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_enviroment'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                         </div>
 
                         <div class="input-cad-forms">
                             <label class="label-dados" for="">Posto</label>
-                            <input class="input-dados" type="text" placeholder="EX. PC 01" formControlName="posto">
+                            <input class="input-dados" type="text" placeholder="EX. 01" formControlName="posto">
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'posto'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                            <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'posto'"
+                            [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'"></app-error-message>
                         </div>
 
                     </div><!--Fim do cad-forms -->
@@ -142,11 +212,25 @@
                         <div class="input-cad-forms">
                             <label class="label-dados">Nome do responsável</label>
                             <input class="input-dados" type="text" placeholder="Nome completo">
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                            [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 3 caracteres'"></app-error-message>
                         </div>
 
                         <div class="input-cad-forms">
                             <label class="label-dados">EDV</label>
-                            <input class="input-dados" type="text" placeholder="EX.99999999">
+                            <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                                placeholder="EX.99999999">
+
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                            [errorType]="'minlength'" [errorMessage]="'O campo deve conter exatamente 8 caracteres'"></app-error-message>
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                            [errorType]="'maxlength'" [errorMessage]="'O campo deve conter exatamente 8 caracteres'"></app-error-message>
                         </div>
 
                         <!-- Dropdow local: Curso -->
@@ -154,11 +238,21 @@
                             <label class="label-dados">Curso</label>
                             <app-dropdow-local id='course' table="course"
                                 [control]="cadastroEquipamento.controls.tipoEquipamento"></app-dropdow-local>
+
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'curso'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                         </div>
 
                         <div class="input-cad-forms">
                             <label class="label-dados">Turma</label>
-                            <input class="input-dados" type="text" placeholder="Insira o número da turma">
+                            <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                                placeholder="Insira o número da turma">
+                            <!-- Mensagens de erro -->
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                            <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                            [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'"></app-error-message>
                         </div>
 
                     </div><!--Fim do cad-forms -->
@@ -187,11 +281,25 @@
                             <div class="input-cad-forms">
                                 <label class="label-dados">Nome do responsável</label>
                                 <input class="input-dados" type="text" placeholder="Nome completo">
+                                <!-- Mensagens de erro -->
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                                [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                                [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 3 caracteres'"></app-error-message>
                             </div>
 
                             <div class="input-cad-forms">
                                 <label class="label-dados">EDV</label>
-                                <input class="input-dados" type="text" placeholder="EX.99999999">
+                                <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                                    placeholder="EX.99999999">
+                                
+                                <!-- Mensagens de erro -->
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                                [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                                [errorType]="'minlength'" [errorMessage]="'O campo deve conter exatamente 8 caracteres'"></app-error-message>
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'"
+                                [errorType]="'maxlength'" [errorMessage]="'O campo deve conter exatamente 8 caracteres'"></app-error-message>
                             </div>
 
                             <!-- Dropdow local: Curso -->
@@ -199,11 +307,20 @@
                                 <label class="label-dados">Curso</label>
                                 <app-dropdow-local id='course' table="course"
                                     [control]="cadastroEquipamento.controls.tipoEquipamento"></app-dropdow-local>
+                                 <!-- Mensagens de erro -->
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'curso'"
+                                [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
                             </div>
 
                             <div class="input-cad-forms">
                                 <label class="label-dados">Turma</label>
-                                <input class="input-dados" type="text" placeholder="Insira o número da turma">
+                                <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                                    placeholder="Insira o número da turma Ex. 08">
+                                <!-- Mensagens de erro -->
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                                [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                                <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                                [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'"></app-error-message>
                             </div>
 
                         </div> <!--Fim do cad-forms -->
@@ -226,12 +343,12 @@
 
         <div class="btn-content">
             <!-- Botão de avançar -->
-            <button class="btn-next" *ngIf="currentStep<3"
-                [disabled]="!isCurrentStepValid()" 
+            <!-- <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
+                (click)="goToNextStep()">Avançar</button> -->
+                <button class="btn-next" *ngIf="currentStep<3"
                 (click)="goToNextStep()">Avançar</button>
             <!-- Botão de cadastrar -->
-            <button class="btn-next" *ngIf="currentStep==3" [disabled]=""
-                (click)="submitForm()">Cadastrar</button>
+            <button class="btn-next" *ngIf="currentStep==3" [disabled]="" (click)="submitForm()">Cadastrar</button>
         </div>
     </form>
 </main>

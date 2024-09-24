@@ -1,31 +1,53 @@
 <app-header></app-header>
 
-
-
 <div class="container_inventario">
-    <h2>Equipamentos Registrados</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Usuário</th>
-                <th>Laboratório</th>
-                <th>Posto</th>
-                <th>Validade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of itens">
-                <td>{{ item.usuario }}</td>
-                <td>{{ item.laboratorio }}</td>
-                <td>{{ item.posto }}</td>
-                <td>{{ item.validade }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="header_container">
+        <h2>Equipamentos Registrados</h2>
+    <div class="filtro">
+        <button>
+            <i class="fa-solid fa-download filter"></i>Exportar
+        </button>
+        <button>
+            <i class="fa-solid fa-filter filter"></i>Filtros
+        </button>
+    </div>
+    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificação</th>
+                    <th>Usuário</th>
+                    <th>Laboratório</th>
+                    <th>Posto</th>
+                    <th>Validade</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itens">
+                    <td>{{item.identificacao}}</td>
+                    <td>{{ item.usuario }}</td>
+                    <td>{{ item.laboratorio }}</td>
+                    <td>{{ item.posto }}</td>
+                    <td>{{ item.validade }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="dots-button" (click)="item.showOptions = !item.showOptions">⋯</button>
+                            <div class="dropdown-content" *ngIf="item.showOptions">
+                                <button (click)="generalService.showFormlog = true">
+                                    <i class="fa-solid fa-eye iconEye"></i>Visualizar
+                                </button>
+                                    <button (click)="generalService.showDialog = true">
+                                        <i class="fa-solid fa-trash iconTrash"></i>Excluir
+                                    </button>  
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </div>
 
-<app-excluir-popup *ngIf="generalService.showDialog" ></app-excluir-popup>
+<app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>
 <app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form>
 
-<button  class="botao-excluir" (click)="generalService.showDialog = true">Excluir</button>
-<button class="botao-vizualizar" (click)="generalService.showFormlog = true" >Vizualizar</button>

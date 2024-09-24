@@ -30,10 +30,10 @@ export class DropdowDynamicComponent implements OnInit{
 
   ngOnInit(){
     if(this.table === 'bulding'){
-      this.loadBuildings;
+      this.loadBuildings();
     }
     else if(this.table === 'enviroment'){
-      this.loadEnviroments
+      this.loadEnviroments()
     }
 
     if(!this.options || !this.options.length){
@@ -57,10 +57,11 @@ export class DropdowDynamicComponent implements OnInit{
   // Função que pega os valores da tabela Bulding 
   loadBuildings(){
     this.buldingDrp.getBulding().subscribe((buildings: BuildingDrp[]) =>{
-      this.buildingOptions =buildings.map(data => ({
+      this.buildingOptions = buildings.map(data => ({
         value: data.id_building,
         label: data.building_code
       }))
+      this.options = this.buildingOptions;
     })
   }
   // Função que pega os valores da tabelaEnviroments 
@@ -70,6 +71,7 @@ export class DropdowDynamicComponent implements OnInit{
         value: data.id_enviroment,
         label: data.enviroment_name
       }))
+      this.options = this.enviromentOptions;
     })
   }
 }

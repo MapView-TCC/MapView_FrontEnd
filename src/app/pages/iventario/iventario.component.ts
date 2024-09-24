@@ -11,10 +11,12 @@ import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-po
 
 
 interface item{
+  identificacao: string;
   usuario: string;
   laboratorio: string;
   posto: string;
-  validade: string
+  validade: string;
+  showOptions?: boolean // Controla a exibição do dropdown
 }
 
 @Component({
@@ -26,8 +28,8 @@ interface item{
 })
 export class IventarioComponent  implements OnInit{
   itens: item[] =[
-    {usuario: 'Joao joao', laboratorio: 'Laboratorio 01', posto: 'Mesa 31', validade: '02/05/2025' },
-    {usuario: 'Joao joao', laboratorio: 'Laboratorio 01', posto: 'Mesa 31', validade: '02/05/2025'}
+    {identificacao: 'JVL-C-OOO9X',usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1',showOptions: false },
+    {identificacao: 'JVL-C-OOO9X',usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1', showOptions: false}
   ]
   constructor(public generalService: GeneralService){
 
