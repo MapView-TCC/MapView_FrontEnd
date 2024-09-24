@@ -249,11 +249,11 @@ export class AmbienteComponent implements OnInit{
           const elementBackend = [
             {
               id: 1,
-              pcName: "CACETE"
+              pcName: "Pc teste1"
             },
             {
               id: 2,
-              pcName: 'Pc teste',
+              pcName: 'Pc teste2',
             },
           ]
 

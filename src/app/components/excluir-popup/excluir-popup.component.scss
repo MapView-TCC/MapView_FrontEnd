@@ -11,6 +11,7 @@
         align-items: center;
        justify-content: center;
        font-family: 'Inter',sans-serif;
+       z-index: 1;
      }
     .conteiner{
         margin-top: 20px;
@@ -20,6 +21,7 @@
         background-color: #ffff;
         display: flex;
         flex-direction: column;
+        z-index: 1;
 
          .trash{
             display: inline-flex;
