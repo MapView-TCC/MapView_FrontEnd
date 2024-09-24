@@ -1,0 +1,191 @@
+:host {
+  display: flex;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.conteiner {
+  margin-top: 20px;
+  width: 70%; /* Ajustado para ocupar mais espaço com o carrossel */
+  box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
+  border-radius: 10px;
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px; /* Adiciona um pouco de espaçamento interno */
+}
+
+.product {
+  padding: 20px 0;
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 400px; /* Altura dos cards */
+  width: 100%; /* Ocupa toda a largura disponível */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo */
+  align-items: center; /* Alinha verticalmente no centro */
+}
+
+.slider-main {
+  display: flex; /* Flexbox para alinhamento horizontal dos itens */
+  transition: transform 0.5s ease; /* Transição suave */
+  width: auto; /* A largura vai ser ajustada automaticamente pelo conteúdo */
+  transform: translateX(0); /* Padrão de transformação inicial */
+  justify-content: center; /* Centraliza os itens dentro do slider */
+  perspective: 1000px; /* Adiciona perspectiva 3D */
+}
+
+.item {
+  width: 400px;
+  height: 800px;
+  background: #F2F4F5; /* Fundo branco */
+  margin: 0 12px; /* Espaçamento entre os itens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do card */
+  position: relative;
+  flex-shrink: 0; /* Evita que o item encolha */
+  transition: transform 0.3s ease, opacity 0.3s ease, z-index 0.3s ease; /* Transição suave para transformação, opacidade e z-index */
+  opacity: 0.5; /* Transparência padrão para itens laterais */
+  transform: translateZ(0); /* Inicialmente, todos os itens estão no mesmo nível */
+}
+
+.item.active {
+  transform: scale(1.1) translateZ(100px) translateY(-20px); /* Move o card central um pouco para cima */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra do card central */
+  opacity: 1; /* Remove a transparência do card central */
+  z-index: 10; /* Coloca o card central à frente dos outros */
+}
+
+
+.text {
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: left;
+  align-items: left;
+}
+
+.button-area {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* Centraliza horizontalmente em relação ao card */
+  transform: translate(-50%, -50%); /* Centraliza verticalmente */
+  display: flex;
+  justify-content: space-between; /* Move as setas para as extremidades laterais */
+  width: 100%; /* Ajuste a largura para ocupar todo o card */
+  z-index: 30; /* Garante que os botões fiquem sobrepostos aos itens */
+  pointer-events: none; /* Faz com que os cliques sejam passados para os itens abaixo */
+}
+
+.prev, .next {
+  background: #F2F4F5;
+  border-radius: 50%;
+  width: 40px; /* Tamanho do botão */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px; /* Tamanho do ícone */
+  color: #969090; /* Cor do ícone */
+  transform: translateZ(0); /* Define o botão no mesmo nível 3D */
+  pointer-events: auto; /* Garante que os botões recebam eventos de clique */
+}
+
+.prev {
+  margin-left: 300px; /* Adiciona um pequeno espaço da borda esquerda */
+}
+
+.next {
+  margin-right: 300px; /* Adiciona um pequeno espaço da borda direita */
+}
+.fechar{
+  width: 100%;
+  font-size: 20px;
+  padding-left: 530px;
+  margin-top: 10px;
+}
+.product {
+  .container-fluid {
+    .slider-wrapper {
+      .slider-main {
+        display: flex;
+        overflow: hidden;
+
+        .item {
+          flex: 0 0 auto;
+          width: 300px;
+          margin: 0 10px;
+          padding: 15px;
+          border: 1px solid rgba(224, 224, 224, 0.7); /* Transparência na borda */
+          border-radius: 10px;
+          background-color: #F2F4F5;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            h2 {
+              font-weight: bold;
+              font-size: 14px;
+              margin-bottom: 10px;
+              text-align: center;
+            }
+
+            img {
+              width: 110px;
+              height: 110px;
+              object-fit: cover;
+              margin-bottom: 10px;
+            }
+
+            p {
+              font-size: 12px; /* Ajuste do tamanho da fonte */
+              margin-bottom: 5px;
+              line-height: 1.4; /* Ajusta a altura da linha para melhor legibilidade */
+              text-align: right; /* Alinha o texto à esquerda */
+              font-weight: 500px;
+            }
+          }
+        }
+
+        /* Adicionando um estilo para manter a lista ou informações do lado */
+        .info-container {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px; /* Espaço entre o card e as informações */
+        }
+      }
+
+      .button-area {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        mat-icon {
+          cursor: pointer;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

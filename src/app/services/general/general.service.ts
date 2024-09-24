@@ -7,6 +7,8 @@ export class GeneralService {
   showDialog = false;
 
   showFormlog = false;
+
+  showCarroselog = false;
   
   constructor() { }
 }

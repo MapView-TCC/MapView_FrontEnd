@@ -5,23 +5,33 @@ import {GLTFLoader, GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
+
 import GUI from 'lil-gui';
 import gsap from 'gsap';
 
 //Imports for our components 
 import { HeaderComponent } from '../../components/header/header.component';
+import { GeneralService } from '../../services/general/general.service';
+import { CommonModule } from '@angular/common';
+import { CarroselComponent } from '../../components/carrosel/carrosel.component';
  
 
 @Component({
   selector: 'app-ambiente',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent,CommonModule,CarroselComponent],
   templateUrl: './ambiente.component.html',
-  styleUrl: './ambiente.component.scss'
+  styleUrl: './ambiente.component.scss',
+
 })
 
 
 export class AmbienteComponent implements OnInit{ 
+  constructor(public generalService: GeneralService){
+
+  }
+
+
   ngOnInit(): void {
     this.createThreeJsBox();
   }
