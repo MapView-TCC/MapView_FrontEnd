@@ -8,6 +8,7 @@ import { DropdowLocalComponent } from '../dropdow-local/dropdow-local.component'
 import { BuildingDrp } from '../../models/BuldingDrp';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { Enviroment } from '../../models/Enviroment';
+import { DropdowDynamicComponent } from "../dropdow-dynamic/dropdow-dynamic.component";
 
 @Component({
   selector: 'app-cadastro-form',
@@ -15,11 +16,11 @@ import { Enviroment } from '../../models/Enviroment';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatIconModule, 
+    MatIconModule,
     FormsModule,
-    DropdowLocalComponent
-
-  ],
+    DropdowLocalComponent,
+    DropdowDynamicComponent
+],
   templateUrl: './cadastro-form.component.html',
   styleUrl: './cadastro-form.component.scss'
 })
@@ -47,8 +48,8 @@ export class CadastroFormComponent {
   });
 
   cadastroLocalizacao = this.fb.group({
-    id_building: new FormControl(0, Validators.required),
-    id_enviroment: new FormControl(0, Validators.required),
+    id_building: [{value: '', disabled: false}, Validators.required],
+    id_enviroment: [{value: '', disabled: false}, Validators.required],
     area: new FormControl ('', Validators.required),
     posto: new FormControl ('', Validators.required)
   });
@@ -63,8 +64,6 @@ export class CadastroFormComponent {
 
   showForm: boolean = false;
 
-
-  
   buildingDrpList:Array<BuildingDrp>  = [];
   enviromentDrpList: Array<Enviroment> = [];
 
@@ -81,16 +80,37 @@ export class CadastroFormComponent {
     console.log('Dados do formulário:', this.cadastroEquipamento.value);
   }
 
+  //Função que verifica se os formsGroups estão validos
+  isCurrentStepValid(): boolean {
+    if(this.currentStep==1){
+      return this.cadastroEquipamento.valid;
+    }else if (this.currentStep == 2){
+      return this.cadastroLocalizacao.valid;
+    }else if (this.currentStep == 3){
+      return this.cadastroResponsavel.valid;
+    }
+    return false;
+  }
+  //Função que verifica se todos os forms estão validos
+  isFormGroupsValid(): boolean{
+    if(this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavel.valid){
+      return true;
+    }else{
+      return false;
+    }
+    
+  }
+
+  //método para passar pro proxímo formulário
   goToNextStep() {
     this.currentStep++;
     console.log("STEPS " + this.currentStep)
     if(this.currentStep >= 3){
       this.changeButton()
     }
-    // if (this.currentStep < 2) { // Ajuste conforme o número de etapas
-    // }
   }
 
+  //métodode envio do formulário
   submitForm(){
     console.log('enviou!')
     this.goToNextStep();
@@ -99,11 +119,18 @@ export class CadastroFormComponent {
 
   // Função para adicionar um novo responsável
   addResponsavel() {
-    //this.responsaveis.push({});
-    this.showForm = true;
+    const responsavelGroup = this.fb.group({
+      nome_responsavel: new FormControl('', Validators.required),
+      edv: new FormControl('', Validators.required),
+      curso: [{ value: '', disabled: false }, Validators.required],
+      turma: new FormControl('', Validators.required)
+  });
+  this.responsaveis.push(responsavelGroup);
+  this.showForm = true;
  
   }
- 
+
+  // Função para remover
   removeResponsavel() {
     this.showForm = false;
   }
