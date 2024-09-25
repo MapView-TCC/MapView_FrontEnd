@@ -343,9 +343,7 @@
 
         <div class="btn-content">
             <!-- Botão de avançar -->
-            <!-- <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
-                (click)="goToNextStep()">Avançar</button> -->
-                <button class="btn-next" *ngIf="currentStep<3"
+            <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
                 (click)="goToNextStep()">Avançar</button>
             <!-- Botão de cadastrar -->
             <button class="btn-next" *ngIf="currentStep==3" [disabled]="" (click)="submitForm()">Cadastrar</button>
