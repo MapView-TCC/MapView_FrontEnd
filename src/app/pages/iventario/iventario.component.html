@@ -34,7 +34,7 @@
                         <div class="dropdown">
                             <button class="dots-button" (click)="item.showOptions = !item.showOptions">⋯</button>
                             <div class="dropdown-content" *ngIf="item.showOptions">
-                                <button (click)="generalService.showFormlog = true">
+                                <button (click)="generalService.showLocationlog = true">
                                     <i class="fa-solid fa-eye iconEye"></i>Visualizar
                                 </button>
                                     <button (click)="generalService.showDialog = true">
@@ -50,4 +50,6 @@
 
 <app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>
 <app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form>
+
+<app-location-popup *ngIf="generalService.showLocationlog"></app-location-popup> <!--testes-->
 

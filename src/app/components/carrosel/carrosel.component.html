@@ -1,16 +1,17 @@
- <!-- <section class="product" *ngIf="equipamentos.length > 0">
+   <section class="product" *ngIf="equipamentos.length > 0">
     <div class="container-fluid">
+       <mat-icon class="fechar" (click)="generalService.showCarroselog=false" >close</mat-icon>
       <div class="slider-wrapper">
         <div class="slider-main">
           <div class="item" *ngFor="let equipment of equipamentos">
             <div class="text">
               <h2>{{ equipment.name_equipment }}</h2>
               <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="Image of {{ equipment.name_equipment }}">
-              <p><strong>ID Equipment:</strong> <span>{{ equipment.id_equipment }}</span></p>
-              <p><strong>RFID:</strong> <span>{{ equipment.rfid }}</span></p>
-              <p><strong>Model:</strong> <span>{{ equipment.model }}</span></p>
-              <p><strong>Validity:</strong> <span>{{ equipment.validity }}</span></p>
-              <p><strong>Admin Rights:</strong> <span>{{ equipment.admin_rights }}</span></p>
+              <p><strong>ID Notebook:</strong> <span>{{ equipment.id_equipment }}</span></p>
+              <p><strong>Localização de Origem:</strong> <span>{{ equipment.rfid }}</span></p>
+              <p><strong>Localização Atual:</strong> <span>{{ equipment.model }}</span></p>
+              <p><strong>Responsável 1:</strong> <span>{{ equipment.admin_rights }}</span></p>
+              <p><strong>Responsável 2:</strong> <span>{{ equipment.admin_rights }}</span></p>
             </div>
           </div>
         </div>
@@ -21,9 +22,9 @@
       </div>
     </div>
   </section>    
-   -->
 
-   <section class="product">
+
+ <!-- <section class="product">
     <div class="container-fluid">
       <mat-icon class="fechar" (click)="generalService.showCarroselog=false" >close</mat-icon>
       <div class="slider-wrapper">
@@ -68,4 +69,4 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>  -->

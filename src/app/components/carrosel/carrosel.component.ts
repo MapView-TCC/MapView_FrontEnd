@@ -19,9 +19,14 @@ export class CarroselComponent implements OnInit {
   constructor(private equipmentService: EquipamentoService, public generalService: GeneralService) {}
 
   ngOnInit() {
-    this.equipmentService.getEquipamentos().subscribe((data) => {
-      this.equipamentos = data;
-
+    this.equipmentService.getEquipamentos().subscribe({
+      next: (data) => {
+        this.equipamentos = data;
+        console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
+      },
+      error: (err) => {
+        console.error("Erro ao buscar equipamentos:", err);
+      }
     });
   }
 }

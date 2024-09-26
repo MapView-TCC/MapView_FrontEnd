@@ -9,6 +9,8 @@ export class GeneralService {
   showFormlog = false;
 
   showCarroselog = false;
+
+  showLocationlog = false;
   
   constructor() { }
 }

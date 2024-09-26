@@ -7,6 +7,7 @@ import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
 import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-popup.component';
+import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
 
 
 
@@ -22,7 +23,7 @@ interface item{
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent,ExcluirPopupComponent,CommonModule,VizualizacaoFormComponent],
+  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent],
   templateUrl: './iventario.component.html',
   styleUrl: './iventario.component.scss'
 })
