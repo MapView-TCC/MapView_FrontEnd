@@ -8,6 +8,10 @@
     </select>
 
     <ng-container *ngIf="selectedValue == 'notEnviroment'">
-        <button >Socorro deus</button>
+        <button (click)="generalService.showDialog = true">
+            <i class="fa-solid fa-trash iconTrash"></i>Excluir
+        </button>  
     </ng-container>
 </div>
+
+<app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>

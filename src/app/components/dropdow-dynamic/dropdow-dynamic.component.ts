@@ -7,17 +7,20 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
 import { Area } from '../../models/Area';
+import { ExcluirPopupComponent } from '../excluir-popup/excluir-popup.component';
+import { GeneralService } from '../../services/general/general.service';
 
 @Component({
   selector: 'app-dropdow-dynamic',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ExcluirPopupComponent],
   templateUrl: './dropdow-dynamic.component.html',
   styleUrl: './dropdow-dynamic.component.scss'
 })
 export class DropdowDynamicComponent implements OnInit{
 
-  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService) {}
+  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService, public generalService: GeneralService) {}
+
 
   @Input() options: {value: number | string, label: string}[] = [];
   @Input() selectedValue: string = '';
