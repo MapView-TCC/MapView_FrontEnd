@@ -5,6 +5,8 @@ import { BuildingDrp } from '../../models/BuldingDrp';
 import { Enviroment } from '../../models/Enviroment';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
+import { Area } from '../../models/Area';
 
 @Component({
   selector: 'app-dropdow-dynamic',
@@ -15,7 +17,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class DropdowDynamicComponent implements OnInit{
 
-  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService) {}
+  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService) {}
 
   @Input() options: {value: number | string, label: string}[] = [];
   @Input() selectedValue: string = '';
@@ -26,6 +28,7 @@ export class DropdowDynamicComponent implements OnInit{
 
   buildingOptions: { value: number, label: string }[] = [];
   enviromentOptions: { value: number, label: string }[] = [];
+  areaOptions: {value: number, label: string}[] = [];
 
 
   ngOnInit(){
@@ -34,6 +37,9 @@ export class DropdowDynamicComponent implements OnInit{
     }
     else if(this.table === 'enviroment'){
       this.loadEnviroments()
+    }
+    else if(this.table === 'area'){
+      this.loadAreas()
     }
 
     if(!this.options || !this.options.length){
@@ -74,4 +80,16 @@ export class DropdowDynamicComponent implements OnInit{
       this.options = this.enviromentOptions;
     })
   }
+
+   // Função que pega os valores da tabela Area
+   loadAreas(){
+    this.areaDrp.getArea().subscribe((areas: Area[]) => {
+      this.areaOptions = areas.map(data =>({
+        value: data.id_area,
+        label: data.area_code
+      }))
+      this.options = this.areaOptions;
+    })
+  }
+  
 }
