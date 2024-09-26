@@ -10,13 +10,14 @@
   align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;
+  
 }
 
 .conteiner {
   margin-top: 20px;
   width: 70%; /* Ajustado para ocupar mais espaço com o carrossel */
   box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
-  border-radius: 10px;
+  // border-radius: 10px;
   background-color: #ffff;
   display: flex;
   flex-direction: column;
@@ -29,45 +30,50 @@
 
 .slider-wrapper {
   position: relative;
-  overflow: hidden;
-  height: 400px; /* Altura dos cards */
-  width: 100%; /* Ocupa toda a largura disponível */
+  height: 400px;
+  width: 100%;
   display: flex;
-  justify-content: center; /* Centraliza o conteúdo */
-  align-items: center; /* Alinha verticalmente no centro */
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden; /* Importante para ocultar partes dos itens que saem do contêiner */
 }
 
 .slider-main {
-  display: flex; /* Flexbox para alinhamento horizontal dos itens */
-  transition: transform 0.5s ease; /* Transição suave */
-  width: auto; /* A largura vai ser ajustada automaticamente pelo conteúdo */
-  transform: translateX(0); /* Padrão de transformação inicial */
-  justify-content: center; /* Centraliza os itens dentro do slider */
-  perspective: 1000px; /* Adiciona perspectiva 3D */
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
 .item {
-  width: 400px;
-  height: 800px;
-  background: #F2F4F5; /* Fundo branco */
-  margin: 0 12px; /* Espaçamento entre os itens */
+  width: 320px; /* Ajuste conforme necessário */
+  height: 387px; /* Ajuste conforme necessário */
+  background: #F2F4F5;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do card */
-  position: relative;
-  flex-shrink: 0; /* Evita que o item encolha */
-  transition: transform 0.3s ease, opacity 0.3s ease, z-index 0.3s ease; /* Transição suave para transformação, opacidade e z-index */
-  opacity: 0.5; /* Transparência padrão para itens laterais */
-  transform: translateZ(0); /* Inicialmente, todos os itens estão no mesmo nível */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Aplicando border-radius */
+  flex-shrink: 0; /* Evita que os itens encolham */
+  transition: transform 0.3s ease, opacity 0.3s ease, z-index 0.3s ease;
+  opacity: 0.5; /* Inicialmente, todos os itens são semi-transparentes */
 }
 
 .item.active {
-  transform: scale(1.1) translateZ(100px) translateY(-20px); /* Move o card central um pouco para cima */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra do card central */
-  opacity: 1; /* Remove a transparência do card central */
-  z-index: 10; /* Coloca o card central à frente dos outros */
+  transform: scale(1); /* Aumenta o item ativo */
+  opacity: 1; /* Totalmente opaco */
+  z-index: 1; /* Coloca o item ativo na frente */
 }
+
+/* Mantendo o border-radius ao aplicar scale */
+.item.active {
+  border-radius: 10px; /* Mantém o border-radius */
+}
+
+.item:not(.active) {
+  transform: scale(0.9); /* Reduz os itens não ativos */
+  opacity: 0.5; /* Mantém a transparência */
+}
+
 
 .text {
   color: rgb(0, 0, 0);
@@ -145,10 +151,10 @@ span {
         .item {
           flex: 0 0 auto;
           width: 300px;
-          margin: 0 10px;
+          
           padding: 15px;
           border: 1px solid rgba(224, 224, 224, 0.7); /* Transparência na borda */
-          border-radius: 10px;
+          border-radius: 15px;
           background-color: #F2F4F5;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           display: flex;
