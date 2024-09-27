@@ -11,7 +11,7 @@ export const routes: Routes = [
 
     {path:'', component:InicialComponent},
     {path:'header' , component:HeaderComponent},
-    {path:'ambiente',component:AmbienteComponent},
+    {path:'callback',component:AmbienteComponent},
     {path:'cadastro', component: CadastroComponent},
     {path:'historico', component:HistoricoComponent},
     {path:'iventario',component:IventarioComponent}
