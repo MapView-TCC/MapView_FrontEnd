@@ -1,23 +1,146 @@
-button{
-    height: 40px;
-    padding: 10px 40px;
-    border-radius: 20px;
-    text-align: center;
-    display: flex;
-    font-size: 16px;
-    font-weight: bold;
+
+.container_inventario {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.botao-excluir,
+.botao-vizualizar {
+    background: none;
     border: none;
+    font-size: 24px; /* Tamanho do ícone */
+    cursor: pointer;
+    color: #000; /* Cor dos ícones */
+}
+
+.iconTrash, .iconEye{
+    margin-right: 15px; /* Espaçamento entre o ícone e o texto */
+    font-size: 12px; /* Ajuste o tamanho do ícone conforme necessário */
+    
+}
+
+
+.dots-button {
+    background: none;
+    border: none;
+    font-size: 25px; /* Tamanho do ícone */
+    cursor: pointer;
+    color: #AFABAC; /* Cor dos ícones */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block; /* Permite que os pontos apareçam na mesma linha */
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 18px;
+    width: 141px;
+    height: 72px;
+    text-align:left;
+    color: #696161;
+}
+
+.dropdown-content button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    width: 100%;
+    
+}
+
+.dropdown-content button:hover {
+    background-color: #ECE8F4; /* Efeito hover */
+    border-radius: 10px;
+    height: 40px;
+    color: #6338AF;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between; /* Alinha os itens nas extremidades */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+h2{
+    color: #011D94;
+}
+
+//div
+.filtro{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+//icone
+.filter{
+    color: #807C7C;
+    margin-right: 8px;
+    margin-right: 4px;
+    margin-left: 25px; /* Espaçamento entre os itens */
+}
+
+.filtro button{
+    border: none;
+    background-color: white;
     cursor: pointer;
 }
 
-.botao-excluir{
-    background-color: #fff;
-    border: 2px solid #011D94;
-    color: #4B4545;
+table {
+    width: 100%;
+    border-collapse: separate; /* Mantém as bordas separadas */
+    border-spacing: 0 15px; /* Adiciona espaçamento vertical entre as linhas */
+    overflow: visible; /* Garante que os cantos arredondados sejam visíveis */
+    margin-top: -10px;
+}
+
+th, td {
+    padding: 11px;
+    text-align: left;
+    background-color: #F2f4f5; /* Fundo branco para as células */
+    border: none; /* Remove bordas visíveis */
    
 }
 
-.botao-vizualizar{
-    background-color: #011D94;
-    color: #fff;
+//titulos da tabela
+th{
+    background-color: #F2f4f5;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 14px;
+}
+
+th:first-child{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+th:last-child{
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+//dados da tabela 
+td{
+    font-weight: 200;
+}
+
+td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+td:last-child {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
 }

@@ -1,0 +1,5 @@
+<div 
+  class="container-error-message" 
+  *ngIf="formGroup.get(inputSelect)?.hasError(errorType) && formGroup.get(inputSelect)?.touched">
+  <p class="error-message">{{ errorMessage }}</p>
+</div>

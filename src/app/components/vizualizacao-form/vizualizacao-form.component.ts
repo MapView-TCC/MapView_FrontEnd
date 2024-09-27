@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 //Imports from our components 
-import { GeneralService } from '../../services/general.service';
+import { GeneralService } from '../../services/general/general.service';
 
 @Component({
   selector: 'app-vizualizacao-form',

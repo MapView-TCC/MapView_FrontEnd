@@ -4,8 +4,6 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
-
-
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -37,46 +35,84 @@ $mapview_teste-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($mapview_teste-theme);
 
-/* You can add global styles to this file, and also import other style files */
+//-------Setting the colors used in the project-------
+:root{
+  --white: #FFFFFF;
+  --black: #000000;
+  --blue: #011D94;
+  --purple: #6338AF;
+  --red: #DA203C;
+  --yellow: #FFB650;
+  --green: #1EA01E;
 
+  --background-gray: #F2F4F5; 
+  --background-off-white: #FAFAFB;
+  --background-selected: #ECE8F4;
+
+  //Ver se deixa ou tira 
+  --dark-brown-gray: #4B4545;
+  --brown-gray: #534A4A;
+  --soft-brown-gray: #837777;
+  --light-brown-gray: #A29D9D;
+  --muted-brown: #969090;
+  --pale-brown: #A29999 ;
+  --medium-brown-gray: #696161 ;
+  --gray-brown: #807C7C ;
+}
+
+
+//-------Setting the overall style of the project-------
 *{
   font-family: 'Inter';
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
   
-  body{
-    height: 100%;
-    width: 100%;
-  }
+body{
+  height: 100%;
+  width: 100%;
+}
 
-  
-  @font-face {
-    font-family:'Inter' ;
-    src: url('assets/fonts/inter/Inter_18pt-Light.ttf');
-    font-weight: 100;
-    font-style: normal;
-  } 
-  
 
-@font-face {
-  font-family:'Inter' ;
-  src: url('assets/fonts/inter/Inter_18pt-Regular.ttf');
+//-------Setting the font styles used in the project-------
+
+// Light Font
+@font-face{
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter_28pt-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
-} 
+}
 
-@font-face {
-  font-family:'Inter' ;
-  src: url('assets/fonts/inter/Inter_18pt-Medium.ttf');
+// Regular Font
+@font-face{
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter_28pt-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-} 
+}
 
-@font-face {
-  font-family:'Inter' ;
-  src: url('assets/fonts/inter/Inter_24pt-Regular.ttf');
+// Medium Font
+@font-face{
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter_28pt-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
-} 
+}
+
+// Semi-bold Font
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter_28pt-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// Bold Font
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter_28pt-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}

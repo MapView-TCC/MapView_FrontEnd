@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 //Imports from our componentes
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../services/translate/translation.service';
 
 @Component({
   selector: 'app-traduzir',

@@ -1,68 +1,146 @@
-.container{
-    margin-top: 100px;
-    margin-bottom: 400px;
+* {
+    margin: 0;
+    padding: 0;
+  
 }
 
+.container {
+    display: flex; /* Mantém o layout flexível */
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 30px;
+   
 
-.div {
-    border: solid 1px blue;
-      padding: 3px;
-      margin: 0 auto;
-      width: 1009px;
-      height: 708px;
-      
-  }
-
-#webgl{
-    position: absolute;
 }
 
-.point{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.grid_salas {
+    display: flex;
+    flex-direction: column; /* Mantenha a grid em coluna */
+    align-items: center;
+    justify-content: flex-start; /* Alinha os itens no topo */
+    margin-right: 20px; /* Espaço entre a grid e o canvas */
+    width: 400px;
+    height: 260px;
+    gap: 40px;
     
 }
 
-.point:hover .text{
-    opacity: 1;
+#webglContainer {
+    display: flex; /* Para que o canvas ocupe o espaço corretamente */
+    justify-content: center; /* Centraliza o canvas dentro do contêiner */
+    position: relative; /* Permite o posicionamento absoluto dos elementos filhos */
+
 }
 
-.point .label{
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #00000077;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-weight: 100;
-    font-size: 10px;
+#webgl {
+    width: 400px; /* Defina uma largura para o canvas */
+    height: 400px; /* Defina uma altura para o canvas */
+    border-radius: 15px;
+}
+
+    ::ng-deep {
+        .tooltip {
+            background-color: white;
+            color: black;
+            content: '';
+            padding: 10px;
+            position: relative;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition-duration: 0.2s;
+            transition-property: opacity, transform;
+            font-weight: 600;
+            font-family:'Inter', sans-serif;
+        }
+    
+        .hide {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    
+        .show {
+            opacity: .8;
+            transform: translateY(0px);
+        }
+
+
+    }
+
+.lab_01,
+.lab_02,
+.lab_03 {
+    position: relative; /* Necessário para o posicionamento absoluto do botão */
+
+}   
+
+.lab_01 img,
+.lab_02 img,
+.lab_03 img {
+    max-width: 100%; /* Mantém a imagem responsiva */
+    border-radius: 15px;
+    display: block; /* Remove espaços em branco abaixo da imagem */
+}
+
+.lab_01 button,
+.lab_02 button,
+.lab_03 button{
+ 
+    position: absolute; /* Permite que o botão seja posicionado em relação à imagem */
+    bottom: 10px; /* Ajuste a posição vertical */
+    left: 10px; /* Ajuste a posição horizontal */
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
+    border: none;
+    padding: 10px 35px; /* Aumente o padding se necessário */
     cursor: pointer;
-    transform: scale(0.001, 0.001);
+    z-index: 1; /* Garante que o botão fique acima da imagem */
+    border-radius: 20px; /* Borda arredondada opcional */
 }
 
-.point.visible .label{
-    transform: scale(1,1);
-}
-
-.point .text{
+.lab_01 button::after {
+    content: '';
     position: absolute;
-    top: 25px;
-    left: -120px;
-    width: 200px;
-    padding: 20px;
-    border-radius:  4px;
-    background: #00000077;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 100;
-    font-size: 10px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
+    top: 50%; /* Centraliza verticalmente */
+    right: 10px; /* Ajuste para a distância do canto direito */
+    transform: translateY(-50%); /* Para centralizar verticalmente em relação ao botão */
+    width: 10px; /* Largura da bolinha */
+    height: 10px; /* Altura da bolinha */
+    background-color: #6338AF; /* Cor da bolinha ajustada para roxa */
+    border-radius: 50%; /* Para torná-la redonda */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.2s; /* Transição suave */
+}
+
+.lab_01 button:focus::after,
+.lab_01 button:active::after {
+    opacity: 1; /* Mostra a bolinha quando o botão é focado ou ativo */
+}
+
+.details {
+    position: absolute; /* Para posicionar em relação ao webglContainer */
+    top: 30px;
+    right: 36px; /* Distância do canto direito */
+    display: flex; /* Para alinhar o label e o botão */
+    flex-direction: column; /* Coloca o label em cima do botão */
+    // align-items: flex-end; /* Alinha ao final (direita) */
+    z-index: 2; /* Garante que fique acima de outros elementos */
+    gap: 5px;
+}
+
+.details label {
+    margin-bottom: 5px; /* Espaço entre o label e o botão */
+    font-weight: bold; /* Deixa o label em negrito */
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+.details button{
+    background-color: #011D94;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 15px;
+    cursor: pointer;
 }

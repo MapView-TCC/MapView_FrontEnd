@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 //Imports for our components
 import { TraduzirComponent } from '../../components/traduzir/traduzir.component';
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../services/translate/translation.service';
 
 @Component({
   selector: 'app-inicial',

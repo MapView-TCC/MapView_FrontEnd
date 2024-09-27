@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 //Imports from our components
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../services/translate/translation.service';
 
 
 @Component({
