@@ -124,13 +124,6 @@ export class CadastroFormComponent {
 
   // Função para adicionar um novo responsável
   addResponsavel() {
-    const responsavelGroup = this.fb.group({
-      nome_responsavel: new FormControl('', Validators.required),
-      edv: new FormControl('', Validators.required),
-      curso: [{ value: '', disabled: false }, Validators.required],
-      turma: new FormControl('', Validators.required)
-  });
-  this.responsaveis.push(responsavelGroup);
   this.showForm = true;
  
   }

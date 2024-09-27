@@ -2,9 +2,16 @@
     <select class="input-dados" (change)="onSelect()" [value]="selectedValue" [formControl]="control">
         <option value="" disabled selected hidden>Selecione uma opção</option>
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
-        <!-- Adicionar o botão para cadastrar novos ambientes -->
+        <ng-container *ngIf="table === 'enviroment'">
+            <option value="notEnviroment">Laboratório não cadastrado?</option> 
+        </ng-container>
     </select>
-    <ng-container *ngIf="table === 'enviroment'">
-        <button>Click Here</button>
+
+    <ng-container *ngIf="selectedValue == 'notEnviroment'">
+        <button (click)="generalService.showDialog = true">
+            <i class="fa-solid fa-trash iconTrash"></i>Excluir
+        </button>  
     </ng-container>
 </div>
+
+<app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>
