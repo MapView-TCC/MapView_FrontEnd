@@ -29,27 +29,32 @@
         overflow-wrap: break-word; 
         max-width: 47%; 
         padding-left: 110px; 
-    }
-
-    button {
+        margin-bottom: 30px;
+        }
+    .botao{
         background-color: darkblue;
-        color: white; 
-        padding: 10px 47px; 
-        font-size: 16px; 
-        border: none; 
-        border-radius: 25px; 
-        transition: background-color 0.3s ease; 
-        margin-bottom: 15px; 
-        margin-left: 120px;
+        color: white;
+        padding: 10px 47px;
+        margin-top: 30px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+        margin-bottom: 15px;
+        margin-left: 110px;
         margin-top: 15px;
+<<<<<<< HEAD
         cursor: pointer;
     
+=======
+        text-decoration: none;
+>>>>>>> b0c0347b5a25703800802d91531a2007dc3f7315
     }
-
-    button:hover {
-        background-color: #6338AF; 
+ 
+    .botao:hover {
+        background-color: #6338AF;
     }
-
     img {
         display: block;
         height: 72px;
