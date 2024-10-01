@@ -144,3 +144,27 @@
     border-radius: 15px;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .grid_salas {
+        width: 90%; /* Aumenta a largura em telas menores */
+        margin-right: 0; /* Remove margem direita */
+    }
+
+    #webglContainer {
+        max-width: 100%; /* Ajusta o contêiner do canvas */
+    }
+
+    .details {
+        top: 20px; /* Ajuste a posição em telas menores */
+        right: 20px; /* Ajuste a posição em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .lab_01 button,
+    .lab_02 button,
+    .lab_03 button {
+        padding: 8px 20px; /* Ajusta o padding do botão em telas menores */
+    }
+}

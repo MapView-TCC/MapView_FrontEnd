@@ -159,6 +159,8 @@ export class AmbienteComponent implements OnInit{
       scene.background = new THREE.Color('#dfe9f2');
 
       const controls = new OrbitControls(camera, canvas)
+      controls.enableRotate = false
+      controls.enableZoom = false
 
       const renderer = new THREE.WebGLRenderer({
         canvas: canvas,

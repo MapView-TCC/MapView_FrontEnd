@@ -77,7 +77,7 @@ export class DropdowDynamicComponent implements OnInit{
   loadEnviroments(){
     this.enviromentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
       this.enviromentOptions = enviroments.map(data =>({
-        value: data.id_enviroment,
+        value: data.id_environment,
         label: data.environment_name
       }))
       this.options = this.enviromentOptions;

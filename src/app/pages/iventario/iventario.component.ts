@@ -1,6 +1,8 @@
 // Imports for Angular
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InventarioService } from '../../services/inventario/inventario.service';
+import { Equipment } from '../../models/Equipment';
 
 //Import for our components
 import { GeneralService } from '../../services/general/general.service';
@@ -8,17 +10,19 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
 import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-popup.component';
 import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
+import { error } from 'console';
 
 
 
-interface item{
-  identificacao: string;
-  usuario: string;
-  laboratorio: string;
-  posto: string;
-  validade: string;
-  showOptions?: boolean // Controla a exibição do dropdown
-}
+
+// interface item{
+//   identificacao: string;
+//   usuario: string;
+//   laboratorio: string;
+//   posto: string;
+//   validade: string;
+//   showOptions?: boolean // Controla a exibição do dropdown
+// }
 
 @Component({
   selector: 'app-iventario',
@@ -28,16 +32,23 @@ interface item{
   styleUrl: './iventario.component.scss'
 })
 export class IventarioComponent  implements OnInit{
-  itens: item[] =[
-    {identificacao: 'JVL-C-OOO9X',usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1',showOptions: false },
-    {identificacao: 'JVL-C-OOO9X',usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1', showOptions: false}
-  ]
-  constructor(public generalService: GeneralService){
-
-  }
+  equipment: Equipment[] =[]
+generalService: any;
+  constructor(private inventarioService: InventarioService){}
 
   ngOnInit(): void{
-   
+   this.loadItems();
+  }
+
+ 
+
+  loadItems(){
+    this.inventarioService.getEquipments().subscribe(
+      data => {
+          this.equipment = data;
+      },
+     
+  );
   }
 
 }
