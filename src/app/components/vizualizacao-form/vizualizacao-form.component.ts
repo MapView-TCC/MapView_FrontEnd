@@ -1,13 +1,11 @@
-//Imports from Angular 
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
-//Imports from our components 
 import { GeneralService } from '../../services/general/general.service';
+
 
 @Component({
   selector: 'app-vizualizacao-form',
@@ -17,68 +15,93 @@ import { GeneralService } from '../../services/general/general.service';
     MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+  
   ],
   templateUrl: './vizualizacao-form.component.html',
   styleUrls: ['./vizualizacao-form.component.scss']
 })
 export class VizualizacaoFormComponent implements OnInit {
+  vizualizarCadastro: FormGroup;
+  isEditing = false;
+  
 
-  equipamentoForm!: FormGroup; // Adicione o operador de asserção
+  constructor(private fb: FormBuilder, public generalService: GeneralService) {
+    this.vizualizarCadastro = this.fb.group({
+      idEquipamento: [{ value: '', disabled: true }],
+      rfid: [{ value: '', disabled: true }],
+      tipoEquipamento: [{ value: '', disabled: true }],
+      modelo: [{ value: '', disabled: true }],
+      usuarioPrincipal: [{ value: '', disabled: true }],
+      idUsuarioPrincipal: [{ value: '', disabled: true }],
+      dataSubstituicao: [{ value: '', disabled: true }],
+      adminRights: [{ value: '', disabled: true }],
+      centrodecusto: [{ value: '', disabled: true }],
+      observacao: [{ value: '', disabled: true }],
+      predio: [{ value: '', disabled: true }],
+      setor: [{ value: '', disabled: true }],
+      laboratorio: [{ value: '', disabled: true }],
+      posto: [{ value: '', disabled: true }],
+      nomedoresponsavel: [{ value: '', disabled: true }],
+      edv: [{ value: '', disabled: true }],
+      curso: [{ value: '', disabled: true }],
+      turma: [{ value: '', disabled: true }]
+    });
+  }
 
-  constructor(private fb: FormBuilder, public generalService: GeneralService) {}
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
+    if (this.isEditing) {
+      this.vizualizarCadastro.enable();
+    } else {
+      this.vizualizarCadastro.disable();
+    }
+  }
+
+  save() {
+    // lógica para salvar os dados
+    console.log(this.vizualizarCadastro.value); // Exemplo de onde você pode processar os dados
+    this.toggleEdit();
+  }
+
+  cancel() {
+    this.toggleEdit();
+    // Lógica para fechar o modal
+    // Exemplo:
+     this.generalService.showFormlog = false; // Fechar o modal
+  }
 
   ngOnInit(): void {
-    // Criação do formulário com os campos
-    this.equipamentoForm = this.fb.group({
-      idEquipamento: [''],
-      rfid: [''],
-      tipoEquipamento: [''],
-      modelo: [''],
-      usuarioPrincipal: [''],
-      idUsuarioPrincipal: [''],
-      dataSubstituicao: [''],
-      adminRights: [''],
-      centroCusto: [''],
-      observacao: [''],
-      predio:[''],
-      setor:[''],
-      laboratorio:[''],
-      posto:[''],
-      nomedoresponsavel:[''],
-      edv:[''],
-      curso:[''],
-      turma:['']
-    });
-
-    // Exemplo de dados pré-definidos (normalmente, esses dados vêm de uma API)
-    this.loadDados();
+    this.loadData();
   }
 
-  loadDados(): void {
-    // Simulação de dados que você obteria de uma API
-    const data = {
-      idEquipamento: 'JVL-C-0009X',
-      rfid: '00000001234',
-      tipoEquipamento: 'Notebook',
-      modelo: 'Standard',
-      usuarioPrincipal: 'Amber Cristina Forte',
-      idUsuarioPrincipal: 'AAA1CA',
-      dataSubstituicao: '2024.Q1',
-      adminRights: 'RITM0123456789',
-      centroCusto: '123456789',
-      observacao: 'Em bom estado',
-      predio:'Ca600',
-      setor:'ETS',
-      laboratorio:'Laboratório 4/5',
-      posto:'PC 29',
-      nomedoresponsavel:'Sarah Silva dos Santos',
-      edv:'999999',
-      curso:'Digital Solutions',
-      turma:'08'
+  loadData() {
+    const equipamentoData = {
+      idEquipamento: '12345',
+      rfid: 'RFID123456',
+      tipoEquipamento: 'Tipo A',
+      modelo: 'Modelo X',
+      usuarioPrincipal: 'Usuário 1',
+      idUsuarioPrincipal: 'ID001',
+      dataSubstituicao: '2024-01-01',
+      adminRights: 'Sim',
+      centrodecusto: '1234',
+      observacao: 'Observação exemplo',
+      predio: 'Prédio A',
+      setor: 'Setor 1',
+      laboratorio: 'Laboratório 101',
+      posto: 'Posto 2',
+      nomedoresponsavel: 'Responsável 1',
+      edv: 'EDV001',
+      curso: 'Curso de Exemplo',
+      turma: 'Turma 2024'
     };
 
-    // Atualiza os valores do formulário com os dados recebidos
-    this.equipamentoForm.patchValue(data);
+    this.vizualizarCadastro.patchValue(equipamentoData);
   }
+
+
+  
+
+  
 }

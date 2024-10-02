@@ -1,6 +1,6 @@
 {
   "/backend-mapview-api": {
-      "target": "http://10.234.82.71:8082",
+      "target": "http://10.234.82.71:8081",
       "changeOrigin": true,
       "secure": false,
       "pathRewrite": {

@@ -24,26 +24,21 @@
             [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
         </div>
 
-        <!-- Dropdoq dynamic: Enviroment -->
-        <div class="input-cad-forms">
-            <label class="label-dados" for="">Laboratório</label>
-            <app-dropdow-dynamic table="enviroment"
-                [control]="cadastroNovoLocalizacao.controls.id_enviroment">
-            </app-dropdow-dynamic>
+       
+        <div class="input-cad-local">
+            <label class="label-local" for="">Laboratório</label>
+            <input class="input-local" type="text" placeholder="EX.Laboratório 05" formControlName="'id_enviroment">
             <!-- Mensagens de erro -->
             <app-error-message [formGroup]="cadastroNovoLocalizacao" [inputSelect]="'id_enviroment'"
             [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
         </div>
 
-        <div class="input-cad-forms">
-            <label class="label-dados" for="">Posto</label>
-            <input class="input-dados" type="text" placeholder="EX. 01" formControlName="posto">
-            <!-- Mensagens de erro -->
-            <app-error-message [formGroup]="cadastroNovoLocalizacao" [inputSelect]="'posto'"
-            [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
-            <app-error-message [formGroup]="cadastroNovoLocalizacao" [inputSelect]="'posto'"
-            [errorType]="'minlength'" [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'"></app-error-message>
+
+        <div class="actions">
+            <button class="cancel" (click)="generalService.showLocationlog=false">Cancelar</button>
+            <button class="cadastro">Cadastrar</button>
         </div>
+    
 
     </div><!--Fim do cad-forms -->
     </form>

@@ -22,14 +22,12 @@ export class LocationPopupComponent implements OnInit{
     // Inicialize o FormGroup com os controles necessários
   }
 
-
-
     //Form Group localização
     cadastroNovoLocalizacao = this.fb.group({
       id_building: [{value: '', disabled: false}, Validators.required],
       id_enviroment: [{value: '', disabled: false}, Validators.required],
       area: new FormControl ('', Validators.required),
-      posto: new FormControl ('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
+   
     });
   
 
