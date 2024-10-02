@@ -5,15 +5,17 @@ import {GLTFLoader, GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
+import { InventarioService } from '../../services/equipaments/inventario.service';
 
 import GUI from 'lil-gui';
 import gsap from 'gsap';
 
 //Imports for our components 
 import { HeaderComponent } from '../../components/header/header.component';
-import { GeneralService } from '../../services/general/general.service';
 import { CommonModule } from '@angular/common';
 import { CarroselComponent } from '../../components/carrosel/carrosel.component';
+import { Equipment } from '../../models/Equipment';
+import { GeneralService } from '../../services/general/general.service';
  
 
 @Component({
@@ -27,13 +29,24 @@ import { CarroselComponent } from '../../components/carrosel/carrosel.component'
 
 
 export class AmbienteComponent implements OnInit{ 
-  constructor(public generalService: GeneralService){
+  equipments: Equipment[] = []
+generalService: any;
+
+  constructor(public equipmentService: InventarioService, generalServie: GeneralService ){
 
   }
 
 
   ngOnInit(): void {
     this.createThreeJsBox();
+    this.loadEquipments();
+    console.log(this.equipments)
+  }
+
+  loadEquipments(): void {
+    this.equipmentService.getEquipments().subscribe((data) => {
+      this.equipments = data;
+    });
   }
 
   createThreeJsBox(): void {
@@ -249,7 +262,7 @@ export class AmbienteComponent implements OnInit{
         raycaster.setFromCamera(mousePos, camera);
         const intersects = raycaster.intersectObjects(meshList);
         console.log(intersects);
-        console.log("SAAAAAAAAAAAAAAAAAA")
+        // console.log("SAAAAAAAAAAAAAAAAAA")
         if (intersects.length > 0) {
           const pointerMesh = intersects[0].object;
           console.log(pointerMesh);
@@ -258,29 +271,33 @@ export class AmbienteComponent implements OnInit{
 
           pointLabel.position.set(position.x, position.y, position.z);
 
-          const elementBackend = [
-            {
-              id: 1,
-              pcName: "Pc teste1"
-            },
-            {
-              id: 2,
-              pcName: 'Pc teste2',
-            },
-          ]
+          // const elementBackend = [
+          //   {
+          //     id: 1,
+          //     pcName: "Pc teste1"
+          //   },
+          //   {
+          //     id: 2,
+          //     pcName: 'Pc teste2',
+          //   },
+          // ]
 
-          elementBackend.forEach(e => {
-            e.id++;
-          })
+          // this.equipments.forEach(e => {
+          //   e.location.post.id_post++;
+          // })
           
-          console.log(elementBackend)
+          console.log(this.equipments)
            
-          //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend.
-          const element = elementBackend.filter((pc) => pointerMesh.name == `Shape_${pc.id}`);
+          //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
+          // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
+          const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
           
           console.log(element)
 
-          paragraph.textContent = element[0].pcName;
+          //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
+          paragraph.textContent = `ID: ${element[0].id_equipment}, Nome: ${element[0].name_equipment}`;
+          paragraph.style.display = 'flex'
+          paragraph.style.flexDirection = 'column'
           
           paragraph.className = 'tooltip show';
         } else {

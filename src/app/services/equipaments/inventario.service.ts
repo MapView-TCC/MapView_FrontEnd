@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map } from 'rxjs';
 import { BACKEND_URL} from '../../models/App';
 import { Equipment } from '../../models/Equipment';
-import { Post } from '../../models/Post';
 
 @Injectable({
   providedIn: 'root'

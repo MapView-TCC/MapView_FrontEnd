@@ -1,7 +1,7 @@
 // Imports for Angular
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InventarioService } from '../../services/inventario/inventario.service';
+import { InventarioService } from '../../services/equipaments/inventario.service';
 import { Equipment } from '../../models/Equipment';
 
 //Import for our components
