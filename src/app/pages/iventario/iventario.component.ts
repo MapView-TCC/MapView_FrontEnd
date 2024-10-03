@@ -33,7 +33,6 @@ interface Item {
 export class IventarioComponent implements OnInit {
   showFilro = false;
   equipment: Equipment[] =[]
-  generalService: any;
  
   toggleFiltro() {
     this.showFilro = !this.showFilro;
