@@ -1,4 +1,5 @@
 import { Location } from "./Location";
+import { Owner } from "./Owner";
 
 export class Equipment{
     id_equipment: string = "";
@@ -9,5 +10,8 @@ export class Equipment{
     validity: string="";
     admin_rights: string="";
     location: Location = new Location();
+    owner: Owner = new Owner();
+    showOption?: boolean = false;
+ 
 
 }
