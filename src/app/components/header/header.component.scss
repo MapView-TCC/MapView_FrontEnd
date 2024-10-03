@@ -72,7 +72,7 @@ header .container {
 .search-container button {
     position: absolute;
     right: 15px; 
-    top: 50%;
+    top: 2%;
     transform: translateY(-50%);
     padding: 8px;
     font-size: 18px;
@@ -144,6 +144,22 @@ header .container {
 .circle-user:hover {
     color: #6338AF;
 }
+
+button {
+    margin-top: 20px; /* Espaçamento acima do botão */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    background-color: #007bff; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mão ao passar o mouse */
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Cor de fundo quando desabilitado */
+    cursor: not-allowed; /* Cursor padrão ao passar o mouse */
+  }
+  
 
 /* Media query para dispositivos com largura máxima de 768px */
 @media (max-width: 768px) {

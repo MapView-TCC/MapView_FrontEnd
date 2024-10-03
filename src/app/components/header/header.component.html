@@ -8,7 +8,7 @@
         
         <div class="search-container">
             <form>
-                <input type="text" [attr.placeholder]="'PESQUISE_UM_NOTEBOOK' | translate" name="search">
+                <input type="text" placeholder="Pesquise um Notebook" [(ngModel)]="searchItem" (input)="onSearch()">
                 <button type="submit"><mat-icon>search</mat-icon></button>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>

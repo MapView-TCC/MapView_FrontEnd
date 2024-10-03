@@ -30,9 +30,9 @@ import { GeneralService } from '../../services/general/general.service';
 
 export class AmbienteComponent implements OnInit{ 
   equipments: Equipment[] = []
-generalService: any;
 
-  constructor(public equipmentService: InventarioService, generalServie: GeneralService ){
+
+  constructor(public equipmentService: InventarioService, private generalServie: GeneralService ){
 
   }
 
@@ -298,6 +298,9 @@ generalService: any;
           paragraph.textContent = `ID: ${element[0].id_equipment}, Nome: ${element[0].name_equipment}`;
           paragraph.style.display = 'flex'
           paragraph.style.flexDirection = 'column'
+          paragraph.style.zIndex = '5'
+          paragraph.style.alignContent = 'center'
+          
           
           paragraph.className = 'tooltip show';
         } else {
