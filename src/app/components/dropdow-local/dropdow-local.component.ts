@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dropdow-local',
@@ -19,14 +19,16 @@ export class DropdowLocalComponent {
 
   @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
 
-  ngOnInit(): void{
-    if(this.table === 'typeEquipament'){
-      this.options = this.typeEquipamentOptions;
-    }
-    else if(this.table === 'course'){
-      this.options = this.course;
-    }
-  }
+
+  
+  // ngOnInit(): void{
+  //   if(this.table === 'typeEquipament'){
+  //     this.options = this.typeEquipamentOptions;
+  //   }
+  //   else if(this.table === 'course'){
+  //     this.options = this.course;
+  //   }
+  // }
 
   
   onSelectionChange() {
@@ -36,16 +38,16 @@ export class DropdowLocalComponent {
     
   }
 
-  typeEquipamentOptions = [
-    {value: 'Desktop', label: 'Desktop'},
-    {value: 'Notebook', label: 'Notebook'},
-    {value: 'Outro', label: 'Outro'}
-  ]
+  // typeEquipamentOptions = [
+  //   {value: 'Desktop', label: 'Desktop'},
+  //   {value: 'Notebook', label: 'Notebook'},
+  //   {value: 'Outro', label: 'Outro'}
+  // ]
   
-  course = [
-    {value: 'ADMINISTRACAO', label: 'Administração'},
-    {value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions'},
-    {value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital'},
-    {value: 'MECATRONICA', label: 'Mecatrônica'}
-  ]
+  // course = [
+  //   {value: 'ADMINISTRACAO', label: 'Administração'},
+  //   {value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions'},
+  //   {value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital'},
+  //   {value: 'MECATRONICA', label: 'Mecatrônica'}
+  // ]
 }

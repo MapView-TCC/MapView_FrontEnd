@@ -10,6 +10,7 @@ import { BuildingDrpService } from '../../services/dropdow-building/building-drp
 import { Enviroment } from '../../models/Enviroment';
 import { DropdowDynamicComponent } from "../dropdow-dynamic/dropdow-dynamic.component";
 import { ErrorMessageComponent } from "../error-message/error-message.component";
+import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -30,12 +31,13 @@ import { ErrorMessageComponent } from "../error-message/error-message.component"
 
 
 export class CadastroFormComponent {
-  constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService) {
+  constructor(private fb: FormBuilder, private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService) {
     // Inicialize o FormGroup com os controles necessários
   }
 
   currentStep: number = 1; // Etapa inicial
   responsaveis: Array<any> = [{}]; // Inicia com um responsável
+  
 
   //Form group equipamento
   cadastroEquipamento = this.fb.group({
@@ -71,18 +73,10 @@ export class CadastroFormComponent {
 
   buildingDrpList:Array<BuildingDrp>  = [];
   enviromentDrpList: Array<Enviroment> = [];
+  enviromentOptions: { value: number, label: string }[] = [];
 
   ngOnInit(): void{
-    this.buldingDrp.getBulding().subscribe({
-      next: res => {
-        this.buildingDrpList = res;
-      },
-      error: err => console.error(err)
-    })
-  }
-
-  changeButton(){
-    console.log('Dados do formulário:', this.cadastroEquipamento.value);
+    this.loadEnviroments()
   }
 
   //Função que verifica se os formsGroups estão validos
@@ -111,15 +105,19 @@ export class CadastroFormComponent {
     this.currentStep++;
     console.log("STEPS " + this.currentStep)
     if(this.currentStep >= 3){
-      this.changeButton()
+      console.log("Chegou na última etapa!")
     }
   }
 
   //métodode envio do formulário
   submitForm(){
-    console.log('enviou!')
-    this.goToNextStep();
-    console.log(this.currentStep);
+    if(!this.isFormGroupsValid()){
+      console.log('Formulário inválido') 
+    }else{
+      this.goToNextStep();
+      console.log(this.currentStep);
+
+    }
   }
 
   // Função para adicionar um novo responsável
@@ -133,6 +131,19 @@ export class CadastroFormComponent {
     this.showForm = false;
   }
 
+  loadEnviroments(){
+    this.enviromentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
+      // this.enviromentOptions = enviroments.map(data =>({
+      //   value: data.id_enviroment,
+      //   label: data.environment_name
+      // }))
+      enviroments.map(data =>(this.enviromentOptions.push({
+        value: data.id_environment,
+        label: data.environment_name
+      })))
+    })
+  }
   
+
 }
 

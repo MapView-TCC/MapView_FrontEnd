@@ -1,0 +1,72 @@
+<!--3° Cadastro do Responsável -->
+<form [formGroup]="cadastroResponsavel">
+    <div *ngIf="responsaveis.length < 1"></div>
+    <div class="step-3"></div>
+
+    <!-- Botão de adicionar responsável -->
+    <div class="addResponsavel">
+        <button type="button" class="btn-addResponsavel" (click)="addResponsavel()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="container-forms">
+        <div class="icon-forms">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <h3 class="title-forms">Dados do Responsável</h3>
+
+        <div class="content-forms">
+            <div class="content-cad-forms" *ngFor="let responsavel of responsaveis; let i = index" [formGroupName]="i">
+                <div class="input-cad-forms">
+                    <label class="label-dados">Nome do responsável</label>
+                    <input class="input-dados" type="text" placeholder="Nome completo"
+                        formControlName="nome_responsavel">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
+                        [errorType]="'minlength'"
+                        [errorMessage]="'O campo deve conter pelo menos e caracteres'"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados">EDV</label>
+                    <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*" formControlName="edv"
+                        placeholder="EX.99999999">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'" [errorType]="'required'"
+                        [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'" [errorType]="'minlength'"
+                        [errorMessage]="'O campo deve conter pelo menos 8 números'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'" [errorType]="'maxlength'"
+                        [errorMessage]="'O campo deve conter apenas 8 números'"></app-error-message>
+                </div>
+
+                <!-- Dropdow local: Curso -->
+                <div class="input-cad-forms">
+                    <label class="label-dados">Curso</label>
+                    <app-dropdow-local id='course' table="course" [options]="course"
+                        [control]="convertToFormControl(cadastroResponsavel.get('curso'))"></app-dropdow-local>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'curso'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados">Turma</label>
+                    <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*" formControlName="turma"
+                        placeholder="Insira o número da turma">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'turma'"
+                        [errorType]="'minlength'"
+                        [errorMessage]="'O campo deve conter pelo menos 2 números'"></app-error-message>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

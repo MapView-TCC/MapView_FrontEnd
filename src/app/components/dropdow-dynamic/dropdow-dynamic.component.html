@@ -2,8 +2,8 @@
     <select class="input-dados" (change)="onSelect()" [value]="selectedValue" [formControl]="control">
         <option value="" disabled selected hidden>Selecione uma opção</option>
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
-        <ng-container *ngIf="table === 'enviroment'">
-            <option value="notEnviroment">Laboratório não cadastrado?</option> 
+        <ng-container *ngIf="table === 'environment'">
+            <option class="notEnviroment" value="notEnviroment">Laboratório não cadastrado?</option> 
         </ng-container>
     </select>
 
@@ -13,5 +13,3 @@
         </button>  
     </ng-container>
 </div>
-
-<app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>

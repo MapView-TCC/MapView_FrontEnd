@@ -19,13 +19,14 @@ import { GeneralService } from '../../services/general/general.service';
 })
 export class DropdowDynamicComponent implements OnInit{
 
-  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService, public generalService: GeneralService) {}
+  constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService) {}
 
 
   @Input() options: {value: number | string, label: string}[] = [];
   @Input() selectedValue: string = '';
   @Input() table: string = '';
   @Input() control!: FormControl;
+  @Input() generalService!: GeneralService; 
 
   @Output() selectedValueChange = new EventEmitter<number | string>();
 

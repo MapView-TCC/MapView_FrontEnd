@@ -31,7 +31,17 @@
     font-size: 18px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    color:var(--dark-brown-gray);
+    color:var(--purple);
+  }
+
+  option:hover {
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color:var(--purple);
+  }
+  .notEnviroment option {
+    color:var(--red);
   }
   
   
