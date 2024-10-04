@@ -109,9 +109,13 @@
                 
                     color: var(--dark-brown-gray);
                 }
-                
+
                 app-error-message{
                     padding-left: 20px;
+                }
+
+                app-location-popup{
+                    border: none;
                 }
                 
             }
