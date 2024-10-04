@@ -15,8 +15,8 @@
      }
     .conteiner{
         margin-top: 20px;
-        width: 50%;
-        height: 100%;
+        width: 60%;
+        height: 60%;
         box-shadow: 5px 5px 4px rgba(19,19,19,0.2);
         border-radius: 10px;
         background-color: #F2F4F5;
@@ -185,9 +185,10 @@
     }
 
    
-@media (max-width: 1700px) {
+@media (min-width: 1700px) {
   .conteiner {
-      width: 60%; 
+      width: 45%; 
+      height: 45%;
   }
 
   .cad-forms {
@@ -199,6 +200,7 @@
   }
 
   .fechar {
-      padding-left: 0; 
+      margin-left: 100px; 
+      // right: 0px;
   }
 }

@@ -5,18 +5,18 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@a
 import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
 import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
-import { BuildingDrp } from '../../../models/BuldingDrp';
 import { Enviroment } from '../../../models/Enviroment';
 import { Area } from '../../../models/Area';
 import { Building } from '../../../models/Building';
 import { GeneralService } from '../../../services/general/general.service';
 import { ExcluirPopupComponent } from '../../excluir-popup/excluir-popup.component';
 import { CommonModule } from '@angular/common';
+import { LocationPopupComponent } from "../../location-popup/location-popup.component";
 
 @Component({
   selector: 'app-form-location',
   standalone: true,
-  imports: [ErrorMessageComponent, DropdowDynamicComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule],
+  imports: [ErrorMessageComponent, DropdowDynamicComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule, LocationPopupComponent],
   templateUrl: './form-location.component.html',
   styleUrl: './form-location.component.scss'
 })

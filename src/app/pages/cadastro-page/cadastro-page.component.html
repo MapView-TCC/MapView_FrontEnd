@@ -8,7 +8,31 @@
     </div>
 
     <div *ngIf="currentStep >= 3">
-        <app-form-responsible [cadastroResponsavel]="cadastroResponsavel"></app-form-responsible>
+        <form [formGroup]="cadastroResponsavelArray">
+           
+                <div formArrayName="items">
+                    
+                    <div *ngFor="let item of returnFormGroups; let i = index" [formGroupName]="i" class="container-forms">
+                        <ng-container *ngIf="returnFormGroups.length < 2">
+                            <div class="addResponsavel">
+                                <button type="button" class="btn-addResponsavel" (click)="addCadastroResponsavel()">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </ng-container>
+                        
+                        <div class="removerResponsavel" *ngIf="returnFormGroups.length > 1">
+                            <button type="button" class="btn-removeResponsavel" (click)="removerResponsavel(i)">
+                                <i class="fa-solid fa-x"></i>
+                            </button>
+                        </div>
+                        
+
+                        <app-form-responsible [cadastroResponsavel]="item"></app-form-responsible>
+
+                    </div>
+                </div>            
+        </form>
     </div>
 
     <div *ngIf="currentStep >= 4">

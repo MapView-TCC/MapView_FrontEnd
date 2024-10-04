@@ -29,25 +29,26 @@
         display: flex;
         align-items: center;
         padding-left: 35px;
-    }
 
-    .fa-solid{
-        width: 45px;
-        height: 45px;
-        margin-top: -18px;
-      
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-      
-        background-color: var(--blue);
-        border-radius: 50%;
-        color: var(--white);
-    
-        &.fa-location-dot{
-            font-size: 25px;
+        .fa-solid{
+            width: 45px;
+            height: 45px;
+            margin-top: -18px;
+          
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+          
+            background-color: var(--blue);
+            border-radius: 50%;
+            color: var(--white);
+        
+            &.fa-location-dot{
+                font-size: 25px;
+            }
         }
     }
+
 
     .title-forms {
         font-family: 'Inter', sans-serif;
@@ -101,19 +102,20 @@
                     
                 }
                 
+                .label-dados {
+                    font-size: 18px;
+                    padding-left: 20px;
+                    font-weight: 400;
+                
+                    color: var(--dark-brown-gray);
+                }
+                
                 app-error-message{
                     padding-left: 20px;
                 }
                 
             }
             
-            .label-dados {
-                font-size: 18px;
-                padding-left: 20px;
-                font-weight: 400;
-            
-                color: var(--dark-brown-gray);
-            }
             
         }
     }

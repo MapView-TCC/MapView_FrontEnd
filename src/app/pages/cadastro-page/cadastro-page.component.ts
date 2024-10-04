@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { CadastroFormComponent } from "../../components/cadastro-form/cadastro-form.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormEquipamentComponent } from '../../components/forms/form-equipament/form-equipament.component';
 import { FormLocationComponent } from "../../components/forms/form-location/form-location.component";
 import { CommonModule } from '@angular/common';
@@ -14,16 +14,25 @@ import { FormResponsibleComponent } from "../../components/forms/form-responsibl
 @Component({
   selector: 'app-cadastro-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, CadastroFormComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent],
+  imports: [CommonModule, HeaderComponent, CadastroFormComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule],
   templateUrl: './cadastro-page.component.html',
   styleUrl: './cadastro-page.component.scss'
 })
-export class CadastroPageComponent {
+export class CadastroPageComponent implements OnInit{
+  cadastroResponsavelArray: FormGroup;
+
   constructor(private fb: FormBuilder) {
     // Inicialize o FormGroup com os controles necessários
+    this.cadastroResponsavelArray = this.fb.group({
+      items: this.fb.array([])
+    });
   }
 
   currentStep: number = 1; // Etapa inicial
+
+  ngOnInit(){
+    this.addCadastroResponsavel()
+  }
 
   //Form group equipamento
   cadastroEquipamento = this.fb.group({
@@ -47,12 +56,37 @@ export class CadastroPageComponent {
   });
 
   //Form Group Responsável
-  cadastroResponsavel = this.fb.group({
-    nome_responsavel: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    edv: new FormControl('', [Validators.required, Validators.minLength(8), Validators.minLength(8), Validators.pattern('^[0-9]*$')]),
-    curso: [{ value: '', disabled: false }, Validators.required],
-    turma: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
-  });
+
+  get returnFormArray(): FormArray {
+    return this.cadastroResponsavelArray.get('items') as FormArray
+  }
+
+  get returnFormGroups(): FormGroup[] {
+    return this.returnFormArray.controls as FormGroup[];
+  }
+
+  addCadastroResponsavel(): void {
+
+    if(this.returnFormArray.length <2){
+
+      this.returnFormArray.push(
+        this.fb.group({
+          nome_responsavel: ['', [Validators.required, Validators.minLength(3)]],
+          edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
+          curso: [{ value: '', disabled: false }, [Validators.required]],
+          turma:['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
+        })
+      );
+      console.log(this.returnFormGroups);
+    }
+    else {
+      console.log('Limite de responsáveis atingido. Apenas dois responsáveis podem ser adicionados.');
+    }
+  }
+
+  removerResponsavel(index: number) {
+    this.returnFormArray.removeAt(index);
+  }
 
   //método para passar pro proxímo formulário
   goToNextStep() {
@@ -66,7 +100,7 @@ export class CadastroPageComponent {
 
   //Função que verifica se todos os forms estão validos
   isFormGroupsValid(): boolean {
-    if (this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavel.valid) {
+    if (this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavelArray.valid) {
       return true;
     } else {
       return false;
@@ -80,7 +114,7 @@ export class CadastroPageComponent {
     }else if (this.currentStep == 2){
       return this.cadastroLocalizacao.valid;
     }else if (this.currentStep == 3){
-      return this.cadastroResponsavel.valid;
+      return this.cadastroResponsavelArray.valid;
     }
     return false;
   }

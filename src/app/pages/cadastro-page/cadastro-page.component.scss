@@ -23,6 +23,7 @@
     box-sizing: border-box; 
     padding-top: 20px; 
   }
+  
 
   .card-confirmacao{
     width: 800px;
@@ -34,6 +35,7 @@
 
     padding-bottom: 50px;
 
+    
     .icon-cad-forms {
       display: flex;
       align-items: center;
@@ -79,6 +81,54 @@
       color: var(--dark-brown-gray);
     }
   }
+
+  .container-forms{
+    position: relative;
+  }
+
+  .addResponsavel, .removerResponsavel{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 12px;
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    
+    .btn-addResponsavel, .btn-removeResponsavel {
+      background-color: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      justify-content: flex-end; /* Alinha o botão à direita */
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+
+.fa-x, .fa-plus{
+  width: 40px;
+  height: 40px;
+  margin-top: -18px;
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--background-gray);
+  border-radius: 50%;
+  color: var(--blue);
+
+  font-size: 16px;
+
+  &.fa-plus{
+    font-size: 20px;
+  }
+}
 
 
 

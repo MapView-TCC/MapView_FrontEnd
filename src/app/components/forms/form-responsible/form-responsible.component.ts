@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { DropdowLocalComponent } from '../../dropdow-local/dropdow-local.component';
@@ -11,12 +11,19 @@ import { DropdowLocalComponent } from '../../dropdow-local/dropdow-local.compone
   templateUrl: './form-responsible.component.html',
   styleUrl: './form-responsible.component.scss'
 })
-export class FormResponsibleComponent {
+export class FormResponsibleComponent implements OnInit {
   @Input() cadastroResponsavel!: FormGroup; //Recebe o form group da página incial
+
+  ngOnInit(): void {
+    console.log(this.cadastroResponsavel)
+    
+  }
 
   // responsaveis: Array<FormGroup> = [{}]; // Inicia com um responsável
   responsaveis: Array<any> = [{}]; // Inicia com um responsável
   showForm: boolean = false;
+
+  
 
   //Converte o tipo para passar apr o Dropdown
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
@@ -31,16 +38,4 @@ export class FormResponsibleComponent {
     {value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital'},
     {value: 'MECATRONICA', label: 'Mecatrônica'}
   ]
-
-
-  // Função para adicionar um novo responsável
-  addResponsavel() {
-    this.showForm = true;
-
-  }
-
-  // Função para remover
-  removeResponsavel() {
-    this.showForm = false;
-  }
 }

@@ -6,9 +6,9 @@
             <option class="notEnviroment" value="notEnviroment">Laboratório não cadastrado?</option> 
         </ng-container>
     </select>
-
+    <!-- Libera o botão para cadastrar ambiente -->
     <ng-container *ngIf="selectedValue == 'notEnviroment'">
-        <button (click)="generalService.showDialog = true">
+        <button (click)="generalService.showLocationlog = true">
             <i class="fa-solid fa-trash iconTrash"></i>Excluir
         </button>  
     </ng-container>

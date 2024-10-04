@@ -1,4 +1,4 @@
-<!-- 2° Cadastro Localização do equipamento -->
+<!-- Cadastro Localização do equipamento -->
 <form [formGroup]="cadastroLocalizacao">
     <div class="step-2"></div>
 
@@ -13,8 +13,9 @@
             <div class="content-cad-forms">
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">Prédio</label>
-                    <!-- Dropdown dynamic: Bulding -->
-                    <app-dropdow-dynamic table="building" [options]="buildingOptions" [control]="convertToFormControl(cadastroLocalizacao.get('id_building'))">
+                    <!-- Dropdown dynamic: Building -->
+                    <app-dropdow-dynamic table="building" [options]="buildingOptions"
+                        [control]="convertToFormControl(cadastroLocalizacao.get('id_building'))">
                     </app-dropdow-dynamic>
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_building'"
@@ -24,7 +25,8 @@
                 <!-- Dropdown dynamic: Area -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">Setor</label>
-                    <app-dropdow-dynamic table="area" [options]="areaOptions" [control]="convertToFormControl(cadastroLocalizacao.get('area'))">
+                    <app-dropdow-dynamic table="area" [options]="areaOptions"
+                        [control]="convertToFormControl(cadastroLocalizacao.get('area'))">
                     </app-dropdow-dynamic>
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'area'" [errorType]="'required'"
@@ -36,9 +38,11 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">Laboratório</label>
                     <app-dropdow-dynamic [options]="environmentOptions" table="environment"
-                        [control]="convertToFormControl(cadastroLocalizacao.get('id_environment'))" [generalService]="generalService">
+                        [control]="convertToFormControl(cadastroLocalizacao.get('id_environment'))"
+                        [generalService]="generalService">
                     </app-dropdow-dynamic>
-                    <app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>
+                    <!-- Modal de cadastro de novo ambiente -->
+                    <app-location-popup *ngIf="generalService.showLocationlog"></app-location-popup>
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_environment'"
                         [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
@@ -54,7 +58,6 @@
                         [errorType]="'minlength'"
                         [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'"></app-error-message>
                 </div>
-
             </div>
         </div>
     </div>
