@@ -9,6 +9,8 @@ import { InventarioService } from '../../services/equipaments/inventario.service
 import { Equipment } from '../../models/Equipment';
 import { FormsModule } from '@angular/forms';
 import { PopupComponent } from '../popUp-search/popup/popup.component';
+import { tick } from '@angular/core/testing';
+import { GeneralService } from '../../services/general/general.service';
 
 
 
@@ -28,6 +30,7 @@ import { PopupComponent } from '../popUp-search/popup/popup.component';
 })
 export class HeaderComponent implements OnInit{
   showProfileCard = false;
+generalService: any;
   
 
   toggleProfileCard() {
@@ -36,11 +39,14 @@ export class HeaderComponent implements OnInit{
   }
 
   selectedItem: string = 'Ambientes'; // Item padrão selecionado
+  
 
   searchItem: String = '';
   filteredItem:Equipment[]=[];
   equipmentList: Equipment[] =[];
   isModalOpen: boolean = false;
+  selectedEquipment: any;
+  PopupVisible: boolean = true;
   // searchFilter
 
   constructor(private equipment:InventarioService, private router: Router) {
@@ -77,13 +83,16 @@ export class HeaderComponent implements OnInit{
     }
   }
 
-  showResult() {
-    this.isModalOpen = true; // Abre o modal
+  openPopUp(equipment: any){
+    console.log('cliquei', equipment)
+    this.selectedEquipment = equipment;
+    this.PopupVisible = true;
   }
 
-  closeModal() {
-    this.isModalOpen = false; // Fecha o modal
+  closePopUp(){
+    this.PopupVisible = false;
   }
+
 
   private updateSelectedItem() {
     const currentRoute = this.router.url;

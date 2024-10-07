@@ -96,11 +96,13 @@ header .container {
     top: 100%; /* Coloca a lista logo abaixo do input */
     left: 0; /* Alinha à esquerda do input */
     right: 0; /* Faz a lista ter a mesma largura que o input */
-    background: white; /* Fundo branco para a lista */
-    border: 1px solid #ccc; /* Borda para a lista */
+    background: #F2F4F5; /* Fundo branco para a lista */
+    border-radius: 10px;
     z-index: 1000; /* Garante que a lista fique acima de outros elementos */
     max-height: 200px; /* Limita a altura da lista */
     overflow-y: auto; /* Adiciona scroll se necessário */
+    margin-top: 15px;
+    border: none;
 }
 
 .search-content li {
@@ -109,7 +111,8 @@ header .container {
 }
 
 .search-content li:hover {
-    background: #f0f0f0; /* Destaque ao passar o mouse */
+    background: #ECE8F4; /* Destaque ao passar o mouse */
+    color: #6338AF;
 }
 
 .navbar {
@@ -181,8 +184,21 @@ button {
     background-color: #ccc; /* Cor de fundo quando desabilitado */
     cursor: not-allowed; /* Cursor padrão ao passar o mouse */
   }
-  
 
+  .search-content li{
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 25px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    padding-right: 45px; 
+    background-color: #F2F4F5;
+    border: none;
+    color: #837777;
+  }
+
+ 
 /* Media query para dispositivos com largura máxima de 768px */
 @media (max-width: 768px) {
     .logo-container {

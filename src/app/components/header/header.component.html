@@ -15,7 +15,7 @@
                     >
                 <button type="submit"><mat-icon>search</mat-icon></button>
                 <ul *ngIf="searchItem" class="search-content">
-                    <li *ngFor="let equipment of filteredItem; index as i">{{equipment.name_equipment}}</li>
+                    <li *ngFor="let equipment of filteredItem; index as i" (click)="generalService.showDialog = true">{{equipment.name_equipment}}</li>
                 </ul>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
@@ -31,4 +31,5 @@
       </div>
 
       <app-profile-card *ngIf="showProfileCard"></app-profile-card>
+      <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup>
 </header>
