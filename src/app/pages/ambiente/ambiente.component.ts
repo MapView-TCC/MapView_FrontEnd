@@ -30,9 +30,9 @@ import { GeneralService } from '../../services/general/general.service';
 
 export class AmbienteComponent implements OnInit{ 
   equipments: Equipment[] = []
-generalService: any;
 
-  constructor(public equipmentService: InventarioService,  public generalServie: GeneralService ){
+
+  constructor(public equipmentService: InventarioService,public generalService: GeneralService){
 
   }
 
