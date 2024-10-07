@@ -8,6 +8,7 @@ import { TranslateLoader, TranslateModule,TranslateService  } from '@ngx-transla
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import { Equipment } from '../../models/Equipment';
 import { FormsModule } from '@angular/forms';
+import { PopupComponent } from '../popUp-search/popup/popup.component';
 
 
 
@@ -19,8 +20,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     ProfileCardComponent,
     TranslateModule,
-    FormsModule
-    
+    FormsModule,
+    PopupComponent,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
@@ -40,6 +41,7 @@ export class HeaderComponent implements OnInit{
   filteredItem:Equipment[]=[];
   equipmentList: Equipment[] =[];
   isModalOpen: boolean = false;
+  // searchFilter
 
   constructor(private equipment:InventarioService, private router: Router) {
     this.router.events.pipe(
@@ -55,15 +57,21 @@ export class HeaderComponent implements OnInit{
       (data: Equipment[]) => {
         this.equipmentList = data; // Preenchendo a equipmentList
         this.filteredItem = data; // Inicialmente, mostra todos os equipamentos
+        console.log(this.equipmentList)
       }
     );
   }
 
   onSearch() {
     if (this.searchItem) {
-      this.filteredItem = this.equipmentList.filter(equipment =>
-        equipment.name_equipment.toLowerCase().includes(this.searchItem.toLowerCase())
+      // let aaaa = this.equipmentList.filter((e, i) => this.equipmentList.findIndex(o => o.name_equipment == e.name_equipment) === i);      // let aaaa = [...new Set(this.equipmentList)];
+      // console.log(aaaa);
+      let searchEquipment = this.equipmentList.filter((e, i) => this.equipmentList.findIndex(o => o.name_equipment == e.name_equipment) === i);
+      this.filteredItem = searchEquipment.filter(equipment => equipment.name_equipment.toLowerCase().includes(this.searchItem.toLowerCase())
       );
+      console.log(this.searchItem)
+      console.log(this.filteredItem)
+      console.log(this.equipmentList[0].name_equipment.toLowerCase().includes(this.searchItem.toLowerCase()))
     } else {
       this.filteredItem = this.equipmentList; // Se o campo de pesquisa estiver vazio, mostrar todos
     }

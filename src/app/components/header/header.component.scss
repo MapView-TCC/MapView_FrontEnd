@@ -41,6 +41,7 @@ header .container {
     justify-content: flex-end;
     align-items: center;
     height: 60px;
+    position: relative;
 }
 
 .search-container form {
@@ -49,7 +50,7 @@ header .container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    position: relative; 
+    position: relative;
 }
 
 .search-container input[type="text"] {
@@ -88,6 +89,27 @@ header .container {
 
 .search-container button:hover {
     color: #6338AF;
+}
+
+.search-content {
+    position: absolute; /* Faz a lista aparecer em relação ao contêiner pai */
+    top: 100%; /* Coloca a lista logo abaixo do input */
+    left: 0; /* Alinha à esquerda do input */
+    right: 0; /* Faz a lista ter a mesma largura que o input */
+    background: white; /* Fundo branco para a lista */
+    border: 1px solid #ccc; /* Borda para a lista */
+    z-index: 1000; /* Garante que a lista fique acima de outros elementos */
+    max-height: 200px; /* Limita a altura da lista */
+    overflow-y: auto; /* Adiciona scroll se necessário */
+}
+
+.search-content li {
+    padding: 8px 12px; /* Espaçamento para os itens da lista */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.search-content li:hover {
+    background: #f0f0f0; /* Destaque ao passar o mouse */
 }
 
 .navbar {

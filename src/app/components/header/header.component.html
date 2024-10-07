@@ -8,8 +8,15 @@
         
         <div class="search-container">
             <form>
-                <input type="text" placeholder="Pesquise um Notebook" [(ngModel)]="searchItem" (input)="onSearch()">
+                <!--  keydown é um gatilho ao pressionar em qualquer botão do teclado e o keyup é quando voce soolta o botao do teclado -->
+                <input type="text" 
+                    [attr.placeholder]="'PESQUISE_UM_NOTEBOOK' | translate" name="search" 
+                    (keyup)="onSearch()" [(ngModel)]="searchItem"
+                    >
                 <button type="submit"><mat-icon>search</mat-icon></button>
+                <ul *ngIf="searchItem" class="search-content">
+                    <li *ngFor="let equipment of filteredItem; index as i">{{equipment.name_equipment}}</li>
+                </ul>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
             <mat-icon class="circle-user" (click)="toggleProfileCard()">account_circle</mat-icon>
