@@ -2,6 +2,6 @@ export class Forms_Register{
   id_building: number =0;
   environment_name: string = '';
   id_area: number=0;
-  id_raspberry: string = '';
+  raspberry_name: string = '';
 }
 

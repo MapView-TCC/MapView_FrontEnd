@@ -42,6 +42,7 @@
                 <input 
                     class="input-dados" 
                     type="text" 
+                    style="text-transform: capitalize;"
                     placeholder="EX. 01" 
                     formControlName="environment_name">
                 <app-error-message 
@@ -57,17 +58,18 @@
                 <input 
                     class="input-dados" 
                     type="text" 
+                    style="text-transform: uppercase;"
                     placeholder="EX. 01" 
-                    formControlName="id_raspberry">
+                    formControlName="raspberry_name">
                 <app-error-message 
                     [formGroup]="cadastroNovoLocalizacao" 
-                    [inputSelect]="'id_raspberry'" 
+                    [inputSelect]="'raspberry_name'" 
                     [errorType]="'required'" 
                     [errorMessage]="'Campo obrigatório'">
                 </app-error-message>
                 <app-error-message 
                     [formGroup]="cadastroNovoLocalizacao" 
-                    [inputSelect]="'id_raspberry'" 
+                    [inputSelect]="'raspberry_name'" 
                     [errorType]="'minlength'" 
                     [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'">
                 </app-error-message>
