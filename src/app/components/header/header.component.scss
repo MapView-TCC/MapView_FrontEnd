@@ -98,7 +98,7 @@ header .container {
     right: 0; /* Faz a lista ter a mesma largura que o input */
     background: #F2F4F5; /* Fundo branco para a lista */
     border-radius: 10px;
-    z-index: 1000; /* Garante que a lista fique acima de outros elementos */
+    z-index: 1; /* Garante que a lista fique acima de outros elementos */
     max-height: 200px; /* Limita a altura da lista */
     overflow-y: auto; /* Adiciona scroll se necessário */
     margin-top: 15px;

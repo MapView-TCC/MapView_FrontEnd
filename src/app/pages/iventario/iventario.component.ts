@@ -33,7 +33,7 @@ import { error } from 'console';
 })
 export class IventarioComponent  implements OnInit{
   equipment: Equipment[] =[]
-generalService: any;
+  generalService: any;
   constructor(private inventarioService: InventarioService){}
 
   ngOnInit(): void{

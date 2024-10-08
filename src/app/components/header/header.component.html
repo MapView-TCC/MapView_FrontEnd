@@ -15,12 +15,20 @@
                     >
                 <button type="submit"><mat-icon>search</mat-icon></button>
                 <ul *ngIf="searchItem" class="search-content">
-                    <li *ngFor="let equipment of filteredItem; index as i" (click)="generalService.showDialog = true">{{equipment.name_equipment}}</li>
-                </ul>
+                    <li *ngFor="let equipment of filteredItem; index as i" (click)="showEquipmentDetails(equipment)">
+                      {{ equipment.name_equipment }}
+                    </li>
+                   
+                  </ul>
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
             <mat-icon class="circle-user" (click)="toggleProfileCard()">account_circle</mat-icon>
         </div>
+        <app-pop-up
+        *ngIf="PopUpVisible"
+        [equipment]="selectedEquipment"
+        (close)="closePopUp()"
+        ></app-pop-up>
     </div>
 
     <div class="navbar">
@@ -31,5 +39,5 @@
       </div>
 
       <app-profile-card *ngIf="showProfileCard"></app-profile-card>
-      <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup>
+      <!-- <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup> -->
 </header>
