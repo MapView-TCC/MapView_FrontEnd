@@ -1,42 +1,44 @@
 import { Component, NgModule, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderComponent } from "../../components/header/header.component";
-import { CadastroFormComponent } from "../../components/cadastro-form/cadastro-form.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormEquipamentComponent } from '../../components/forms/form-equipament/form-equipament.component';
 import { FormLocationComponent } from "../../components/forms/form-location/form-location.component";
 import { CommonModule } from '@angular/common';
-import { BuildingDrp } from '../../models/BuldingDrp';
-import { Enviroment } from '../../models/Enviroment';
-import { Area } from '../../models/Area';
 import { FormResponsibleComponent } from "../../components/forms/form-responsible/form-responsible.component";
+import { Register } from '../../models/Register';
+import { RegisterService } from '../../services/cadastro/register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, CadastroFormComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule],
   templateUrl: './cadastro-page.component.html',
   styleUrl: './cadastro-page.component.scss'
 })
 export class CadastroPageComponent implements OnInit{
+
   cadastroResponsavelArray: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private registerService: RegisterService, private snackBar: MatSnackBar) {
     // Inicialize o FormGroup com os controles necessários
     this.cadastroResponsavelArray = this.fb.group({
       items: this.fb.array([])
     });
   }
-
+  
   currentStep: number = 1; // Etapa inicial
-
+  
   ngOnInit(){
     this.addCadastroResponsavel()
   }
-
+  
   //Form group equipamento
   cadastroEquipamento = this.fb.group({
-    idEquipamento: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]),
+    idEquipamento: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
+    nomeEquipamento: new FormControl('', [Validators.required, Validators.minLength(4)]),
     rfid: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
     tipoEquipamento: [{ value: '', disabled: false }, Validators.required],
     modelo: new FormControl('', Validators.required),
@@ -46,7 +48,7 @@ export class CadastroPageComponent implements OnInit{
     adminRights: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
     observacao: new FormControl('')  // Aqui não precisa de validador
   });
-
+  
   //Form Group localização
   cadastroLocalizacao = this.fb.group({
     id_building: [{ value: '', disabled: false }, Validators.required],
@@ -54,21 +56,20 @@ export class CadastroPageComponent implements OnInit{
     area: new FormControl('', Validators.required),
     posto: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
   });
-
-  //Form Group Responsável
-
+  
+  //Form Array de FormGroup de Responsável
   get returnFormArray(): FormArray {
     return this.cadastroResponsavelArray.get('items') as FormArray
   }
-
+  
   get returnFormGroups(): FormGroup[] {
     return this.returnFormArray.controls as FormGroup[];
   }
-
+  
   addCadastroResponsavel(): void {
-
+    
     if(this.returnFormArray.length <2){
-
+      
       this.returnFormArray.push(
         this.fb.group({
           nome_responsavel: ['', [Validators.required, Validators.minLength(3)]],
@@ -83,30 +84,34 @@ export class CadastroPageComponent implements OnInit{
       console.log('Limite de responsáveis atingido. Apenas dois responsáveis podem ser adicionados.');
     }
   }
-
+  
   removerResponsavel(index: number) {
     this.returnFormArray.removeAt(index);
   }
-
+  
+  
   //método para passar pro proxímo formulário
   goToNextStep() {
+    if (this.currentStep == 1 && this.cadastroEquipamento.invalid) {
+      this.cadastroEquipamento.markAllAsTouched();
+      return;
+    } else if (this.currentStep == 2 && this.cadastroLocalizacao.invalid) {
+      this.cadastroLocalizacao.markAllAsTouched();
+      return;
+    } else if (this.currentStep == 3 && this.cadastroResponsavelArray.invalid) {
+      this.cadastroResponsavelArray.markAllAsTouched();
+      return;
+      
+    }
+    
     this.currentStep++;
-    console.log("STEPS " + this.currentStep)
+    console.log("STEPS " + this.currentStep);
     if (this.currentStep >= 3) {
       console.log("Chegou na última etapa!")
     }
   }   
-
-
-  //Função que verifica se todos os forms estão validos
-  isFormGroupsValid(): boolean {
-    if (this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavelArray.valid) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
+  
+  
   //Função que verifica se os formsGroups estão validos
   isCurrentStepValid(): boolean {
     if(this.currentStep==1){
@@ -115,21 +120,87 @@ export class CadastroPageComponent implements OnInit{
       return this.cadastroLocalizacao.valid;
     }else if (this.currentStep == 3){
       return this.cadastroResponsavelArray.valid;
+    }else if (this.currentStep >= 4){
+      return this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavelArray.valid
     }
     return false;
   }
-
+  
+  
+  cadastroConcluido: boolean = false;
   //métodode envio do formulário
   submitForm() {
-    // if (!this.isFormGroupsValid()) {
-    //   console.log('Formulário inválido')
-    // } else {
-    //   this.goToNextStep();
-    //   console.log(this.currentStep);
-
-    // }
-    this.goToNextStep();
-    console.log(this.currentStep);
+    console.log('Etapa válida:', this.isCurrentStepValid());
+    
+    // Exibe no console o valor dos formulários preenchidos
+    console.log("Etapa Atual:", this.currentStep);
+    console.log("Dados do Formulário de Equipamento:", this.cadastroEquipamento.value);
+    console.log("Dados do Formulário de Localização:", this.cadastroLocalizacao.value);
+    console.log("Dados do Formulário de Responsáveis:", this.cadastroResponsavelArray.value);
+    
+    //Verifica se a etapa atual é valida, caso não seja, o método é encerrado (com o return)
+    if(!this.isCurrentStepValid()){
+      return; //impedindo o envio de dados inválidos.
+    }
+    
+    //Objeto do tipo Register com os dados dos formulários
+    const registerData = new Register();
+    
+    registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value || '';
+    registerData.name_equipment = this.cadastroEquipamento.get('nomeEquipamento')?.value || '';
+    registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
+    registerData.type = this.cadastroEquipamento.get('tipoEquipamento')?.value || '';
+    registerData.model = this.cadastroEquipamento.get('modelo')?.value || '';
+    registerData.validity = this.cadastroEquipamento.get('dataSubstituicao')?.value || '';
+    registerData.admin_rights = this.cadastroEquipamento.get('adminRights')?.value || '';
+    registerData.observation = this.cadastroEquipamento.get('observacao')?.value || '';
+    registerData.id_building = Number(this.cadastroLocalizacao.get('id_building')?.value || 0);
+    registerData.id_eviroment = Number(this.cadastroLocalizacao.get('id_environment')?.value || 0);
+    registerData.post = this.cadastroLocalizacao.get('posto')?.value || '';
+    registerData.id_owner = this.cadastroEquipamento.get('idUsuario')?.value || '';
+    registerData.costCenter_name = this.cadastroEquipamento.get('centroCustos')?.value || '';
+    
+    // Obtendo dados dos responsáveis
+    registerData.dataResposible = this.returnFormArray.controls.map(control => ({
+      responsible_name: control.get('nome_responsavel')?.value || '',
+      edv: control.get('edv')?.value || '', 
+      enumCourse: control.get('curso')?.value || '',
+      name_classes: control.get('turma')?.value || ''
+    }));
+    
+    
+    
+    //executando o post
+    this.registerService.postRegister(1, registerData).subscribe({
+      next: (response) => {
+        console.log('Registro enviado com sucesso:', response);
+        this.cadastroConcluido = true;
+        console.log(this.cadastroConcluido)
+         // Atraso de 3 segundos (3000 ms) antes de recarregar a página
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000); // 3000 milissegundos = 3 segundos
+          
+          this.goToNextStep();
+      },
+      error: (error) => {
+        console.error('Erro ao enviar registro:', error);
+         // Exibe o alerta em caso de erro
+         this.showErrorAlert('Não foi possível realizar o cadastro.');
+      },
+      complete: () => {
+        console.log('Envio de registro concluído.');
+      }
+    });
   }
 
+  showErrorAlert(message: string) {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 3000,
+      panelClass: ['alert-error']
+    });
+  }
 }
+
+
+

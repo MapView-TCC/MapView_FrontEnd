@@ -45,10 +45,6 @@ export class DropdowDynamicComponent implements OnInit{
     else if(this.table === 'area'){
       this.loadAreas()
     }
-
-    if(!this.options || !this.options.length){
-      console.error('Dropdown options are required');
-    }
   }
 
   onSelect() {

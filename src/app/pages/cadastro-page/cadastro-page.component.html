@@ -35,7 +35,7 @@
         </form>
     </div>
 
-    <div *ngIf="currentStep >= 4">
+    <div *ngIf="cadastroConcluido == true">
         <div class="step-4"></div>
         <div class="card-confirmacao">
             <div class="icon-cad-forms">
@@ -48,10 +48,10 @@
 
     <div class="btn-content">
         <!-- Botão de avançar -->
-        <!-- <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isFormGroupsValid()"
-            (click)="goToNextStep()">Avançar</button> -->
-            <button class="btn-next" *ngIf="currentStep<3" 
+        <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
             (click)="goToNextStep()">Avançar</button>
+            <!-- <button class="btn-next" *ngIf="currentStep<3" 
+            (click)="goToNextStep()">Avançar</button> -->
         <!-- Botão de cadastrar -->
         <button class="btn-next" *ngIf="currentStep==3"  [disabled]="!isCurrentStepValid()" (click)="submitForm()">Cadastrar</button>
     </div>

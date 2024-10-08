@@ -12,6 +12,4 @@ export class Equipment{
     location: Location = new Location();
     owner: Owner = new Owner();
     showOption?: boolean = false;
- 
-
 }

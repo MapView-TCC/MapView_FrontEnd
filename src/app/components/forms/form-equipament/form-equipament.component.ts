@@ -27,5 +27,13 @@ export class FormEquipamentComponent {
     {value: 'Notebook', label: 'Notebook'},
     {value: 'Outro', label: 'Outro'}
   ]
+
+  //Definindo conteúdo do Dropdown
+  enumModelEquipment = [
+    {value: 'DESKTOP_TINK', label: 'Desktop Tink'},
+    {value: 'NOTEBOOK_STANDARD', label: 'Notebook Standard'},
+    {value: 'DESKTOP_EXTERNO', label: 'Desktop Externo'},
+    {value: 'NOTEBOOK_ENHANCED', label: 'Notebook Enhanced'}
+  ]
     
 }

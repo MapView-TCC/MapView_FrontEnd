@@ -13,7 +13,7 @@
             <div class="content-cad-forms">
                 <div class="input-cad-forms">
                     <label class="label-dados">Nome do responsável</label>
-                    <input class="input-dados" type="text" placeholder="Nome completo" formControlName="nome_responsavel" />
+                    <input class="input-dados"  style="text-transform: capitalize;" type="text" placeholder="Nome completo" formControlName="nome_responsavel" />
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'nome_responsavel'"
                         [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
