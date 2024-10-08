@@ -46,6 +46,7 @@ export class AmbienteComponent implements OnInit{
   loadEquipments(): void {
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;
+      this.equipments.splice(0,2)
     });
   }
 
@@ -287,7 +288,7 @@ export class AmbienteComponent implements OnInit{
           // })
           
           console.log(this.equipments)
-           
+
           //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
           // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
           const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
