@@ -8,10 +8,9 @@
               <h2>{{ equipment.name_equipment }}</h2>
               <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="Image of {{ equipment.name_equipment }}">
               <p><strong>ID Notebook:</strong> <span>{{ equipment.id_equipment }}</span></p>
-              <p><strong>Localização de Origem:</strong> <span>{{ equipment.rfid }}</span></p>
-              <p><strong>Localização Atual:</strong> <span>{{ equipment.model }}</span></p>
-              <p><strong>Responsável 1:</strong> <span>{{ equipment.admin_rights }}</span></p>
-              <p><strong>Responsável 2:</strong> <span>{{ equipment.admin_rights }}</span></p>
+              <p><strong>Localização de Origem:</strong> <span>{{ equipment.wrong_location}}</span></p>
+              <p><strong>Localização Atual:</strong> <span>{{ equipment.location }}</span></p>
+              <p><strong>Responsáveis:</strong> <span>{{ equipment.responsibles}}</span></p>
             </div>
           </div>
         </div>
@@ -21,10 +20,10 @@
         </div>
       </div>
     </div>
-  </section>    
+  </section>     
 
 
- <!-- <section class="product">
+  <!-- <section class="product">
     <div class="container-fluid">
       <mat-icon class="fechar" (click)="generalService.showCarroselog=false" >close</mat-icon>
       <div class="slider-wrapper">
@@ -69,4 +68,4 @@
         </div>
       </div>
     </div>
-  </section>  -->
+  </section>   -->

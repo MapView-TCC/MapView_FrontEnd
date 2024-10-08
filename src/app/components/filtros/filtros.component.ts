@@ -21,6 +21,9 @@ export class FiltrosComponent {
   setActive(button: string) {
     this.activeButton = button;
   }
+
+
+  
   constructor() {}
 
   

@@ -1,5 +1,6 @@
 import { Location } from "./Location";
 import { Owner } from "./Owner";
+import { Post } from "./Post";
 
 export class Equipment{
     id_equipment: string = "";
@@ -12,4 +13,7 @@ export class Equipment{
     location: Location = new Location();
     owner: Owner = new Owner();
     showOption?: boolean = false;
+    post: Post = new Post();
+
+
 }

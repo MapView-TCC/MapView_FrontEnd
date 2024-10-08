@@ -4,7 +4,11 @@ import { PrevDirective } from '../../services/carrosel/prev.directive';
 import { NextDirective } from '../../services/carrosel/next.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { EquipamentoService } from '../../services/equipamento carrosel/equipamento.service';
+import { Track_History } from '../../models/Track_History';
+import { Equipment } from '../../models/Equipment';
+import { trackhistoryService } from '../../services/equipamento carrosel/trackhistory.service';
+
+
 
 @Component({
   selector: 'app-carrosel',
@@ -14,19 +18,19 @@ import { EquipamentoService } from '../../services/equipamento carrosel/equipame
   styleUrls: ['./carrosel.component.scss'] 
 })
 export class CarroselComponent implements OnInit {
-  equipamentos: any[] = [];
+ equipamentos: Track_History[] = [];
 
-  constructor(private equipmentService: EquipamentoService, public generalService: GeneralService) {}
+ constructor(private trackhistoryService: trackhistoryService, public generalService: GeneralService) {}
 
   ngOnInit() {
-    this.equipmentService.getEquipamentos().subscribe({
-      next: (data) => {
-        this.equipamentos = data;
-        console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
-      },
-      error: (err) => {
+    this.trackhistoryService.getEquipamentos().subscribe({
+   next: (data: Track_History[]) => {
+  this.equipamentos = data;
+    console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
+     },
+  error: (err:any) => {
         console.error("Erro ao buscar equipamentos:", err);
-      }
-    });
+    }
+   });
+ }
   }
-}

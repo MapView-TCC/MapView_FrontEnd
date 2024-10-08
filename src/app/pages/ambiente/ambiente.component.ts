@@ -30,9 +30,10 @@ import { GeneralService } from '../../services/general/general.service';
 
 export class AmbienteComponent implements OnInit{ 
   equipments: Equipment[] = []
-generalService: any;
 
-  constructor(public equipmentService: InventarioService, generalServie: GeneralService ){
+
+
+  constructor(public equipmentService: InventarioService,public generalService: GeneralService){
 
   }
 
@@ -295,9 +296,12 @@ generalService: any;
           console.log(element)
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
-          paragraph.textContent = `ID: ${element[0].id_equipment}, Nome: ${element[0].name_equipment}`;
+          paragraph.textContent = `ID Notebook: ${element[0].id_equipment}, Nome: ${element[0].location.post.post}, Responsável: ${element[0].owner.owner_name}`;
           paragraph.style.display = 'flex'
           paragraph.style.flexDirection = 'column'
+          paragraph.style.zIndex = '5'
+          paragraph.style.fontWeight = '200'
+          
           
           paragraph.className = 'tooltip show';
         } else {

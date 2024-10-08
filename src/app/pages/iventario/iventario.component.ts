@@ -62,7 +62,7 @@ export class IventarioComponent implements OnInit {
   }
 
   viewItem(item: Item): void {
-    this.generalService.showFormlog = true;
+    this.generalService.showFormlog= true;
     
   }
 
