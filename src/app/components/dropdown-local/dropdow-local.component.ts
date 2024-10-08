@@ -10,7 +10,7 @@ import { AbstractControl, FormControl, ReactiveFormsModule } from '@angular/form
   styleUrl: './dropdow-local.component.scss'
 })
 export class DropdowLocalComponent {
-  //Parametros do dropdow
+  //Parametros do dropdown
   @Input() id: string = '';
   @Input() options: {value: number | string; label: string}[] = [];
   @Input() selectedValue: string = '';
@@ -19,35 +19,10 @@ export class DropdowLocalComponent {
 
   @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
 
-
-  
-  // ngOnInit(): void{
-  //   if(this.table === 'typeEquipament'){
-  //     this.options = this.typeEquipamentOptions;
-  //   }
-  //   else if(this.table === 'course'){
-  //     this.options = this.course;
-  //   }
-  // }
-
-  
+  //Método para emitir a seleção do dropdown
   onSelectionChange() {
     console.log(this.control.value)
     this.selectedValue = this.control.value;
-    this.selectedValueChange.emit(this.control.value); // Emite o valor selecionado
-    
+    this.selectedValueChange.emit(this.control.value); 
   }
-
-  // typeEquipamentOptions = [
-  //   {value: 'Desktop', label: 'Desktop'},
-  //   {value: 'Notebook', label: 'Notebook'},
-  //   {value: 'Outro', label: 'Outro'}
-  // ]
-  
-  // course = [
-  //   {value: 'ADMINISTRACAO', label: 'Administração'},
-  //   {value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions'},
-  //   {value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital'},
-  //   {value: 'MECATRONICA', label: 'Mecatrônica'}
-  // ]
 }

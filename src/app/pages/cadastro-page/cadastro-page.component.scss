@@ -160,26 +160,26 @@
       position: relative; /* Necessário para o pseudo-elemento */
 
       &::after {
-        content: ''; /* Inicialmente vazio */
-        visibility: hidden; // Inicialmente escondido
-        background-color: #1E1E1E; // Cor de fundo da mensagem
-        color:var(--white)#fff; // Cor do texto
+        content: ''; 
+        visibility: hidden; 
+        background-color: #1E1E1E; 
+        color:var(--white)#fff;
         text-align: center;
         border-radius: 5px;
         padding: 5px;
         position: absolute;
-        bottom: -45px; // Posiciona a mensagem abaixo do botão
-        left: 50%; // Centraliza em relação ao botão
+        bottom: -45px; 
+        left: 50%; 
         transform: translateX(-50%);
         z-index: 1;
-        transition: visibility 0s, opacity 0.2s linear; // Transição suave
-        opacity: 0; // Oculto inicialmente
+        transition: visibility 0s, opacity 0.2s linear; 
+        opacity: 0; 
     }
 
     &:hover::after {
-        content: 'Remover Responsável'; // Texto da mensagem
-        visibility: visible; // Mostra a mensagem ao passar o mouse sobre o botão
-        opacity: 1; // Torna visível
+        content: 'Remover Responsável'; 
+        visibility: visible; 
+        opacity: 1; 
     }
     }
 
@@ -205,9 +205,6 @@
     font-size: 20px;
   }
 }
-
-
-
 
   .btn-content {
     width: 800px;

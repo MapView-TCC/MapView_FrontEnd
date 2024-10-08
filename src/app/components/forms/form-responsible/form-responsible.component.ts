@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { DropdowLocalComponent } from '../../dropdow-local/dropdow-local.component';
+import { DropdowLocalComponent } from '../../dropdown-local/dropdow-local.component';
 
 @Component({
   selector: 'app-form-responsible',
@@ -19,11 +19,7 @@ export class FormResponsibleComponent implements OnInit {
     
   }
 
-  // responsaveis: Array<FormGroup> = [{}]; // Inicia com um responsável
-  responsaveis: Array<any> = [{}]; // Inicia com um responsável
   showForm: boolean = false;
-
-  
 
   //Converte o tipo para passar apr o Dropdown
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {

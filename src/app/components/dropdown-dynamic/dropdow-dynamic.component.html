@@ -3,13 +3,13 @@
         <option value="" disabled selected hidden>Selecione uma opção</option>
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
         <ng-container *ngIf="table === 'environment'">
-            <option class="notEnviroment" value="notEnviroment">Laboratório não cadastrado?</option> 
+            <option class="notEnviroment" value="notEnviroment">Laboratório não cadastrado?</option>
         </ng-container>
     </select>
     <!-- Libera o botão para cadastrar ambiente -->
     <ng-container *ngIf="selectedValue == 'notEnviroment'">
         <button (click)="generalService.showLocationlog = true">
             Clique aqui para cadastrar um Laboratório
-        </button>  
+        </button>
     </ng-container>
 </div>

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { DropdowLocalComponent } from '../../dropdow-local/dropdow-local.component';
+import { DropdowLocalComponent } from '../../dropdown-local/dropdow-local.component';
 
 @Component({
   selector: 'app-form-equipament',

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { DropdowDynamicComponent } from '../../dropdow-dynamic/dropdow-dynamic.component';
+import { DropdowDynamicComponent } from '../../dropdown-dynamic/dropdow-dynamic.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
@@ -47,7 +47,7 @@ export class FormLocationComponent {
       })))
     })
   }
-
+  // Função que pega os valores da tabela Evironment
   loadEnvironments() {
     this.environmentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
       enviroments.map(data => (this.environmentOptions.push({

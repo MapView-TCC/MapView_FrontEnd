@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { GeneralService } from '../../services/general/general.service';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DropdowDynamicComponent } from '../dropdow-dynamic/dropdow-dynamic.component';
-import { DropdowLocalComponent } from '../dropdow-local/dropdow-local.component';
+import { DropdowDynamicComponent } from '../dropdown-dynamic/dropdow-dynamic.component';
+import { DropdowLocalComponent } from '../dropdown-local/dropdow-local.component';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 

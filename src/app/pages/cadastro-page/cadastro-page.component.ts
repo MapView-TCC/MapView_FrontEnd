@@ -23,7 +23,6 @@ export class CadastroPageComponent implements OnInit{
   cadastroResponsavelArray: FormGroup;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService, private snackBar: MatSnackBar) {
-    // Inicialize o FormGroup com os controles necessários
     this.cadastroResponsavelArray = this.fb.group({
       items: this.fb.array([])
     });
@@ -66,6 +65,7 @@ export class CadastroPageComponent implements OnInit{
     return this.returnFormArray.controls as FormGroup[];
   }
   
+  // Método para adicionar mais um responsável
   addCadastroResponsavel(): void {
     
     if(this.returnFormArray.length <2){
@@ -85,6 +85,7 @@ export class CadastroPageComponent implements OnInit{
     }
   }
   
+  //Método para remover o respónsável da lista através do index
   removerResponsavel(index: number) {
     this.returnFormArray.removeAt(index);
   }
@@ -127,8 +128,8 @@ export class CadastroPageComponent implements OnInit{
   }
   
   
-  cadastroConcluido: boolean = false;
   //métodode envio do formulário
+  cadastroConcluido: boolean = false;
   submitForm() {
     console.log('Etapa válida:', this.isCurrentStepValid());
     
@@ -140,12 +141,13 @@ export class CadastroPageComponent implements OnInit{
     
     //Verifica se a etapa atual é valida, caso não seja, o método é encerrado (com o return)
     if(!this.isCurrentStepValid()){
-      return; //impedindo o envio de dados inválidos.
+      return; //impede o envio de dados inválidos.
     }
     
     //Objeto do tipo Register com os dados dos formulários
     const registerData = new Register();
     
+    //Passando dados dos controls para o objeto
     registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value || '';
     registerData.name_equipment = this.cadastroEquipamento.get('nomeEquipamento')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
@@ -168,14 +170,12 @@ export class CadastroPageComponent implements OnInit{
       name_classes: control.get('turma')?.value || ''
     }));
     
-    
-    
-    //executando o post
+        
+    //Executando o POST
     this.registerService.postRegister(1, registerData).subscribe({
       next: (response) => {
         console.log('Registro enviado com sucesso:', response);
         this.cadastroConcluido = true;
-        console.log(this.cadastroConcluido)
          // Atraso de 3 segundos (3000 ms) antes de recarregar a página
         setTimeout(() => {
           window.location.reload();
@@ -194,6 +194,7 @@ export class CadastroPageComponent implements OnInit{
     });
   }
 
+  //Método para a mensagem de erro de cadastro
   showErrorAlert(message: string) {
     this.snackBar.open(message, 'Fechar', {
       duration: 3000,
