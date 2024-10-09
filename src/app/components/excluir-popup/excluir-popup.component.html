@@ -1,0 +1,16 @@
+<div class="conteiner" >
+    <div class="trash">
+        <i class="fa-solid fa-trash"></i>
+    </div>
+    <mat-icon class="fechar" (click)="generalService.showDialog=false">close</mat-icon>
+    <div class="cabechalho"> Excluir?</div>
+
+    <div class="content">Tem certeza que deseja excluir as informações do equipamento CA-C-00609?</div>
+
+    <div class="actions">
+        <button class="cancel" (click)="generalService.showDialog=false">Cancelar</button>
+        <button class="excluir">Excluir</button>
+    </div>
+
+</div>
+

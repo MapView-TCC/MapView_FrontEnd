@@ -1,0 +1,125 @@
+<!-- FormGroup de cadastro de equipamento -->
+<form [formGroup] ="cadastroEquipamento">
+    <div class="container-forms">
+
+        <div class="icon-forms">
+            <i class="fa-solid fa-gear"></i>
+        </div>
+
+        <h3 class="title-forms">Dados do Equipamento</h3>
+
+        <div class="content-forms">
+            <div class="content-cad-forms">
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">ID do equipamento</label>
+                        <input class="input-dados" type="text" placeholder="Número localizado na etiqueta"
+                            formControlName="idEquipamento">
+                        <!-- Mensagens de erro -->
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'required'" 
+                            [errorMessage]="'Campo obrigatório'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'minlength'"
+                            [errorMessage]="'O campo deve conter 10 caracteres'"></app-error-message>
+                        <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"
+                            [errorType]="'maxlength'"
+                            [errorMessage]="'O campo deve conter até 15 caracteres'"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">RFID</label>
+                    <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                        placeholder="Numeração da etiqueta RFID" formControlName="rfid">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                        [errorType]="'minlength'"
+                        [errorMessage]="'O campo deve conter 16 números'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'rfid'"
+                        [errorType]="'maxlength'"
+                        [errorMessage]="'O campo deve conter 16 números'"></app-error-message>
+                </div>
+
+                <!-- Dropdow local: Tipo do equipamento -->
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="equipamento">Tipo de equipamento</label>
+                    <app-dropdow-local id='id-typeEquipament' table='typeEquipament' [options]="typeEquipamentOptions"
+                        [control]="convertToFormControl(cadastroEquipamento.get('tipoEquipamento'))">
+                    </app-dropdow-local>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'tipoEquipamento'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Modelo</label>
+                    <input class="input-dados" type="text" placeholder="Ex. Standard" formControlName="modelo">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'modelo'"
+                        [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">ID do usuário principal</label>
+                    <input class="input-dados" type="text" placeholder="Ex. AAA1CA" formControlName="idUsuario">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    [errorType]="'minlength'" [errorMessage]="'O campo deve conter 6 caracteres'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 6 caracteres'"></app-error-message>
+
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Centro de custos</label>
+                    <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
+                        placeholder="Ex. 123456" formControlName="centroCustos">
+
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    [errorType]="'minlength'" [errorMessage]="'O campo deve conter 6 números'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 6 números'"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Data de Substituiçao</label>
+                    <input class="input-dados" type="text" placeholder="Ex. 2024.Q1"
+                        formControlName="dataSubstituicao">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    [errorType]="'minlength'" [errorMessage]="'O campo deve conter 7 caracteres'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 7 caracteres'"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">Admin Rigths</label>
+                    <input class="input-dados" type="text" placeholder="Ex. RITMO0123456789"
+                        formControlName="adminRights">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    [errorType]="'required'" [errorMessage]="'Campo obrigatório'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    [errorType]="'minlength'" [errorMessage]="'O campo deve conter 13 caracteres'"></app-error-message>
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    [errorType]="'maxlength'" [errorMessage]="'O campo deve conter apenas 13 caracteres'"></app-error-message>
+                </div>
+
+                <div class="input-cad-obs">
+                    <label class="label-dados" for="">Observação</label>
+                    <input class="input-obs" type="text" placeholder="Comentários sobre o equipamento"
+                        formControlName="observacao">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

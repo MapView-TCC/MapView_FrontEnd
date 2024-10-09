@@ -1,0 +1,161 @@
+* {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .step-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 60px;
+    height: 10vh;
+    border-right: 4px solid var(--blue);
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .addResponsavel, .removerResponsavel{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 12px;
+
+    .btn-addResponsavel, .btn-removeResponsavel {
+      background-color: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      justify-content: flex-end; /* Alinha o botão à direita */
+      border: none;
+      background-color: transparent;
+    }
+  }
+  
+
+.fa-x, .fa-plus{
+  width: 40px;
+  height: 40px;
+  margin-top: -18px;
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--background-gray);
+  border-radius: 50%;
+  color: var(--blue);
+
+  font-size: 16px;
+
+  &.fa-plus{
+    font-size: 20px;
+  }
+}
+
+  .container-forms{
+    width: 800px;
+    height: auto;
+
+    background-color: var(--background-gray);
+    border-radius: 15px;
+
+    padding-bottom: 60px;
+    /* Para dar espaço antes do botão */
+
+    .icon-forms {
+        display: flex;
+        align-items: center;
+        padding-left: 35px;
+    }
+
+    .fa-solid{
+        width: 45px;
+        height: 45px;
+        margin-top: -18px;
+      
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      
+        background-color: var(--blue);
+        border-radius: 50%;
+        color: var(--white);
+    
+        &.fa-user {
+            font-size: 23px;
+        }
+    }
+
+    .title-forms {
+        font-family: 'Inter', sans-serif;
+        font-weight: 'Medium';
+        font-size: 24px;
+    
+        padding-left: 35px;
+        margin-top: 18px;
+    
+        color: var(--blue);
+    }
+
+    .content-forms {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        font-family: 'Inter', sans-serif;
+        font-weight: 300;
+
+        .content-cad-forms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+
+            .input-cad-forms {
+                display: flex;
+                flex-direction: column;
+                width: 330px;
+                
+                
+                .input-dados {
+                    width: 100%;
+                    height: 47px;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    margin-top: 10px;
+                    padding: 20px;
+                    
+                    font-size: 18px;
+                    font-family: 'Inter', sans-serif;
+                    margin-bottom: 5px;
+                    
+                    &::placeholder {
+                        font-size: 18px;
+                        font-family: 'Inter', sans-serif;
+                        font-weight: 100;
+                        color: var(--muted-brown);
+                    }
+                    
+                }
+                
+                app-error-message{
+                    padding-left: 20px;
+                }
+                
+            }
+            
+            .label-dados {
+                font-size: 18px;
+                padding-left: 20px;
+                font-weight: 400;
+            
+                color: var(--dark-brown-gray);
+            }
+            
+        }
+    }
+}

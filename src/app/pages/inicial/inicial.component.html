@@ -1,0 +1,53 @@
+<div class="card"></div>
+
+<div class="idioma">
+    <mat-icon class="language-icon"(click)="toggleCard()">language</mat-icon>
+</div>
+
+<div class="conteiner">
+ 
+    <h1 class="titulo">{{'BEM VINDO AO' | translate}}</h1>
+        <img src="/assets/images/svg/Logo_Mapview.svg" alt="">
+        <p>{{'ENTRE NA SUA CONTA PRA VIZUALIZAR OS NOTEBOOKS LOCALIZADOS NO PRÉDIO CA 600(BTC)' |translate}}</p>
+            <a  class="botao" href="http://localhost:4200/oauth2/authorization/azure">{{'ENTRAR' | translate}}</a>
+       
+       
+</div>
+
+<div class= "btc">
+    <img src="/assets/images/svg/btc.svg" alt="">
+</div>
+
+<div class="sobre-nos">
+    <h2>{{'SOBRE NÓS' | translate}}</h2>
+    <p class="texto">{{'UMA TECNOLOGIA BOSCH DESENVOLVIDA PARA RASTREAR EQUIPAMENTOS EM AMBIENTES INTERNOS.O MAPVIEW FOI PENSADO PARA OS MEBROS DA ETS LOCALIZAR NOTEBOOKS'| translate}}</p>
+</div>
+
+<div class="cards">
+    <div class="card1">  
+        <img src="/assets/images/svg/Cubo 3d.svg" alt="">
+        <h3>{{'REPRODUÇÃO DE AMBIENTES 3D' | translate}}</h3>
+    </div>
+
+    <div class="card2">  
+        <img src="/assets/images/svg/Mapview.svg" alt=""> 
+        <h3>{{'VISUALMENTE PENSADO PARA OS USUÁRIOS' | translate}}</h3>
+    </div>
+
+    <div class="card3">  
+        <img src="/assets/images/svg/RFID.svg" alt="">
+        <h3>{{'INTEGRAÇÃO DE IOT COM PROCESSOS DO COTIDIANO' | translate}}</h3>
+    </div> 
+</div>
+
+<footer>
+    <img class="logo_bosch" src="/assets/images/svg/logo_bosch.svg" alt="">
+    <div class="footer"></div>
+</footer>
+
+
+<app-traduzir *ngIf="showCard"></app-traduzir>
+
+
+
+    

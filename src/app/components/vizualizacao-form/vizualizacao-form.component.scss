@@ -1,0 +1,126 @@
+.popup-background {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: center; 
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; 
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  overflow: auto; 
+}
+
+.conteiner {
+  width: 100%;
+  max-width: 600px;
+  max-height: 200vh; 
+  overflow-y: auto; 
+  box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
+  border-radius: 15px;
+  background-color: #F2F4F5;
+  padding: 20px;
+  margin-top: 20px; 
+
+  .fechar {
+    width: 100%;
+    font-size: 15px;
+    text-align: right;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .icon-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+
+    i {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      background-color: #011D94;
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+    }
+
+    h4 {
+      font-size: 20px;
+      color: #011D94;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 'Medium';
+    }
+  }
+
+  button {
+    height: 35px; 
+    padding: 5px 25px; 
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px; 
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin: 5px; 
+  }
+
+  .botao-voltar {
+    background-color: #fff;
+    border: 2px solid #011D94;
+    color: #4B4545;
+  }
+
+  .botao-editar {
+    background-color: #011D94;
+    color: #fff;
+  }
+
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    border: none;
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+
+      .form-column {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 5px;
+
+        h4 {
+          margin: 0;
+        }
+
+        input {
+          border-radius: 20px;
+          padding: 10px; /* Padding interno do input */
+          border: none;
+          outline: none;
+          font-size: 16px;
+          background-color: #fff;
+          margin: 5px 0; /* Espaçamento vertical entre inputs */
+        }
+      }
+    }
+
+  }
+
+  .actions {
+    display: flex; 
+    justify-content: flex-end;
+    margin-top: 20px; 
+  }
+}

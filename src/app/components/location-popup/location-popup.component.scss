@@ -1,0 +1,205 @@
+
+:host{
+    display: flex;
+    position: fixed;
+       left: 0px;
+       right: 0px;
+       top: 0px;
+         width: 100%;
+        height: 100%;
+        background-color: rgba(0 ,0 ,0, 0.5);
+        align-items: center;
+       justify-content: center;
+       font-family: 'Inter',sans-serif;
+       z-index: 1;
+     }
+    .conteiner{
+        margin-top: 20px;
+        width: 800px;
+        height: 450px;
+        box-shadow: 5px 5px 4px rgba(19,19,19,0.2);
+        border-radius: 10px;
+        background-color: #F2F4F5;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+
+         .location{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #011D94;
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            margin-left: 15px;
+            margin-top: -20px;
+         }
+    
+        .fechar{
+            width: 100%;
+            font-size: 15px;
+            padding-left: 760px;
+            margin-top: -8px;
+        }
+        .cabechalho{
+            height:50px ;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-size: 24px;
+            color: #011D94;
+            font-weight: bold;
+            margin-bottom: 22px;
+        
+  
+        }
+
+        .content-cad-forms {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+          }
+        
+          .cad-forms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+        
+          .label-dados {
+            font-size: 18px;
+             padding-left: 30px;
+            font-weight: 400;
+        
+            color: var(--dark-brown-gray);
+          }
+        
+          .input-cad-forms {
+            display: flex;
+            flex-direction: column;
+            width: 330px;
+             margin-left: 20px ;
+          }
+        
+          .input-dados {
+            width: 100%;
+            height: 47px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+            padding: 20px;
+           
+        
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 5px;
+        
+        
+            &::placeholder {
+              font-size: 18px;
+              font-family: 'Inter', sans-serif;
+              font-weight: 100;
+              color: var(--muted-brown);
+            }
+        
+          }
+
+          .input-cad-loca {
+            grid-column: span 2;
+            width: 100%;
+          }
+
+          .label-local {
+            font-size: 18px;
+            padding-left: 50px;
+            font-weight: 400;
+        
+            color: var(--dark-brown-gray);
+          }
+        
+          .input-local {
+            margin-left: 20px;
+            width: 200%;
+            height: 47px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+            padding-bottom: 20px;
+            padding: 20px;
+        
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+        
+            &::placeholder {
+              font-size: 18px;
+              font-family: 'Inter', sans-serif;
+              font-weight: 100;
+              color: var(--muted-brown);
+            }
+          }
+          .actions{
+            display: flex;
+            justify-content: flex-end;
+            height: 80px;
+            gap: 15px;
+            padding: 20px;
+            text-align: center;
+            button{
+                height: 40px;
+                padding: 10px 22px;
+                border-radius: 20px;
+                text-align: center;
+                display: flex;
+                font-size: 16px;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+            }
+    
+            .cancel{
+                background-color: #fff;
+                border: 2px solid #011D94;
+                color: #4B4545;
+                font-size: 16px;
+               
+            }
+    
+            .cadastro{
+                background-color: #011D94;
+                color: #fff;
+                font-size: 16px;
+                margin-right: -400px;
+            }
+        }
+
+    }
+
+   
+@media (max-width: 1200px) {
+  .conteiner {
+      width: 40%; 
+      height: 50%;
+  }
+
+  .cad-forms {
+      gap: 60px; 
+  }
+
+  .input-cad-forms {
+      width: 100%; 
+  }
+
+  .fechar {
+      padding-left: 0; 
+  }
+}
