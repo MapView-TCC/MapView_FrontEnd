@@ -13,6 +13,7 @@ import { LocationPopupComponent } from "../../components/location-popup/location
 import { error } from 'console';
 
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
+import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
 
 interface Item {
   identificacao: string;
@@ -20,13 +21,13 @@ interface Item {
   laboratorio: string;
   posto: string;
   validade: string;
-  showOptions?: boolean; // Controla a exibição do dropdown
+  showOptions?: boolean; 
 }
 
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent,FiltrosComponent, CommonModule],
+  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent,FiltrosComponent, CommonModule,FilterPopupComponent],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss'] 
 })
@@ -70,4 +71,5 @@ export class IventarioComponent implements OnInit {
     this.generalService.showDialog = true;
     
   }
+
 }
