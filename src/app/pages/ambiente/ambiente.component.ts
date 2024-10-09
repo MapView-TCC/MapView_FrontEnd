@@ -296,11 +296,12 @@ export class AmbienteComponent implements OnInit{
           console.log(element)
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
-          paragraph.textContent = `ID Notebook: ${element[0].id_equipment}, Nome: ${element[0].name_equipment}, Responsável: ${element[0].owner.id_owner}`;
+          paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>ID Notebook:</strong>${element[0].id_equipment}<strong><br>Nome:</strong> ${element[0].name_equipment}<br><strong>Responsável:</strong> ${element[0].owner.id_owner}</p>`;
           paragraph.style.display = 'flex'
-          paragraph.style.flexDirection = 'column'
-          paragraph.style.zIndex = '5'
-          paragraph.style.fontWeight = '200'
+          // paragraph.style.flexDirection = 'column'
+          // paragraph.style.zIndex = '5'
+          // paragraph.style.width = '100px'
+          // paragraph.style.marginTop = '100px'
           
           
           paragraph.className = 'tooltip show';

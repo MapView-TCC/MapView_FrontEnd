@@ -37,10 +37,13 @@
     width: 400px; /* Defina uma largura para o canvas */
     height: 400px; /* Defina uma altura para o canvas */
     border-radius: 15px;
+    z-index: 0;
 }
 
     ::ng-deep {
         .tooltip {
+            display: flex;
+            flex-direction: column;
             background-color: white;
             color: black;
             content: '';
@@ -50,8 +53,14 @@
             opacity: 0;
             transition-duration: 0.2s;
             transition-property: opacity, transform;
-            font-weight: 600;
+            font-weight: 400;
             font-family:'Inter', sans-serif;
+            width: 180px;
+            left: 38px;
+            top: -50px;
+            // text-align: center;
+            // justify-content: center;
+           
         }
     
         .hide {
@@ -62,6 +71,8 @@
         .show {
             opacity: .8;
             transform: translateY(0px);
+            z-index: 5000;
+            
         }
 
 
