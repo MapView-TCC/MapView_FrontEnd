@@ -3,23 +3,23 @@
             [ngClass]="{'active': activeButton === 'laboratorio'}">
       <div class="valign-center">
         <span class="dropdown-text">
-          <span>Labóratorio</span>
+          <span>{{'LABORATÓRIO' | translate}}</span>
         </span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
   
     <mat-menu #laboratorioMenu="matMenu" xPosition="after" yPosition="below" class="customize">
-      <button mat-menu-item>Labóratorio 01</button>
-      <button mat-menu-item>Laboratorio 02</button>
-      <button mat-menu-item>Laboratorio 03</button>
+      <button mat-menu-item>{{'LABORATÓRIO' | translate}} 01</button>
+      <button mat-menu-item>{{'LABORATÓRIO' | translate}} 02</button>
+      <button mat-menu-item>{{'LABORATÓRIO' | translate}} 03</button>
     </mat-menu>
   
     <button mat-button [matMenuTriggerFor]="validadeMenu" (click)="setActive('validade')"
             [ngClass]="{'active': activeButton === 'validade'}">
       <div class="valign-center">
         <span class="dropdown-text">
-          <span>Validade</span>
+          <span>{{'VALIDADE' | translate}}</span>
         </span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
@@ -35,7 +35,7 @@
             [ngClass]="{'active': activeButton === 'usuario'}">
       <div class="valign-center">
         <span class="dropdown-text">
-          <span>Usuário Principal</span>
+          <span>{{'USUÁRIO PRINCIPAL' | translate}}</span>
         </span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>

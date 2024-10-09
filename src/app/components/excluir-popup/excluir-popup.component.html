@@ -3,13 +3,13 @@
         <i class="fa-solid fa-trash"></i>
     </div>
     <mat-icon class="fechar" (click)="generalService.showDialog=false">close</mat-icon>
-    <div class="cabechalho"> Excluir?</div>
+    <div class="cabechalho"> {{'EXCLUIR' | translate}}?</div>
 
-    <div class="content">Tem certeza que deseja excluir as informações do equipamento CA-C-00609?</div>
+    <div class="content">{{'TEM CERTEZA QUE DESEJA EXCLUIR AS INFORMAÇÕES DO EQUIPAMENTO CA-C-00609?' | translate}}</div>
 
     <div class="actions">
-        <button class="cancel" (click)="generalService.showDialog=false">Cancelar</button>
-        <button class="excluir">Excluir</button>
+        <button class="cancel" (click)="generalService.showDialog=false">{{'CANCELAR' | translate}}?</button>
+        <button class="excluir">{{'EXCLUIR' | translate}}</button>
     </div>
 
 </div>

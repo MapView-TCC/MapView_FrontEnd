@@ -10,11 +10,12 @@ import { FormResponsibleComponent } from "../../components/forms/form-responsibl
 import { Register } from '../../models/Register';
 import { RegisterService } from '../../services/cadastro/register.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cadastro-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule, TranslateModule],
   templateUrl: './cadastro-page.component.html',
   styleUrl: './cadastro-page.component.scss'
 })
@@ -98,6 +99,9 @@ export class CadastroPageComponent implements OnInit{
       return;
     } else if (this.currentStep == 2 && this.cadastroLocalizacao.invalid) {
       this.cadastroLocalizacao.markAllAsTouched();
+      // if (this.cadastroLocalizacao.get('id_environment')?.value == "notEnviroment"){
+      //   this.cadastroLocalizacao.invalid;
+      // }
       return;
     } else if (this.currentStep == 3 && this.cadastroResponsavelArray.invalid) {
       this.cadastroResponsavelArray.markAllAsTouched();
@@ -179,7 +183,7 @@ export class CadastroPageComponent implements OnInit{
          // Atraso de 3 segundos (3000 ms) antes de recarregar a página
         setTimeout(() => {
           window.location.reload();
-        }, 5000); // 3000 milissegundos = 3 segundos
+        }, 2000); // 2000 milissegundos = 2 segundos
           
           this.goToNextStep();
       },

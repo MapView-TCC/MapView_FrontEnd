@@ -12,11 +12,12 @@ import { GeneralService } from '../../../services/general/general.service';
 import { ExcluirPopupComponent } from '../../excluir-popup/excluir-popup.component';
 import { CommonModule } from '@angular/common';
 import { LocationPopupComponent } from "../../location-popup/location-popup.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-location',
   standalone: true,
-  imports: [ErrorMessageComponent, DropdowDynamicComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule, LocationPopupComponent],
+  imports: [ErrorMessageComponent, DropdowDynamicComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule, LocationPopupComponent, TranslateModule],
   templateUrl: './form-location.component.html',
   styleUrl: './form-location.component.scss'
 })
@@ -71,5 +72,6 @@ export class FormLocationComponent {
     this.loadEnvironments()
     this.loadAreas()
     this.loadBuildings()
+    
   }
 }

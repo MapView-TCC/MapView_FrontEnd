@@ -1,15 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { GeneralService } from '../../services/general/general.service';
 
 @Component({
   selector: 'app-dropdow-local',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
   templateUrl: './dropdow-local.component.html',
   styleUrl: './dropdow-local.component.scss'
 })
 export class DropdowLocalComponent {
+
+  //Para a tradução
+  constructor(public generalService: GeneralService) {}
+
   //Parametros do dropdown
   @Input() id: string = '';
   @Input() options: {value: number | string; label: string}[] = [];

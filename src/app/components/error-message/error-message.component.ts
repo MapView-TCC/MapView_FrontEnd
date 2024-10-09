@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { GeneralService } from '../../services/general/general.service';
 
 @Component({
   selector: 'app-error-message',
@@ -10,6 +11,8 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './error-message.component.scss'
 })
 export class ErrorMessageComponent {
+ 
+  
   @Input() formGroup!: FormGroup; // Recebe o FormGroup do componente pai
   @Input() inputSelect!: string ; // Nome do campo (FormControl)
   @Input() errorType!: string; // Tipo de erro a ser verificado (ex: 'required')

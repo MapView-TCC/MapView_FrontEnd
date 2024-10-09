@@ -9,11 +9,12 @@ import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
 import { Area } from '../../models/Area';
 import { ExcluirPopupComponent } from '../excluir-popup/excluir-popup.component';
 import { GeneralService } from '../../services/general/general.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dropdow-dynamic',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, ExcluirPopupComponent],
+  imports: [ReactiveFormsModule, CommonModule, ExcluirPopupComponent, TranslateModule],
   templateUrl: './dropdow-dynamic.component.html',
   styleUrl: './dropdow-dynamic.component.scss'
 })
@@ -29,6 +30,7 @@ export class DropdowDynamicComponent implements OnInit {
   @Input() generalService!: GeneralService;
 
   @Output() selectedValueChange = new EventEmitter<number | string>();
+  @Output() refreshData = new EventEmitter<void>(); //atualizar o dropdown
 
   buildingOptions: { value: number, label: string }[] = [];
   enviromentOptions: { value: number, label: string }[] = [];
@@ -83,6 +85,10 @@ export class DropdowDynamicComponent implements OnInit {
       }))
       this.options = this.areaOptions;
     })
+  }
+
+  onModalRefresh() {
+    this.refreshData.emit();
   }
 
 }

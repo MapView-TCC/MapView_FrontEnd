@@ -2,15 +2,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DropdowLocalComponent } from '../../dropdown-local/dropdow-local.component';
+import { GeneralService } from '../../../services/general/general.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-equipament',
   standalone: true,
-  imports: [ErrorMessageComponent, DropdowLocalComponent, ReactiveFormsModule],
+  imports: [ErrorMessageComponent, DropdowLocalComponent, ReactiveFormsModule, TranslateModule],
   templateUrl: './form-equipament.component.html',
   styleUrl: './form-equipament.component.scss'
 })
 export class FormEquipamentComponent {
+
+  constructor(public generalService:GeneralService){}
 
   @Input() cadastroEquipamento!: FormGroup; //Recebe o form group da página incial
 

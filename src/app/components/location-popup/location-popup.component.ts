@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DropdowDynamicComponent } from '../dropdown-dynamic/dropdow-dynamic.component';
@@ -11,13 +11,13 @@ import { Forms_Register } from '../../models/Forms_Register';
 import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
 import { Building } from '../../models/Building';
 import { Area } from '../../models/Area';
-// import { response } from 'express';
-import { error } from 'console';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-location-popup',
   standalone: true,
-  imports: [CommonModule, MatIconModule, DropdowDynamicComponent, ErrorMessageComponent, ReactiveFormsModule],
+  imports: [CommonModule, MatIconModule, DropdowDynamicComponent, ErrorMessageComponent, ReactiveFormsModule, TranslateModule],
   templateUrl: './location-popup.component.html',
   styleUrls: ['./location-popup.component.scss']
 })
@@ -26,13 +26,16 @@ export class LocationPopupComponent implements OnInit {
   buildingOptions: { value: number, label: string }[] = [];
   areaOptions: { value: number, label: string }[] = []; 
 
+  @Output() refreshData = new EventEmitter<void>();
+
   
   constructor(
     private fb: FormBuilder,
     private buildingDrp: BuildingDrpService,
     private areaDrp: AreaDrpService,
     public generalService: GeneralService,
-    private environmentService: EnvironmentService
+    private environmentService: EnvironmentService,
+    private snackBar: MatSnackBar
   ) {
 
     this.cadastroNovoLocalizacao = this.fb.group({
@@ -101,11 +104,21 @@ export class LocationPopupComponent implements OnInit {
             next:(response) =>{
               console.log('Cadastro enviado com sucesso!:', response);
               console.log(enviromentData);
-            
+              this.refreshData.emit();
+              setTimeout(()=>{
+                this.generalService.showLocationlog = false
+              }, 2000);
+              
             },
-            error:(erro) => {
-              console.error('Erro ao realiozar o cadastro',erro);
-              console.log(erro)
+            error:(error) => {
+              // Este bloco captura erros de conexão ou de resposta HTTP
+              console.error('Erro ao realizar o cadastro', error);
+              // this.showErrorAlert('Não foi possível realizar o cadastro.');
+              
+            },
+            complete: () => {
+              this.showSuccessAlert('Cadastro realizado com sucesso.');
+              console.log('Envio de registro concluído.');
             }
           }
             
@@ -114,6 +127,20 @@ export class LocationPopupComponent implements OnInit {
         console.log('Formulário inválido');
     }
 }
+  //Método para a mensagem de erro de cadastro
+  showErrorAlert(message: string) {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 3000,
+      panelClass: ['alert-error']
+    });
+  }
+  //Método para a mensagem de SUCESSO de cadastro
+  showSuccessAlert(message: string) {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 3000,
+      panelClass: ['alert-success'] 
+    });
+  }
 
 
 }

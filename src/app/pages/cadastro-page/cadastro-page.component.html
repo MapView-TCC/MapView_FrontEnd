@@ -40,18 +40,18 @@
             <div class="icon-cad-forms">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="title-forms">Confirmação de Cadastro</h3>
-            <p class="confirmacao">Equipamento cadastrado com sucesso!</p>
+            <h3 class="title-forms">{{'CONFIRMAÇÃO DE CADASTRO' | translate}}</h3>
+            <p class="confirmacao">{{'EQUIPAMENTO CADASTRADO COM SUCESSO'| translate}}</p>
         </div>
     </div>
 
     <div class="btn-content">
         <!-- Botão de avançar -->
         <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
-            (click)="goToNextStep()">Avançar</button>
+            (click)="goToNextStep()">{{'AVANÇAR' | translate}}</button>
         <!-- Botão de CADASTRAR -->
         <button class="btn-next" *ngIf="currentStep==3" [disabled]="!isCurrentStepValid()"
-            (click)="submitForm()">Cadastrar</button>
+            (click)="submitForm()">{{'CADASTRAR' | translate}}</button>
     </div>
 </main>
 <app-footer></app-footer>
