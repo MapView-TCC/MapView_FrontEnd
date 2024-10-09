@@ -8,7 +8,8 @@ import { TranslateLoader, TranslateModule,TranslateService  } from '@ngx-transla
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import { Equipment } from '../../models/Equipment';
 import { FormsModule } from '@angular/forms';
-import { PopupComponent } from '../popUp-search/popup/popup.component';
+import { PopUpComponent } from '../popUp-Search/pop-up/pop-up.component';
+
 import { tick } from '@angular/core/testing';
 import { GeneralService } from '../../services/general/general.service';
 
@@ -23,14 +24,15 @@ import { GeneralService } from '../../services/general/general.service';
     ProfileCardComponent,
     TranslateModule,
     FormsModule,
-    PopupComponent,
+    PopUpComponent,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+
   showProfileCard = false;
-generalService: any;
+
   
 
   toggleProfileCard() {
@@ -44,10 +46,9 @@ generalService: any;
   searchItem: String = '';
   filteredItem:Equipment[]=[];
   equipmentList: Equipment[] =[];
-  isModalOpen: boolean = false;
-  selectedEquipment: any;
-  PopupVisible: boolean = false;
-  // searchFilter
+  PopUpVisible: boolean = false;
+  selectedEquipment: Equipment[]=[];
+ 
 
   constructor(private equipment:InventarioService, private router: Router) {
     this.router.events.pipe(
@@ -70,8 +71,7 @@ generalService: any;
 
   onSearch() {
     if (this.searchItem) {
-      // let aaaa = this.equipmentList.filter((e, i) => this.equipmentList.findIndex(o => o.name_equipment == e.name_equipment) === i);      // let aaaa = [...new Set(this.equipmentList)];
-      // console.log(aaaa);
+    
       let searchEquipment = this.equipmentList.filter((e, i) => this.equipmentList.findIndex(o => o.name_equipment == e.name_equipment) === i);
       this.filteredItem = searchEquipment.filter(equipment => equipment.name_equipment.toLowerCase().includes(this.searchItem.toLowerCase())
       );
@@ -83,15 +83,24 @@ generalService: any;
     }
   }
 
-  openPopUp(equipment: any){
-    console.log('cliquei', equipment)
-    this.selectedEquipment = equipment;
-    this.PopupVisible = true;
+ 
+
+   // Método para exibir o pop-up ao clicar em um equipamento
+   showEquipmentDetails(equipment: Equipment) {
+    // Filtrar os equipamentos com o mesmo nome e armazenar no selectedEquipment
+    this.selectedEquipment = this.equipmentList.filter(e => e.name_equipment === equipment.name_equipment);
+    // Tornar o pop-up visível
+    this.PopUpVisible = true;
+    this.searchItem = '';                // Limpa o campo de pesquisa
+    this.filteredItem = [];  
   }
 
-  closePopUp(){
-    this.PopupVisible = false;
+  // Método para fechar o pop-up
+  closePopUp() {
+    this.PopUpVisible = false;
+   
   }
+  
 
 
   private updateSelectedItem() {

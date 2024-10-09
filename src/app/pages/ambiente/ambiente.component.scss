@@ -37,10 +37,13 @@
     width: 400px; /* Defina uma largura para o canvas */
     height: 400px; /* Defina uma altura para o canvas */
     border-radius: 15px;
+    z-index: 0;
 }
 
     ::ng-deep {
         .tooltip {
+            display: flex;
+            flex-direction: column;
             background-color: white;
             color: black;
             content: '';
@@ -50,8 +53,14 @@
             opacity: 0;
             transition-duration: 0.2s;
             transition-property: opacity, transform;
-            font-weight: 600;
+            font-weight: 400;
             font-family:'Inter', sans-serif;
+            width: 180px;
+            left: 38px;
+            top: -50px;
+            // text-align: center;
+            // justify-content: center;
+           
         }
     
         .hide {
@@ -62,6 +71,8 @@
         .show {
             opacity: .8;
             transform: translateY(0px);
+            z-index: 5000;
+            
         }
 
 
@@ -93,7 +104,7 @@
     border: none;
     padding: 10px 35px; /* Aumente o padding se necessário */
     cursor: pointer;
-    z-index: 1; /* Garante que o botão fique acima da imagem */
+    z-index: 0.5; /* Garante que o botão fique acima da imagem */
     border-radius: 20px; /* Borda arredondada opcional */
 }
 
@@ -123,7 +134,7 @@
     display: flex; /* Para alinhar o label e o botão */
     flex-direction: column; /* Coloca o label em cima do botão */
     // align-items: flex-end; /* Alinha ao final (direita) */
-    z-index: 2; /* Garante que fique acima de outros elementos */
+    z-index: 0.5; /* Garante que fique acima de outros elementos */
     gap: 5px;
 }
 

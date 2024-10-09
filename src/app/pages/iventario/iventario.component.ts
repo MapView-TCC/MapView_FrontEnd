@@ -40,10 +40,7 @@ export class IventarioComponent implements OnInit {
     console.log('teste:', this.showFilro);
   }
 
-  itens: Item[] = [
-    { identificacao: 'JVL-C-OOO9X', usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1', showOptions: false },
-    { identificacao: 'JVL-C-OOO9X', usuario: 'CT67CA', laboratorio: 'Laboratorio 01', posto: 'PC 01', validade: '2027.Q1', showOptions: false }
-  ];
+
 
   constructor(public generalService: GeneralService, private inventarioService: InventarioService) {}
 

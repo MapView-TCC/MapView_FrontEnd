@@ -47,6 +47,7 @@ export class AmbienteComponent implements OnInit{
   loadEquipments(): void {
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;
+      this.equipments.splice(0,2)
     });
   }
 
@@ -288,7 +289,7 @@ export class AmbienteComponent implements OnInit{
           // })
           
           console.log(this.equipments)
-           
+
           //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
           // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
           const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
@@ -296,11 +297,12 @@ export class AmbienteComponent implements OnInit{
           console.log(element)
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
-          paragraph.textContent = `ID Notebook: ${element[0].id_equipment}, Nome: ${element[0].location.post.post}, Responsável: ${element[0].owner.owner_name}`;
+          paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>ID Notebook:</strong>${element[0].id_equipment}<strong><br>Nome:</strong> ${element[0].name_equipment}<br><strong>Responsável:</strong> ${element[0].owner.id_owner}</p>`;
           paragraph.style.display = 'flex'
-          paragraph.style.flexDirection = 'column'
-          paragraph.style.zIndex = '5'
-          paragraph.style.fontWeight = '200'
+          // paragraph.style.flexDirection = 'column'
+          // paragraph.style.zIndex = '5'
+          // paragraph.style.width = '100px'
+          // paragraph.style.marginTop = '100px'
           
           
           paragraph.className = 'tooltip show';

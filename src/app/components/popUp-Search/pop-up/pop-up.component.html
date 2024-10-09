@@ -1,0 +1,27 @@
+<div class="pop-up">
+    <div class="pop-up-header">
+        <h2>{{ 'Resultado de Busca' | translate }}</h2>
+        <i class="fa-solid fa-close fechar" (click)="closePopUp()"></i>
+    </div>
+    <ul *ngFor="let eq of equipment">
+        <li>
+            <div class="equipment-container">
+                <img src="assets/images/svg/Lenovo - TinkPad 4.svg"  alt="Imagem do Equipamento" class="equipment-image" />
+                <div>
+                    <h3><strong>{{ eq.name_equipment }}</strong></h3>
+                    <p><strong>Localização de Origem:</strong> {{ eq.location.environment.environment_name }}</p>
+                    <p><strong>Localização Atual:</strong> {{ eq.location.environment.environment_name }}</p>
+                    
+                    <p><strong>Responsável 1:</strong> 
+                      {{ eq.owner.id_owner[0] }}
+                    </p>
+                    
+                    <p><strong>Responsável 2:</strong> 
+                      {{ eq.owner.id_owner[1] }}
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!-- <button (click)="closePopUp()">{{ 'FECHAR' | translate }}</button> -->
+</div>
