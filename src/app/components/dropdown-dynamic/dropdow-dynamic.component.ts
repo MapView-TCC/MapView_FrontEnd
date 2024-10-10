@@ -30,7 +30,7 @@ export class DropdowDynamicComponent implements OnInit {
   @Input() generalService!: GeneralService;
 
   @Output() selectedValueChange = new EventEmitter<number | string>();
-  @Output() refreshData = new EventEmitter<void>(); //atualizar o dropdown
+
 
   buildingOptions: { value: number, label: string }[] = [];
   enviromentOptions: { value: number, label: string }[] = [];
@@ -86,9 +86,4 @@ export class DropdowDynamicComponent implements OnInit {
       this.options = this.areaOptions;
     })
   }
-
-  onModalRefresh() {
-    this.refreshData.emit();
-  }
-
 }

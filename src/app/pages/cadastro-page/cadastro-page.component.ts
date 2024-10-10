@@ -99,9 +99,6 @@ export class CadastroPageComponent implements OnInit{
       return;
     } else if (this.currentStep == 2 && this.cadastroLocalizacao.invalid) {
       this.cadastroLocalizacao.markAllAsTouched();
-      // if (this.cadastroLocalizacao.get('id_environment')?.value == "notEnviroment"){
-      //   this.cadastroLocalizacao.invalid;
-      // }
       return;
     } else if (this.currentStep == 3 && this.cadastroResponsavelArray.invalid) {
       this.cadastroResponsavelArray.markAllAsTouched();
@@ -122,6 +119,9 @@ export class CadastroPageComponent implements OnInit{
     if(this.currentStep==1){
       return this.cadastroEquipamento.valid;
     }else if (this.currentStep == 2){
+      if (this.cadastroLocalizacao.get('id_environment')?.value == "notEnviroment"){
+        return this.cadastroLocalizacao.invalid;
+      }
       return this.cadastroLocalizacao.valid;
     }else if (this.currentStep == 3){
       return this.cadastroResponsavelArray.valid;

@@ -42,7 +42,7 @@
                     class="input-dados" 
                     type="text" 
                     style="text-transform: capitalize;"
-                    placeholder="EX. 01" 
+                    placeholder="Ex. {{'LABORATÓRIO' | translate}} 05" 
                     formControlName="environment_name">
                 <app-error-message 
                     [formGroup]="cadastroNovoLocalizacao" 
@@ -76,7 +76,7 @@
 
             <div class="actions">
                 <button class="cancel" (click)="generalService.showLocationlog = false">{{'CANCELAR' | translate}}</button>
-                <button class="cadastro" type="submit" (click)="onSubmit()">{{'CADASTRAR' | translate}}</button>
+                <button class="cadastro" type="submit">{{'CADASTRAR' | translate}}</button>
             </div>
         </div>
     </form>

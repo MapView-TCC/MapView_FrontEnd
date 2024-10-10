@@ -86,8 +86,6 @@ export class LocationPopupComponent implements OnInit {
   onSubmit() {
     if (this.cadastroNovoLocalizacao.valid) {
       
-
-
         const enviromentData = new Forms_Register();
 
         enviromentData.id_building = Number(this.cadastroNovoLocalizacao.get('id_building')?.value || 0) ;
@@ -113,6 +111,7 @@ export class LocationPopupComponent implements OnInit {
             error:(error) => {
               // Este bloco captura erros de conexão ou de resposta HTTP
               console.error('Erro ao realizar o cadastro', error);
+              this.showErrorAlert('Não foi possível realizar o cadastro.');
               // this.showErrorAlert('Não foi possível realizar o cadastro.');
               
             },

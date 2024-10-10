@@ -50,6 +50,8 @@ export class FormLocationComponent {
   }
   // Função que pega os valores da tabela Evironment
   loadEnvironments() {
+    this.environmentOptions = [];
+    console.log(this.environmentOptions)
     this.environmentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
       enviroments.map(data => (this.environmentOptions.push({
         value: data.id_environment,
