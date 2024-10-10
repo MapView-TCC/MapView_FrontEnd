@@ -46,7 +46,7 @@ export class AmbienteComponent implements OnInit{
   loadEquipments(): void {
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;
-      this.equipments.splice(0,2)
+      // this.equipments.splice(0,2)
     });
   }
 

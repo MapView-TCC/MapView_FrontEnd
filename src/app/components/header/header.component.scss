@@ -106,7 +106,7 @@ header .container {
 }
 
 .search-content li {
-    padding: 8px 12px; /* Espaçamento para os itens da lista */
+    padding: 10px 15px; /* Espaçamento para os itens da lista */
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
@@ -114,6 +114,26 @@ header .container {
     background: #ECE8F4; /* Destaque ao passar o mouse */
     color: #6338AF;
 }
+
+.noResult p{
+    color: #4B4545;
+    font-style: italic;
+    margin-top: 10px;
+    width: 200px;
+    position: relative;
+    left: 20px;
+}
+
+.noResult {
+    border-radius: 10px;
+}
+
+
+
+strong{
+    width: 300px;
+}
+  
 
 .navbar {
     position: relative;

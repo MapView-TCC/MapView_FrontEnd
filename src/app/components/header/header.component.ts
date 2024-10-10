@@ -48,6 +48,7 @@ export class HeaderComponent implements OnInit{
   equipmentList: Equipment[] =[];
   PopUpVisible: boolean = false;
   selectedEquipment: Equipment[]=[];
+  noResult:boolean = false;
  
 
   constructor(private equipment:InventarioService, private router: Router) {
@@ -78,8 +79,12 @@ export class HeaderComponent implements OnInit{
       console.log(this.searchItem)
       console.log(this.filteredItem)
       console.log(this.equipmentList[0].name_equipment.toLowerCase().includes(this.searchItem.toLowerCase()))
+
+      this.noResult = this.filteredItem.length === 0;
+
     } else {
       this.filteredItem = this.equipmentList; // Se o campo de pesquisa estiver vazio, mostrar todos
+      this.noResult = false;
     }
   }
 

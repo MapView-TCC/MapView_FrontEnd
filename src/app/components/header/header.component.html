@@ -18,8 +18,11 @@
                     <li *ngFor="let equipment of filteredItem; index as i" (click)="showEquipmentDetails(equipment)">
                       {{ equipment.name_equipment }}
                     </li>
-                   
-                  </ul>
+                    <div *ngIf="noResult && searchItem" class="noResult">
+                        <p><strong>Dispositivo não encontrado</strong></p>
+                    </div>
+                </ul>
+               
             </form>
             <mat-icon class="notification-icon">notifications</mat-icon>
             <mat-icon class="circle-user" (click)="toggleProfileCard()">account_circle</mat-icon>
