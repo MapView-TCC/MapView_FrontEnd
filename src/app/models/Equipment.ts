@@ -1,5 +1,6 @@
 import { Location } from "./Location";
 import { Owner } from "./Owner";
+import { Equipment_Responsible } from "./Equipment_Responsible";
 
 export class Equipment{
     id_equipment: string = "";
@@ -12,6 +13,6 @@ export class Equipment{
     location: Location = new Location();
     owner: Owner = new Owner();
     showOption?: boolean = false;
- 
+    equipment_responsible: Equipment_Responsible[] = [];
 
 }

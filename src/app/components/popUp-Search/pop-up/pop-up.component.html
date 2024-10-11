@@ -13,7 +13,7 @@
                     <p><strong>Localização Atual:</strong> {{ eq.location.environment.environment_name }}</p>
                     
                     <p><strong>Responsável 1:</strong> 
-                      {{ eq }}
+                        {{ eq.equipment_responsible[0]?.responsible?.responsible_name || 'Não informado' }}
                     </p>
                     
                     <p><strong>Responsável 2:</strong> 
