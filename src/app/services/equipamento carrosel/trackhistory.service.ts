@@ -12,7 +12,7 @@ export class trackhistoryService {
 
   constructor(private http: HttpClient) {}
 
-  getEquipamentos(id: number=3): Observable<Array<Track_History>> {
+  getEquipamentos(id: number=1): Observable<Array<Track_History>> {
     return this.http.get<Array<Track_History>>(`${BACKEND_URL}/api/v1/trackingHistory/wronglocations?id_enviromet=${id}`) //passar dinamicamnete
     .pipe(
       catchError(error => {

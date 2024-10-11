@@ -28,20 +28,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of itens">
-                <td>{{item.identificacao}}</td>
-                <td>{{ item.usuario }}</td>
-                <td>{{ item.laboratorio }}</td>
-                <td>{{ item.posto }}</td>
-                <td>{{ item.validade }}</td>
+            <tr *ngFor="let item of equipment; let i = index">
+                <td>{{item.id_equipment}}</td>
+                <td>{{ item.owner.owner_name }}</td>
+                <td>{{ item.location.environment.environment_name }}</td>
+                <td>{{ item.location.post.post }}</td>
+                <td>{{ item.validity }}</td>
                 <td>
                     <div class="dropdown">
-                        <button class="dots-button" (click)="item.showOptions = !item.showOptions">⋯</button>
-                        <div class="dropdown-content" *ngIf="item.showOptions">
-                            <button (click)="viewItem(item); item.showOptions = false">
+                        <button class="dots-button" (click)="toggleOptions(i)">⋯</button>
+                        <div class="dropdown-content" *ngIf="showOptionsIndex === i">
+                            <button (click)="viewItem(item); closeOptions()">
                                 <i class="fa-solid fa-eye iconEye"></i>Visualizar
                             </button>
-                            <button (click)="deleteItem(item); item.showOptions = false">
+                            <button (click)="deleteItem(item); closeOptions()">
                                 <i class="fa-solid fa-trash iconTrash"></i>Excluir
                             </button>
                         </div>
@@ -49,7 +49,11 @@
                 </td>
             </tr>
         </tbody>
+        
     </table>
 </div>
-<app-excluir-popup *ngIf="generalService.showDialog"></app-excluir-popup>
+<app-excluir-popup
+  *ngIf="generalService.showDialog"
+  [itemToDelete]="itemToDelete"
+  [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
 <app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form> 
