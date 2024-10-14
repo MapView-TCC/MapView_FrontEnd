@@ -34,6 +34,8 @@
   
   "DADOS DO EQUIPAMENTO": "Equipment Data",
   "ID DO EQUIPAMENTO": "Equipment ID",
+  "NÚMERO LOCALIZADO NA ETIQUETA": "Number located on the label",
+  "NUMERAÇÃO DA ETIQUETA RFID": "RFID tag numbering",
   "NOME DO EQUIPAMENTO": "Equipment Name",
   "ID DO USUÁRIO PRINCIPAL": "Main User ID",
   "CENTRO DE CUSTOS": "Const Center",
