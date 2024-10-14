@@ -4,11 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { GeneralService } from '../../services/general/general.service';
 import { Equipment } from '../../models/Equipment'; // Certifique-se de que está importando Equipment
 
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-excluir-popup',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule,MatIconModule, TranslateModule],
   templateUrl: './excluir-popup.component.html',
   styleUrls: ['./excluir-popup.component.scss']
 })

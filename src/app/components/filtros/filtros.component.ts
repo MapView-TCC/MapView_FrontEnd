@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatButtonModule}from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { GeneralService } from '../../services/general/general.service';
 
 
 @Component({
@@ -16,15 +17,14 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class FiltrosComponent {
 
+  
   activeButton: string = '';
 
   setActive(button: string) {
     this.activeButton = button;
   }
 
-
-  
-  constructor() {}
+  constructor(public generalService:GeneralService){}
 
   
 
