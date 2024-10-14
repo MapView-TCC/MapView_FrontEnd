@@ -9,6 +9,8 @@ import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-po
 import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
 import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
+import { ExcelService } from '../../services/excel/excel.service';
+
 
 @Component({
   selector: 'app-iventario',
@@ -25,7 +27,7 @@ export class IventarioComponent implements OnInit {
   equipment: Equipment[] = [];
   itemToDelete: Equipment | null = null; // Adicione esta linha
 
-  constructor(public generalService: GeneralService, private inventarioService: InventarioService) {}
+  constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
   ngOnInit(): void {
     this.loadItems();
@@ -59,27 +61,55 @@ export class IventarioComponent implements OnInit {
     this.closeOptions(); // Usa 'this' para chamar o método
   }
 
-
+  onExport() {
+    this.excelService.exportToExcel().subscribe(
+      (blob) => {
+        console.log(blob); // Verifique o conteúdo do blob
+        const fileURL = URL.createObjectURL(blob);
+        console.log(fileURL); // Verifique o URL gerado
+        this.excelService.downloadExcel(blob, 'equipment.xls'); 
+      },
+      (error) => {
+        console.error('Erro ao exportar para Excel:', error);
+      }
+    );    
+  }
+  
+  
   deleteItem(item: Equipment) {
     this.itemToDelete = item; // Armazena o equipamento a ser excluído
     this.generalService.showDialog = true; // Exibe o popup
-    this.closeOptions();
+    this.closeOptions(); // Fecha o menu de opções
   }
   
   confirmDelete() {
+    console.log('Tentando excluir o equipamento:', this.itemToDelete);
+    
     if (this.itemToDelete) {
-      this.inventarioService.deleteEquipment(Number(this.itemToDelete.id_equipment)).subscribe(() => {
-        this.equipment = this.equipment.filter(e => e.id_equipment !== this.itemToDelete!.id_equipment);
-        this.generalService.showDialog = false; // Fecha o popup
-        this.itemToDelete = null; // Limpa a referência
+      const equipmentId = this.itemToDelete.id_equipment; // ID como string
+      this.inventarioService.deleteEquipment(equipmentId).subscribe({
+        next: () => {
+          this.equipment = this.equipment.filter(e => e.id_equipment !== equipmentId);
+          this.generalService.showDialog = false;
+          this.itemToDelete = null;
+        },
+        error: (err) => {
+          console.error('Erro ao excluir o equipamento', err);
+        }
       });
+    } else {
+      console.warn('Nenhum equipamento selecionado para exclusão');
     }
   }
+  
+  
   
   cancelDelete() {
     this.generalService.showDialog = false; // Fecha o popup sem excluir
     this.itemToDelete = null; // Limpa a referência
   }
-  
+}
 
+function saveAs(blob: Blob, fileName: string) {
+  throw new Error('Function not implemented.');
 }
