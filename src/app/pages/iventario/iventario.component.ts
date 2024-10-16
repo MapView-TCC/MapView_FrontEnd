@@ -10,12 +10,14 @@ import { LocationPopupComponent } from "../../components/location-popup/location
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
 import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
 import { ExcelService } from '../../services/excel/excel.service';
+import { FooterComponent } from "../../components/footer/footer.component";
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent],
+  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent, FooterComponent,MatIconModule],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss'] 
 })
@@ -26,6 +28,11 @@ export class IventarioComponent implements OnInit {
   showOptionsIndex: number | null = null;
   equipment: Equipment[] = [];
   itemToDelete: Equipment | null = null; // Adicione esta linha
+  pageNumbers: number[] = [];
+  currentPage: number = 0; // Página atual
+  itemsPerPage: number = 10; // Itens por página
+  totalItems: number = 0; // Total de itens dinâmico
+  totalPages: number = 0; // Total de páginas
 
   constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
@@ -34,11 +41,76 @@ export class IventarioComponent implements OnInit {
   }
 
   loadItems() {
-    this.inventarioService.getEquipments().subscribe(data => {
-      this.equipment = data;
-    });
+    this.inventarioService.getEquipments(this.currentPage, this.itemsPerPage).subscribe(
+      (data: Equipment[]) => {
+        if (data) {
+          // Verifique se os dados estão vazios
+          if (data.length === 0) {
+            console.log('Nenhum item encontrado. Você está na última página.');
+            return; // Não faça nada se não houver mais itens
+          }
+  
+          this.equipment = data; // Itens da página atual
+        } else {
+          // Se não houver dados, também indicamos que não há mais itens
+          console.log('Nenhum item encontrado. Você está na última página.');
+          return; 
+        }
+  
+        // Aqui devemos fazer a chamada para obter o total de itens
+        this.updateTotalItems();
+      },
+      (error) => {
+        console.error('Erro ao carregar itens:', error);
+      }
+    );
   }
-
+  
+  // Método para atualizar o total de itens
+  updateTotalItems() {
+    this.inventarioService.getEquipments(0, 1000).subscribe( // Ajuste o número para obter todos os itens de uma vez, se necessário
+      (data: Equipment[]) => {
+        this.totalItems = data.length; // Total de itens retornados
+        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
+        this.updatePageNumbers(); // Atualiza os números das páginas
+      },
+      (error) => {
+        console.error('Erro ao obter o total de itens:', error);
+      }
+    );
+  }
+  
+  // Método para atualizar os números das páginas
+  updatePageNumbers() {
+    this.pageNumbers = [];
+    const maxPagesToShow = 3; // Número máximo de páginas para exibir
+    const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
+    const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
+  
+    for (let i = startPage; i <= endPage; i++) {
+      if (i <= this.totalPages) {
+        this.pageNumbers.push(i);
+      }
+    }
+  }
+  
+  // Atualize a lógica ao mudar de página
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.loadItems(); // Carregar itens da nova página
+    }
+  }
+  
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadItems(); // Carregar itens da página anterior
+    }
+  }
+  
+  
+  
   toggleFiltro() {
     this.showFilro = !this.showFilro;
     console.log('teste:', this.showFilro);

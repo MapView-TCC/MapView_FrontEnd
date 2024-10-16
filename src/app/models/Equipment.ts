@@ -15,5 +15,4 @@ export class Equipment{
     showOption?: boolean = false;
     post: Post = new Post();
 
-
 }
