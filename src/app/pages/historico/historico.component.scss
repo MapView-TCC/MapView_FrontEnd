@@ -78,13 +78,14 @@
         
         .monthly-calendar{
             width: 100%;
-            height: 365px;
+            min-height: 365px;
+            max-height: auto;
     
-            background-color: #FAFAFB;
+            background-color: var(--background-off-white);
             border-radius: 15px;
 
             app-calendario{
-                width: 20px;
+                width: 100%;
                 
             }
         }
@@ -93,7 +94,7 @@
             width: 100%;
             height: 152px; 
     
-            background-color: #FAFAFB;
+            background-color: var(--background-off-white);
             border-radius: 15px;
             
             .buttons-warning{
@@ -120,7 +121,7 @@
                     
                     border: none;
                     border-radius: 15px;
-                    background-color: #FFFFFF;  
+                    background-color: var(--white);  
                     
                     font-size: 16px;
                     
@@ -130,7 +131,7 @@
                         display: flex;
                         align-items: center;
                         width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: #DD2121;
+                        color: var(--red);
                         font-size: 20px;
                         
                         padding-left: 10px;
@@ -138,8 +139,8 @@
                     }
                     
                     &:hover{
-                        background-color: #ECE8F4;
-                        color: #6338AF;
+                        background-color: var(--background-selected);
+                        color: var(--purple);
                     }
 
                 }
@@ -153,7 +154,7 @@
 
                     border: none;
                     border-radius: 15px;
-                    background-color: #FFFFFF;  
+                    background-color: var(--white);  
 
                     font-size: 16px;
                                     
@@ -163,7 +164,7 @@
                         display: flex;
                         align-items: center;
                         width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: #FFB650;
+                        color: var(--yellow);
 
                         font-size: 20px;
                         padding-left: 10px;
@@ -171,8 +172,8 @@
                     }
 
                     &:hover{
-                        background-color: #ECE8F4;
-                        color: #6338AF;
+                        background-color: var(--background-selected);
+                        color: var(--purple);
                     }
 
                 }
@@ -186,7 +187,7 @@
 
                     border: none;
                     border-radius: 15px;
-                    background-color: #FFFFFF;
+                    background-color: var(--white);
 
                     font-size: 16px;
 
@@ -196,7 +197,7 @@
                         display: flex;
                         align-items: center;
                         width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: #1EA01E;
+                        color: var(--green);
                         
                         font-size: 20px;                     
                         padding-left: 10px;
@@ -204,8 +205,8 @@
                     }
 
                     &:hover{
-                        background-color: #ECE8F4;
-                        color: #6338AF;
+                        background-color: var(--background-selected);
+                        color: var(--purple);
                     }
                     
                 }
@@ -216,7 +217,7 @@
             width: 100%;
             height: 152px; 
     
-            background-color: #FAFAFB;
+            background-color: var(--background-off-white);
             border-radius: 15px;
 
             .equipament-form{
@@ -233,7 +234,7 @@
                         font-family: 'Inter', sans-serif;
                         font-size: 16px;
 
-                        background-color: #FFFFFF;
+                        background-color: var(--white);
                         padding-left: 15px;
                         padding-right: 40px; /* Adicione espaço para o ícone */
 
@@ -242,6 +243,7 @@
                         outline: none;
                         
                     }
+                    
                     .arrow-icon{
                         position: absolute;
                         right: 10px; /* Ajuste a distância do ícone do lado direito conforme necessário */

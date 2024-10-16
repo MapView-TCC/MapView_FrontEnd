@@ -17,3 +17,6 @@ export class Equipment{
 
 
 }
+
+
+//falta o observation

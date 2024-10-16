@@ -1,4 +1,4 @@
-export class Track_History{
+export class WrongLocation{
     id_equipment: string = '';
     name_equipment: string = '';
     wrong_location: string = '';

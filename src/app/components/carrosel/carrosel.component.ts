@@ -4,9 +4,9 @@ import { PrevDirective } from '../../services/carrosel/prev.directive';
 import { NextDirective } from '../../services/carrosel/next.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Track_History } from '../../models/Track_History';
+import { WrongLocation } from '../../models/WrongLocation';
 import { Equipment } from '../../models/Equipment';
-import { trackhistoryService } from '../../services/equipamento carrosel/trackhistory.service';
+import { CarrosselService } from '../../services/carrossel/carrossel.service';
 
 
 
@@ -18,13 +18,13 @@ import { trackhistoryService } from '../../services/equipamento carrosel/trackhi
   styleUrls: ['./carrosel.component.scss'] 
 })
 export class CarroselComponent implements OnInit {
- equipamentos: Track_History[] = [];
+ equipamentos: WrongLocation[] = [];
 
- constructor(private trackhistoryService: trackhistoryService, public generalService: GeneralService) {}
+ constructor(private carrosselService: CarrosselService, public generalService: GeneralService) {}
 
   ngOnInit() {
-    this.trackhistoryService.getEquipamentos().subscribe({
-   next: (data: Track_History[]) => {
+    this.carrosselService.getEquipamentos().subscribe({
+   next: (data: WrongLocation[]) => {
   this.equipamentos = data;
     console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
      },

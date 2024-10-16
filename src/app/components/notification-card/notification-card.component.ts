@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-notification-card',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './notification-card.component.scss'
 })
 export class NotificationCardComponent {
+  @Input() warning: string = ''; //pensar se n da para fazer com numeros
+  @Input() equipmentName: string = '';
+  @Input() action: string = '';
+  @Input() environmentName: string = '';
+
 
 }

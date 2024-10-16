@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { trackhistoryService} from './trackhistory.service';
+import { CarrosselService} from './carrossel.service';
 
 describe('EquipamentoService', () => {
-  let service: trackhistoryService;
+  let service: CarrosselService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(trackhistoryService);
+    service = TestBed.inject(CarrosselService);
   });
 
   it('should be created', () => {
