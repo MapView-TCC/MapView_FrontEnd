@@ -1,5 +1,6 @@
 {
     "OLÁ": "Olá",
+    "TRADUZIR": "Traduzir",
     "IDIOMA_EN": "Inglês",
     "IDIOMA_PT": "Português",
     "ACESSIBILIDADE": "Acessibilidade",
@@ -18,7 +19,77 @@
     "UMA TECNOLOGIA BOSCH DESENVOLVIDA PARA RASTREAR EQUIPAMENTOS EM AMBIENTES INTERNOS.O MAPVIEW FOI PENSADO PARA OS MEBROS DA ETS LOCALIZAR NOTEBOOKS": "Uma tecnologia Bosch desenvolvida para rastrear equipamentos em ambientes internos. O Mapview foi pensado para os membros de ETS localizar notebooks.",
     "REPRODUÇÃO DE AMBIENTES 3D": "Reprodução de ambientes em 3D",
     "VISUALMENTE PENSADO PARA OS USUÁRIOS":"Visualmente pensado para os usuários.",
-    "INTEGRAÇÃO DE IOT COM PROCESSOS DO COTIDIANO": "Integração de IoT com processos do cotidiano."
+    "INTEGRAÇÃO DE IOT COM PROCESSOS DO COTIDIANO": "Integração de IoT com processos do cotidiano.",
+
+
+    "SELECIONE UMA OPÇÃO": "Selecione uma opção", 
+    "LABORATÓRIO NÃO CADASTRADO?": "Laboratório não cadastrado?",
+    "CLIQUE AQUI PARA CADASTRAR UM LABORATÓRIO": "Clique aqui para cadastrar um Laboratório",
+
+    "EXCLUIR": "Excluir",
+    "TEM CERTEZA QUE DESEJA EXCLUIR AS INFORMAÇÕES DO EQUIPAMENTO": "Tem certeza que deseja excluir as informações do equipamento",
+    "CANCELAR": "Cancelar",
+
+    "LABORATÓRIO": "Laboratório",
+    "VALIDADE": "Validade",
+    "USUÁRIO PRINCIPAL": "Usuário Principal",
+
+    "DADOS DO EQUIPAMENTO": "Dados do Equipamento",
+    "ID DO EQUIPAMENTO": "ID do equipamento",
+    "NÚMERO LOCALIZADO NA ETIQUETA": "Número localizado na etiqueta",
+    "NUMERAÇÃO DA ETIQUETA RFID": "Numeração da etiqueta RFID",
+    "NOME DO EQUIPAMENTO": "Nome do Equipamento",
+    "ID DO USUÁRIO PRINCIPAL": "ID do usuário principal",
+    "CENTRO DE CUSTOS":"Centro de Custos", 
+    "TIPO DO EQUIPAMENTO": "Tipo de equipamento",
+    "MODELO": "Modelo", 
+    "DATA DE SUBSTITUIÇÃO": "Data de Substituição",
+    "OBSERVAÇÃO": "Observação",
+    "COMENTÁRIO SOBRE O EQUIPAMENTO": "Comentários sobre o equipamento",
+    
+    "CAMPO OBRIGATÓRIO": "Campo obrigatório",
+    "O CAMPO DEVE CONTER NO MÍN 08 CARACTERES": "O campo deve conter no mín 08 caracteres",
+    "O CAMPO DEVE CONTER ATÉ 15 CARACTERES": "O campo deve conter até 15 caracteres",
+    "O CAMPO DEVE CONTER NO MÍN 04 CARACTERES": "O campo deve conter no mín 04 caracteres",
+    "O CAMPO DEVE CONTER 16 NÚMEROS": "O campo deve conter 16 números",
+    "O CAMPO DEVE CONTER APENAS 16 NÚMEROS": "O campo deve conter apenas 16 números",
+    "O CAMPO DEVE CONTER 13 CARACTERES": "O campo deve conter 13 caracteres",
+    "O CAMPO DEVE CONTER ATÉ 13 CARACTERES": "O campo deve conter até 13 caracteres",
+    "O CAMPO DEVE CONTER 06 CARACTERES": "O campo deve conter 06 caracteres",
+    "O CAMPO DEVE CONTER ATÉ 06 CARACTERES": "O campo deve conter até 06 caracteres",
+    "O CAMPO DEVE CONTER 06 NÚMEROS": "O campo deve conter 06 números",
+    "O CAMPO DEVE CONTER ATÉ 06 NÚMEROS": "O campo deve conter até 06 números",
+    "O CAMPO DEVE CONTER 07 CARACTERES": "O campo deve conter 07 caracteres",
+    "O CAMPO DEVE CONTER ATÉ 07 CARACTERES": "O campo deve conter até 07 caracteres",
+
+    
+    "LOCALIZAÇÃO": "Localização",
+    "PRÉDIO": "Prédio",
+    "SETOR": "Setor", 
+    "POSTO": "Posto",
+    
+    "DADOS DO RESPONSÁVEL": "Dados do Responsável",
+    "NOME DO RESPONSÁVEL": "Nome do Responsável",
+    "CURSO": "Curso", 
+    "TURMA": "Turma",
+    
+    "O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01": "O campo deve conter pelo menos 2 números. EX: 01",
+    "O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES": "O campo deve conter pelo menos 03 caracteres",
+    "O CAMPO DEVE CONTER 08 NÚMEROS": "O campo deve conter 08 números",
+    "O CAMPO DEVE CONTER APENAS 08 NÚMEROS": "O campo deve conter apenas 8 números",
+    "INSIRA O NÚMERO DA TURMA": "Insira o número da turma",
+
+    "NOVO LABORATÓRIO": "Novo Laboratório",
+    "CADASTRAR": "Cadastrar",
+
+    "CONFIRMAÇÃO DE CADASTRO": "Confirmação de Cadastro",
+    "EQUIPAMENTO CADASTRADO COM SUCESSO": "Equipamento cadastrado com sucesso",
+    "AVANÇAR": "Avançar",
+
+    "ADICIONAR RESPONSÁVEL": "Adicionar Responsável",
+    "REMOVER RESPONSÁVEL": "Remover Responsável"
+
+    
 
   }
   

@@ -1,35 +1,57 @@
 <app-header></app-header>
-<!-- <app-cadastro-form></app-cadastro-form> -->
 
 <main class="main-cadastro">
-    <app-form-equipament  [cadastroEquipamento]="cadastroEquipamento"></app-form-equipament>
+    <!-- Formulário de Equipamento -->
+    <app-form-equipament [cadastroEquipamento]="cadastroEquipamento"></app-form-equipament>
     <div *ngIf="currentStep >= 2">
+        <!-- Formulário de Localização -->
         <app-form-location [cadastroLocalizacao]="cadastroLocalizacao"></app-form-location>
     </div>
-
     <div *ngIf="currentStep >= 3">
-        <app-form-responsible [cadastroResponsavel]="cadastroResponsavel"></app-form-responsible>
+        <!-- Início do FormGroup de FormArray -->
+        <form [formGroup]="cadastroResponsavelArray">
+            <div formArrayName="items">
+
+                <div *ngFor="let item of returnFormGroups; let i = index" [formGroupName]="i" class="container-forms">
+                    <ng-container *ngIf="returnFormGroups.length < 2">
+                        <div class="addResponsavel">
+                            <button type="button" class="btn-addResponsavel" (click)="addCadastroResponsavel()">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </ng-container>
+
+                    <div class="removerResponsavel" *ngIf="returnFormGroups.length > 1">
+                        <button type="button" class="btn-removeResponsavel" (click)="removerResponsavel(i)">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </div>
+                    <!-- Formulário de Responsável -->
+                    <app-form-responsible [cadastroResponsavel]="item"></app-form-responsible>
+                </div>
+            </div>
+        </form>
     </div>
 
-    <div *ngIf="currentStep >= 4">
+    <!-- Mensagem de confirmação -->
+    <div *ngIf="cadastroConcluido == true">
         <div class="step-4"></div>
         <div class="card-confirmacao">
             <div class="icon-cad-forms">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="title-forms">Confirmação de Cadastro</h3>
-            <p class="confirmacao">Equipamento cadastrado com sucesso!</p>
+            <h3 class="title-forms">{{'CONFIRMAÇÃO DE CADASTRO' | translate}}</h3>
+            <p class="confirmacao">{{'EQUIPAMENTO CADASTRADO COM SUCESSO'| translate}}</p>
         </div>
     </div>
 
     <div class="btn-content">
         <!-- Botão de avançar -->
-        <!-- <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isFormGroupsValid()"
-            (click)="goToNextStep()">Avançar</button> -->
-            <button class="btn-next" *ngIf="currentStep<3" 
-            (click)="goToNextStep()">Avançar</button>
-        <!-- Botão de cadastrar -->
-        <button class="btn-next" *ngIf="currentStep==3"  [disabled]="!isCurrentStepValid()" (click)="submitForm()">Cadastrar</button>
+        <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
+            (click)="goToNextStep()">{{'AVANÇAR' | translate}}</button>
+        <!-- Botão de CADASTRAR -->
+        <button class="btn-next" *ngIf="currentStep==3" [disabled]="!isCurrentStepValid()"
+            (click)="submitForm()">{{'CADASTRAR' | translate}}</button>
     </div>
 </main>
 <app-footer></app-footer>

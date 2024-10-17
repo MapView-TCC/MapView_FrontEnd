@@ -1,14 +1,13 @@
 <div class="conteiner">
     <mat-icon class="location">location_on</mat-icon>
-    <mat-icon class="fechar" (click)="generalService.showLocationlog = false">close</mat-icon>
     <div class="cabechalho"> 
-        Novo Laboratório 
+        {{'NOVO LABORATÓRIO' | translate}} 
     </div>
 
     <form [formGroup]="cadastroNovoLocalizacao" (ngSubmit)="onSubmit()">
         <div class="cad-forms">
             <div class="input-cad-forms">
-                <label class="label-dados" for="">Prédio</label>
+                <label class="label-dados" for=""> {{'PRÉDIO' | translate}} </label>
                 <app-dropdow-dynamic 
                     table="building" 
                     [options]="buildingOptions" 
@@ -18,12 +17,12 @@
                     [formGroup]="cadastroNovoLocalizacao" 
                     [inputSelect]="'id_building'" 
                     [errorType]="'required'" 
-                    [errorMessage]="'Campo obrigatório'">
+                    [errorMessage]="'CAMPO OBRIGATÓRIO' | translate">
                 </app-error-message>
             </div>
 
             <div class="input-cad-forms">
-                <label class="label-dados" for="">Setor</label>
+                <label class="label-dados" for="">{{'SETOR' | translate}}</label>
                 <app-dropdow-dynamic 
                     table="area" 
                     [options]="areaOptions" 
@@ -33,23 +32,23 @@
                     [formGroup]="cadastroNovoLocalizacao" 
                     [inputSelect]="'name_area'" 
                     [errorType]="'required'" 
-                    [errorMessage]="'Campo obrigatório'">
+                    [errorMessage]="'CAMPO OBRIGATÓRIO' | translate">
                 </app-error-message>
             </div>
 
             <div class="input-cad-forms">
-                <label class="label-dados" for="">Laboratório</label>
+                <label class="label-dados" for="">{{'LABORATÓRIO' | translate}}</label>
                 <input 
                     class="input-dados" 
                     type="text" 
                     style="text-transform: capitalize;"
-                    placeholder="EX. 01" 
+                    placeholder="Ex. {{'LABORATÓRIO' | translate}} 05" 
                     formControlName="environment_name">
                 <app-error-message 
                     [formGroup]="cadastroNovoLocalizacao" 
                     [inputSelect]="'environment_name'" 
                     [errorType]="'required'" 
-                    [errorMessage]="'Campo obrigatório'">
+                    [errorMessage]="'CAMPO OBRIGATÓRIO' | translate">
                 </app-error-message>
             </div>
 
@@ -65,19 +64,19 @@
                     [formGroup]="cadastroNovoLocalizacao" 
                     [inputSelect]="'raspberry_name'" 
                     [errorType]="'required'" 
-                    [errorMessage]="'Campo obrigatório'">
+                    [errorMessage]="'CAMPO OBRIGATÓRIO' | translate">
                 </app-error-message>
                 <app-error-message 
                     [formGroup]="cadastroNovoLocalizacao" 
                     [inputSelect]="'raspberry_name'" 
                     [errorType]="'minlength'" 
-                    [errorMessage]="'O campo deve conter pelo menos 2 números. EX: 01'">
+                    [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01' | translate">
                 </app-error-message>
             </div>
 
             <div class="actions">
-                <button class="cancel" (click)="generalService.showLocationlog = false">Cancelar</button>
-                <button class="cadastro" type="submit" (click)="onSubmit()">Cadastrar</button>
+                <button class="cancel" (click)="generalService.showLocationlog = false">{{'CANCELAR' | translate}}</button>
+                <button class="cadastro" type="submit">{{'CADASTRAR' | translate}}</button>
             </div>
         </div>
     </form>

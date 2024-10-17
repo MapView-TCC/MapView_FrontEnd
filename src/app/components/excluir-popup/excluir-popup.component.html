@@ -3,15 +3,13 @@
         <i class="fa-solid fa-trash"></i>
     </div>
     <mat-icon class="fechar" (click)="generalService.showDialog=false">close</mat-icon>
-    <div class="cabechalho"> Excluir?</div>
+    <div class="cabechalho"> {{'EXCLUIR' | translate}}?</div>
 
-    <div class="content">
-        Tem certeza que deseja excluir as informações do equipamento {{ itemToDelete?.id_equipment }}?
-    </div>
-    
+    <div class="content">{{'TEM CERTEZA QUE DESEJA EXCLUIR AS INFORMAÇÕES DO EQUIPAMENTO' | translate}} {{ itemToDelete?.id_equipment }}? </div>
+
     <div class="actions">
-        <button class="cancel" (click)="generalService.showDialog=false">Cancelar</button>
-        <button class="excluir">Excluir</button>
+        <button class="cancel" (click)="generalService.showDialog=false">{{'CANCELAR' | translate}}?</button>
+        <button class="excluir"(click)="confirmDelete()">{{'EXCLUIR' | translate}}</button>
     </div>
 
 </div>

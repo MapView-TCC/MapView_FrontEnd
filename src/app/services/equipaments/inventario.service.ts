@@ -10,12 +10,14 @@ import { Equipment } from '../../models/Equipment';
 export class InventarioService {
   constructor(private http: HttpClient) {}
 
-  getEquipments(page: number = 0, id:  number=1): Observable<Equipment[]> {
-      return this.http.get<Equipment[]>(`${BACKEND_URL}/api/v1/equipment?page=${page}&itens=10&userLog_id=${id}`); // Ajuste o endpoint
+  getEquipments(page: number = 0, itens: number = 10, id: number = 1): Observable<Equipment[]> {
+    return this.http.get<Equipment[]>(`${BACKEND_URL}/api/v1/equipment?page=${page}&itens=${itens}&userLog_id=${id}`);
   }
+  
 
-  deleteEquipment(equipment: number = 0, id: number = 1): Observable<Equipment[]> {
+  deleteEquipment(equipment: string, id: number = 1): Observable<Equipment[]> {
     return this.http.put<Equipment[]>(`${BACKEND_URL}/api/v1/equipment/inactivate/${equipment}?userLog_id=${id}`, {});
   }
+  
   
 }

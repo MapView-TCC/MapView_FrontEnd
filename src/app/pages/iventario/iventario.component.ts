@@ -9,11 +9,15 @@ import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-po
 import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
 import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
+import { ExcelService } from '../../services/excel/excel.service';
+import { FooterComponent } from "../../components/footer/footer.component";
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent],
+  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent, FooterComponent,MatIconModule],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss'] 
 })
@@ -28,8 +32,13 @@ export class IventarioComponent implements OnInit {
   showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
   
 
+  pageNumbers: number[] = [];
+  currentPage: number = 0; // Página atual
+  itemsPerPage: number = 10; // Itens por página
+  totalItems: number = 0; // Total de itens dinâmico
+  totalPages: number = 0; // Total de páginas
 
-  constructor(public generalService: GeneralService, private inventarioService: InventarioService) {}
+  constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
   ngOnInit(): void {
     this.loadItems();
@@ -43,7 +52,49 @@ export class IventarioComponent implements OnInit {
       
     });
   }
+    updateTotalItems() {
+    this.inventarioService.getEquipments(0, 1000).subscribe( // Ajuste o número para obter todos os itens de uma vez, se necessário
+      (data: Equipment[]) => {
+        this.totalItems = data.length; // Total de itens retornados
+        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
+        this.updatePageNumbers(); // Atualiza os números das páginas
+      },
+      (error) => {
+        console.error('Erro ao obter o total de itens:', error);
+      }
+    );
+  }
+  
+  // Método para atualizar os números das páginas
+  updatePageNumbers() {
+    this.pageNumbers = [];
+    const maxPagesToShow = 3; // Número máximo de páginas para exibir
+    const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
+    const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
+  
+    for (let i = startPage; i <= endPage; i++) {
+      if (i <= this.totalPages) {
+        this.pageNumbers.push(i);
+      }
+    }
+  }
+  
+  // Atualize a lógica ao mudar de página
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.loadItems(); // Carregar itens da nova página
+    }
+  }
+  
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadItems(); // Carregar itens da página anterior
+    }
+  }
 
+  
   aplicarFiltro(filtros: any) {
     console.log('Equipamentos antes do filtro', this.equipment);
     console.log('Filtros aplicados', filtros);
@@ -71,6 +122,9 @@ export class IventarioComponent implements OnInit {
   loadEquipment(): Equipment[]{
     return []
   }
+  
+  
+  
 
   toggleFiltro() {
     this.showFilro = !this.showFilro;
@@ -96,27 +150,55 @@ export class IventarioComponent implements OnInit {
     this.closeOptions(); // Usa 'this' para chamar o método
   }
 
-
+  onExport() {
+    this.excelService.exportToExcel().subscribe(
+      (blob) => {
+        console.log(blob); // Verifique o conteúdo do blob
+        const fileURL = URL.createObjectURL(blob);
+        console.log(fileURL); // Verifique o URL gerado
+        this.excelService.downloadExcel(blob, 'equipment.xls'); 
+      },
+      (error) => {
+        console.error('Erro ao exportar para Excel:', error);
+      }
+    );    
+  }
+  
+  
   deleteItem(item: Equipment) {
     this.itemToDelete = item; // Armazena o equipamento a ser excluído
     this.generalService.showDialog = true; // Exibe o popup
-    this.closeOptions();
+    this.closeOptions(); // Fecha o menu de opções
   }
   
   confirmDelete() {
+    console.log('Tentando excluir o equipamento:', this.itemToDelete);
+    
     if (this.itemToDelete) {
-      this.inventarioService.deleteEquipment(Number(this.itemToDelete.id_equipment)).subscribe(() => {
-        this.equipment = this.equipment.filter(e => e.id_equipment !== this.itemToDelete!.id_equipment);
-        this.generalService.showDialog = false; // Fecha o popup
-        this.itemToDelete = null; // Limpa a referência
+      const equipmentId = this.itemToDelete.id_equipment; // ID como string
+      this.inventarioService.deleteEquipment(equipmentId).subscribe({
+        next: () => {
+          this.equipment = this.equipment.filter(e => e.id_equipment !== equipmentId);
+          this.generalService.showDialog = false;
+          this.itemToDelete = null;
+        },
+        error: (err) => {
+          console.error('Erro ao excluir o equipamento', err);
+        }
       });
+    } else {
+      console.warn('Nenhum equipamento selecionado para exclusão');
     }
   }
+  
+  
   
   cancelDelete() {
     this.generalService.showDialog = false; // Fecha o popup sem excluir
     this.itemToDelete = null; // Limpa a referência
   }
-  
+}
 
+function saveAs(blob: Blob, fileName: string) {
+  throw new Error('Function not implemented.');
 }

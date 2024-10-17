@@ -3,7 +3,9 @@
     <button mat-button [matMenuTriggerFor]="laboratorioMenu" (click)="setActive('laboratorio')"
             [ngClass]="{'active': activeButton === 'laboratorio'}">
       <div class="valign-center">
-        <span class="dropdown-text">Laboratório</span>
+        <span class="dropdown-text">
+          <span>{{'LABORATÓRIO' | translate}}</span>
+        </span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
@@ -17,7 +19,7 @@
     <button mat-button [matMenuTriggerFor]="validadeMenu" (click)="setActive('validade')"
             [ngClass]="{'active': activeButton === 'validade'}">
       <div class="valign-center">
-        <span class="dropdown-text">Validade</span>
+        <span class="dropdown-text">{{'VALIDADE' | translate}}</span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
@@ -31,7 +33,7 @@
     <button mat-button [matMenuTriggerFor]="usuarioMenu" (click)="setActive('usuario')"
             [ngClass]="{'active': activeButton === 'usuario'}">
       <div class="valign-center">
-        <span class="dropdown-text">Usuário Principal</span>
+        <span class="dropdown-text">{{'USUÁRIO PRINCIPAL' | translate}}</span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>

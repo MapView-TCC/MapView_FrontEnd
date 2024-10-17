@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatButtonModule}from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { GeneralService } from '../../services/general/general.service';
 import { Equipment } from '../../models/Equipment';
 
 @Component({
