@@ -91,7 +91,7 @@ export class HeaderComponent implements OnInit{
     this.selectedEquipment = this.equipmentList.filter(e => e.name_equipment === equipment.name_equipment);
     // Tornar o pop-up visível
     this.PopUpVisible = true;
-    this.searchItem = '';                // Limpa o campo de pesquisa
+    this.searchItem = ''; // Limpa o campo de pesquisa
     this.filteredItem = [];  
   }
 

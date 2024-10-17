@@ -24,6 +24,10 @@ export class IventarioComponent implements OnInit {
   showOptionsIndex: number | null = null;
   equipment: Equipment[] = [];
   itemToDelete: Equipment | null = null; // Adicione esta linha
+  filteredEquipment: Equipment[] = [];  // Lista filtrada
+  showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
+  
+
 
   constructor(public generalService: GeneralService, private inventarioService: InventarioService) {}
 
@@ -34,13 +38,46 @@ export class IventarioComponent implements OnInit {
   loadItems() {
     this.inventarioService.getEquipments().subscribe(data => {
       this.equipment = data;
+      this.filteredEquipment = data
+      console.log('dados carregados', this.filteredEquipment)
+      
     });
+  }
+
+  aplicarFiltro(filtros: any) {
+    console.log('Equipamentos antes do filtro', this.equipment);
+    console.log('Filtros aplicados', filtros);
+
+    // Filtrando equipamentos que possuem a validade correspondente ao filtro
+    this.filteredEquipment = this.equipment.filter(eq => {
+        const yearFromValidity = new Date(eq.validity).getUTCFullYear(); // Extrai o ano como número
+
+        // Comparação com o filtro de validade (só ano)
+        const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
+        console.log(matchValidity);
+        const matchEnvironment = filtros.environment === '' || eq.location.environment.id_environment === Number(filtros.environment);
+        const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
+
+        console.log(`Equipamento: ${eq.id_equipment}, Validity: ${eq.validity}, Selected Year: ${filtros.validity}, Year From Validity: ${yearFromValidity}, Match Validity: ${matchValidity}`);
+        console.log(filtros.validity, yearFromValidity, matchValidity);
+        return matchEnvironment && matchValidity && matchOwner;
+    });
+
+    console.log('Equipamentos filtrados', this.filteredEquipment);
+    console.log('Filtros recebidos', filtros);
+}
+
+
+  loadEquipment(): Equipment[]{
+    return []
   }
 
   toggleFiltro() {
     this.showFilro = !this.showFilro;
     console.log('teste:', this.showFilro);
   }
+  
+  
 
   toggleOptions(index: number) {
     if (this.showOptionsIndex === index) {

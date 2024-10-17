@@ -1,50 +1,43 @@
 <div class="card">
+    <!-- Botão para Filtro por Laboratório -->
     <button mat-button [matMenuTriggerFor]="laboratorioMenu" (click)="setActive('laboratorio')"
             [ngClass]="{'active': activeButton === 'laboratorio'}">
       <div class="valign-center">
-        <span class="dropdown-text">
-          <span>Labóratorio</span>
-        </span>
+        <span class="dropdown-text">Laboratório</span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
-  
     <mat-menu #laboratorioMenu="matMenu" xPosition="after" yPosition="below" class="customize">
-      <button mat-menu-item>Labóratorio 01</button>
-      <button mat-menu-item>Laboratorio 02</button>
-      <button mat-menu-item>Laboratorio 03</button>
+      <button mat-menu-item (click)="filtros.environment= '1'; aplicarFiltro()">Labóratorio 01</button>
+      <button mat-menu-item (click)="filtros.environment = '2'; aplicarFiltro()">Laboratório 02</button>
+      <button mat-menu-item (click)="filtros.environment = '3'; aplicarFiltro()">Laboratório 03</button>
     </mat-menu>
-  
+
+    <!-- Botão para Filtro por Validade -->
     <button mat-button [matMenuTriggerFor]="validadeMenu" (click)="setActive('validade')"
             [ngClass]="{'active': activeButton === 'validade'}">
       <div class="valign-center">
-        <span class="dropdown-text">
-          <span>Validade</span>
-        </span>
+        <span class="dropdown-text">Validade</span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
-  
     <mat-menu #validadeMenu="matMenu" xPosition="after" yPosition="below" class="customize">
-      <button mat-menu-item>2024</button>
-      <button mat-menu-item>2025</button>
-      <button mat-menu-item>2026</button>
+      <button mat-menu-item (click)="filtros.validity = '2024'; aplicarFiltro()">2024</button>
+      <button mat-menu-item (click)="filtros.validity = '2025'; aplicarFiltro()">2025</button>
+      <button mat-menu-item (click)="filtros.validity = '2026'; aplicarFiltro()">2026</button>
     </mat-menu>
-  
+
+    <!-- Botão para Filtro por Usuário -->
     <button mat-button [matMenuTriggerFor]="usuarioMenu" (click)="setActive('usuario')"
             [ngClass]="{'active': activeButton === 'usuario'}">
       <div class="valign-center">
-        <span class="dropdown-text">
-          <span>Usuário Principal</span>
-        </span>
+        <span class="dropdown-text">Usuário Principal</span>
         <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
       </div>
     </button>
-  
     <mat-menu #usuarioMenu="matMenu" xPosition="after" yPosition="below" class="customize">
-      <button mat-menu-item>CT67CA</button>
-      <button mat-menu-item>CT67CB</button>
-      <button mat-menu-item>CT67CC</button>
+      <button mat-menu-item (click)="filtros.owner = 'CT67CA'; aplicarFiltro()">CT67CA</button>
+      <button mat-menu-item (click)="filtros.owner = 'CT67CB'; aplicarFiltro()">CT67CB</button>
+      <button mat-menu-item (click)="filtros.owner = 'CT67CC'; aplicarFiltro()">CT67CC</button>
     </mat-menu>
-  </div>
-  
+</div>
