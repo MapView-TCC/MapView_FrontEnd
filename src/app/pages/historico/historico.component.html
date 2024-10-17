@@ -4,7 +4,15 @@
         <section class="container-notifications">
             <h1>Notificações</h1>
 
-            <app-notification-card></app-notification-card>
+            <div *ngFor="let notification of notifications">
+                <app-notification-card
+                    [warning]="notification.warning"
+                    [equipmentName]="notification.equipmentName"
+                    [action]="notification.action"
+                    [environmentName]="notification.environmentName"
+                    [dateTime]="notification.dateTime">
+                </app-notification-card>
+            </div>
 
             <div class="button-more">
                 <button class="button-view-more">Ver mais</button>
@@ -45,26 +53,8 @@
             <!-- Filtro de notrbooks -->
             <div class="equipament-filter">
                 <h3>Equipamento</h3>
-                <!-- Autocomplete  -->
-                <form class="equipament-form" [formGroup]="stateForm">
-                    <div class="form-field">
-                      <input type="text"
-                             matInput
-                             formControlName="stateGroup"
-                             required
-                             [matAutocomplete]="autoGroup">
-                        <mat-autocomplete #autoGroup="matAutocomplete">
-                          @for (group of stateGroupOptions | async; track group) {
-                            <mat-optgroup [label]="group.letter">
-                              @for (name of group.names; track name) {
-                                <mat-option [value]="name">{{name}}</mat-option>
-                              }
-                            </mat-optgroup>
-                          }
-                      </mat-autocomplete>
-                    </div>
-                </form>
+                <app-autocomplete></app-autocomplete>
             </div>
         </section>
-
 </div>
+<app-footer></app-footer>

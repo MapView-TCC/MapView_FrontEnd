@@ -1,0 +1,23 @@
+<!-- Autocomplete -->
+<form class="equipment-form" [formGroup]="stateForm">
+  <div class="form-field">
+    <input
+      type="text"
+      placeholder="Selecione um notebook"
+      formControlName="stateGroup"
+      required
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+    <mat-icon class="input-icon">keyboard_arrow_down</mat-icon>
+    <ul *ngIf="showOptions && filteredOptions.length > 0" class="autocomplete-list">
+      <li
+        *ngFor="let option of filteredOptions"
+        (mousedown)="selectOption(option)"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+</form>

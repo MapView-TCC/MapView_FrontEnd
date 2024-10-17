@@ -10,6 +10,7 @@ export class Equipment{
     model: string ="";
     validity: string="";
     admin_rights: string="";
+    observation: string= "";
     location: Location = new Location();
     owner: Owner = new Owner();
     showOption?: boolean = false;
