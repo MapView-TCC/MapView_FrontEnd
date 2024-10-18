@@ -16,3 +16,12 @@ export class Equipment{
     post: Post = new Post();
 
 }
+
+export class FilteredEquipment {
+    environment: string = ''
+    id_equipment: string = ''
+    location: string = ''
+    name_equipment: string = ''
+    owner: string = ''
+    responsibles: Array<string> = []
+}

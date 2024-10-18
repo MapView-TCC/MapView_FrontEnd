@@ -34,7 +34,7 @@ export class IventarioComponent implements OnInit {
 
   pageNumbers: number[] = [];
   currentPage: number = 0; // Página atual
-  itemsPerPage: number = 10; // Itens por página
+  itemsPerPage: number = 5; // Itens por página
   totalItems: number = 0; // Total de itens dinâmico
   totalPages: number = 0; // Total de páginas
 
@@ -48,6 +48,9 @@ export class IventarioComponent implements OnInit {
     this.inventarioService.getEquipments().subscribe(data => {
       this.equipment = data;
       this.filteredEquipment = data
+      this.totalItems = data.length; // Total de itens retornados
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
+      this.updatePageNumbers(); // Atualiza os números das páginas
       console.log('dados carregados', this.filteredEquipment)
       
     });
@@ -55,9 +58,7 @@ export class IventarioComponent implements OnInit {
     updateTotalItems() {
     this.inventarioService.getEquipments(0, 1000).subscribe( // Ajuste o número para obter todos os itens de uma vez, se necessário
       (data: Equipment[]) => {
-        this.totalItems = data.length; // Total de itens retornados
-        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
-        this.updatePageNumbers(); // Atualiza os números das páginas
+       
       },
       (error) => {
         console.error('Erro ao obter o total de itens:', error);
