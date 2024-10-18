@@ -3,19 +3,22 @@
     <!-- Área das notificações -->
         <section class="container-notifications">
             <h1>Notificações</h1>
+            <div class="content-notification">
+                 <!-- Renderiza apenas as notificações exibidas -->
+                 <app-notification-card *ngFor="let notification of displayNotifications"
+                     [warning]="notification.warning"
+                     [equipmentName]="notification.equipmentName"
+                     [rfid]="notification.rfid"
+                     [action]="notification.action"
+                     [environmentName]="notification.environmentName"
+                     [dateTime]="notification.dateTime">
+                 </app-notification-card>
+                
+             </div>
 
-            <div *ngFor="let notification of notifications">
-                <app-notification-card
-                    [warning]="notification.warning"
-                    [equipmentName]="notification.equipmentName"
-                    [action]="notification.action"
-                    [environmentName]="notification.environmentName"
-                    [dateTime]="notification.dateTime">
-                </app-notification-card>
-            </div>
-
-            <div class="button-more">
-                <button class="button-view-more">Ver mais</button>
+             <!-- Botão Ver mais -->
+            <div class="button-more" *ngIf="displayNotifications.length < notifications.length">
+                <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
             </div>
 
         </section>

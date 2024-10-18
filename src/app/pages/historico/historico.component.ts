@@ -1,13 +1,13 @@
 //Imports for angular
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { OnInit, inject} from '@angular/core';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AsyncPipe} from '@angular/common';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { OnInit, inject } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //Imports for our components
 import { HeaderComponent } from '../../components/header/header.component';
@@ -37,14 +37,16 @@ import { NotificationsAlert } from '../../models/NotificationsAlert';
     CalendarioComponent,
     AutocompleteComponent,
     FooterComponent
-],
+  ],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })
 export class HistoricoComponent {
   notifications: NotificationsAlert[] = []; // Use a nova interface aqui
+  displayNotifications: NotificationsAlert[] = []; // Lista de notificações exibidas
+  initialCountNotifications = 9; //Quantidade inicial a ser exibida
 
-  constructor(private trackingHistoryService: TrackingHistoryService) {}
+  constructor(private trackingHistoryService: TrackingHistoryService) { }
 
   ngOnInit() {
     this.loadnotification(); // Chama a função ao inicializar o componente
@@ -54,9 +56,10 @@ export class HistoricoComponent {
     this.trackingHistoryService.getTrackingHistory().subscribe((data: TrackingHistory[]) => {
       this.notifications = data.map(item => ({
         warning: item.warning,
-        equipmentName: item.equipment.name_equipment,
-        action: item.action === 'ENTER' ? 'entrou no' : 'saiu do', // Exemplo de formatação
-        environmentName: item.environment.environment_name,
+        equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',
+        environmentName: item.environment?.environment_name || 'Ambiente não definido', // Checa se 'environment' existe
+        rfid: item.equipment?.rfid || 0, // Checa se 'equipment' e 'rfid' existem
         dateTime: new Date(item.datetime).toLocaleString('pt-BR', {
           day: 'numeric',
           month: 'numeric',
@@ -66,7 +69,15 @@ export class HistoricoComponent {
           hour12: false
         }),
       }));
+
+      //exibe os 9 itens recem adicionados no banco 
+      this.displayNotifications = this.notifications.slice(-this.initialCountNotifications).reverse();
     });
+  }
+
+  showMoreNotifications() {
+    //Exibe todas as notificações do mais recente para o mais antigo
+    this.displayNotifications = this.notifications.slice().reverse();
   }
 
 

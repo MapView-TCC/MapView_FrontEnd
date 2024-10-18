@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 export class NotificationCardComponent {
   @Input() warning: string = ''; //pensar se n da para fazer com numeros
   @Input() equipmentName: string = '';
+  @Input() rfid: number = 0; // Recebe a data como string
   @Input() action: string = '';
   @Input() environmentName: string = '';
   @Input() dateTime: string = ''; // Recebe a data como string
@@ -42,6 +43,28 @@ export class NotificationCardComponent {
     return this.isToday(dateString) 
       ? 'Hoje, ' + new Date(dateString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
       : this.formatDate(dateString);
+  }
+
+  //Método para exibir o título correspondente
+  formatTitle(warning: string, equipmentName:string, rfid: number, action: string, environmentName: string){
+    if(warning == "RED"){
+      return(`Etiqueta ${rfid} não cadastrada`)
+    }else{
+      return(`${equipmentName} ${action} ${environmentName}`)
+    }
+  }
+  //Método para exibir o subtitulo correspondente
+  formatSubtitle(warning: string, action: string, environmentName: string){
+    if(warning === 'RED' && action === 'entrou no'){
+      return("Entrou no "+ environmentName);
+    }
+    if(warning === 'RED' && action === 'saiu do'){
+      return("Saiu do "+ environmentName);
+    }
+    else{
+      return ("Local de origem: " + environmentName)
+    }
+
   }
 }
 
