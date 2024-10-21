@@ -1,63 +1,62 @@
 <app-header></app-header>
 <div class="container-inventory">
     <!-- Área das notificações -->
-        <section class="container-notifications">
-            <h1>Notificações</h1>
-            <div class="content-notification">
-                 <!-- Renderiza apenas as notificações exibidas -->
-                 <app-notification-card *ngFor="let notification of displayNotifications"
-                     [warning]="notification.warning"
-                     [equipmentName]="notification.equipmentName"
-                     [rfid]="notification.rfid"
-                     [action]="notification.action"
-                     [environmentName]="notification.environmentName"
-                     [dateTime]="notification.dateTime">
-                 </app-notification-card>
-                
-             </div>
+    <section class="container-notifications">
+        <h1>Notificações</h1>
+        <div class="content-notification">
+            <!-- Renderiza apenas as notificações exibidas -->
+            <app-notification-card *ngFor="let notification of displayNotifications" [warning]="notification.warning"
+                [equipmentName]="notification.equipmentName" [rfid]="notification.rfid" [action]="notification.action"
+                [environmentName]="notification.environmentName" [dateTime]="notification.dateTime">
+            </app-notification-card>
 
-             <!-- Botão Ver mais -->
-            <div class="button-more" *ngIf="displayNotifications.length < notifications.length">
-                <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
+        </div>
+
+        <!-- Botão Ver mais -->
+        <div class="button-more" *ngIf="displayNotifications.length < notifications.length">
+            <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
+        </div>
+
+    </section>
+
+    <section class="calendar-filters">
+
+        <!-- Calendário mensal -->
+        <div class="monthly-calendar">
+            <app-calendario></app-calendario>
+
+        </div>
+
+        <!-- Filtro de avisos -->
+        <div class="warning-filter">
+            <h3>Localização</h3>
+
+            <div class="buttons-warning">
+                <button class="button-red">
+                    <mat-icon class="status-red">lens</mat-icon>
+                    Não Cadastrado
+                </button>
+
+                <button class="button-yellow">
+                    <mat-icon class="status-yellow">lens</mat-icon>
+                    Externo
+                </button>
+
+                <button class="button-green">
+                    <mat-icon class="status-green">lens</mat-icon>
+                    Interno
+                </button>
             </div>
+        </div>
 
-        </section>
-
-        <section class="calendar-filters">
-
-            <!-- Calendário mensal -->
-            <div class="monthly-calendar">
-                <app-calendario></app-calendario>
-
-            </div>
-
-            <!-- Filtro de avisos -->
-            <div class="warning-filter">
-                <h3>Localização</h3>
-
-                <div class="buttons-warning">
-                    <button class="button-red">
-                        <mat-icon class="status-red">lens</mat-icon>
-                        Não Cadastrado
-                    </button>
-    
-                    <button class="button-yellow">
-                        <mat-icon class="status-yellow">lens</mat-icon>
-                        Externo 
-                    </button>
-    
-                    <button class="button-green">
-                        <mat-icon class="status-green">lens</mat-icon>
-                        Interno
-                    </button>
-                </div>
-            </div>
-
-            <!-- Filtro de notrbooks -->
-            <div class="equipament-filter">
-                <h3>Equipamento</h3>
-                <app-autocomplete [options]="loadEquipmentsID()"></app-autocomplete>
-            </div>
-        </section>
+        <!-- Filtro de notrbooks -->
+        <div class="equipament-filter">
+            <h3>Equipamento</h3>
+            <app-autocomplete 
+                [options]="this.idEquipment"
+                (optionSelected)="filterNotifications($event)">
+            </app-autocomplete>
+        </div>
+    </section>
 </div>
 <app-footer></app-footer>

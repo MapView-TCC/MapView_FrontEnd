@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -12,10 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 
 export class AutocompleteComponent {
-  stateForm: FormGroup;
+  @Input() stateForm!: FormGroup;
   @Input() options: string[] = [];
   filteredOptions: string[] = [];
   showOptions = false;
+
+  @Output() optionSelected = new EventEmitter<string>();
+
 
   constructor(private fb: FormBuilder) {
     this.stateForm = this.fb.group({
@@ -39,6 +42,8 @@ export class AutocompleteComponent {
 
   selectOption(option: string) {
     this.stateForm.patchValue({ stateGroup: option });
+    this.showOptions = false;
+    this.optionSelected.emit(option);//Emite a opção escolhida para o pai
     this.showOptions = false;
   }
 

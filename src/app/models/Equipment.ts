@@ -15,9 +15,21 @@ export class Equipment{
     owner: Owner = new Owner();
     showOption?: boolean = false;
     post: Post = new Post();
-
-
 }
 
+export class EquipmentTrack{
+    idEquipment: string = "";
+    name_equipment: string ="";
+    rfid: number = 0;
+    type: string ="";
+    model: string ="";
+    validity: string="";
+    admin_rights: string="";
+    observation: string= "";
+    location: Location = new Location();
+    owner: Owner = new Owner();
+    showOption?: boolean = false;
+    post: Post = new Post();
+}
 
 //falta o observation
