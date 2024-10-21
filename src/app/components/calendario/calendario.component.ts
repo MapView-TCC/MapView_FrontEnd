@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import moment from 'moment';
 
@@ -14,6 +14,9 @@ export class CalendarioComponent implements OnInit{
   currentMonth: moment.Moment;
   days: moment.Moment[];
   selectedDate: moment.Moment | null = null;
+
+  // Emissor de evento para a data selecionada
+  @Output() dateSelected = new EventEmitter<moment.Moment>();
 
   constructor(){
     this.currentMonth = moment();
@@ -49,6 +52,8 @@ export class CalendarioComponent implements OnInit{
 
   selectDate(day: moment.Moment): void {
     this.selectedDate = day;
+    // Emitindo a data selecionada para o componente pai
+    this.dateSelected.emit(this.selectedDate);
   }
 
   changeMonth(offset: number): void {
@@ -56,13 +61,4 @@ export class CalendarioComponent implements OnInit{
     this.generateCalendar();
   }
 
-  // submitDate(): void {
-  //   if (this.selectedDate) {
-  //     // Aqui você pode enviar a data selecionada para o backend
-  //     console.log('Data selecionada:', this.selectedDate.format('YYYY-MM-DD'));
-  //     // Por exemplo, usando HttpClient:// 
-  //     this.http.post('sua-url-para-backend', { date: this.selectedDate.format('YYYY-MM-DD') })//   
-  //     .subscribe(response => console.log(response));
-  //   }
-  // }
 }

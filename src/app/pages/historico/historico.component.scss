@@ -49,14 +49,43 @@
         &::-webkit-scrollbar-button {
         display: none; /* Oculta as setas de navegação */
         }
+
+        .header-notifications{
+            display: flex;               /* Usar flexbox para alinhar elementos */
+            justify-content: space-between; /* Espaço entre os itens, empurrando o botão para a direita */
+            align-items: center;     
+            padding: 25px 30px 0 
+            ;
+
+            h1{
+                font-size: 24px;
+                font-weight: 500; //corresponde a medium
+                color: #011D94;
+                
+            }
     
-        h1{
-            font-size: 24px;
-            font-weight: 500; //corresponde a medium
-            color: #011D94;
-            
-            padding: 25px 30px 0;
+            .btn-romove-filter{
+                width: 100px;
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                border: none;
+                border-radius: 10px;
+                padding: 5px;
+
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--black); /* Cor dos ícones */
+
+                &:hover{
+                    background-color: var(--background-selected);
+                    color: var(--purple);
+                }
+                
+            }
         }
+    
 
         .content-notification{
             @extend .container-notifications;
@@ -129,120 +158,7 @@
             background-color: var(--background-off-white);
             border-radius: 15px;
             
-            .buttons-warning{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                
-                width: 100%;
-                height: 54px;
-                gap: 7px;
-
-                button{
-                    cursor: pointer;
-                }
-                 
-                
-                .button-red{
-                    display: flex;
-                    align-items: center;
-                    
-                    
-                    padding: 18px 0 18px;
-                    width: 170px;
-                    
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);  
-                    
-                    font-size: 16px;
-                    
-                    gap: 8px;
-                    
-                    .status-red{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--red);
-                        font-size: 20px;
-                        
-                        padding-left: 10px;
-                        
-                    }
-                    
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-
-                }
-
-                .button-yellow{
-                    display: flex;
-                    align-items: center;
-                    
-                    padding: 18px 0 18px;
-                    width: 110px;
-
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);  
-
-                    font-size: 16px;
-                                    
-                    gap: 8px;
-
-                    .status-yellow{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--yellow);
-
-                        font-size: 20px;
-                        padding-left: 10px;
-                        
-                    }
-
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-
-                }
-
-                .button-green{
-                    display: flex;
-                    align-items: center;
-
-                    padding: 18px 0 18px;
-                    width: 103px;
-
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);
-
-                    font-size: 16px;
-
-                    gap: 8px;
-
-                    .status-green{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--green);
-                        
-                        font-size: 20px;                     
-                        padding-left: 10px;
-                        
-                    }
-
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-                    
-                }
-            }
+            
         }
 
         .equipament-filter{

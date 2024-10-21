@@ -19,6 +19,9 @@ import { TrackingHistoryService } from '../../services/tracking-history/tracking
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { NotificationsAlert } from '../../models/NotificationsAlert';
 import { InventarioService } from '../../services/equipaments/inventario.service';
+import moment from 'moment';
+import { Router } from '@angular/router';
+import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 
 
 @Component({
@@ -37,14 +40,17 @@ import { InventarioService } from '../../services/equipaments/inventario.service
     AsyncPipe,
     CalendarioComponent,
     AutocompleteComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    WarningBtnFiltersComponent
+],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })
 export class HistoricoComponent {
-  notifications: NotificationsAlert[] = []; // Use a nova interface aqui
+  notifications: NotificationsAlert[] = []; 
+
   displayNotifications: NotificationsAlert[] = []; // Para exibir as notificações
+
   initialCountNotifications = 9; //Quantidade inicial a ser exibida
 
   filteredNotifications: NotificationsAlert[] = []; // Lista de notificações exibidas
@@ -52,7 +58,9 @@ export class HistoricoComponent {
 
   idEquipment: string[] = [] //Opções do autocomplete
 
-  constructor(private trackingHistoryService: TrackingHistoryService, private inventarioService: InventarioService, private fb: FormBuilder) { 
+  isFiltered: boolean = false;
+
+  constructor(private trackingHistoryService: TrackingHistoryService, private inventarioService: InventarioService, private fb: FormBuilder, private router: Router) { 
     this.stateForm = this.fb.group({
       stateGroup: [''], // FormControl para o autocomplete
     })
@@ -108,16 +116,49 @@ export class HistoricoComponent {
         notfication.idEquipment == selectedOption.toUpperCase()// Filtra as notificações com base na opção selecionada
       )
       
-      console.log("Chegeui no pqp")
     }else{
       // Se não houver opção selecionada, exibe todas as notificações
       this.filteredNotifications = this.notifications;
     }
     // Atualiza a lista de exibição com base nas notificações filtradas
     this.displayNotifications = this.filteredNotifications.slice(-this.initialCountNotifications).reverse();
+    this.isFiltered = true;
   }
 
   
-  //
+   // Função para filtrar as notificações pela data
+   filterNotificationsByDate(selectedDate: moment.Moment) {
+    if (selectedDate) {
+      const selectedDateString = selectedDate.format('YYYY-MM-DD');
+      this.filteredNotifications = this.notifications.filter(notification =>
+        moment(notification.dateTime).format('YYYY-MM-DD') === selectedDateString
+      );
+    } else {
+      this.filteredNotifications = this.notifications;
+    }
+    this.displayNotifications = this.filteredNotifications.slice(-this.initialCountNotifications).reverse();
+    this.isFiltered = true;
+  }
+
+  //Função para filtrar as notificações pelo status ('RED', 'YELLOW' or 'Green')
+  filterByWarnin(warning: string){
+    if(warning){
+      this.displayNotifications = this.notifications.filter(notification => 
+        notification.warning === warning);
+        this.isFiltered = true;
+    }else{
+      this.displayNotifications = this.notifications.slice(-9).reverse(); // Se nenhum filtro, mostra os 9 últimos
+      this.isFiltered = false;
+    }
+  }
+
+  removeFilter(){
+    const currentURL = this.router.url
+
+    this.router.navigateByUrl('/', {skipLocationChange:true}).then(()=>{
+      this.router.navigate([currentURL])
+    })
+  }
+
 
 }

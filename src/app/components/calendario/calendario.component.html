@@ -24,10 +24,8 @@
           [class.today]="isToday(day)"
           [class.selected]="isSelected(day)"
           (click)="selectDate(day)">{{ day.date() }}
-          <!-- comentario para ogit -->
         </td>
       </tr>
     </tbody>
   </table>
-  <!-- <button (click)="submitDate()" [disabled]="!selectedDate">Submit</button> -->
 </div>

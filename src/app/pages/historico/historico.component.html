@@ -2,7 +2,13 @@
 <div class="container-inventory">
     <!-- Área das notificações -->
     <section class="container-notifications">
-        <h1>Notificações</h1>
+        <div class="header-notifications">
+            <h1>Notificações</h1>
+            <button class="btn-romove-filter" (click)="removeFilter()" *ngIf="isFiltered">
+                <i class="fa-solid fa-filter-circle-xmark"></i>
+                Limpar
+            </button>
+        </div>
         <div class="content-notification">
             <!-- Renderiza apenas as notificações exibidas -->
             <app-notification-card *ngFor="let notification of displayNotifications" [warning]="notification.warning"
@@ -13,7 +19,8 @@
         </div>
 
         <!-- Botão Ver mais -->
-        <div class="button-more" *ngIf="displayNotifications.length < notifications.length">
+        <div class="button-more"
+            *ngIf=" displayNotifications.length > 0 && ((displayNotifications.length < notifications.length && !isFiltered) || (displayNotifications.length < filterNotifications.length && isFiltered))  ">
             <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
         </div>
 
@@ -23,38 +30,20 @@
 
         <!-- Calendário mensal -->
         <div class="monthly-calendar">
-            <app-calendario></app-calendario>
+            <app-calendario (dateSelected)="filterNotificationsByDate($event)"></app-calendario>
 
         </div>
 
         <!-- Filtro de avisos -->
         <div class="warning-filter">
             <h3>Localização</h3>
-
-            <div class="buttons-warning">
-                <button class="button-red">
-                    <mat-icon class="status-red">lens</mat-icon>
-                    Não Cadastrado
-                </button>
-
-                <button class="button-yellow">
-                    <mat-icon class="status-yellow">lens</mat-icon>
-                    Externo
-                </button>
-
-                <button class="button-green">
-                    <mat-icon class="status-green">lens</mat-icon>
-                    Interno
-                </button>
-            </div>
+            <app-warning-btn-filters (warningSelected)="filterByWarnin($event)"> </app-warning-btn-filters>
         </div>
 
         <!-- Filtro de notrbooks -->
         <div class="equipament-filter">
             <h3>Equipamento</h3>
-            <app-autocomplete 
-                [options]="this.idEquipment"
-                (optionSelected)="filterNotifications($event)">
+            <app-autocomplete [options]="this.idEquipment" (optionSelected)="filterNotifications($event)">
             </app-autocomplete>
         </div>
     </section>
