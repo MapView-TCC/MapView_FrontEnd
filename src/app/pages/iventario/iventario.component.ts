@@ -34,9 +34,12 @@ export class IventarioComponent implements OnInit {
 
   pageNumbers: number[] = [];
   currentPage: number = 0; // Página atual
-  itemsPerPage: number = 5; // Itens por página
+  itemsPerPage: number = 10; // Itens por página
   totalItems: number = 0; // Total de itens dinâmico
   totalPages: number = 0; // Total de páginas
+  lastFiltrosAplicados: any;
+  currentPageItems: Equipment[] = []; 
+
 
   constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
@@ -47,31 +50,23 @@ export class IventarioComponent implements OnInit {
   loadItems() {
     this.inventarioService.getEquipments().subscribe(data => {
       this.equipment = data;
-      this.filteredEquipment = data
-      this.totalItems = data.length; // Total de itens retornados
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
-      this.updatePageNumbers(); // Atualiza os números das páginas
-      console.log('dados carregados', this.filteredEquipment)
-      
+      console.log("equipamentos carregados",this.equipment)
+
+      this.filteredEquipment = data; // Inicialmente sem filtros
+      this.totalItems = this.filteredEquipment.length;
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+      this.updatePageNumbers();
+      this.paginateFilteredItems(); // Inicializa a primeira página
     });
   }
-    updateTotalItems() {
-    this.inventarioService.getEquipments(0, 1000).subscribe( // Ajuste o número para obter todos os itens de uma vez, se necessário
-      (data: Equipment[]) => {
-       
-      },
-      (error) => {
-        console.error('Erro ao obter o total de itens:', error);
-      }
-    );
-  }
-  
-  // Método para atualizar os números das páginas
+
   updatePageNumbers() {
     this.pageNumbers = [];
     const maxPagesToShow = 3; // Número máximo de páginas para exibir
     const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
     const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
+  
+    console.log(`Atualizando números de página. Páginas de: ${startPage} até: ${endPage}`);
   
     for (let i = startPage; i <= endPage; i++) {
       if (i <= this.totalPages) {
@@ -80,44 +75,50 @@ export class IventarioComponent implements OnInit {
     }
   }
   
-  // Atualize a lógica ao mudar de página
+  paginateFilteredItems() {
+    const start = this.currentPage * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.currentPageItems = this.filteredEquipment.slice(start, end); // Define os itens da página atual
+  }
+  
   nextPage() {
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;
-      this.loadItems(); // Carregar itens da nova página
+      this.paginateFilteredItems(); // Atualiza os itens da nova página
     }
   }
   
   prevPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.loadItems(); // Carregar itens da página anterior
+      this.paginateFilteredItems(); // Atualiza os itens da página anterior
     }
   }
-
+  
+  setItemsPerPage(num: number) {
+    this.itemsPerPage = num;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.currentPage = 0; // Volta para a primeira página
+    this.updatePageNumbers();
+    this.paginateFilteredItems(); // Atualiza os itens exibidos
+  }
   
   aplicarFiltro(filtros: any) {
-    console.log('Equipamentos antes do filtro', this.equipment);
-    console.log('Filtros aplicados', filtros);
-
-    // Filtrando equipamentos que possuem a validade correspondente ao filtro
     this.filteredEquipment = this.equipment.filter(eq => {
-        const yearFromValidity = new Date(eq.validity).getUTCFullYear(); // Extrai o ano como número
-
-        // Comparação com o filtro de validade (só ano)
-        const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
-        console.log(matchValidity);
-        const matchEnvironment = filtros.environment === '' || eq.location.environment.id_environment === Number(filtros.environment);
-        const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
-
-        console.log(`Equipamento: ${eq.id_equipment}, Validity: ${eq.validity}, Selected Year: ${filtros.validity}, Year From Validity: ${yearFromValidity}, Match Validity: ${matchValidity}`);
-        console.log(filtros.validity, yearFromValidity, matchValidity);
-        return matchEnvironment && matchValidity && matchOwner;
+      const yearFromValidity = new Date(eq.validity).getUTCFullYear();
+      const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
+      const matchEnvironment = filtros.environment === '' || eq.location.environment.id_environment === Number(filtros.environment);
+      const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
+      return matchEnvironment && matchValidity && matchOwner;
     });
-
-    console.log('Equipamentos filtrados', this.filteredEquipment);
-    console.log('Filtros recebidos', filtros);
-}
+  
+    this.totalItems = this.filteredEquipment.length;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.currentPage = 0;
+    this.updatePageNumbers();
+    this.paginateFilteredItems(); // Reaplica a paginação nos itens filtrados
+  }
+  
 
 
   loadEquipment(): Equipment[]{
@@ -159,9 +160,6 @@ export class IventarioComponent implements OnInit {
         console.log(fileURL); // Verifique o URL gerado
         this.excelService.downloadExcel(blob, 'equipment.xls'); 
       },
-      (error) => {
-        console.error('Erro ao exportar para Excel:', error);
-      }
     );    
   }
   

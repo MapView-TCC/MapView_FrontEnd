@@ -28,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of filteredEquipment; let i = index">
+            <tr *ngFor="let item of currentPageItems; let i = index">
                 <td>{{item.id_equipment}}</td>
                 <td>{{ item.owner.id_owner}}</td>
                 <td>{{ item.location.environment.environment_name }}</td>

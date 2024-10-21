@@ -16,11 +16,7 @@ export class PopUpComponent {
   @Input() equipment: FilteredEquipment[]=[];
   @Output() close = new EventEmitter<void>();
 
-  cconstructor() {
-    if (this.equipment.length > 0) {
-      console.log('Responsável:', this.equipment); // Verifique o primeiro item
-    }
-  }
+  
 
   closePopUp(){
     this.close.emit();
