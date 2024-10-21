@@ -18,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './dropdow-dynamic.component.html',
   styleUrl: './dropdow-dynamic.component.scss'
 })
-export class DropdowDynamicComponent implements OnInit {
+export class DropdowDynamicComponent {
 
   constructor(private buldingDrp: BuildingDrpService, private enviromentDrop: EnviromentDrpService, private areaDrp: AreaDrpService) { }
 
@@ -29,61 +29,61 @@ export class DropdowDynamicComponent implements OnInit {
   @Input() control!: FormControl;
   @Input() generalService!: GeneralService;
 
-  @Output() selectedValueChange = new EventEmitter<number | string>();
+  // @Output() selectedValueChange = new EventEmitter<number | string>();
 
 
-  buildingOptions: { value: number, label: string }[] = [];
-  enviromentOptions: { value: number, label: string }[] = [];
-  areaOptions: { value: number, label: string }[] = [];
+  // buildingOptions: { value: number, label: string }[] = [];
+  // enviromentOptions: { value: number, label: string }[] = [];
+  // areaOptions: { value: number, label: string }[] = [];
 
 
-  ngOnInit() {
-    if (this.table === 'building') {
-      this.loadBuildings();
-    }
-    else if (this.table === 'enviroment') {
-      this.loadEnviroments()
-    }
-    else if (this.table === 'area') {
-      this.loadAreas()
-    }
-  }
+  // ngOnInit() {
+  //   if (this.table === 'building') {
+  //     this.loadBuildings();
+  //   }
+  //   else if (this.table === 'enviroment') {
+  //     this.loadEnviroments()
+  //   }
+  //   else if (this.table === 'area') {
+  //     this.loadAreas()
+  //   }
+  // }
 
-  onSelect() {
-    console.log(this.control.value)
-    this.selectedValue = this.control.value;
-    this.selectedValueChange.emit(this.control.value);
-  }
+  // onSelect() {
+  //   console.log(this.control.value)
+  //   this.selectedValue = this.control.value;
+  //   this.selectedValueChange.emit(this.control.value);
+  // }
 
   // Função que pega os valores da tabela Bulding 
-  loadBuildings() {
-    this.buldingDrp.getBulding().subscribe((buildings: BuildingDrp[]) => {
-      this.buildingOptions = buildings.map(data => ({
-        value: data.id_building,
-        label: data.building_code
-      }))
-      this.options = this.buildingOptions;
-    })
-  }
-  // Função que pega os valores da tabelaEnviroments 
-  loadEnviroments() {
-    this.enviromentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
-      this.enviromentOptions = enviroments.map(data => ({
-        value: data.id_environment,
-        label: data.environment_name
-      }))
-      this.options = this.enviromentOptions;
-    })
-  }
+  // loadBuildings() {
+  //   this.buldingDrp.getBulding().subscribe((buildings: BuildingDrp[]) => {
+  //     this.buildingOptions = buildings.map(data => ({
+  //       value: data.id_building,
+  //       label: data.building_code
+  //     }))
+  //     this.options = this.buildingOptions;
+  //   })
+  // }
+  // // Função que pega os valores da tabelaEnviroments 
+  // loadEnviroments() {
+  //   this.enviromentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
+  //     this.enviromentOptions = enviroments.map(data => ({
+  //       value: data.id_environment,
+  //       label: data.environment_name
+  //     }))
+  //     this.options = this.enviromentOptions;
+  //   })
+  // }
 
-  // Função que pega os valores da tabela Area
-  loadAreas() {
-    this.areaDrp.getArea().subscribe((areas: Area[]) => {
-      this.areaOptions = areas.map(data => ({
-        value: data.id_area,
-        label: data.area_code
-      }))
-      this.options = this.areaOptions;
-    })
-  }
+  // // Função que pega os valores da tabela Area
+  // loadAreas() {
+  //   this.areaDrp.getArea().subscribe((areas: Area[]) => {
+  //     this.areaOptions = areas.map(data => ({
+  //       value: data.id_area,
+  //       label: data.area_code
+  //     }))
+  //     this.options = this.areaOptions;
+  //   })
+  // }
 }

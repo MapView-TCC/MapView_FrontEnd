@@ -33,7 +33,7 @@ export class IventarioComponent implements OnInit {
   itemsPerPage: number = 10; // Itens por página
   totalItems: number = 0; // Total de itens dinâmico
   totalPages: number = 0; // Total de páginas
-
+  selectedEquipment: string = '';
   constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
   ngOnInit(): void {
@@ -67,18 +67,22 @@ export class IventarioComponent implements OnInit {
   }
   
   // Método para atualizar o total de itens
-  updateTotalItems() {
-    this.inventarioService.getEquipments(0, 1000).subscribe( // Ajuste o número para obter todos os itens de uma vez, se necessário
-      (data: Equipment[]) => {
-        this.totalItems = data.length; // Total de itens retornados
-        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
-        this.updatePageNumbers(); // Atualiza os números das páginas
-      },
-      (error) => {
-        console.error('Erro ao obter o total de itens:', error);
-      }
-    );
-  }
+updateTotalItems() {
+  this.inventarioService.getEquipments(0, 1000).subscribe({
+    next: (data: Equipment[]) => {
+      this.totalItems = data.length; // Total de itens retornados
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
+      this.updatePageNumbers(); // Atualiza os números das páginas
+    },
+    error: (error) => {
+      console.error('Erro ao obter o total de itens:', error);
+    },
+    complete: () => {
+  
+    }
+  });
+}
+
   
   // Método para atualizar os números das páginas
   updatePageNumbers() {
@@ -130,7 +134,10 @@ export class IventarioComponent implements OnInit {
 
   viewItem(item: Equipment) {
     this.generalService.showFormlog = true;
+    this.selectedEquipment = item.id_equipment;
     this.closeOptions(); // Usa 'this' para chamar o método
+    console.log(this.generalService.showFormlog);
+    console.log(this.selectedEquipment);
   }
 
   onExport() {
@@ -174,13 +181,14 @@ export class IventarioComponent implements OnInit {
     }
   }
   
-  
-  
+
   cancelDelete() {
     this.generalService.showDialog = false; // Fecha o popup sem excluir
     this.itemToDelete = null; // Limpa a referência
   }
 }
+
+
 
 function saveAs(blob: Blob, fileName: string) {
   throw new Error('Function not implemented.');
