@@ -177,9 +177,21 @@ export class IventarioComponent implements OnInit {
       const equipmentId = this.itemToDelete.id_equipment; // ID como string
       this.inventarioService.deleteEquipment(equipmentId).subscribe({
         next: () => {
+          // Remover o equipamento da lista original
           this.equipment = this.equipment.filter(e => e.id_equipment !== equipmentId);
+          
+          // Atualizar a lista filtrada
+          this.filteredEquipment = this.filteredEquipment.filter(e => e.id_equipment !== equipmentId);
+          
           this.generalService.showDialog = false;
           this.itemToDelete = null;
+  
+          // Reaplicar a paginação para atualizar os itens exibidos
+          this.totalItems = this.filteredEquipment.length;
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.currentPage = 0; // Resetar para a primeira página
+          this.updatePageNumbers();
+          this.paginateFilteredItems(); // Atualiza os itens da nova página
         },
         error: (err) => {
           console.error('Erro ao excluir o equipamento', err);
@@ -189,6 +201,7 @@ export class IventarioComponent implements OnInit {
       console.warn('Nenhum equipamento selecionado para exclusão');
     }
   }
+  
   
   
   
