@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 export class AutocompleteComponent {
   stateForm: FormGroup;
-  options: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas'];
+  @Input() options: string[] = [];
   filteredOptions: string[] = [];
   showOptions = false;
 

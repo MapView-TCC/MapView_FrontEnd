@@ -18,6 +18,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
 import { TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { NotificationsAlert } from '../../models/NotificationsAlert';
+import { InventarioService } from '../../services/equipaments/inventario.service';
 
 
 @Component({
@@ -46,7 +47,9 @@ export class HistoricoComponent {
   displayNotifications: NotificationsAlert[] = []; // Lista de notificações exibidas
   initialCountNotifications = 9; //Quantidade inicial a ser exibida
 
-  constructor(private trackingHistoryService: TrackingHistoryService) { }
+  idEquipment: string[] = [] //Opções do autocomplete
+
+  constructor(private trackingHistoryService: TrackingHistoryService, private inventarioService: InventarioService) { }
 
   ngOnInit() {
     this.loadnotification(); // Chama a função ao inicializar o componente
@@ -78,6 +81,14 @@ export class HistoricoComponent {
   showMoreNotifications() {
     //Exibe todas as notificações do mais recente para o mais antigo
     this.displayNotifications = this.notifications.slice().reverse();
+  }
+
+  //Função para passar as opções para o autocomplete
+  loadEquipmentsID(){
+    this.inventarioService.getEquipments().subscribe((data)=> {
+      this.idEquipment = data.map(equipment => equipment.id_equipment )
+    })
+    return this.idEquipment;
   }
 
 
