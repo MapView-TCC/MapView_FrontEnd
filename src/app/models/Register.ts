@@ -10,9 +10,9 @@ export class Register{
     admin_rights: string = '';
     observation: string = '';
     id_building: number = 0;
-    id_eviroment: number = 0;
+    id_environment: number = 0;
     post: string = '';
     id_owner: string = '';
     costCenter_name: string = '';
-    dataResposible: DataResponsible[] = [];
+    dataResponsible: DataResponsible[] = [];
 }

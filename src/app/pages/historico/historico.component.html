@@ -20,7 +20,7 @@
 
         <!-- Botão Ver mais -->
         <div class="button-more"
-            *ngIf=" displayNotifications.length > 0 && ((displayNotifications.length < notifications.length && !isFiltered) || (displayNotifications.length < filterNotifications.length && isFiltered))  ">
+            *ngIf=" displayNotifications.length > 0 && ((displayNotifications.length < notifications.length && !isFiltered) || (displayNotifications.length < filteredNotifications.length && isFiltered))  ">
             <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
         </div>
 
@@ -43,9 +43,12 @@
         <!-- Filtro de notrbooks -->
         <div class="equipament-filter">
             <h3>Equipamento</h3>
-            <app-autocomplete [options]="this.idEquipment" (optionSelected)="filterNotifications($event)">
+            <app-autocomplete [options]="this.idEquipment" (optionSelected)="filterNotificationsByID($event)">
             </app-autocomplete>
         </div>
     </section>
 </div>
+
+<app-filter-popup *ngIf="generalService.showFilterlog"></app-filter-popup>
+
 <app-footer></app-footer>

@@ -11,6 +11,7 @@ import { Register } from '../../models/Register';
 import { RegisterService } from '../../services/cadastro/register.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
+import { capitalize } from 'vue';
 
 @Component({
   selector: 'app-cadastro-page',
@@ -152,22 +153,22 @@ export class CadastroPageComponent implements OnInit{
     const registerData = new Register();
     
     //Passando dados dos controls para o objeto
-    registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value || '';
+    registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value?.toUpperCase() || '';
     registerData.name_equipment = this.cadastroEquipamento.get('nomeEquipamento')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
     registerData.type = this.cadastroEquipamento.get('tipoEquipamento')?.value || '';
     registerData.model = this.cadastroEquipamento.get('modelo')?.value || '';
     registerData.validity = this.cadastroEquipamento.get('dataSubstituicao')?.value || '';
-    registerData.admin_rights = this.cadastroEquipamento.get('adminRights')?.value || '';
-    registerData.observation = this.cadastroEquipamento.get('observacao')?.value || '';
+    registerData.admin_rights = this.cadastroEquipamento.get('adminRights')?.value?.toUpperCase() || '';
+    registerData.observation = this.cadastroEquipamento.get('observacao')?.value?.toLowerCase() || '';
     registerData.id_building = Number(this.cadastroLocalizacao.get('id_building')?.value || 0);
-    registerData.id_eviroment = Number(this.cadastroLocalizacao.get('id_environment')?.value || 0);
+    registerData.id_environment = Number(this.cadastroLocalizacao.get('id_environment')?.value || 0);
     registerData.post = this.cadastroLocalizacao.get('posto')?.value || '';
-    registerData.id_owner = this.cadastroEquipamento.get('idUsuario')?.value || '';
+    registerData.id_owner = this.cadastroEquipamento.get('idUsuario')?.value?.toUpperCase() || '';
     registerData.costCenter_name = this.cadastroEquipamento.get('centroCustos')?.value || '';
     
     // Obtendo dados dos responsáveis
-    registerData.dataResposible = this.returnFormArray.controls.map(control => ({
+    registerData.dataResponsible = this.returnFormArray.controls.map(control => ({
       responsible_name: control.get('nome_responsavel')?.value || '',
       edv: control.get('edv')?.value || '', 
       enumCourse: control.get('curso')?.value || '',

@@ -12,7 +12,7 @@
             <div class="content-cad-forms">
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'ID DO EQUIPAMENTO' | translate}}</label>
-                                <input class="input-dados" type="text" placeholder="{{'NÚMERO LOCALIZADO NA ETIQUETA' | translate}}"
+                                <input class="input-dados" type="text" style="text-transform: uppercase;" placeholder="{{'NÚMERO LOCALIZADO NA ETIQUETA' | translate}}"
                             formControlName="idEquipamento">
                         <!-- Mensagens de erro -->
                         <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idEquipamento'"

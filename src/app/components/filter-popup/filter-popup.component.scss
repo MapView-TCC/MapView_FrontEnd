@@ -29,10 +29,12 @@
     box-sizing: border-box; 
 
     .fechar {
+        padding: 0;
+        margin: 0;
         width: 100%;
         font-size: 15px;
-        padding-left: 300px;
-        margin-top: 50px;
+        cursor: pointer;
+     
     }
 
     .cabechalho {
@@ -42,7 +44,7 @@
         align-items: center;
         font-size: 24px;
         color: #011D94;
-        font-weight: normal;
+        font-weight: 500;
         box-sizing: border-box; 
     }
 
@@ -56,10 +58,11 @@
 
 @media (min-width: 1200px) {
     .conteiner {
-        width: 40%;
-        max-width: 800px; 
+        width: 41%;
+        max-width: 600px; 
         height: auto; 
-        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
 
         .cabechalho {
             height: 30px;
@@ -68,23 +71,26 @@
         }
 
         .fechar {
-            font-size: 13px;
-            padding-left: 450px;
+            
+            font-size: 14px;
+            padding-left: 485px;
             margin-top: 8px;
         }
     }
 }
 
-// Responsividade para telas muito grandes, como 1600px ou mais
 @media (min-width: 1600px) {
     .conteiner {
-        width: 28%; // Diminuir um pouco o tamanho em telas maiores
-        max-width: 1000px; // Limitar o máximo em telas muito grandes
-    }
+        width: 28%;
+        max-width: 1000px; 
+        height: auto; 
+        display: flex;
+        justify-content: space-between;
 
-    .fechar {
-        font-size: 13px;
-        left: 2000px;
-        margin-top: 15px;
+        .fechar {
+            font-size: 14px;
+            padding-left: 500px;
+        }
     }
 }
+

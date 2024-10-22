@@ -11,7 +11,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  postRegister(userLog_id: number = 0, data: Register): Observable<Register>{
+  postRegister(userLog_id: number = 1, data: Register): Observable<Register>{
     return this.http.post<Register>(`${BACKEND_URL}/api/v1/register?userLog_id=${userLog_id}`, data)
     .pipe(
       catchError(error => {

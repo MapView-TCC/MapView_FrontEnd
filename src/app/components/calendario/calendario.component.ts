@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 import moment from 'moment';
 
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, TranslateModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.scss'
 })
@@ -17,6 +18,7 @@ export class CalendarioComponent implements OnInit{
 
   // Emissor de evento para a data selecionada
   @Output() dateSelected = new EventEmitter<moment.Moment>();
+
 
   constructor(){
     this.currentMonth = moment();
