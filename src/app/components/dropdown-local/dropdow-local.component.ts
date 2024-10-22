@@ -3,11 +3,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { GeneralService } from '../../services/general/general.service';
+import { VizualizacaoFormComponent } from '../vizualizacao-form/vizualizacao-form.component';
 
 @Component({
   selector: 'app-dropdow-local',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, TranslateModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule, FormsModule, VizualizacaoFormComponent],
   templateUrl: './dropdow-local.component.html',
   styleUrl: './dropdow-local.component.scss'
 })
@@ -22,6 +23,7 @@ export class DropdowLocalComponent {
   @Input() selectedValue!: string | null;
   @Input() table: string = '';
   @Input() control!: FormControl;
+  @Input() disabled: boolean = false;
 
   // @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
   
@@ -35,4 +37,6 @@ export class DropdowLocalComponent {
   //   this.selectedValue = this.control.value;
   //   this.selectedValueChange.emit(this.control.value); 
   // }
+
+  
 }

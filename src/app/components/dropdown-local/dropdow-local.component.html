@@ -1,6 +1,6 @@
 <div class="input-cad-forms">
-    <select [id]="id" class="input-dados" [formControl]="control">
-        <option value="" disabled selected hidden>{{'SELECIONE UMA OPÇÃO' | translate}}</option>
+    <select [id]="id" class="input-dados" [formControl]="control" [disabled]="disabled">
+        <!-- <option value="" disabled selected hidden>{{ 'SELECIONE UMA OPÇÃO' | translate }}</option> -->
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
     </select>
 </div>

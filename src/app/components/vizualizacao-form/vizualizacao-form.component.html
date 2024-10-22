@@ -14,7 +14,7 @@
             <div class="input-cad-forms">
               <label class="label-dados">{{'ID DO EQUIPAMENTO' | translate}}</label>
               <input class="input-dados" type="text" placeholder="{{'NÚMERO LOCALIZADO NA ETIQUETA' | translate}}"
-                formControlName="id_equipment" [readonly]="!isEditing">
+                formControlName="idEquipment" [readonly]="!isEditing">
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'idEquipamento'"
                 [errorType]="'required'" 
                 [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
@@ -84,7 +84,7 @@
             <div class="input-cad-forms">
               <label class="label-dados">{{'TIPO DO EQUIPAMENTO' | translate}}</label>
               <app-dropdow-local id='id-typeEquipament' table='typeEquipament' [options]="typeEquipamentOptions"
-                [control]="vizualizarCadastro.controls.type" >
+                [control]="vizualizarCadastro.controls.type" [disabled]="disabled">
               </app-dropdow-local>
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'tipoEquipamento'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
@@ -92,7 +92,7 @@
             <div class="input-cad-forms">
               <label class="label-dados">{{'MODELO' | translate}}</label>
               <app-dropdow-local id='id-enumModelEquipment' table='modelEquipment' [options]="enumModelEquipment"
-                [control]="vizualizarCadastro.controls.model" >
+                [control]="vizualizarCadastro.controls.model"  [disabled]="disabled" >
               </app-dropdow-local>
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'modelo'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
@@ -129,7 +129,7 @@
             <div class="input-cad-forms">
               <label class="label-dados">{{'PRÉDIO' | translate}}</label>
               <app-dropdow-dynamic [options]="buildingOptions"
-                [control]="vizualizarCadastro.controls.id_building" >
+                [control]="vizualizarCadastro.controls.id_building"  [disabled]="!isEditing">
               </app-dropdow-dynamic>
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'id_building'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
@@ -137,15 +137,15 @@
             <div class="input-cad-forms">
               <label class="label-dados">{{'SETOR' | translate}}</label>
               <app-dropdow-dynamic [options]="areaOptions"
-                [control]="vizualizarCadastro.controls.id_area">
-              </app-dropdow-dynamic>
+                [control]="vizualizarCadastro.controls.id_area"  [disabled]="!isEditing" >
+              </app-dropdow-dynamic >
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'area'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
             </div>
             <div class="input-cad-forms">
               <label class="label-dados">{{'LOCALIZAÇÃO' | translate}}</label>
               <app-dropdow-dynamic [options]="environmentOptions"
-                [control]="vizualizarCadastro.controls.id_environment">
+                [control]="vizualizarCadastro.controls.id_environment"  [disabled]="!isEditing">
               </app-dropdow-dynamic>
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'id_environment'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
@@ -163,22 +163,20 @@
       </div>
 
       <!-- Dados do Responsável -->
-     <!-- Dados do Responsável -->
-<div class="container-forms">
+<div class="container-forms" *ngFor="let item of returnFormArray.controls; let i = index"  [formGroupName]="i">
   <div class="icon-forms">
     <i class="fa-solid fa-user"></i>
     <h3 class="title-forms">{{ 'DADOS DO RESPONSÁVEL' | translate }}</h3>
   </div>
-
   <div class="content-forms">
     <div class="content-cad-forms">
       <div class="input-cad-forms">
         <label class="label-dados">{{ 'NOME DO RESPONSÁVEL' | translate }}</label>
         <input class="input-dados" style="text-transform: capitalize;" type="text"
-          placeholder="Nome completo" formControlName="nome_responsavel"  [readonly]="!isEditing"/>
-        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'nome_responsavel'"
+          placeholder="Nome completo"  [readonly]="!isEditing" formControlName="responsible"/>
+        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'responsible'"
           [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'nome_responsavel'"
+        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'responsible'"
           [errorType]="'minlength'"
           [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES' | translate"></app-error-message>
       </div>
@@ -199,17 +197,20 @@
 
       <div class="input-cad-forms">
         <label class="label-dados">{{ 'CURSO' | translate }}</label>
-        <input class="input-dados" type="text" placeholder="Ex. Informática" formControlName="curso" [readonly]="!isEditing" />
-        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'curso'"
-          [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+        <app-dropdow-local id="course" table="course" [options]="course"
+                        [control]="convertToFormControl(vizualizarCadastro.get('curso'))"></app-dropdow-local>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'curso'"
+                        [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
       </div>
+    
 
       <div class="input-cad-forms">
         <label class="label-dados">{{ 'TURMA' | translate }}</label>
-        <input class="input-dados" type="text" placeholder="Ex. 2024.1" formControlName="turma" [readonly]="!isEditing"/>
-        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'turma'"
+        <input class="input-dados" type="text" placeholder="Ex. 2024.1" formControlName="classes" [readonly]="!isEditing"/>
+        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'classes'"
           [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'turma'"
+        <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'classes'"
           [errorType]="'minlength'" [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 02 CARACTERES' | translate"></app-error-message>
       </div>
     </div>

@@ -78,8 +78,8 @@
 // Responsividade para telas muito grandes, como 1600px ou mais
 @media (min-width: 1600px) {
     .conteiner {
-        width: 28%; // Diminuir um pouco o tamanho em telas maiores
-        max-width: 1000px; // Limitar o máximo em telas muito grandes
+        width: 28%; 
+        max-width: 1000px; 
     }
 
     .fechar {

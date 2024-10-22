@@ -20,6 +20,7 @@ import { Observable } from 'rxjs';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
 import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
+import { Responsible, ResponsibleForm } from '../../models/DataResponsible';
 
 @Component({
   selector: 'app-vizualizacao-form',
@@ -43,12 +44,16 @@ export class VizualizacaoFormComponent implements OnInit {
 
   @Input() equipmentId!: string;
 
+  disabled: boolean = false;
   isEditing = false;
   buldingDrp: any;
   environmentDrop: any;
   areaDrp: any;
 
   showForm: boolean = false;
+
+
+
 
   buildingOptions: { value: number, label: string }[] = [];
   environmentOptions: { value: number, label: string }[] = [];
@@ -79,6 +84,7 @@ export class VizualizacaoFormComponent implements OnInit {
   ];
 
 
+
   //Converte o tipo para passar apr o Dropdown
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
@@ -91,13 +97,13 @@ export class VizualizacaoFormComponent implements OnInit {
     public generalService: GeneralService,
     private responsibleService: ResponsibleByIDService,
     private equipmentService: EquipmentByIDService,
-    private buildingDrpService:BuildingDrpService,
-    private enviromentDrpService:EnviromentDrpService,
+    private buildingDrpService: BuildingDrpService,
+    private enviromentDrpService: EnviromentDrpService,
     private areaDrpService: AreaDrpService,
   ) { }
 
   vizualizarCadastro = this.fb.group({
-    id_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+    idEquipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
     name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
     rfid: [{ value: 0, disabled: false }, [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
     type: [{ value: '', disabled: false }, [Validators.required]],
@@ -111,16 +117,22 @@ export class VizualizacaoFormComponent implements OnInit {
     id_environment: [{ value: 0, disabled: false }, Validators.required],
     id_area: [{ value: 0, disabled: false }, Validators.required],
     id_post: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
-    // nome_responsavel: ['', [Validators.required, Validators.minLength(3)]),
-    // edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]),
-    // curso: [{ value: '', disabled: false }, [Validators.required]),
-    // turma: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]),
-    // responsaveis: this.fb.array([]) // Inicializa o FormArray de responsáveis
+
+
+
+    responsaveis: this.fb.array<FormGroup>([
+      this.fb.group({
+        responsible: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(3)]],
+        edv: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
+        enumCourse: [{ value: '', disabled: false }, [Validators.required]],
+        classes: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+      }),
+    ]) // Inicializa o FormArray de responsáveis
   });
 
   ngOnInit(): void {
     console.log('LOADEI O COMPONENTE AQUI SEU MERDA!')
-    const userLogId = 1; // Substitua por lógica para obter o ID do usuário logado
+    const userLogId = 1; 
     this.loadBuildings();
     this.loadEnvironments();
     this.loadAreas();
@@ -128,7 +140,7 @@ export class VizualizacaoFormComponent implements OnInit {
   }
   // Função que pega os valores da tabela Building 
   loadBuildings() {
-    this.buildingDrpService.getBulding().subscribe((buildings: Building []) => {
+    this.buildingDrpService.getBulding().subscribe((buildings: Building[]) => {
       console.log(buildings)
       buildings.map(data => this.buildingOptions.push({
         value: data.id_building,
@@ -157,23 +169,29 @@ export class VizualizacaoFormComponent implements OnInit {
       }));
     });
   }
+
+
   loadData(equipmentId: string, userLogId: number) {
     console.log('socorro desgraça!')
-    this.equipmentService.getEquipmentById(equipmentId, userLogId).subscribe({
-      next: (equipamento) => {
-        console.log('Equipamento:', equipamento); // Verifique os dados aqui
-        console.log('SOCORRO PRFV', equipamento.location.environment.raspberry.building.building_code)
-        this.vizualizarCadastro.patchValue(equipamento);
-        this.vizualizarCadastro.controls.id_owner.setValue(equipamento.owner.id_owner);
-        this.vizualizarCadastro.controls.cost_center.setValue(equipamento.owner.costCenter.constcenter);
-        this.vizualizarCadastro.controls.id_building.setValue(equipamento.location.environment.raspberry.building.id_building);
-        this.vizualizarCadastro.controls.id_environment.setValue(equipamento.location.environment.id_environment);
-        this.vizualizarCadastro.controls.id_post.setValue(equipamento.location.post.post);
-        this.vizualizarCadastro.controls.id_area.setValue(equipamento.location.environment.raspberry.area.id_area)
-        //   this.addResponsavel();
-        //   const lastIndex = this.responsaveis.length - 1;
-        //   this.responsaveis.at(lastIndex).patchValue(responsavel);
-        // });
+    this.responsibleService.getResponsiblesByEquipment(0, 100, equipmentId).subscribe({
+      next: (equipResponsible) => {
+        console.log('Equipamento:', equipResponsible); // Verifique os dados aqui
+        console.log('SOCORRO PRFV', equipResponsible[0].equipment.idEquipment);
+        this.vizualizarCadastro.patchValue(equipResponsible[0].equipment);
+        this.vizualizarCadastro.controls.id_owner.setValue(equipResponsible[0].equipment.owner.id_owner);
+        this.vizualizarCadastro.controls.cost_center.setValue(equipResponsible[0].equipment.owner.costCenter.constcenter);
+        this.vizualizarCadastro.controls.id_building.setValue(equipResponsible[0].equipment.location.environment.raspberry.building.id_building);
+        this.vizualizarCadastro.controls.id_environment.setValue(equipResponsible[0].equipment.location.environment.id_environment);
+        this.vizualizarCadastro.controls.id_post.setValue(equipResponsible[0].equipment.location.post.post);
+        this.vizualizarCadastro.controls.id_area.setValue(equipResponsible[0].equipment.location.environment.raspberry.area.id_area)
+       
+
+        this.addResponsavel(equipResponsible[0].responsible);
+        const lastIndex = this.vizualizarCadastro.controls.responsaveis.length - 1;
+        this.vizualizarCadastro.controls.responsaveis.at(lastIndex).patchValue(this.responsibleService);
+
+        console.log('SOCORRO PELO PAI DO GUARDA', this.vizualizarCadastro)
+        console.log('VAI TOMAR NO MEIO DO ', this.returnFormArray.controls.values);
       },
       error: err => console.error('Erro ao carregar equipamento:', err)
     },
@@ -182,15 +200,20 @@ export class VizualizacaoFormComponent implements OnInit {
 
 
 
-
   toggleEdit() {
     this.isEditing = !this.isEditing;
+    console.log('Is Editing:', this.isEditing);
+
     if (this.isEditing) {
       this.vizualizarCadastro.enable();
     } else {
       this.vizualizarCadastro.disable();
     }
+
+    this.disabled = !this.isEditing; // Atualiza para o dropdown
+    console.log('Disabled:', this.disabled); // Verifique o valor aqui
   }
+
 
   save() {
     // lógica para salvar os dados
@@ -202,24 +225,28 @@ export class VizualizacaoFormComponent implements OnInit {
     this.toggleEdit();
     // Lógica para fechar o modal
     // Exemplo:
-     this.generalService.showFormlog = false; // Fechar o modal
+    this.generalService.showFormlog = false; // Fechar o modal
   }
 
-  //   get responsaveis(): FormArray {
-  //   return this.vizualizarCadastro.controls.validity as FormArray;
-  // }
+    //Form Array de FormGroup de Responsável
+  get returnFormArray(): FormArray {
+    return this.vizualizarCadastro.get('responsaveis') as FormArray;
+  }
 
-//   addResponsavel() {
-//     const responsavelForm = this.fb.group({
-//       nome_responsavel: ['', Validators.required],
-//       edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
-//       curso: ['', Validators.required],
-//       turma: ['', [Validators.required, Validators.minLength(2)]]
-//     });
-//     this.responsaveis.push(responsavelForm);
-//   }
 
-//   removeResponsavel(index: number) {
-//     this.responsaveis.removeAt(index);
-//   // }
+
+  addResponsavel(data: Responsible) {
+    const responsavelForm = this.fb.group({
+      responsible: [{ value: data.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
+      edv: [{ value: data.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
+      enumCourse: [{ value: data.classes.enumCourse, disabled: false }, [Validators.required]],
+      classes: [{ value: data.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+    });
+
+    this.returnFormArray.push(responsavelForm);
+  }
+
+  removeResponsavel(index: number) {
+    this.returnFormArray.removeAt(index);
+  }
 }

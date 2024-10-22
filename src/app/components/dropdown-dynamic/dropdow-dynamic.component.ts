@@ -28,6 +28,7 @@ export class DropdowDynamicComponent {
   @Input() table: string = '';
   @Input() control!: FormControl;
   @Input() generalService!: GeneralService;
+  @Input() disabled: boolean = false;
 
   // @Output() selectedValueChange = new EventEmitter<number | string>();
 
