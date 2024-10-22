@@ -1,5 +1,6 @@
 import { Location } from "./Location";
 import { Owner } from "./Owner";
+import { Post } from "./Post";
 import { Equipment_Responsible } from "./Equipment_Responsible";
 
 export class Equipment{
@@ -13,6 +14,10 @@ export class Equipment{
     location: Location = new Location();
     owner: Owner = new Owner();
     showOption?: boolean = false;
-    equipment_responsible: Equipment_Responsible[] = [];
+    post: Post = new Post();
+   equipment_responsible: Equipment_Responsible[] = [];
 
 }
+
+
+//falta o observation

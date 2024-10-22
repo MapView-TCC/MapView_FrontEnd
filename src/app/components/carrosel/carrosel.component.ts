@@ -4,7 +4,11 @@ import { PrevDirective } from '../../services/carrosel/prev.directive';
 import { NextDirective } from '../../services/carrosel/next.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { EquipamentoService } from '../../services/equipamento carrosel/equipamento.service';
+import { WrongLocation } from '../../models/WrongLocation';
+import { Equipment } from '../../models/Equipment';
+import { CarrosselService } from '../../services/carrossel/carrossel.service';
+
+
 
 @Component({
   selector: 'app-carrosel',
@@ -14,19 +18,19 @@ import { EquipamentoService } from '../../services/equipamento carrosel/equipame
   styleUrls: ['./carrosel.component.scss'] 
 })
 export class CarroselComponent implements OnInit {
-  equipamentos: any[] = [];
+ equipamentos: WrongLocation[] = [];
 
-  constructor(private equipmentService: EquipamentoService, public generalService: GeneralService) {}
+ constructor(private carrosselService: CarrosselService, public generalService: GeneralService) {}
 
   ngOnInit() {
-    this.equipmentService.getEquipamentos().subscribe({
-      next: (data) => {
-        this.equipamentos = data;
-        console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
-      },
-      error: (err) => {
+    this.carrosselService.getEquipamentos().subscribe({
+   next: (data: WrongLocation[]) => {
+  this.equipamentos = data;
+    console.log('Dados recebidos:', this.equipamentos); // Verifique os dados
+     },
+  error: (err:any) => {
         console.error("Erro ao buscar equipamentos:", err);
-      }
-    });
+    }
+   });
+ }
   }
-}

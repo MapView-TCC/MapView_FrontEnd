@@ -1,0 +1,64 @@
+<!-- Cadastro Localização do equipamento -->
+<form [formGroup]="cadastroLocalizacao">
+    <div class="step-2"></div>
+
+    <div class="container-forms">
+        <div class="icon-forms">
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+
+        <h3 class="title-forms">{{'LOCALIZAÇÃO' | translate}}</h3>
+
+        <div class="content-forms">
+            <div class="content-cad-forms">
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">{{'PRÉDIO' | translate}}</label>
+                    <!-- Dropdown dynamic: Building -->
+                    <app-dropdow-dynamic table="building" [options]="buildingOptions"
+                        [control]="convertToFormControl(cadastroLocalizacao.get('id_building'))">
+                    </app-dropdow-dynamic>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_building'"
+                        [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+                </div>
+
+                <!-- Dropdown dynamic: Area -->
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">{{'SETOR'| translate}}</label>
+                    <app-dropdow-dynamic table="area" [options]="areaOptions"
+                        [control]="convertToFormControl(cadastroLocalizacao.get('area'))">
+                    </app-dropdow-dynamic>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'area'" [errorType]="'required'"
+                        [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+                </div>
+
+
+                <!-- Dropdown dynamic: Enviroment -->
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">{{'LABORATÓRIO'| translate}}</label>
+                    <app-dropdow-dynamic [options]="environmentOptions" table="environment"
+                        [control]="convertToFormControl(cadastroLocalizacao.get('id_environment'))"
+                        [generalService]="generalService">
+                    </app-dropdow-dynamic>
+                    <!-- Modal de cadastro de novo ambiente -->
+                    <app-location-popup *ngIf="generalService.showLocationlog" (refreshData)="loadEnvironments()"></app-location-popup>
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_environment'"
+                        [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+                </div>
+
+                <div class="input-cad-forms">
+                    <label class="label-dados" for="">{{'POSTO'| translate}}</label>
+                    <input class="input-dados" type="text" placeholder="EX. 01" formControlName="posto">
+                    <!-- Mensagens de erro -->
+                    <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'posto'"
+                        [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+                    <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'posto'"
+                        [errorType]="'minlength'"
+                        [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01' | translate"></app-error-message>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

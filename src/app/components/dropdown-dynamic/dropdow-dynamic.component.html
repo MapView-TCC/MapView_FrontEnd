@@ -1,0 +1,15 @@
+<div class="input-cad-forms">
+    <select class="input-dados" (change)="onSelect()" [value]="selectedValue" [formControl]="control">
+        <option value="" disabled selected hidden>{{'SELECIONE UMA OPÇÃO' | translate}}</option>
+        <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+        <ng-container *ngIf="table === 'environment'">
+            <option class="notEnviroment" value="notEnviroment">{{'LABORATÓRIO NÃO CADASTRADO?' | translate}}</option>
+        </ng-container>
+    </select>
+    <!-- Libera o botão para cadastrar ambiente -->
+    <ng-container *ngIf="selectedValue == 'notEnviroment'">
+        <button (click)="generalService.showLocationlog = true">
+            {{'CLIQUE AQUI PARA CADASTRAR UM LABORATÓRIO' | translate}}
+        </button>
+    </ng-container>
+</div>

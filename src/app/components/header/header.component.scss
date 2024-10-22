@@ -36,6 +36,8 @@ header .container {
     height: 2px;
 }
 
+// começo da estilização da barra de pesquisa
+
 .search-container {
     display: flex;
     justify-content: flex-end;
@@ -134,6 +136,119 @@ strong{
     width: 300px;
 }
   
+
+// fim da estilização da barra de pesquisa
+
+
+//inicio da estilizaçao da notificação
+.notification-container {
+    position: absolute; /* Faz a lista aparecer em relação ao contêiner pai */
+    top: 100%; /* Coloca a lista logo abaixo do input */
+    left: 0; /* Alinha à esquerda do input */
+    right: 0; /* Faz a lista ter a mesma largura que o input */
+    background: #F2F4F5; /* Fundo branco para a lista */
+    border-radius: 10px;
+    z-index: 1; /* Garante que a lista fique acima de outros elementos */
+    max-height: 375px; /* Limita a altura da lista */
+    overflow-y: auto; /* Adiciona scroll se necessário */
+    margin-top: 15px;
+    border: none;  
+    overflow-x: hidden;
+    
+}
+
+h3 {
+    margin: 0 0 10px; /* Margem inferior */
+}
+
+ul {
+    list-style: none; /* Remove marcadores da lista */
+    padding: 0; /* Remove preenchimento */
+    margin: 0; /* Remove margem */
+}
+
+.notification {
+    width: 100%;
+    height: fit-content;
+    margin-left: 10px;
+    padding-left: 8px;
+    border-radius: 0 10px 10px 0; /* Arredonda apenas as extremidades direita */
+}
+
+.notification-header {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.notification-text {
+    margin: 0px;
+    font-size: 15px;
+    color: #4B4545;
+    font-weight: 400;
+
+}
+
+span{
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: var(--pale-brown);
+    font-weight: 400;
+
+}
+
+/* Estilos para navegadores baseados em WebKit (Chrome, Safari, etc.) */
+.custom-scrollbar {
+    overflow-y: auto; /* Habilita o scroll vertical */
+  }
+  
+  /* Personaliza a largura do scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Largura do scrollbar */
+  }
+  
+  /* Cor de fundo do scrollbar */
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor do trilho (track) */
+    border-radius: 10px; /* Bordas arredondadas do trilho */
+  }
+  
+  /* Cor e estilo da barra de rolagem (thumb) */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Bordas arredondadas da barra de rolagem */
+    border: 2px solid #f1f1f1; /* Espaçamento ao redor da barra */
+  }
+  
+  /* Cor da barra de rolagem ao passar o mouse (hover) */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Cor da barra ao passar o mouse */
+  }
+  
+  /* Para Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin; /* Largura fina */
+    scrollbar-color: #888 #f1f1f1; /* Cor da barra e do trilho */
+  }
+  
+
+
+/* Estilos para a linha vertical dependendo da classe */
+.notification-alert {
+    border-left: 4px solid red; /* Vermelho para não cadastrados */
+
+}
+
+.notification-external {
+    border-left: 4px solid yellow; /* Amarelo para movimentações externas */
+
+}
+
+.notification-internal {
+    border-left: 4px solid green; /* Verde para movimentações internas */
+}
+
+
+// fim da estilização da notificação
 
 .navbar {
     position: relative;

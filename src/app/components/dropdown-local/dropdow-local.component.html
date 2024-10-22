@@ -1,0 +1,7 @@
+<div class="input-cad-forms">
+    <select [id]="id" class="input-dados" [value]="selectedValue" [formControl]="control"
+        (change)="onSelectionChange()">
+        <option value="" disabled selected hidden>{{'SELECIONE UMA OPÇÃO' | translate}}</option>
+        <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+    </select>
+</div>

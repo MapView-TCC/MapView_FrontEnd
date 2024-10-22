@@ -1,46 +1,67 @@
 <header>
     <div class="container"></div>
-    
+
     <div class="logo-container">
         <div class="heading">
-            <img src="assets/images/svg/Logo_Mapview.svg" alt="Logo"/>
-        </div> 
-        
+            <img src="assets/images/svg/Logo_Mapview.svg" alt="Logo" />
+        </div>
+
         <div class="search-container">
             <form>
                 <!--  keydown é um gatilho ao pressionar em qualquer botão do teclado e o keyup é quando voce soolta o botao do teclado -->
-                <input type="text" 
-                    [attr.placeholder]="'PESQUISE_UM_NOTEBOOK' | translate" name="search" 
-                    (keyup)="onSearch()" [(ngModel)]="searchItem"
-                    >
+                <input type="text" [attr.placeholder]="'PESQUISE_UM_NOTEBOOK' | translate" name="search"
+                    (keyup)="onSearch()" [(ngModel)]="searchItem">
                 <button type="submit"><mat-icon>search</mat-icon></button>
                 <ul *ngIf="searchItem" class="search-content">
                     <li *ngFor="let equipment of filteredItem; index as i" (click)="showEquipmentDetails(equipment)">
-                      {{ equipment.name_equipment }}
+                        {{ equipment.name_equipment }}
                     </li>
                     <div *ngIf="noResult && searchItem" class="noResult">
                         <p><strong>Dispositivo não encontrado</strong></p>
                     </div>
                 </ul>
-               
             </form>
-            <mat-icon class="notification-icon">notifications</mat-icon>
+            <mat-icon class="notification-icon" (click)="toggleNotification()">notifications</mat-icon>
             <mat-icon class="circle-user" (click)="toggleProfileCard()">account_circle</mat-icon>
+            <div class="custom-scroll">
+                <div *ngIf="showNotification" class="notification-container">
+                    <ul>
+                        <li *ngFor="let notification of notifications">
+                            <div class="notification" [ngClass]="getNotificationClass(notification)">
+                                <div class="notification-header">
+                                    <p class="notification-text">{{ notification.equipment.name_equipment }} vence em {{
+                                        notification.equipment.validity }}</p>
+                                    <span class="notificaton-location">Localização: {{ notification.environment.environment_name }},
+                                        {{notification.equipment.location.post.post}}</span>
+                                </div>
+                             
+                                   
+                             
+                            </div>
+                        </li>
+                        <div *ngIf="notifications.length === 0">
+                            <p><strong>Nenhuma notificação disponível</strong></p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+           
+
         </div>
-        <app-pop-up
-        *ngIf="PopUpVisible"
-        [equipment]="selectedEquipment"
-        (close)="closePopUp()"
-        ></app-pop-up>
+        <app-pop-up *ngIf="PopUpVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-pop-up>
     </div>
 
     <div class="navbar">
-        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'AMBIENTES' | translate }}</h3>
-        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">{{ 'CADASTRO' | translate }}</h3>
-        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">{{ 'HISTÓRICO' | translate }}</h3>
-        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">{{ 'INVENTÁRIO' | translate }}</h3>
-      </div>
+        <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'AMBIENTES' | translate
+            }}</h3>
+        <h3 (click)="onCadastro()" [ngClass]="{ 'selected': selectedItem === 'Cadastro' }">{{ 'CADASTRO' | translate }}
+        </h3>
+        <h3 (click)="onHistorico()" [ngClass]="{ 'selected': selectedItem === 'Historico' }">{{ 'HISTÓRICO' | translate
+            }}</h3>
+        <h3 (click)="onIventario()" [ngClass]="{ 'selected': selectedItem === 'Iventario' }">{{ 'INVENTÁRIO' | translate
+            }}</h3>
+    </div>
 
-      <app-profile-card *ngIf="showProfileCard"></app-profile-card>
-      <!-- <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup> -->
+    <app-profile-card *ngIf="showProfileCard"></app-profile-card>
+    <!-- <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup> -->
 </header>

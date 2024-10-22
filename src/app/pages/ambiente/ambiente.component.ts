@@ -32,7 +32,8 @@ export class AmbienteComponent implements OnInit{
   equipments: Equipment[] = []
 
 
-  constructor(public equipmentService: InventarioService, private generalServie: GeneralService ){
+
+  constructor(public equipmentService: InventarioService,public generalService: GeneralService){
 
   }
 

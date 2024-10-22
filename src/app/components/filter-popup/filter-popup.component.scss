@@ -1,0 +1,90 @@
+:host {
+    display: flex;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    z-index: 1;
+    transition-property: opacity, transform;
+    opacity: 0.9;
+}
+
+.conteiner {
+    margin-top: 20px;
+    width: 90%; 
+    max-width: 600px; 
+    height: 150px;
+    box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
+    border-radius: 10px;
+    background-color: #F2F4F5;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    box-sizing: border-box; 
+
+    .fechar {
+        width: 100%;
+        font-size: 15px;
+        padding-left: 300px;
+        margin-top: 50px;
+    }
+
+    .cabechalho {
+        height: 50px;
+        padding: 20px 30px; 
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        color: #011D94;
+        font-weight: normal;
+        box-sizing: border-box; 
+    }
+
+    .content {
+        flex-grow: 1;
+        padding: 10px 30px; 
+        font-size: 15px;
+        box-sizing: border-box; 
+    }
+}
+
+@media (min-width: 1200px) {
+    .conteiner {
+        width: 40%;
+        max-width: 800px; 
+        height: auto; 
+        margin-top: 20px;
+
+        .cabechalho {
+            height: 30px;
+            padding: 10px 30px; 
+            font-size: 20px;
+        }
+
+        .fechar {
+            font-size: 13px;
+            padding-left: 450px;
+            margin-top: 8px;
+        }
+    }
+}
+
+// Responsividade para telas muito grandes, como 1600px ou mais
+@media (min-width: 1600px) {
+    .conteiner {
+        width: 28%; // Diminuir um pouco o tamanho em telas maiores
+        max-width: 1000px; // Limitar o máximo em telas muito grandes
+    }
+
+    .fechar {
+        font-size: 13px;
+        left: 2000px;
+        margin-top: 15px;
+    }
+}

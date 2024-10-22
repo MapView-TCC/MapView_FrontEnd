@@ -4,13 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GeneralService {
-  showDialog = false;
-
-  showFormlog = false;
-
-  showCarroselog = false;
-
-  showLocationlog = false;
   
+  showDialog = false;
+  showFormlog = false;
+  showCarroselog = false;
+  showLocationlog = false;
+  showFilterlog = false;
+
+
   constructor() { }
+
 }

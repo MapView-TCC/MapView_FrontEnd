@@ -2,17 +2,20 @@
   <header>
     
     <h3>{{ currentMonth.format('MMMM YYYY') }}</h3>
-    <button (click)="changeMonth(-1)">
-      &#9664;
-    </button>
-    <button (click)="changeMonth(1)">
-      &#9654;
-    </button>
+    <nav class="buttons">
+      <button class="btn-changeMonth" (click)="changeMonth(-1)">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button class="btn-changeMonth" (click)="changeMonth(1)">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </nav>
   </header>
+
   <table>
     <thead>
       <tr>
-        <th *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">{{ day }}</th>
+        <th *ngFor="let day of ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']">{{ day }}</th>
       </tr>
     </thead>
     <tbody>
