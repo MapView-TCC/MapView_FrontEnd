@@ -1,6 +1,8 @@
+import { DataResponsible } from "./DataResponsible";
 import { Location } from "./Location";
 import { Owner, OwnerIventario } from "./Owner";
 import { Post } from "./Post";
+import { Responsible } from "./DataResponsible";
 
 export class Equipment{
     id_equipment: string = "";
@@ -10,11 +12,12 @@ export class Equipment{
     model: string ="";
     validity: string="";
     admin_rights: string="";
+    observation: string="";
     location: Location = new Location();
-    owner: Owner = new Owner();
+    owner: OwnerIventario = new OwnerIventario();
     showOption?: boolean = false;
     post: Post = new Post();
-    id_responsavel: any;
+    responsibles: Responsible[] = [];
 }
 
 export class EquipmentIventario{
