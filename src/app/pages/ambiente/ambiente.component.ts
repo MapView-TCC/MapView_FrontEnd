@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { CarroselComponent } from '../../components/carrosel/carrosel.component';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
+import { Post } from '../../models/Post';
  
 
 @Component({
@@ -47,7 +48,7 @@ export class AmbienteComponent implements OnInit{
   loadEquipments(): void {
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;
-      this.equipments.splice(0,2)
+      // this.equipments.splice(0,2)
     });
   }
 
@@ -288,13 +289,13 @@ export class AmbienteComponent implements OnInit{
           //   e.location.post.id_post++;
           // })
           
-          console.log(this.equipments)
+          console.log("os equipamentos",this.equipments)
 
           //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
           // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
           const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
           
-          console.log(element)
+          console.log("os elementos",element)
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
           paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>ID Notebook:</strong>${element[0].id_equipment}<strong><br>Nome:</strong> ${element[0].name_equipment}<br><strong>Responsável:</strong> ${element[0].owner.id_owner}</p>`;

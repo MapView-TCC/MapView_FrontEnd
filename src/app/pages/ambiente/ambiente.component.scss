@@ -57,10 +57,16 @@
             font-family:'Inter', sans-serif;
             width: 180px;
             left: 38px;
-            top: -50px;
-            // text-align: center;
-            // justify-content: center;
+            top: -80px;
+            bottom: 10px;
+            text-align: center;
+            border-radius: 5px;
            
+        }
+
+        .tooltip p {
+            text-align: left; /* Alinha o texto do parágrafo à esquerda */
+            width: 100%; /* Garante que o parágrafo ocupe a largura total da tooltip */
         }
     
         .hide {

@@ -6,3 +6,5 @@ export class Responsible{
     id_classes: number=1;
     id_user: number=1;
 }
+
+export const ResponsibleList: Responsible[]=[]
