@@ -31,3 +31,12 @@ export class EquipmentIventario{
   post: Post = new Post();
   id_responsavel: any;
 }
+
+export class FilteredEquipment {
+    environment: string = ''
+    id_equipment: string = ''
+    location: string = ''
+    name_equipment: string = ''
+    owner: string = ''
+    responsibles: Array<string> = []
+}

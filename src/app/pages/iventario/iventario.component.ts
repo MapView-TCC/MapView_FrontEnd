@@ -28,11 +28,18 @@ export class IventarioComponent implements OnInit {
   showOptionsIndex: number | null = null;
   equipment: Equipment[] = [];
   itemToDelete: Equipment | null = null; // Adicione esta linha
+  filteredEquipment: Equipment[] = [];  // Lista filtrada
+  showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
+  
+
   pageNumbers: number[] = [];
   currentPage: number = 0; // Página atual
   itemsPerPage: number = 10; // Itens por página
   totalItems: number = 0; // Total de itens dinâmico
   totalPages: number = 0; // Total de páginas
+  lastFiltrosAplicados: any;
+  currentPageItems: Equipment[] = []; 
+
   selectedEquipment: string = '';
   constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
@@ -41,55 +48,25 @@ export class IventarioComponent implements OnInit {
   }
 
   loadItems() {
-    this.inventarioService.getEquipments(this.currentPage, this.itemsPerPage).subscribe(
-      (data: Equipment[]) => {
-        if (data) {
-          // Verifique se os dados estão vazios
-          if (data.length === 0) {
-            console.log('Nenhum item encontrado. Você está na última página.');
-            return; // Não faça nada se não houver mais itens
-          }
-  
-          this.equipment = data; // Itens da página atual
-        } else {
-          // Se não houver dados, também indicamos que não há mais itens
-          console.log('Nenhum item encontrado. Você está na última página.');
-          return; 
-        }
-  
-        // Aqui devemos fazer a chamada para obter o total de itens
-        this.updateTotalItems();
-      },
-      (error) => {
-        console.error('Erro ao carregar itens:', error);
-      }
-    );
-  }
-  
-  // Método para atualizar o total de itens
-updateTotalItems() {
-  this.inventarioService.getEquipments(0, 1000).subscribe({
-    next: (data: Equipment[]) => {
-      this.totalItems = data.length; // Total de itens retornados
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Calcule o total de páginas
-      this.updatePageNumbers(); // Atualiza os números das páginas
-    },
-    error: (error) => {
-      console.error('Erro ao obter o total de itens:', error);
-    },
-    complete: () => {
-  
-    }
-  });
-}
+    this.inventarioService.getEquipments().subscribe(data => {
+      this.equipment = data;
+      console.log("equipamentos carregados",this.equipment)
 
-  
-  // Método para atualizar os números das páginas
+      this.filteredEquipment = data; // Inicialmente sem filtros
+      this.totalItems = this.filteredEquipment.length;
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+      this.updatePageNumbers();
+      this.paginateFilteredItems(); // Inicializa a primeira página
+    });
+  }
+
   updatePageNumbers() {
     this.pageNumbers = [];
     const maxPagesToShow = 3; // Número máximo de páginas para exibir
     const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
     const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
+  
+    console.log(`Atualizando números de página. Páginas de: ${startPage} até: ${endPage}`);
   
     for (let i = startPage; i <= endPage; i++) {
       if (i <= this.totalPages) {
@@ -98,27 +75,65 @@ updateTotalItems() {
     }
   }
   
-  // Atualize a lógica ao mudar de página
+  paginateFilteredItems() {
+    const start = this.currentPage * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.currentPageItems = this.filteredEquipment.slice(start, end); // Define os itens da página atual
+  }
+  
   nextPage() {
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;
-      this.loadItems(); // Carregar itens da nova página
+      this.paginateFilteredItems(); // Atualiza os itens da nova página
     }
   }
   
   prevPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.loadItems(); // Carregar itens da página anterior
+      this.paginateFilteredItems(); // Atualiza os itens da página anterior
     }
+  }
+  
+  setItemsPerPage(num: number) {
+    this.itemsPerPage = num;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.currentPage = 0; // Volta para a primeira página
+    this.updatePageNumbers();
+    this.paginateFilteredItems(); // Atualiza os itens exibidos
+  }
+  
+  aplicarFiltro(filtros: any) {
+    this.filteredEquipment = this.equipment.filter(eq => {
+      const yearFromValidity = new Date(eq.validity).getUTCFullYear();
+      const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
+      const matchEnvironment = filtros.environment === '' || eq.location.environment.id_environment === Number(filtros.environment);
+      const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
+      return matchEnvironment && matchValidity && matchOwner;
+    });
+  
+    this.totalItems = this.filteredEquipment.length;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.currentPage = 0;
+    this.updatePageNumbers();
+    this.paginateFilteredItems(); // Reaplica a paginação nos itens filtrados
+  }
+  
+
+
+  loadEquipment(): Equipment[]{
+    return []
   }
   
   
   
+
   toggleFiltro() {
     this.showFilro = !this.showFilro;
     console.log('teste:', this.showFilro);
   }
+  
+  
 
   toggleOptions(index: number) {
     if (this.showOptionsIndex === index) {
@@ -148,9 +163,6 @@ updateTotalItems() {
         console.log(fileURL); // Verifique o URL gerado
         this.excelService.downloadExcel(blob, 'equipment.xls'); 
       },
-      (error) => {
-        console.error('Erro ao exportar para Excel:', error);
-      }
     );    
   }
   
@@ -168,9 +180,21 @@ updateTotalItems() {
       const equipmentId = this.itemToDelete.id_equipment; // ID como string
       this.inventarioService.deleteEquipment(equipmentId).subscribe({
         next: () => {
+          // Remover o equipamento da lista original
           this.equipment = this.equipment.filter(e => e.id_equipment !== equipmentId);
+          
+          // Atualizar a lista filtrada
+          this.filteredEquipment = this.filteredEquipment.filter(e => e.id_equipment !== equipmentId);
+          
           this.generalService.showDialog = false;
           this.itemToDelete = null;
+  
+          // Reaplicar a paginação para atualizar os itens exibidos
+          this.totalItems = this.filteredEquipment.length;
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.currentPage = 0; // Resetar para a primeira página
+          this.updatePageNumbers();
+          this.paginateFilteredItems(); // Atualiza os itens da nova página
         },
         error: (err) => {
           console.error('Erro ao excluir o equipamento', err);
@@ -180,6 +204,8 @@ updateTotalItems() {
       console.warn('Nenhum equipamento selecionado para exclusão');
     }
   }
+  
+  
   
 
   cancelDelete() {

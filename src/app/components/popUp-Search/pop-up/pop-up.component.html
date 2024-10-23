@@ -9,16 +9,16 @@
                 <img src="assets/images/svg/Lenovo - TinkPad 4.svg"  alt="Imagem do Equipamento" class="equipment-image" />
                 <div>
                     <h3><strong>{{ eq.name_equipment }}</strong></h3>
-                    <p><strong>Localização de Origem:</strong> {{ eq.location.environment.environment_name }}</p>
-                    <p><strong>Localização Atual:</strong> {{ eq.location.environment.environment_name }}</p>
+                    <p><strong>Localização de Origem:</strong> {{ eq.environment }}</p>
+                    <p><strong>Localização Atual:</strong> {{ eq.location}}</p>
                     
                     <p><strong>Responsável 1:</strong> 
-                      {{ eq.owner.id_owner[0] }}
-                    </p>
-                    
-                    <p><strong>Responsável 2:</strong> 
-                      {{ eq.owner.id_owner[1] }}
-                    </p>
+                        {{ eq.responsibles[0] }}
+                      </p>
+                      
+                      <p><strong>Responsável 2:</strong> 
+                        {{eq.responsibles[1] }}
+                      </p>
                 </div>
             </div>
         </li>
