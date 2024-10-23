@@ -44,7 +44,7 @@ export class VizualizacaoFormComponent implements OnInit {
 
   @Input() equipmentId!: string;
 
-  disabled: boolean = false;
+  disabled: boolean = true;
   isEditing = false;
   buldingDrp: any;
   environmentDrop: any;
@@ -106,16 +106,16 @@ export class VizualizacaoFormComponent implements OnInit {
     idEquipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
     name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
     rfid: [{ value: 0, disabled: false }, [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
-    type: [{ value: '', disabled: false }, [Validators.required]],
-    model: [{ value: '', disabled: false }, [Validators.required]],
+    type: [{ value: '', disabled: true }, [Validators.required]],
+    model: [{ value: '', disabled: true }, [Validators.required]],
     id_owner: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
     cost_center: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]], // Aceita apenas dígitos 0-9
     validity: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
     admin_rights: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
     observation: [{ value: '', disabled: false }, []],//ok
-    id_building: [{ value: 0, disabled: false }, Validators.required],
-    id_environment: [{ value: 0, disabled: false }, Validators.required],
-    id_area: [{ value: 0, disabled: false }, Validators.required],
+    id_building: [{ value: 0, disabled: true }, Validators.required],
+    id_environment: [{ value: 0, disabled: true }, Validators.required],
+    id_area: [{ value: 0, disabled: true }, Validators.required],
     id_post: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
 
 
@@ -124,8 +124,8 @@ export class VizualizacaoFormComponent implements OnInit {
       this.fb.group({
         responsible: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(3)]],
         edv: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
-        enumCourse: [{ value: '', disabled: false }, [Validators.required]],
-        classes: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+        enumCourse: [{ value: '', disabled: true}, [Validators.required]],
+        classes: [{ value: '', disabled: false}, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
       }),
     ]) // Inicializa o FormArray de responsáveis
   });
@@ -198,22 +198,19 @@ export class VizualizacaoFormComponent implements OnInit {
     );
   }
 
-
-
   toggleEdit() {
     this.isEditing = !this.isEditing;
     console.log('Is Editing:', this.isEditing);
-
+  
     if (this.isEditing) {
-      this.vizualizarCadastro.enable();
+      this.vizualizarCadastro.enable(); // Habilita todos os controles do formulário
     } else {
-      this.vizualizarCadastro.disable();
+      this.vizualizarCadastro.disable(); // Desabilita todos os controles do formulário
     }
-
-    this.disabled = !this.isEditing; // Atualiza para o dropdown
-    console.log('Disabled:', this.disabled); // Verifique o valor aqui
+  
+    console.log('Is Editing:', this.isEditing); // Verifique o valor aqui
   }
-
+  
 
   save() {
     // lógica para salvar os dados
@@ -239,7 +236,7 @@ export class VizualizacaoFormComponent implements OnInit {
     const responsavelForm = this.fb.group({
       responsible: [{ value: data.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
       edv: [{ value: data.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
-      enumCourse: [{ value: data.classes.enumCourse, disabled: false }, [Validators.required]],
+      enumCourse: [{ value: data.classes.enumCourse, disabled: true }, [Validators.required]],
       classes: [{ value: data.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
     });
 
