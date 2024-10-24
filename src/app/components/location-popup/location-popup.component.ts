@@ -7,12 +7,12 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { GeneralService } from '../../services/general/general.service';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
-import { Forms_Register } from '../../models/Forms_Register';
 import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
 import { Building } from '../../models/Building';
 import { Area } from '../../models/Area';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
+import { LocationRegister } from '../../models/Location';
 
 @Component({
   selector: 'app-location-popup',
@@ -86,7 +86,7 @@ export class LocationPopupComponent implements OnInit {
   onSubmit() {
     if (this.cadastroNovoLocalizacao.valid) {
       
-        const enviromentData = new Forms_Register();
+        const enviromentData = new LocationRegister();
 
         enviromentData.id_building = Number(this.cadastroNovoLocalizacao.get('id_building')?.value || 0) ;
         enviromentData.id_area =  Number(this.cadastroNovoLocalizacao.get('id_area')?.value || 0);

@@ -8,3 +8,12 @@ export class Location{
     
 }
 
+export class LocationRegister{
+    id_building: number =0;
+    environment_name: string = '';
+    id_area: number = 0 ;
+    raspberry_name: string = '';
+  }
+  
+  
+

@@ -3,3 +3,4 @@ export class Building{
     building_code: string = "";
     operative: boolean = false;
 }
+

@@ -16,13 +16,14 @@ import { CommonModule } from '@angular/common';
 import { CarroselComponent } from '../../components/carrosel/carrosel.component';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
+import { FooterComponent } from "../../components/footer/footer.component";
 import { WrongLocation } from '../../models/WrongLocation';
 import { CarrosselService } from '../../services/carrossel/carrossel.service';
 
 @Component({
   selector: 'app-ambiente',
   standalone: true,
-  imports: [HeaderComponent,CommonModule,CarroselComponent],
+  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent],
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss',
 

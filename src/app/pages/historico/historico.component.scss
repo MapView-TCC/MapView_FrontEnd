@@ -7,32 +7,93 @@
 
 .container-inventory {
     display: flex;
-    padding: 60px 75px 82px;
+    padding: 60px 75px 0px;
 
     gap: 30px;
     
     width: 100%;
 
+    justify-content: center;
+
     .container-notifications {
         display: flex;
         flex-direction: column;
         width: 670px;
-        height: auto; //rever dps
+        max-height: 740px; 
         
         background-color: #FAFAFB;
         border-radius: 15px;
+
+        overflow-y: auto; /* Adiciona um scroll vertical automaticamente */
+        overflow-x: hidden; /* Esconde o scroll horizontal, se necessário */
+
+        &::-webkit-scrollbar {
+        width: 6px; /* Largura do scrollbar */
+        }
+
+        &::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Cor de fundo do scrollbar */
+        border-radius: 3px; /* Arredondar os cantos da track */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #D9D9D9;
+            border-radius: 15px;
+         
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+        background: var(--muted-brown); /* Cor do thumb ao passar o mouse */
+        }
+
+        &::-webkit-scrollbar-button {
+        display: none; /* Oculta as setas de navegação */
+        }
+
+        .header-notifications{
+            display: flex;               /* Usar flexbox para alinhar elementos */
+            justify-content: space-between; /* Espaço entre os itens, empurrando o botão para a direita */
+            align-items: center;     
+            padding: 25px 30px 0 
+            ;
+
+            h1{
+                font-size: 24px;
+                font-weight: 500; //corresponde a medium
+                color: #011D94;
+                
+            }
     
-        h1{
-            font-size: 24px;
-            font-weight: 500; //corresponde a medium
-            color: #011D94;
-            
-            padding: 25px 30px;
+            .btn-romove-filter{
+                width: 100px;
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                border: none;
+                border-radius: 10px;
+                padding: 5px;
+
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--gray-brown); /* Cor dos ícones */
+
+                &:hover{
+                    background-color: var(--background-selected);
+                    color: var(--purple);
+                }
+                
+            }
         }
     
-        app-notification-card{
-            padding: 0 30px 15px;
+
+        .content-notification{
+            @extend .container-notifications;
+            app-notification-card{
+                padding: 0 30px 15px;
+            }
         }
+    
     
         .button-more{
             display: flex;
@@ -97,120 +158,7 @@
             background-color: var(--background-off-white);
             border-radius: 15px;
             
-            .buttons-warning{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                
-                width: 100%;
-                height: 54px;
-                gap: 7px;
-
-                button{
-                    cursor: pointer;
-                }
-                 
-                
-                .button-red{
-                    display: flex;
-                    align-items: center;
-                    
-                    
-                    padding: 18px 0 18px;
-                    width: 170px;
-                    
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);  
-                    
-                    font-size: 16px;
-                    
-                    gap: 8px;
-                    
-                    .status-red{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--red);
-                        font-size: 20px;
-                        
-                        padding-left: 10px;
-                        
-                    }
-                    
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-
-                }
-
-                .button-yellow{
-                    display: flex;
-                    align-items: center;
-                    
-                    padding: 18px 0 18px;
-                    width: 110px;
-
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);  
-
-                    font-size: 16px;
-                                    
-                    gap: 8px;
-
-                    .status-yellow{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--yellow);
-
-                        font-size: 20px;
-                        padding-left: 10px;
-                        
-                    }
-
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-
-                }
-
-                .button-green{
-                    display: flex;
-                    align-items: center;
-
-                    padding: 18px 0 18px;
-                    width: 103px;
-
-                    border: none;
-                    border-radius: 15px;
-                    background-color: var(--white);
-
-                    font-size: 16px;
-
-                    gap: 8px;
-
-                    .status-green{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content; //faz com que ele tenha o tamanho do conteudo
-                        color: var(--green);
-                        
-                        font-size: 20px;                     
-                        padding-left: 10px;
-                        
-                    }
-
-                    &:hover{
-                        background-color: var(--background-selected);
-                        color: var(--purple);
-                    }
-                    
-                }
-            }
+            
         }
 
         .equipament-filter{
@@ -228,22 +176,6 @@
 
                     position: relative;
 
-                    & input{
-                        width: 100%;
-                        height: 44px;
-                        font-family: 'Inter', sans-serif;
-                        font-size: 16px;
-
-                        background-color: var(--white);
-                        padding-left: 15px;
-                        padding-right: 40px; /* Adicione espaço para o ícone */
-
-                        border-radius: 20px;
-                        border: none;
-                        outline: none;
-                        
-                    }
-                    
                     .arrow-icon{
                         position: absolute;
                         right: 10px; /* Ajuste a distância do ícone do lado direito conforme necessário */
@@ -261,5 +193,30 @@
     
     }
 
+}
+
+// responsividade
+@media (min-width: 1700px) {
+    .container-inventory {
+        display: flex;
+        padding: 80px 0;
+    
+        gap: 50px;
+    
+        .container-notifications {
+            width: 770px;
+            border-radius: 15px;
+        }
+        
+        .calendar-filters{
+            width: 450px;
+                   
+            .monthly-calendar{
+                width: 100%;
+            }
+           
+        }
+    
+    }
 }
 

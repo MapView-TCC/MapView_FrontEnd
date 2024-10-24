@@ -20,18 +20,15 @@
   "REPRODUÇÃO DE AMBIENTES 3D": "3D Environment Reproduction",
   "VISUALMENTE PENSADO PARA OS USUÁRIOS": "Visually designed for users.",
   "INTEGRAÇÃO DE IOT COM PROCESSOS DO COTIDIANO": "Integration of IoT with everyday processes.",
-  
   "SELECIONE UMA OPÇÃO": "Select an option",
   "LABORATÓRIO NÃO CADASTRADO?": "Laboratory not registered?",
   "CLIQUE AQUI PARA CADASTRAR UM LABORATÓRIO": "Click here to register a laboratory",
   "EXCLUIR": "Delete",
   "TEM CERTEZA QUE DESEJA EXCLUIR AS INFORMAÇÕES DO EQUIPAMENTO": "Are you sure you want to delete the information for the equipment",
   "CANCELAR": "Cancel",
-  
   "LABORATÓRIO": "Laboratory",
   "VALIDADE": "Validity",
   "USUÁRIO PRINCIPAL": "Main User",
-  
   "DADOS DO EQUIPAMENTO": "Equipment Data",
   "ID DO EQUIPAMENTO": "Equipment ID",
   "NÚMERO LOCALIZADO NA ETIQUETA": "Number located on the label",
@@ -44,7 +41,6 @@
   "DATA DE SUBSTITUIÇÃO": "Replacement Date",
   "OBSERVAÇÃO": "Observation",
   "COMENTÁRIO SOBRE O EQUIPAMENTO": "Comments on the Equipment",
-
   "CAMPO OBRIGATÓRIO": "Required field",
   "O CAMPO DEVE CONTER NO MÍN 08 CARACTERES": "The field must contain at least 08 characters",
   "O CAMPO DEVE CONTER ATÉ 15 CARACTERES": "The field must contain up to 15 characters",
@@ -59,30 +55,29 @@
   "O CAMPO DEVE CONTER ATÉ 06 NÚMEROS": "The field must contain up to 06 numbers",
   "O CAMPO DEVE CONTER 07 CARACTERES": "The field must contain 07 characters",
   "O CAMPO DEVE CONTER ATÉ 07 CARACTERES": "The field must contain up to 07 characters",
-
   "LOCALIZAÇÃO": "Location",
   "PRÉDIO": "Building",
   "SETOR": "Sector",
   "POSTO": "Post",
-    
   "DADOS DO RESPONSÁVEL": "Responsible Information",
   "NOME DO RESPONSÁVEL": "Responsible Name",
   "CURSO": "Course",
   "TURMA": "Class",
-    
   "O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01": "The field must contain at least 2 numbers. EX: 01",
   "O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES": "The field must contain at least 3 characters",
   "O CAMPO DEVE CONTER 08 NÚMEROS": "The field must contain 8 numbers",
   "O CAMPO DEVE CONTER APENAS 08 NÚMEROS": "The field must contain only 8 numbers",
   "INSIRA O NÚMERO DA TURMA": "Enter the class number",
-
   "NOVO LABORATÓRIO": "New Laboratory",
   "CADASTRAR": "Register",
-
   "CONFIRMAÇÃO DE CADASTRO": "Registration Confirmation",
   "EQUIPAMENTO CADASTRADO COM SUCESSO": "Equipment registered successfully",
   "AVANÇAR": "Next",
   "ADICIONAR RESPONSÁVEL": "Add Responsible",
-  "REMOVER RESPONSÁVEL": "Remove Responsible"
+  "REMOVER RESPONSÁVEL": "Remove Responsible",
+  "RESULTADO DE FILTRAGEM": "Filter Result",
+  "NÃO ENCONTRAMOS NEHUM EQUIPAMENTO NA SELEÇÃO ATUAL.": "We didn't find any equipment in the current selection.",
+  "POR FAVOR, TENTE OUTRA SELEÇÃO DE FILTROS PARA APRIMORAR SUA BUSCA": "Please try another filter selection to refine your search."
+  
 
 }

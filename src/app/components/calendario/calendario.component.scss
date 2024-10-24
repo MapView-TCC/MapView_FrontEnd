@@ -60,6 +60,17 @@
         color: var(--black);
         cursor: pointer;
       }
+
+      td.selected {
+        background-color: var(--background-selected);
+        color: var(--purple);
+      }
+
+      td:hover {
+        background-color: var(--background-selected);
+        color: var(--purple);
+        cursor: pointer;
+      }
       
       td.today {
         background-color: var(--background-selected);

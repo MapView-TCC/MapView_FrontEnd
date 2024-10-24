@@ -11,8 +11,8 @@ export class TrackingHistoryService {
 
   constructor(private http: HttpClient) { }
 
-  getTrackingHistory(page: number = 0, itens: number = 200): Observable<Array<TrackingHistory>>{
-    return this.http.get<Array<TrackingHistory>>(`${BACKEND_URL}/api/v1/trackingHistory?page=${page}&itens=${itens}`)
+  getTrackingHistory(): Observable<Array<TrackingHistory>>{
+    return this.http.get<Array<TrackingHistory>>(`${BACKEND_URL}/api/v1/trackingHistory`)
     .pipe(
       catchError(error => {
         console.error("Erro de requisição: ", error);

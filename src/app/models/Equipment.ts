@@ -11,7 +11,7 @@ export class Equipment{
     model: string ="";
     validity: string="";
     admin_rights: string="";
-    observation: string="";
+    observation: string= "";
     location: Location = new Location();
     owner: OwnerIventario = new OwnerIventario();
     showOption?: boolean = false;
@@ -42,6 +42,21 @@ export class FilteredEquipment {
     name_equipment: string = ''
     owner: string = ''
     responsibles: Array<string> = []
+}
+
+export class EquipmentTrack{
+    idEquipment: string = "";
+    name_equipment: string ="";
+    rfid: number = 0;
+    type: string ="";
+    model: string ="";
+    validity: string="";
+    admin_rights: string="";
+    observation: string= "";
+    location: Location = new Location();
+    owner: Owner = new Owner();
+    showOption?: boolean = false;
+    post: Post = new Post();
 }
 
 //falta o observation
