@@ -23,7 +23,7 @@ export class DropdowDynamicComponent{
 
   // @Output() selectedValueChange = new EventEmitter<number | string>();
 
-  //Método para emitir a seleção do dropdown
+  // //Método para emitir a seleção do dropdown
   // onSelect() {
   //   console.log(this.control.value)
   //   this.selectedValue = this.control.value;

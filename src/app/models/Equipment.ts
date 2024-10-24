@@ -15,7 +15,7 @@ export class Equipment{
     owner: Owner = new Owner();
     showOption?: boolean = false;
     post: Post = new Post();
-  id_responsavel: any;
+    id_responsavel: any;
 }
 
 export class EquipmentIventario{
