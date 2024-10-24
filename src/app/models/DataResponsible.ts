@@ -1,5 +1,6 @@
 import { Classes } from "./Classes";
 import { User } from "./User";
+import { Location } from "./Location";
 
 export class DataResponsible{
     responsible_name: string = '';
@@ -12,6 +13,7 @@ export class Responsible {
     id_responsible: number = 0;
     responsible: string = '';
     edv: string = '';
+    location: Location = new Location();
     classes: Classes = new Classes();
     user: User = new User();
     operative: boolean = false;
