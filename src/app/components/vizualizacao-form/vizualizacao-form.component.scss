@@ -1,56 +1,58 @@
 .popup-background {
   display: flex;
-  align-items: flex-start; 
-  justify-content: center; 
+  align-items: flex-start;
+  justify-content: center;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0; 
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
-  overflow: auto; 
+  overflow: auto;
 }
 
 .conteiner {
   width: 800px;
   height: auto;
-  overflow-y: auto; 
+  overflow-y: auto;
   box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
   border-radius: 15px;
   background-color: #F2F4F5;
-  padding: 20px;
-  margin-top: 20px; 
+ 
+  margin-top: 20px;
 
   .fechar {
     width: 100%;
-    font-size: 15px;
+    padding: 15px;
+    font-size: 16px;
     text-align: right;
     cursor: pointer;
     margin-bottom: 10px;
   }
+
   .actions {
-    display: flex; 
+    display: flex;
     justify-content: flex-end;
-    margin-top: 20px; 
+    margin-top: 20px;
 
     button {
-      height: 35px; 
-      padding: 5px 25px; 
+      height: 35px;
+      padding: 5px 25px;
       border-radius: 20px;
       text-align: center;
-      font-size: 14px; 
+      font-size: 14px;
       font-weight: bold;
       border: none;
       cursor: pointer;
-      margin: 5px; 
+      margin: 5px;
 
       &.botao-voltar {
         background-color: #fff;
         border: 2px solid #011D94;
         color: #4B4545;
       }
-  
+
       &.botao-editar {
         background-color: #011D94;
         color: #fff;
@@ -63,7 +65,8 @@
     height: auto;
     background-color: var(--background-gray);
     border-radius: 15px;
-    padding-bottom: 60px; /* Para dar espaço antes do botão */
+    padding-bottom: 60px;
+    /* Para dar espaço antes do botão */
 
     .icon-forms {
       display: flex;
@@ -84,6 +87,14 @@
 
         &.fa-gear {
           font-size: 30px;
+        }
+
+        &.fa-location-dot {
+          font-size: 25px;
+        }
+
+        &.fa-user {
+          font-size: 23px;
         }
       }
 
@@ -123,6 +134,7 @@
             font-size: 18px;
             font-family: 'Inter', sans-serif;
             margin-bottom: 5px;
+            color: var(--muted-brown);
 
             &::placeholder {
               font-size: 18px;
@@ -130,6 +142,11 @@
               font-weight: 100;
               color: var(--muted-brown);
             }
+
+            &:disabled{
+              background-color: var(--white);
+            }
+
           }
 
           app-error-message {

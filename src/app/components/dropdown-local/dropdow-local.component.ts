@@ -25,12 +25,14 @@ export class DropdowLocalComponent {
   @Input() control!: FormControl;
   @Input() disabled: boolean = false;
 
+
   // @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
   
-  // ngOnInit() {
-  //   console.log(this.control.value);
-  //   this.selectedValue = this.control.value;
-  // }
+  ngOnInit() {
+    console.log(this.control);
+    console.log(this.control.value);
+    this.selectedValue = this.control.value;
+  }
 
   // //Método para emitir a seleção do dropdown
   // onSelectionChange() {
