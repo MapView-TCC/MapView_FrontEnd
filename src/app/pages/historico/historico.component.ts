@@ -12,8 +12,8 @@ import { NotificationCardComponent } from '../../components/notification-card/no
 import { CalendarioComponent } from '../../components/calendario/calendario.component';
 import { AutocompleteComponent } from "../../components/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import { TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
-import { TrackingHistory } from '../../models/TrackingHistory';
+import { HistoryService } from '../../services/tracking-history/tracking-history.service';
+import { Historico, TrackingHistory } from '../../models/TrackingHistory';
 import { NotificationsAlert } from '../../models/NotificationsAlert';
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import moment from 'moment';
@@ -55,13 +55,13 @@ export class HistoricoComponent {
   stateForm: FormGroup;
   isFiltered: boolean = false;
 
-  idEquipment: string[] = [] //Opções do autocomplete
+  idEquipment: string[] =[];
 
   showFilterlog = false;
 
 
   constructor(
-    private trackingHistoryService: TrackingHistoryService,
+    private trackingHistoryService: HistoryService,
     private inventarioService: InventarioService,
     private fb: FormBuilder,
     private router: Router,
@@ -85,7 +85,7 @@ export class HistoricoComponent {
 
   //Carrega as notificações do trackingHistory
   loadnotification() {
-    this.trackingHistoryService.getTrackingHistory().subscribe((data: TrackingHistory[]) => {
+    this.trackingHistoryService.getHistory().subscribe((data: Historico[]) => {
       this.notifications = data.map(item => ({
         idEquipment: item.equipment?.idEquipment || 'Equipamento não definido', // Checa se 'equipment' existe
         warning: item.warning,
