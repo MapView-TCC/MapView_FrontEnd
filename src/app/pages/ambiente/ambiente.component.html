@@ -19,7 +19,7 @@
     </div>
     <div id="webglContainer">
         <canvas id="webgl"></canvas>
-        <div class="details">
+        <div class="details" *ngIf="getWrongLocation.length > 0">
             <label for="name_lab">Laboratorio 01</label>
             <app-carrosel *ngIf="generalService && generalService.showCarroselog"></app-carrosel>
             <button id="details-button" (click)="generalService.showCarroselog = true">Ver Detalhes</button>

@@ -13,7 +13,7 @@ export class CarrosselService {
   constructor(private http: HttpClient) {}
 
   getEquipamentos(id: number=1): Observable<Array<WrongLocation>> {
-    return this.http.get<Array<WrongLocation>>(`${BACKEND_URL}/api/v1/trackingHistory/wronglocations?id_enviromet=${id}`) //passar dinamicamnete
+    return this.http.get<Array<WrongLocation>>(`${BACKEND_URL}/api/v1/trackingHistory/wronglocations?id_environment=${id}`) //passar dinamicamnete
     .pipe(
       catchError(error => {
         console.error("Erro de requisição: ", error);

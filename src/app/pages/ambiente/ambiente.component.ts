@@ -16,8 +16,8 @@ import { CommonModule } from '@angular/common';
 import { CarroselComponent } from '../../components/carrosel/carrosel.component';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
-import { Post } from '../../models/Post';
- 
+import { WrongLocation } from '../../models/WrongLocation';
+import { CarrosselService } from '../../services/carrossel/carrossel.service';
 
 @Component({
   selector: 'app-ambiente',
@@ -31,10 +31,12 @@ import { Post } from '../../models/Post';
 
 export class AmbienteComponent implements OnInit{ 
   equipments: Equipment[] = []
+  wrongLocation: WrongLocation[]=[]
 
 
-
-  constructor(public equipmentService: InventarioService,public generalService: GeneralService){
+  constructor(public equipmentService: InventarioService,
+    public generalService: GeneralService,
+    public wrongLocationEquipment: CarrosselService){
 
   }
 
@@ -49,6 +51,13 @@ export class AmbienteComponent implements OnInit{
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;
       // this.equipments.splice(0,2)
+    });
+  }
+
+  getWrongLocation(): void{
+    this.wrongLocationEquipment.getEquipamentos().subscribe((data) => {
+      this.wrongLocation = data;
+      console.log("Equipamentos no lugar errado", this.wrongLocationEquipment)
     });
   }
 
