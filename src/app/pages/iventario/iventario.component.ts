@@ -40,7 +40,7 @@ export class IventarioComponent implements OnInit {
   lastFiltrosAplicados: any;
   currentPageItems: Equipment[] = []; 
 
-
+  selectedEquipment: string = '';
   constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
 
   ngOnInit(): void {
@@ -149,7 +149,10 @@ export class IventarioComponent implements OnInit {
 
   viewItem(item: Equipment) {
     this.generalService.showFormlog = true;
+    this.selectedEquipment = item.id_equipment;
     this.closeOptions(); // Usa 'this' para chamar o método
+    console.log(this.generalService.showFormlog);
+    console.log(this.selectedEquipment);
   }
 
   onExport() {
@@ -204,12 +207,14 @@ export class IventarioComponent implements OnInit {
   
   
   
-  
+
   cancelDelete() {
     this.generalService.showDialog = false; // Fecha o popup sem excluir
     this.itemToDelete = null; // Limpa a referência
   }
 }
+
+
 
 function saveAs(blob: Blob, fileName: string) {
   throw new Error('Function not implemented.');

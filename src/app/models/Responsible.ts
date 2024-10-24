@@ -1,5 +1,4 @@
 
-
 export class Responsible{
     responsible_name: string = '';
     edv: string = '';

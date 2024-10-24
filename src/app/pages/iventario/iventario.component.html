@@ -73,6 +73,9 @@
   *ngIf="generalService.showDialog"
   [itemToDelete]="itemToDelete"
   [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
-<app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form> 
+
+
+  
+<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form> 
 
 <app-footer></app-footer>
