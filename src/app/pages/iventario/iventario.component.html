@@ -14,7 +14,7 @@
     </div>
 
     <!-- Filtros aparecem aqui -->
-    <app-filtros *ngIf="showFilro"></app-filtros>
+    <app-filtros (filtrosAplicados)="aplicarFiltro($event)" *ngIf="showFilro"></app-filtros>
 
     <table>
         <thead>
@@ -28,9 +28,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of equipment; let i = index">
+            <tr *ngFor="let item of currentPageItems; let i = index">
                 <td>{{item.id_equipment}}</td>
-                <td>{{ item.owner.id_owner }}</td>
+                <td>{{ item.owner.id_owner}}</td>
                 <td>{{ item.location.environment.environment_name }}</td>
                 <td>{{ item.location.post.post }}</td>
                 <td>{{ item.validity }}</td>
@@ -49,11 +49,33 @@
                 </td>
             </tr>
         </tbody>
-        
     </table>
 </div>
+
+<div class="pagination">
+    <button class="icon-button" (click)="prevPage()" [disabled]="currentPage === 0">
+      <mat-icon>arrow_left</mat-icon>
+    </button>
+    <span *ngFor="let page of pageNumbers">
+      <button (click)="currentPage = page - 1; loadItems()" [class.active]="currentPage === page - 1">
+        {{ page }}
+      </button>
+    </span>
+    <button class="icon-button" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
+      <mat-icon>arrow_right</mat-icon>
+    </button>
+  </div>
+  
+  
+  
+  
 <app-excluir-popup
   *ngIf="generalService.showDialog"
   [itemToDelete]="itemToDelete"
   [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
-<app-vizualizacao-form *ngIf="generalService.showFormlog"></app-vizualizacao-form> 
+
+
+  
+<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form> 
+
+<app-footer></app-footer>

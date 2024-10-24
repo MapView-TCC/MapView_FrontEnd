@@ -19,15 +19,16 @@ export class DropdowDynamicComponent{
   @Input() table: string = '';
   @Input() control!: FormControl;
   @Input() generalService!: GeneralService;
+  @Input() disabled: boolean = false;
 
-  @Output() selectedValueChange = new EventEmitter<number | string>();
+  // @Output() selectedValueChange = new EventEmitter<number | string>();
 
   //Método para emitir a seleção do dropdown
-  onSelect() {
-    console.log(this.control.value)
-    this.selectedValue = this.control.value;
-    this.selectedValueChange.emit(this.control.value);
-  }
+  // onSelect() {
+  //   console.log(this.control.value)
+  //   this.selectedValue = this.control.value;
+  //   this.selectedValueChange.emit(this.control.value);
+  // }
 
 
 }

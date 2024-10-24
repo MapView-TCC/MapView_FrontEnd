@@ -104,12 +104,54 @@ table {
     overflow: visible; /* Garante que os cantos arredondados sejam visíveis */
     margin-top: -10px;
 }
-
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+    button {
+      background-color: #F2F4F5;
+      color: #000000;
+      border: none;
+      border-radius: 10px;
+      margin: 0 5px;
+      padding: 12px; // Tamanho padrão para números
+      cursor: pointer;
+  
+      &:hover {
+        color: #6338AF;
+        background-color: #ECE8F4;
+      }
+  
+      &.active {
+        color: #6338AF;
+        background-color: #ECE8F4;
+      }
+  
+      &:disabled {
+        cursor: not-allowed;
+        background-color: #ECE8F4;
+      }
+    }
+  
+    .icon-button {
+      padding: 5px; 
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+  
+      mat-icon {
+        font-size: 22px; 
+        color: #969090;
+      }
+    }
+  }
+  
 th, td {
     padding: 11px;
     text-align: left;
-    background-color: #F2f4f5; /* Fundo branco para as células */
-    border: none; /* Remove bordas visíveis */
+    background-color: #F2f4f5; 
+    border: none; 
    
 }
 
