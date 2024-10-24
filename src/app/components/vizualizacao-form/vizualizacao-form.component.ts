@@ -231,8 +231,6 @@ export class VizualizacaoFormComponent implements OnInit {
 
   cancel() {
     this.toggleEdit();
-    // Lógica para fechar o modal
-    // Exemplo:
     this.generalService.showFormlog = false; // Fechar o modal
   }
 
