@@ -168,8 +168,24 @@
       </div>
 
       <!-- Dados do Responsável -->
-       <div formArrayName="responsaveis">
+      <div formArrayName="responsaveis">
         <div class="container-forms" *ngFor="let item of returnFormGroups; let i = index" [formGroupName]="i">
+          <div *ngIf="isEditing == true">
+            <ng-container *ngIf="returnFormGroups.length < 2">
+              <div class="addResponsavel">
+                  <button type="button" class="btn-addResponsavel" (click)="addResponsavel()">
+                      <i class="fa-solid fa-plus"></i>
+                  </button>
+              </div>
+          </ng-container>
+    
+          <div class="removerResponsavel" *ngIf="returnFormGroups.length > 1">
+              <button type="button" class="btn-removeResponsavel" (click)="removeResponsavel(i)">
+                  <i class="fa-solid fa-x"></i>
+              </button>
+          </div>
+          </div>
+
           <div class="icon-forms">
             <i class="fa-solid fa-user"></i>
             <h3 class="title-forms">{{ 'DADOS DO RESPONSÁVEL' | translate }}</h3>

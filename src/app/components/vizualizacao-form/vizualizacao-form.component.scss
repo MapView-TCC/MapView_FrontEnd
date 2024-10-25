@@ -67,6 +67,7 @@
     border-radius: 15px;
     padding-bottom: 60px;
     /* Para dar espaço antes do botão */
+    position: relative;
 
     .icon-forms {
       display: flex;
@@ -96,6 +97,8 @@
         &.fa-user {
           font-size: 23px;
         }
+
+        
       }
 
       .title-forms {
@@ -145,6 +148,7 @@
 
             &:disabled{
               background-color: var(--white);
+              cursor:not-allowed;
             }
 
           }
@@ -166,6 +170,98 @@
         }
       }
     }
+
+    .addResponsavel{
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      height: 12px;
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      
+      .btn-addResponsavel{
+        color: var(--black);
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-end; /* Alinha o botão à direita */
+        border: none;
+        background-color: transparent;
+  
+        position: relative; /* Necessário para o pseudo-elemento */
+  
+        &::after {
+          content: ''; /* Inicialmente vazio */
+          visibility: hidden; // Inicialmente escondido
+          background-color: #1E1E1E; 
+          color:var(--white); 
+          text-align: center;
+          border-radius: 5px;
+          padding: 5px;
+          position: absolute;
+          bottom: -40px; // Posiciona a mensagem abaixo do botão
+          left: 50%; // Centraliza em relação ao botão
+          transform: translateX(-50%);
+          z-index: 1;
+          transition: visibility 0s, opacity 0.2s linear; // Transição suave
+          opacity: 0; // Oculto inicialmente
+      }
+  
+      &:hover::after {
+          content: 'Adicionar Responsável'; // Texto da mensagem
+          visibility: visible; // Mostra a mensagem ao passar o mouse sobre o botão
+          opacity: 1; // Torna visível
+      }
+      }
+  
+    }
+  
+    .removerResponsavel{
+      @extend .addResponsavel;
+      
+      .btn-removeResponsavel {
+        background-color: var(--blue);
+        color: var(--black);
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-end; /* Alinha o botão à direita */
+        border: none;
+        background-color: transparent;
+  
+        position: relative; /* Necessário para o pseudo-elemento */
+  
+        &::after {
+          content: ''; 
+          visibility: hidden; 
+          background-color: #1E1E1E; 
+          color:var(--white);
+          text-align: center;
+          border-radius: 5px;
+          padding: 5px;
+          position: absolute;
+          bottom: -40px; 
+          left: 50%; 
+          transform: translateX(-50%);
+          z-index: 1;
+          transition: visibility 0s, opacity 0.2s linear; 
+          opacity: 0; 
+      }
+  
+      &:hover::after {
+          content: 'Remover Responsável'; 
+          visibility: visible; 
+          opacity: 1; 
+      }
+      }
+  
+    }
+  
 
   }
 }
