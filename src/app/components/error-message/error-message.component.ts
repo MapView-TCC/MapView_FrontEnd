@@ -18,4 +18,6 @@ export class ErrorMessageComponent {
   @Input() errorType!: string; // Tipo de erro a ser verificado (ex: 'required')
   @Input() errorMessage!: string; // Mensagem de erro a ser exibida
 
+  
+
 }

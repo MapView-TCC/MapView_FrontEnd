@@ -60,7 +60,7 @@ export class VizualizacaoFormComponent implements OnInit {
   // Definindo conteúdo do Dropdown
   typeEquipamentOptions = [
     { value: 'Desktop', label: 'Desktop' },
-    { value: 'Laptop', label: 'Notebook' },
+    { value: 'Notebook', label: 'Notebook' },
     { value: 'Outro', label: 'Outro' }
   ];
 
@@ -81,7 +81,6 @@ export class VizualizacaoFormComponent implements OnInit {
   ];
 
 
-
   //Converte o tipo para passar apr o Dropdown
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
@@ -92,7 +91,6 @@ export class VizualizacaoFormComponent implements OnInit {
     private fb: FormBuilder,
     public generalService: GeneralService,
     private responsibleService: ResponsibleByIDService,
-    private equipmentService: EquipmentByIDService,
     private buildingDrpService: BuildingDrpService,
     private enviromentDrpService: EnviromentDrpService,
     private areaDrpService: AreaDrpService,
@@ -218,7 +216,7 @@ export class VizualizacaoFormComponent implements OnInit {
     } else {
       this.vizualizarCadastro.disable(); // Desabilita todos os controles do formulário
     }
-
+    console.log(this.vizualizarCadastro)
     console.log('Is Editing:', this.isEditing); // Verifique o valor aqui
   }
 
@@ -234,19 +232,27 @@ export class VizualizacaoFormComponent implements OnInit {
     this.generalService.showFormlog = false; // Fechar o modal
   }
 
-  
-  addResponsavel(data: Responsible) {
-    const responsavelForm = this.fb.group({
-      responsible: [{ value: data.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
-      edv: [{ value: data.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
-      enumCourse: [{ value: data.classes.enumCourse, disabled: true }, [Validators.required]],
-      classes: [{ value: data.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
-    });
-
-    this.returnFormArray.push(responsavelForm);
+  //permite add um responsável na lista 
+  addResponsavel() {
+    if(this.returnFormArray.length <2){
+      this.returnFormArray.push(
+        this.fb.group({
+          responsible: ['', [Validators.required, Validators.minLength(3)]],
+          edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
+          enumCourse: [{ value: '', disabled: false }, [Validators.required]],
+          classes:['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
+        })
+      );
+      console.log(this.returnFormGroups);
+    }
+    else {
+      console.log('Limite de responsáveis atingido. Apenas dois responsáveis podem ser adicionados.');
+    }
   }
 
+  //remove o responsavel escolhido da lista
   removeResponsavel(index: number) {
     this.returnFormArray.removeAt(index);
   }
+
 }
