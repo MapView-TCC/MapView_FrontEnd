@@ -9,8 +9,12 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
-  overflow: auto;
+  overflow-y: auto; /* Adiciona um scroll vertical automaticamente */
+  overflow-x: hidden; /* Esconde o scroll horizontal, se necessário */
+
+  
 }
+
 
 .conteiner {
   width: 800px;
@@ -19,9 +23,9 @@
   box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
   border-radius: 15px;
   background-color: #F2F4F5;
- 
+  
   margin-top: 20px;
-
+  
   .fechar {
     width: 100%;
     padding: 15px;
