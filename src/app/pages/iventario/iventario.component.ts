@@ -68,7 +68,6 @@ export class IventarioComponent implements OnInit {
     const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
     const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
   
-    console.log(`Atualizando números de página. Páginas de: ${startPage} até: ${endPage}`);
   
     for (let i = startPage; i <= endPage; i++) {
       if (i <= this.totalPages) {
