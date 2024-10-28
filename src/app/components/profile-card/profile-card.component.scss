@@ -50,32 +50,32 @@
 
 .arrow-icon {
   margin-right: 8px;
-  transform: rotate(-90deg); /* Faz a seta apontar para a direita */
+  transform: rotate(-90deg);
 }
 
 
  .mat-mdc-menu-item:hover{
- background-color: #ECE8F4 !important;/* Fundo roxo */
+ background-color: #ECE8F4 !important;
    color: #000; 
    border-radius: 16px;
 
  }
 
 
-/* Estilo para hover roxo dentro do mat-menu */
+
 .mat-menu-item:hover {
   background-color: #ECE8F4 !important;
   color: #000 !important;
   border-radius: 16px;
 }
 
-/* Border-radius e sombra para o mat-menu */
+
 .mat-mdc-menu-panel {
   border-radius: 16px !important;
-  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  
 }
 
-/* Alinhar o dropdown-text corretamente */
+
 .dropdown-text {
   display: flex;
   align-items: center;

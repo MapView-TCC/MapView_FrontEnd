@@ -96,6 +96,7 @@ export class VizualizacaoFormComponent implements OnInit {
     private areaDrpService: AreaDrpService,
   ) {}
 
+//Validação dos campos do formulário
   vizualizarCadastro = this.fb.group({
     id_equipment: [{ value: '', disabled: true}, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
     name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
@@ -115,7 +116,6 @@ export class VizualizacaoFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log('LOADEI O COMPONENTE AQUI SEU MERDA!')
     const userLogId = 1;
     this.loadBuildings();
     this.loadEnvironments();
@@ -164,6 +164,7 @@ export class VizualizacaoFormComponent implements OnInit {
   }
 
 
+  //Pegar os dados da api para apresentar no vizualizar
   loadData(equipmentId: string, userLogId: number) {
     console.log('socorro desgraça!')
     this.responsibleService.getResponsiblesByEquipment(0, 100, equipmentId).subscribe({
@@ -206,6 +207,7 @@ export class VizualizacaoFormComponent implements OnInit {
     );
   }
 
+  //Função que faz a troca de metodo de vizualizar para editar do formulário
   toggleEdit() {
     this.isEditing = !this.isEditing;
     console.log('Is Editing:', this.isEditing);
@@ -220,10 +222,9 @@ export class VizualizacaoFormComponent implements OnInit {
     console.log('Is Editing:', this.isEditing); // Verifique o valor aqui
   }
 
-
+   // lógica para salvar os dados
   save() {
-    // lógica para salvar os dados
-    console.log(this.vizualizarCadastro.value); // Exemplo de onde você pode processar os dados
+    console.log(this.vizualizarCadastro.value); 
     this.toggleEdit();
   }
 

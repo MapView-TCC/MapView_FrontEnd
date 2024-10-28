@@ -28,6 +28,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Preparação do html para receber os dados da api-->
             <tr *ngFor="let item of currentPageItems; let i = index">
                 <td>{{item.id_equipment}}</td>
                 <td>{{ item.owner.id_owner}}</td>
@@ -52,6 +53,7 @@
     </table>
 </div>
 
+<!--Aplicação do sistema de paginção na tela-->
 <div class="pagination">
     <button class="icon-button" (click)="prevPage()" [disabled]="currentPage === 0">
       <mat-icon>arrow_left</mat-icon>
@@ -66,9 +68,7 @@
     </button>
   </div>
   
-  
-  
-  
+  <!--Chamada dos metodos para excluir cadastro-->
 <app-excluir-popup
   *ngIf="generalService.showDialog"
   [itemToDelete]="itemToDelete"

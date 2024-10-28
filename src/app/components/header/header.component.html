@@ -49,6 +49,7 @@
         <app-pop-up *ngIf="PopUpVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-pop-up>
     </div>
 
+<!--Função chamada para selecionar a página desejada e o hover vim em baixo -->
     <div class="navbar">
         <h3 (click)="onAmbiente()" [ngClass]="{ 'selected': selectedItem === 'Ambientes' }">{{ 'AMBIENTES' | translate
             }}</h3>
@@ -61,5 +62,4 @@
     </div>
 
     <app-profile-card *ngIf="showProfileCard"></app-profile-card>
-    <!-- <app-popup *ngIf="PopupVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-popup> -->
 </header>
