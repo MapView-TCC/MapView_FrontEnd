@@ -8,7 +8,13 @@
   /* Ativa o Flexbox */
   align-items: center;
   /* Centraliza verticalmente */
+
   
+  &:hover{
+    background-color: var(--background-selected);
+    border-radius: 10px;
+  }
+
   .border-color {
     position: absolute;
     left: 0;
@@ -36,6 +42,7 @@
 
   .content-card {
     padding: 0 15px;
+
     h3 {
       margin: 0;
       padding: 0;
@@ -48,6 +55,7 @@
     span {
       margin: 0;
       padding: 0;
+      padding-right: 10px;
       font-size: 14px;
       color: var(--pale-brown);
     }

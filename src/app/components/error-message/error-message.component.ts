@@ -11,13 +11,13 @@ import { GeneralService } from '../../services/general/general.service';
   styleUrl: './error-message.component.scss'
 })
 export class ErrorMessageComponent {
- 
-  
+
+
   @Input() formGroup!: FormGroup; // Recebe o FormGroup do componente pai
-  @Input() inputSelect!: string ; // Nome do campo (FormControl)
+  @Input() inputSelect!: string; // Nome do campo (FormControl)
   @Input() errorType!: string; // Tipo de erro a ser verificado (ex: 'required')
   @Input() errorMessage!: string; // Mensagem de erro a ser exibida
 
-  
+
 
 }

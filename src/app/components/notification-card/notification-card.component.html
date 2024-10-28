@@ -1,11 +1,11 @@
 <div class="card-notification">
-    <span [ngClass]="'border-color-' + warning"></span>
-    <div class="content-card">
-      <h3>{{formatTitle(warning, equipmentName, rfid, action, environmentName)}}</h3>
-      <span class="subtitle">{{formatSubtitle(warning, action, environmentName)}}</span>
-      <span class="dateTime">
-        {{ getDisplayDate(dateTime) }}
-      </span>
-    </div>
+  <span [ngClass]="'border-color-' + warning"></span>
+  <div class="content-card">
+    <!-- Passagem dos dados via propse -->
+    <h3>{{formatTitle(warning, equipmentName, rfid, action, environmentName)}}</h3>
+    <span class="subtitle">{{formatSubtitle(warning, action, environmentName)}}</span>
+    <span class="dateTime">
+      {{ getDisplayDate(dateTime) }}
+    </span>
   </div>
-  
+</div>

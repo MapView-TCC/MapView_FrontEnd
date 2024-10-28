@@ -12,13 +12,13 @@ import { TranslationService } from '../../services/translate/translation.service
 @Component({
   selector: 'app-traduzir',
   standalone: true,
-  imports: [CommonModule,TranslateModule,MatCommonModule,MatButtonModule,MatMenuModule,MatIconModule,],
+  imports: [CommonModule, TranslateModule, MatCommonModule, MatButtonModule, MatMenuModule, MatIconModule,],
   templateUrl: './traduzir.component.html',
   styleUrl: './traduzir.component.scss'
 })
 export class TraduzirComponent {
 
-  constructor(private  translationService: TranslationService) {}
+  constructor(private translationService: TranslationService) { }
 
   changeLanguage(language: string) {
     this.translationService.changeLanguage(language);

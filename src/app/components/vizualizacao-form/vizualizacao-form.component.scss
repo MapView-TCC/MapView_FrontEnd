@@ -9,10 +9,12 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
-  overflow-y: auto; /* Adiciona um scroll vertical automaticamente */
-  overflow-x: hidden; /* Esconde o scroll horizontal, se necessário */
+  overflow-y: auto;
+  /* Adiciona um scroll vertical automaticamente */
+  overflow-x: hidden;
+  /* Esconde o scroll horizontal, se necessário */
 
-  
+
 }
 
 
@@ -23,9 +25,9 @@
   box-shadow: 5px 5px 4px rgba(19, 19, 19, 0.2);
   border-radius: 15px;
   background-color: #F2F4F5;
-  
+
   margin-top: 20px;
-  
+
   .fechar {
     width: 100%;
     padding: 15px;
@@ -102,7 +104,7 @@
           font-size: 23px;
         }
 
-        
+
       }
 
       .title-forms {
@@ -150,9 +152,9 @@
               color: var(--muted-brown);
             }
 
-            &:disabled{
+            &:disabled {
               background-color: var(--white);
-              cursor:not-allowed;
+              cursor: not-allowed;
             }
 
           }
@@ -175,7 +177,7 @@
       }
     }
 
-    .addResponsavel{
+    .addResponsavel {
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -183,25 +185,28 @@
       position: absolute;
       top: 15px;
       right: 25px;
-      
-      .btn-addResponsavel{
+
+      .btn-addResponsavel {
         color: var(--black);
         border: none;
         padding: 10px 20px;
         cursor: pointer;
         border-radius: 5px;
         display: flex;
-        justify-content: flex-end; /* Alinha o botão à direita */
+        justify-content: flex-end;
+        /* Alinha o botão à direita */
         border: none;
         background-color: transparent;
-  
-        position: relative; /* Necessário para o pseudo-elemento */
-  
+
+        position: relative;
+        /* Necessário para o pseudo-elemento */
+
         &::after {
-          content: ''; /* Inicialmente vazio */
+          content: '';
+          /* Inicialmente vazio */
           visibility: hidden; // Inicialmente escondido
-          background-color: #1E1E1E; 
-          color:var(--white); 
+          background-color: #1E1E1E;
+          color: var(--white);
           text-align: center;
           border-radius: 5px;
           padding: 5px;
@@ -212,20 +217,20 @@
           z-index: 1;
           transition: visibility 0s, opacity 0.2s linear; // Transição suave
           opacity: 0; // Oculto inicialmente
-      }
-  
-      &:hover::after {
+        }
+
+        &:hover::after {
           content: 'Adicionar Responsável'; // Texto da mensagem
           visibility: visible; // Mostra a mensagem ao passar o mouse sobre o botão
           opacity: 1; // Torna visível
+        }
       }
-      }
-  
+
     }
-  
-    .removerResponsavel{
+
+    .removerResponsavel {
       @extend .addResponsavel;
-      
+
       .btn-removeResponsavel {
         background-color: var(--blue);
         color: var(--black);
@@ -234,38 +239,40 @@
         cursor: pointer;
         border-radius: 5px;
         display: flex;
-        justify-content: flex-end; /* Alinha o botão à direita */
+        justify-content: flex-end;
+        /* Alinha o botão à direita */
         border: none;
         background-color: transparent;
-  
-        position: relative; /* Necessário para o pseudo-elemento */
-  
+
+        position: relative;
+        /* Necessário para o pseudo-elemento */
+
         &::after {
-          content: ''; 
-          visibility: hidden; 
-          background-color: #1E1E1E; 
-          color:var(--white);
+          content: '';
+          visibility: hidden;
+          background-color: #1E1E1E;
+          color: var(--white);
           text-align: center;
           border-radius: 5px;
           padding: 5px;
           position: absolute;
-          bottom: -40px; 
-          left: 50%; 
+          bottom: -40px;
+          left: 50%;
           transform: translateX(-50%);
           z-index: 1;
-          transition: visibility 0s, opacity 0.2s linear; 
-          opacity: 0; 
+          transition: visibility 0s, opacity 0.2s linear;
+          opacity: 0;
+        }
+
+        &:hover::after {
+          content: 'Remover Responsável';
+          visibility: visible;
+          opacity: 1;
+        }
       }
-  
-      &:hover::after {
-          content: 'Remover Responsável'; 
-          visibility: visible; 
-          opacity: 1; 
-      }
-      }
-  
+
     }
-  
+
 
   }
 }

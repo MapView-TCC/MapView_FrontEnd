@@ -94,10 +94,10 @@ export class VizualizacaoFormComponent implements OnInit {
     private buildingDrpService: BuildingDrpService,
     private enviromentDrpService: EnviromentDrpService,
     private areaDrpService: AreaDrpService,
-  ) {}
+  ) { }
 
   vizualizarCadastro = this.fb.group({
-    id_equipment: [{ value: '', disabled: true}, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+    id_equipment: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
     name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
     rfid: [{ value: 0, disabled: false }, [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
     type: [{ value: '', disabled: true }, [Validators.required]],
@@ -158,7 +158,7 @@ export class VizualizacaoFormComponent implements OnInit {
   get returnFormArray(): FormArray {
     return this.vizualizarCadastro.get('responsaveis') as FormArray
   }
-  
+
   get returnFormGroups(): FormGroup[] {
     return this.returnFormArray.controls as FormGroup[];
   }
@@ -197,7 +197,7 @@ export class VizualizacaoFormComponent implements OnInit {
             enumCourse: [{ value: responsavel.classes.enumCourse, disabled: true }, [Validators.required]],
             classes: [{ value: responsavel.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
           }));
-          
+
         });
 
       },
@@ -234,13 +234,13 @@ export class VizualizacaoFormComponent implements OnInit {
 
   //permite add um responsável na lista 
   addResponsavel() {
-    if(this.returnFormArray.length <2){
+    if (this.returnFormArray.length < 2) {
       this.returnFormArray.push(
         this.fb.group({
           responsible: ['', [Validators.required, Validators.minLength(3)]],
           edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
           enumCourse: [{ value: '', disabled: false }, [Validators.required]],
-          classes:['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
+          classes: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
         })
       );
       console.log(this.returnFormGroups);

@@ -10,8 +10,8 @@ describe('ProfileCardComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProfileCardComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(ProfileCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class FormEquipamentComponent {
 
-  constructor(public generalService:GeneralService){}
+  constructor(public generalService: GeneralService) { }
 
   @Input() cadastroEquipamento!: FormGroup; //Recebe o form group da página incial
 
@@ -23,21 +23,21 @@ export class FormEquipamentComponent {
     const ctrl = absCtrl as FormControl;
     return ctrl;
   }
-  
+
 
   //Definindo conteúdo do Dropdown
   typeEquipamentOptions = [
-    {value: 'Desktop', label: 'Desktop'},
-    {value: 'Notebook', label: 'Notebook'},
-    {value: 'Outro', label: 'Outro'}
+    { value: 'Desktop', label: 'Desktop' },
+    { value: 'Notebook', label: 'Notebook' },
+    { value: 'Outro', label: 'Outro' }
   ]
 
   //Definindo conteúdo do Dropdown
   enumModelEquipment = [
-    {value: 'DESKTOP_TINK', label: 'Desktop Tink'},
-    {value: 'NOTEBOOK_STANDARD', label: 'Notebook Standard'},
-    {value: 'DESKTOP_EXTERNO', label: 'Desktop Externo'},
-    {value: 'NOTEBOOK_ENHANCED', label: 'Notebook Enhanced'}
+    { value: 'DESKTOP_TINK', label: 'Desktop Tink' },
+    { value: 'NOTEBOOK_STANDARD', label: 'Notebook Standard' },
+    { value: 'DESKTOP_EXTERNO', label: 'Desktop Externo' },
+    { value: 'NOTEBOOK_ENHANCED', label: 'Notebook Enhanced' }
   ]
-    
+
 }

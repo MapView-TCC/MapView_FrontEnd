@@ -24,11 +24,11 @@ import { LocationRegister } from '../../models/Location';
 export class LocationPopupComponent implements OnInit {
   cadastroNovoLocalizacao: FormGroup;
   buildingOptions: { value: number, label: string }[] = [];
-  areaOptions: { value: number, label: string }[] = []; 
+  areaOptions: { value: number, label: string }[] = [];
 
   @Output() refreshData = new EventEmitter<void>();
 
-  
+
   constructor(
     private fb: FormBuilder,
     private buildingDrp: BuildingDrpService,
@@ -40,32 +40,32 @@ export class LocationPopupComponent implements OnInit {
 
     this.cadastroNovoLocalizacao = this.fb.group({
       id_building: [{ value: '', disabled: false }, Validators.required],
-      environment_name: new FormControl({value: '', disabled: false }, Validators.required),
-      id_area: new FormControl( '', Validators.required), 
+      environment_name: new FormControl({ value: '', disabled: false }, Validators.required),
+      id_area: new FormControl('', Validators.required),
       raspberry_name: ['', [Validators.required, Validators.minLength(2)]],
-  });
+    });
   }
 
- 
-    //Converte o tipo para passar apr o Dropdown
-    convertToFormControl(absCtrl: AbstractControl | null): FormControl {
-      const ctrl = absCtrl as FormControl;
-      return ctrl;
-    }
-   
-   
-    // Função que pega os valores da tabela Bulding
-    loadBuildings() {
-      this.buildingDrp.getBulding().subscribe((buildings: Building[]) => {
-         buildings.map(data => (this.buildingOptions.push({
-          value: data.id_building,
-          label: data.building_code
-        })))
-      })
-    }
+
+  //Converte o tipo para passar apr o Dropdown
+  convertToFormControl(absCtrl: AbstractControl | null): FormControl {
+    const ctrl = absCtrl as FormControl;
+    return ctrl;
+  }
 
 
-    // Função que pega os valores da tabela Area
+  // Função que pega os valores da tabela Bulding
+  loadBuildings() {
+    this.buildingDrp.getBulding().subscribe((buildings: Building[]) => {
+      buildings.map(data => (this.buildingOptions.push({
+        value: data.id_building,
+        label: data.building_code
+      })))
+    })
+  }
+
+
+  // Função que pega os valores da tabela Area
   loadAreas() {
     this.areaDrp.getArea().subscribe((areas: Area[]) => {
       areas.map(data => (this.areaOptions.push({
@@ -85,47 +85,47 @@ export class LocationPopupComponent implements OnInit {
 
   onSubmit() {
     if (this.cadastroNovoLocalizacao.valid) {
-      
-        const enviromentData = new LocationRegister();
 
-        enviromentData.id_building = Number(this.cadastroNovoLocalizacao.get('id_building')?.value || 0) ;
-        enviromentData.id_area =  Number(this.cadastroNovoLocalizacao.get('id_area')?.value || 0);
-        enviromentData.raspberry_name = this.cadastroNovoLocalizacao.get('raspberry_name')?.value || '';
-        enviromentData.environment_name = this.cadastroNovoLocalizacao.get('environment_name')?.value || '';
+      const enviromentData = new LocationRegister();
 
-   
-        console.log('Dados formatados para o envio:', JSON.stringify(enviromentData));
-// Verifique os dados aqui
+      enviromentData.id_building = Number(this.cadastroNovoLocalizacao.get('id_building')?.value || 0);
+      enviromentData.id_area = Number(this.cadastroNovoLocalizacao.get('id_area')?.value || 0);
+      enviromentData.raspberry_name = this.cadastroNovoLocalizacao.get('raspberry_name')?.value || '';
+      enviromentData.environment_name = this.cadastroNovoLocalizacao.get('environment_name')?.value || '';
 
-        this.environmentService.postEnvironment(1, enviromentData).subscribe(
-          {
-            next:(response) =>{
-              console.log('Cadastro enviado com sucesso!:', response);
-              console.log(enviromentData);
-              this.refreshData.emit();
-              setTimeout(()=>{
-                this.generalService.showLocationlog = false
-              }, 2000);
-              
-            },
-            error:(error) => {
-              // Este bloco captura erros de conexão ou de resposta HTTP
-              console.error('Erro ao realizar o cadastro', error);
-              this.showErrorAlert('Não foi possível realizar o cadastro.');
-              // this.showErrorAlert('Não foi possível realizar o cadastro.');
-              
-            },
-            complete: () => {
-              this.showSuccessAlert('Cadastro realizado com sucesso.');
-              console.log('Envio de registro concluído.');
-            }
+
+      console.log('Dados formatados para o envio:', JSON.stringify(enviromentData));
+      // Verifique os dados aqui
+
+      this.environmentService.postEnvironment(1, enviromentData).subscribe(
+        {
+          next: (response) => {
+            console.log('Cadastro enviado com sucesso!:', response);
+            console.log(enviromentData);
+            this.refreshData.emit();
+            setTimeout(() => {
+              this.generalService.showLocationlog = false
+            }, 2000);
+
+          },
+          error: (error) => {
+            // Este bloco captura erros de conexão ou de resposta HTTP
+            console.error('Erro ao realizar o cadastro', error);
+            this.showErrorAlert('Não foi possível realizar o cadastro.');
+            // this.showErrorAlert('Não foi possível realizar o cadastro.');
+
+          },
+          complete: () => {
+            this.showSuccessAlert('Cadastro realizado com sucesso.');
+            console.log('Envio de registro concluído.');
           }
-            
-        );
+        }
+
+      );
     } else {
-        console.log('Formulário inválido');
+      console.log('Formulário inválido');
     }
-}
+  }
   //Método para a mensagem de erro de cadastro
   showErrorAlert(message: string) {
     this.snackBar.open(message, 'Fechar', {
@@ -137,7 +137,7 @@ export class LocationPopupComponent implements OnInit {
   showSuccessAlert(message: string) {
     this.snackBar.open(message, 'Fechar', {
       duration: 3000,
-      panelClass: ['alert-success'] 
+      panelClass: ['alert-success']
     });
   }
 

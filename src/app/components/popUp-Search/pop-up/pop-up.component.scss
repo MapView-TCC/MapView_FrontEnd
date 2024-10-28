@@ -14,24 +14,35 @@
 }
 
 .pop-up-header {
-    display: flex;                            /* Usando flexbox para o layout */
-    justify-content: space-between;           /* Itens nos extremos opostos */
-    align-items: center;                      /* Centraliza verticalmente */
-    padding: 10px;                           /* Adiciona espaço interno */
-    width: 100%;                              /* Garantir que ocupe toda a largura disponível */
+    display: flex;
+    /* Usando flexbox para o layout */
+    justify-content: space-between;
+    /* Itens nos extremos opostos */
+    align-items: center;
+    /* Centraliza verticalmente */
+    padding: 10px;
+    /* Adiciona espaço interno */
+    width: 100%;
+    /* Garantir que ocupe toda a largura disponível */
 }
 
 .pop-up-header h2 {
-    margin: 0;                               /* Remove a margem padrão do <h2> */
-    font-size: 1.5rem;  
-    color:#011D94 ;                     /* Ajuste o tamanho da fonte conforme necessário */
+    margin: 0;
+    /* Remove a margem padrão do <h2> */
+    font-size: 1.5rem;
+    color: #011D94;
+    /* Ajuste o tamanho da fonte conforme necessário */
 }
 
 .fechar {
-    cursor: pointer;                          /* Indica que é clicável */
-    font-size: 24px;                         /* Ajusta o tamanho do ícone */
-    color: #757171;                            /* Cor do ícone (ajuste conforme necessário) */
-    margin-left: 20px;                       /* Espaçamento entre o título e o ícone */
+    cursor: pointer;
+    /* Indica que é clicável */
+    font-size: 24px;
+    /* Ajusta o tamanho do ícone */
+    color: #757171;
+    /* Cor do ícone (ajuste conforme necessário) */
+    margin-left: 20px;
+    /* Espaçamento entre o título e o ícone */
 }
 
 
@@ -47,10 +58,11 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Garante que o pop-up apareça acima de outros elementos */
+    z-index: 1000;
+    /* Garante que o pop-up apareça acima de outros elementos */
 }
 
-.pop-up ul{
+.pop-up ul {
     list-style: none;
 }
 
@@ -58,11 +70,14 @@
 .equipment-container {
     display: flex;
     align-items: center;
-    margin-bottom: 15px; /* Espaçamento entre os equipamentos */
+    margin-bottom: 15px;
+    /* Espaçamento entre os equipamentos */
 }
 
 .equipment-image {
-    width: 100px; /* Ajuste conforme necessário */
+    width: 100px;
+    /* Ajuste conforme necessário */
     height: auto;
-    margin-right: 15px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 15px;
+    /* Espaçamento entre a imagem e o texto */
 }

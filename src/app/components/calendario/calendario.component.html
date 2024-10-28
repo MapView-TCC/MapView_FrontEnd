@@ -1,7 +1,7 @@
- <div class="calendar">
+<div class="calendar">
   <header>
-    
     <h3>{{ currentMonth.format('MMMM YYYY') }}</h3>
+    <!-- Navegação pelos meses do calendario -->
     <nav class="buttons">
       <button class="btn-changeMonth" (click)="changeMonth(-1)">
         <mat-icon>keyboard_arrow_left</mat-icon>
@@ -18,12 +18,11 @@
         <th *ngFor="let day of ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']">{{ day }}</th>
       </tr>
     </thead>
+    <!-- Lógica dos dias e de seleção do dia atual -->
     <tbody>
       <tr *ngFor="let week of days | slice:0:7; let i = index">
-        <td *ngFor="let day of days.slice(i * 7, (i + 1) * 7)" 
-          [class.today]="isToday(day)"
-          [class.selected]="isSelected(day)"
-          (click)="selectDate(day)">{{ day.date() }}
+        <td *ngFor="let day of days.slice(i * 7, (i + 1) * 7)" [class.today]="isToday(day)"
+          [class.selected]="isSelected(day)" (click)="selectDate(day)">{{ day.date() }}
         </td>
       </tr>
     </tbody>

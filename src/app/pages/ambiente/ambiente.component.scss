@@ -8,7 +8,7 @@
     display: flex; /* Mantém o layout flexível */
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: auto;
     padding-top: 30px;
    
 
@@ -21,8 +21,41 @@
     justify-content: flex-start; /* Alinha os itens no topo */
     margin-right: 20px; /* Espaço entre a grid e o canvas */
     width: 400px;
-    height: 260px;
-    gap: 40px;
+    min-height: 220px;
+    max-height: 700px;
+    gap: 55px;
+    overflow: auto;
+
+    direction: rtl; //coloca a esquerda
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        /* Largura do scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* Cor de fundo do scrollbar */
+        border-radius: 3px;
+        /* Arredondar os cantos da track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #D9D9D9;
+        border-radius: 15px;
+        height: 20px;
+
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--muted-brown);
+        /* Cor do thumb ao passar o mouse */
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+        /* Oculta as setas de navegação */
+    }
     
 }
 
@@ -84,6 +117,7 @@
 
     }
 
+.lab,
 .lab_01,
 .lab_02,
 .lab_03 {
@@ -91,6 +125,7 @@
 
 }   
 
+.lab img,
 .lab_01 img,
 .lab_02 img,
 .lab_03 img {
@@ -99,6 +134,7 @@
     display: block; /* Remove espaços em branco abaixo da imagem */
 }
 
+.lab button,
 .lab_01 button,
 .lab_02 button,
 .lab_03 button{
@@ -114,7 +150,7 @@
     border-radius: 20px; /* Borda arredondada opcional */
 }
 
-.lab_01 button::after {
+.lab button::after, .lab_01 button::after {
     content: '';
     position: absolute;
     top: 50%; /* Centraliza verticalmente */
@@ -128,7 +164,8 @@
     transition: opacity 0.2s; /* Transição suave */
 }
 
-.lab_01 button:focus::after,
+.lab button:focus::after,
+.lab button:active::after, .lab_01 button:focus::after,
 .lab_01 button:active::after {
     opacity: 1; /* Mostra a bolinha quando o botão é focado ou ativo */
 }
@@ -183,6 +220,7 @@
 }
 
 @media (max-width: 480px) {
+    .lab button,
     .lab_01 button,
     .lab_02 button,
     .lab_03 button {

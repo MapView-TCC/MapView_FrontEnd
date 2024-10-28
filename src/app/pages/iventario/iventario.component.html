@@ -6,7 +6,7 @@
         <div class="filtro">
             <button (click)="onExport()">
                 <i class="fa-solid fa-download filter"></i> Exportar
-              </button>
+            </button>
             <button (click)="toggleFiltro()">
                 <i class="fa-solid fa-filter filter"></i>Filtros
             </button>
@@ -54,28 +54,20 @@
 
 <div class="pagination">
     <button class="icon-button" (click)="prevPage()" [disabled]="currentPage === 0">
-      <mat-icon>arrow_left</mat-icon>
+        <mat-icon>arrow_left</mat-icon>
     </button>
     <span *ngFor="let page of pageNumbers">
-      <button (click)="currentPage = page - 1; loadItems()" [class.active]="currentPage === page - 1">
-        {{ page }}
-      </button>
+        <button (click)="currentPage = page - 1; loadItems()" [class.active]="currentPage === page - 1">
+            {{ page }}
+        </button>
     </span>
     <button class="icon-button" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
-      <mat-icon>arrow_right</mat-icon>
+        <mat-icon>arrow_right</mat-icon>
     </button>
-  </div>
-  
-  
-  
-  
-<app-excluir-popup
-  *ngIf="generalService.showDialog"
-  [itemToDelete]="itemToDelete"
-  [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
+</div>
 
-
-  
-<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form> 
+<app-excluir-popup *ngIf="generalService.showDialog" [itemToDelete]="itemToDelete"
+    [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
+<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form>
 
 <app-footer></app-footer>

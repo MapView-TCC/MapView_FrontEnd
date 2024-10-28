@@ -20,7 +20,7 @@ import { capitalize } from 'vue';
   templateUrl: './cadastro-page.component.html',
   styleUrl: './cadastro-page.component.scss'
 })
-export class CadastroPageComponent implements OnInit{
+export class CadastroPageComponent implements OnInit {
 
   cadastroResponsavelArray: FormGroup;
 
@@ -29,13 +29,13 @@ export class CadastroPageComponent implements OnInit{
       items: this.fb.array([])
     });
   }
-  
+
   currentStep: number = 1; // Etapa inicial
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this.addCadastroResponsavel()
   }
-  
+
   //Form group equipamento
   cadastroEquipamento = this.fb.group({
     idEquipamento: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
@@ -49,7 +49,7 @@ export class CadastroPageComponent implements OnInit{
     adminRights: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
     observacao: new FormControl('')  // Aqui não precisa de validador
   });
-  
+
   //Form Group localização
   cadastroLocalizacao = this.fb.group({
     id_building: [{ value: '', disabled: false }, Validators.required],
@@ -57,27 +57,27 @@ export class CadastroPageComponent implements OnInit{
     area: new FormControl('', Validators.required),
     posto: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
   });
-  
+
   //Form Array de FormGroup de Responsável
   get returnFormArray(): FormArray {
     return this.cadastroResponsavelArray.get('items') as FormArray
   }
-  
+
   get returnFormGroups(): FormGroup[] {
     return this.returnFormArray.controls as FormGroup[];
   }
-  
+
   // Método para adicionar mais um responsável
   addCadastroResponsavel(): void {
-    
-    if(this.returnFormArray.length <2){
-      
+
+    if (this.returnFormArray.length < 2) {
+
       this.returnFormArray.push(
         this.fb.group({
           nome_responsavel: ['', [Validators.required, Validators.minLength(3)]],
           edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
           curso: [{ value: '', disabled: false }, [Validators.required]],
-          turma:['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
+          turma: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
         })
       );
       console.log(this.returnFormGroups);
@@ -86,13 +86,13 @@ export class CadastroPageComponent implements OnInit{
       console.log('Limite de responsáveis atingido. Apenas dois responsáveis podem ser adicionados.');
     }
   }
-  
+
   //Método para remover o respónsável da lista através do index
   removerResponsavel(index: number) {
     this.returnFormArray.removeAt(index);
   }
-  
-  
+
+
   //método para passar pro proxímo formulário
   goToNextStep() {
     if (this.currentStep == 1 && this.cadastroEquipamento.invalid) {
@@ -104,55 +104,55 @@ export class CadastroPageComponent implements OnInit{
     } else if (this.currentStep == 3 && this.cadastroResponsavelArray.invalid) {
       this.cadastroResponsavelArray.markAllAsTouched();
       return;
-      
+
     }
-    
+
     this.currentStep++;
     console.log("STEPS " + this.currentStep);
     if (this.currentStep >= 3) {
       console.log("Chegou na última etapa!")
     }
-  }   
-  
-  
+  }
+
+
   //Função que verifica se os formsGroups estão validos
   isCurrentStepValid(): boolean {
-    if(this.currentStep==1){
+    if (this.currentStep == 1) {
       return this.cadastroEquipamento.valid;
-    }else if (this.currentStep == 2){
-      if (this.cadastroLocalizacao.get('id_environment')?.value == "notEnviroment"){
+    } else if (this.currentStep == 2) {
+      if (this.cadastroLocalizacao.get('id_environment')?.value == "notEnviroment") {
         return this.cadastroLocalizacao.invalid;
       }
       return this.cadastroLocalizacao.valid;
-    }else if (this.currentStep == 3){
+    } else if (this.currentStep == 3) {
       return this.cadastroResponsavelArray.valid;
-    }else if (this.currentStep >= 4){
+    } else if (this.currentStep >= 4) {
       return this.cadastroEquipamento.valid && this.cadastroLocalizacao.valid && this.cadastroResponsavelArray.valid
     }
     return false;
   }
-  
-  
-  
+
+
+
   //métodode envio do formulário
   cadastroConcluido: boolean = false;
   submitForm() {
     console.log('Etapa válida:', this.isCurrentStepValid());
-    
+
     // Exibe no console o valor dos formulários preenchidos
     console.log("Etapa Atual:", this.currentStep);
     console.log("Dados do Formulário de Equipamento:", this.cadastroEquipamento.value);
     console.log("Dados do Formulário de Localização:", this.cadastroLocalizacao.value);
     console.log("Dados do Formulário de Responsáveis:", this.cadastroResponsavelArray.value);
-    
+
     //Verifica se a etapa atual é valida, caso não seja, o método é encerrado (com o return)
-    if(!this.isCurrentStepValid()){
+    if (!this.isCurrentStepValid()) {
       return; //impede o envio de dados inválidos.
     }
-    
+
     //Objeto do tipo Register com os dados dos formulários
     const registerData = new Register();
-    
+
     //Passando dados dos controls para o objeto
     registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value?.toUpperCase() || '';
     registerData.name_equipment = this.cadastroEquipamento.get('nomeEquipamento')?.value || '';
@@ -167,32 +167,32 @@ export class CadastroPageComponent implements OnInit{
     registerData.post = this.cadastroLocalizacao.get('posto')?.value || '';
     registerData.id_owner = this.cadastroEquipamento.get('idUsuario')?.value?.toUpperCase() || '';
     registerData.costCenter_name = this.cadastroEquipamento.get('centroCustos')?.value || '';
-    
+
     // Obtendo dados dos responsáveis
     registerData.dataResponsible = this.returnFormArray.controls.map(control => ({
       responsible_name: control.get('nome_responsavel')?.value || '',
-      edv: control.get('edv')?.value || '', 
+      edv: control.get('edv')?.value || '',
       enumCourse: control.get('curso')?.value || '',
       name_classes: control.get('turma')?.value || ''
     }));
-    
-        
+
+
     //Executando o POST
     this.registerService.postRegister(1, registerData).subscribe({
       next: (response) => {
         console.log('Registro enviado com sucesso:', response);
         this.cadastroConcluido = true;
-         // Atraso de 3 segundos (3000 ms) antes de recarregar a página
+        // Atraso de 3 segundos (3000 ms) antes de recarregar a página
         setTimeout(() => {
           window.location.reload();
         }, 2000); // 2000 milissegundos = 2 segundos
-          
-          this.goToNextStep();
+
+        this.goToNextStep();
       },
       error: (error) => {
         console.error('Erro ao enviar registro:', error);
-         // Exibe o alerta em caso de erro
-         this.showErrorAlert('Não foi possível realizar o cadastro.');
+        // Exibe o alerta em caso de erro
+        this.showErrorAlert('Não foi possível realizar o cadastro.');
       },
       complete: () => {
         console.log('Envio de registro concluído.');

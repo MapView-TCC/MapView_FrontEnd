@@ -1,4 +1,3 @@
-
 .container_inventario {
     width: 80%;
     margin: 0 auto;
@@ -10,29 +9,37 @@
 .botao-vizualizar {
     background: none;
     border: none;
-    font-size: 24px; /* Tamanho do ícone */
+    font-size: 24px;
+    /* Tamanho do ícone */
     cursor: pointer;
-    color: #000; /* Cor dos ícones */
+    color: #000;
+    /* Cor dos ícones */
 }
 
-.iconTrash, .iconEye{
-    margin-right: 15px; /* Espaçamento entre o ícone e o texto */
-    font-size: 12px; /* Ajuste o tamanho do ícone conforme necessário */
-    
+.iconTrash,
+.iconEye {
+    margin-right: 15px;
+    /* Espaçamento entre o ícone e o texto */
+    font-size: 12px;
+    /* Ajuste o tamanho do ícone conforme necessário */
+
 }
 
 
 .dots-button {
     background: none;
     border: none;
-    font-size: 25px; /* Tamanho do ícone */
+    font-size: 25px;
+    /* Tamanho do ícone */
     cursor: pointer;
-    color: #AFABAC; /* Cor dos ícones */
+    color: #AFABAC;
+    /* Cor dos ícones */
 }
 
 .dropdown {
     position: relative;
-    display: inline-block; /* Permite que os pontos apareçam na mesma linha */
+    display: inline-block;
+    /* Permite que os pontos apareçam na mesma linha */
 }
 
 .dropdown-content {
@@ -40,12 +47,12 @@
     position: absolute;
     right: 0;
     background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 18px;
     width: 141px;
     height: 72px;
-    text-align:left;
+    text-align: left;
     color: #696161;
 }
 
@@ -55,11 +62,12 @@
     cursor: pointer;
     padding: 8px 16px;
     width: 100%;
-    
+
 }
 
 .dropdown-content button:hover {
-    background-color: #ECE8F4; /* Efeito hover */
+    background-color: #ECE8F4;
+    /* Efeito hover */
     border-radius: 10px;
     height: 40px;
     color: #6338AF;
@@ -67,31 +75,34 @@
 
 .header_container {
     display: flex;
-    justify-content: space-between; /* Alinha os itens nas extremidades */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    /* Alinha os itens nas extremidades */
+    align-items: center;
+    /* Centraliza verticalmente */
 }
 
-h2{
+h2 {
     color: #011D94;
 }
 
 //div
-.filtro{
+.filtro {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
+
 }
 
 //icone
-.filter{
+.filter {
     color: #807C7C;
     margin-right: 8px;
     margin-right: 4px;
-    margin-left: 25px; /* Espaçamento entre os itens */
+    margin-left: 25px;
+    /* Espaçamento entre os itens */
 }
 
-.filtro button{
+.filtro button {
     border: none;
     background-color: white;
     cursor: pointer;
@@ -99,82 +110,87 @@ h2{
 
 table {
     width: 100%;
-    border-collapse: separate; /* Mantém as bordas separadas */
-    border-spacing: 0 15px; /* Adiciona espaçamento vertical entre as linhas */
-    overflow: visible; /* Garante que os cantos arredondados sejam visíveis */
+    border-collapse: separate;
+    /* Mantém as bordas separadas */
+    border-spacing: 0 15px;
+    /* Adiciona espaçamento vertical entre as linhas */
+    overflow: visible;
+    /* Garante que os cantos arredondados sejam visíveis */
     margin-top: -10px;
 }
+
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  
+
     button {
-      background-color: #F2F4F5;
-      color: #000000;
-      border: none;
-      border-radius: 10px;
-      margin: 0 5px;
-      padding: 12px; // Tamanho padrão para números
-      cursor: pointer;
-  
-      &:hover {
-        color: #6338AF;
-        background-color: #ECE8F4;
-      }
-  
-      &.active {
-        color: #6338AF;
-        background-color: #ECE8F4;
-      }
-  
-      &:disabled {
-        cursor: not-allowed;
-        background-color: #ECE8F4;
-      }
+        background-color: #F2F4F5;
+        color: #000000;
+        border: none;
+        border-radius: 10px;
+        margin: 0 5px;
+        padding: 12px; // Tamanho padrão para números
+        cursor: pointer;
+
+        &:hover {
+            color: #6338AF;
+            background-color: #ECE8F4;
+        }
+
+        &.active {
+            color: #6338AF;
+            background-color: #ECE8F4;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: #ECE8F4;
+        }
     }
-  
+
     .icon-button {
-      padding: 5px; 
-      display: flex;
-      align-items: center;
-      justify-content: center; 
-  
-      mat-icon {
-        font-size: 22px; 
-        color: #969090;
-      }
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        mat-icon {
+            font-size: 22px;
+            color: #969090;
+        }
     }
-  }
-  
-th, td {
+}
+
+th,
+td {
     padding: 11px;
     text-align: left;
-    background-color: #F2f4f5; 
-    border: none; 
-   
+    background-color: #F2f4f5;
+    border: none;
+
 }
 
 //titulos da tabela
-th{
+th {
     background-color: #F2f4f5;
     font-weight: bold;
     font-size: 15px;
     padding: 14px;
 }
 
-th:first-child{
+th:first-child {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
 
-th:last-child{
+th:last-child {
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
 }
 
 //dados da tabela 
-td{
+td {
     font-weight: 200;
 }
 
@@ -182,6 +198,7 @@ td:first-child {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
+
 td:last-child {
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;

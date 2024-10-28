@@ -15,30 +15,22 @@ import { VizualizacaoFormComponent } from '../vizualizacao-form/vizualizacao-for
 export class DropdowLocalComponent {
 
   //Para a tradução
-  constructor(public generalService: GeneralService) {}
+  constructor(public generalService: GeneralService) { }
 
   //Parametros do dropdown
   @Input() id: string = '';
-  @Input() options: {value: number | string; label: string}[] = [];
+  @Input() options: { value: number | string; label: string }[] = [];
   @Input() selectedValue!: string | null;
   @Input() table: string = '';
   @Input() control!: FormControl;
   @Input() disabled: boolean = false;
 
 
-  // @Output() selectedValueChange: EventEmitter<string> = new EventEmitter<string>(); 
-  
-  ngOnInit() {
+    ngOnInit() {
     console.log(this.control);
     console.log(this.control.value);
     this.selectedValue = this.control.value;
   }
 
-  // //Método para emitir a seleção do dropdown
-  // onSelectionChange() {
-  //   this.selectedValue = this.control.value;
-  //   this.selectedValueChange.emit(this.control.value); 
-  // }
 
-  
 }

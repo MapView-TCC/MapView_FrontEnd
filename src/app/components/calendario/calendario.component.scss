@@ -1,84 +1,81 @@
 .calendar {
-    width: 360px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
+  width: 360px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      
-      align-items: center;
-      padding: 30px 0px 0px 0px;
-      
-      h3{
-        margin:0;
-        padding: 0;
-  
-        font-size: 24px;
-        font-weight: 500; //corresponde a medium
-        color: #011D94;
-      }
-  
-      .buttons{      
-        .btn-changeMonth{
-          padding-left: 15px;
-          border: none;
-          background: none;
-          color: var(--muted-brown);
-          cursor: pointer;
-        }
-      }
-  
-    }
-    
-    table {
-      width: 100%;
-      border: none;
-  
-      padding: 0;
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    padding: 30px 0px 0px 0px;
+
+    h3 {
       margin: 0;
+      padding: 0;
 
-      padding: 25px  0;
-      
-      th{
-        color: var(--muted-brown);
-        font-size: 12px;
-        font-weight: 400;
-      }
+      font-size: 24px;
+      font-weight: 500; //corresponde a medium
+      color: #011D94;
+    }
 
-      td {
-        width: 48px;
-        height: 45px;
-        padding: 0;
-    
+    .buttons {
+      .btn-changeMonth {
+        padding-left: 15px;
         border: none;
-        border-radius: 10px;
-    
-        text-align: center;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--black);
+        background: none;
+        color: var(--muted-brown);
         cursor: pointer;
       }
+    }
 
-      td.selected {
-        background-color: var(--background-selected);
-        color: var(--purple);
-      }
+  }
 
-      td:hover {
-        background-color: var(--background-selected);
-        color: var(--purple);
-        cursor: pointer;
-      }
-      
-      td.today {
-        background-color: var(--background-selected);
-        color: var(--purple);
-        cursor: pointer;
-      }
+  table {
+    width: 100%;
+    border: none;
+
+    padding: 0;
+    margin: 0;
+
+    padding: 25px 0;
+
+    th {
+      color: var(--muted-brown);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    td {
+      width: 48px;
+      height: 45px;
+      padding: 0;
+
+      border: none;
+      border-radius: 10px;
+
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      cursor: pointer;
+    }
+
+    td.selected {
+      background-color: var(--background-selected);
+      color: var(--purple);
+    }
+
+    td:hover {
+      background-color: var(--background-selected);
+      color: var(--purple);
+      cursor: pointer;
+    }
+
+    td.today {
+      background-color: var(--background-selected);
+      color: var(--purple);
+      cursor: pointer;
     }
   }
-  
-  
- 
+}

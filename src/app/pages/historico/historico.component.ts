@@ -55,7 +55,7 @@ export class HistoricoComponent {
   stateForm: FormGroup;
   isFiltered: boolean = false;
 
-  idEquipment: string[] =[];
+  idEquipment: string[] = [];
 
   showFilterlog = false;
 

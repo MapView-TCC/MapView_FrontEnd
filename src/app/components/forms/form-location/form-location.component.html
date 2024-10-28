@@ -42,7 +42,8 @@
                         [generalService]="generalService">
                     </app-dropdow-dynamic>
                     <!-- Modal de cadastro de novo ambiente -->
-                    <app-location-popup *ngIf="generalService.showLocationlog" (refreshData)="loadEnvironments()"></app-location-popup>
+                    <app-location-popup *ngIf="generalService.showLocationlog"
+                        (refreshData)="loadEnvironments()"></app-location-popup>
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_environment'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>

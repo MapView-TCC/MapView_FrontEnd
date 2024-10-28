@@ -1,8 +1,10 @@
 .card {
   position: absolute;
   top: 180px;
-  right: 30px; /* Mover para o lado direito */
-  width: 220px; /* Largura do card */
+  right: 30px;
+  /* Mover para o lado direito */
+  width: 220px;
+  /* Largura do card */
   background-color: #F2F4F5;
   border-radius: 16px;
   padding: 15px;
@@ -12,7 +14,8 @@
   button {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Centraliza os itens */
+    justify-content: space-between;
+    /* Centraliza os itens */
     width: 100%;
     margin: 5px 0;
     background-color: #F2F4F5;
@@ -26,16 +29,20 @@
     }
 
     &:hover {
-      background-color: #ECE8F4 !important; /* Cor ao passar o mouse */
+      background-color: #ECE8F4 !important;
+      /* Cor ao passar o mouse */
     }
 
     &:focus {
-      outline: none; /* Remove a borda padrão do foco */
-      background-color: #ECE8F4 !important; /* Mantém a cor ao focar */
+      outline: none;
+      /* Remove a borda padrão do foco */
+      background-color: #ECE8F4 !important;
+      /* Mantém a cor ao focar */
     }
 
     &:active {
-      background-color: #ECE8F4 !important; /* Mantém a cor ao clicar */
+      background-color: #ECE8F4 !important;
+      /* Mantém a cor ao clicar */
     }
   }
 }
@@ -47,22 +54,27 @@
 
 .arrow-icon {
   margin-left: 10px;
-  transform: rotate(-90deg); /* Gira a seta para a direita */
+  transform: rotate(-90deg);
+  /* Gira a seta para a direita */
 }
 
 .mat-menu-item {
   &:hover {
-    background-color: #E1BEE7 !important; /* Cor roxa ao passar o mouse */
+    background-color: #E1BEE7 !important;
+    /* Cor roxa ao passar o mouse */
     border-radius: 16px;
   }
 
   &:focus {
-    outline: none; /* Remove a borda padrão do foco */
-    background-color: #E1BEE7 !important; /* Mantém a cor ao focar */
+    outline: none;
+    /* Remove a borda padrão do foco */
+    background-color: #E1BEE7 !important;
+    /* Mantém a cor ao focar */
   }
 
   &:active {
-    background-color: #E1BEE7 !important; /* Mantém a cor ao clicar */
+    background-color: #E1BEE7 !important;
+    /* Mantém a cor ao clicar */
   }
 
 
@@ -76,26 +88,33 @@
 }
 
 .dropdown {
-  position: relative; /* Para posicionar o dropdown */
+  position: relative;
+  /* Para posicionar o dropdown */
 }
 
 .dots-button {
-  background: none; /* Sem fundo */
-  border: none; /* Sem borda */
-  cursor: pointer; /* Cursor pointer */
-  font-size: 20px; /* Tamanho do botão */
+  background: none;
+  /* Sem fundo */
+  border: none;
+  /* Sem borda */
+  cursor: pointer;
+  /* Cursor pointer */
+  font-size: 20px;
+  /* Tamanho do botão */
 }
 
 .dropdown-content {
   display: block;
   position: absolute;
   right: 0;
-  background-color: #F2F4F5; /* Mudar para a cor do card */
+  background-color: #F2F4F5;
+  /* Mudar para a cor do card */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 18px;
   width: 141px;
-  height: auto; /* Ajuste para auto */
+  height: auto;
+  /* Ajuste para auto */
   text-align: left;
   color: #696161;
 
@@ -105,21 +124,27 @@
     cursor: pointer;
     padding: 8px 16px;
     width: 100%;
-    text-align: left; /* Alinhamento à esquerda */
-    color: inherit; /* Mantém a cor do texto */
+    text-align: left;
+    /* Alinhamento à esquerda */
+    color: inherit;
+    /* Mantém a cor do texto */
 
     &:hover {
-      background-color: #ECE8F4; /* Efeito hover */
+      background-color: #ECE8F4;
+      /* Efeito hover */
       border-radius: 10px;
     }
 
     &:focus {
-      outline: none; /* Remove a borda padrão do foco */
-      background-color: #ECE8F4 !important; /* Mantém a mesma cor no foco */
+      outline: none;
+      /* Remove a borda padrão do foco */
+      background-color: #ECE8F4 !important;
+      /* Mantém a mesma cor no foco */
     }
 
     &:active {
-      background-color: #ECE8F4 !important; /* Mantém a mesma cor ao clicar */
+      background-color: #ECE8F4 !important;
+      /* Mantém a mesma cor ao clicar */
     }
   }
 }

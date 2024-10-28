@@ -30,7 +30,7 @@ export class InicialComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  constructor(private translator: TranslationService){}
+  constructor(private translator: TranslationService) { }
 
   ngOnInit(): void {
     this.translator.getCurrentLanguage();

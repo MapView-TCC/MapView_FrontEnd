@@ -38,11 +38,11 @@ export class FormLocationComponent {
     return ctrl;
   }
 
-  
+
   // Função que pega os valores da tabela Bulding 
   loadBuildings() {
     this.buldingDrp.getBulding().subscribe((buildings: Building[]) => {
-       buildings.map(data => (this.buildingOptions.push({
+      buildings.map(data => (this.buildingOptions.push({
         value: data.id_building,
         label: data.building_code
       })))
@@ -74,6 +74,6 @@ export class FormLocationComponent {
     this.loadEnvironments()
     this.loadAreas()
     this.loadBuildings()
-    
+
   }
 }

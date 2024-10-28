@@ -10,18 +10,18 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './warning-btn-filters.component.scss'
 })
 export class WarningBtnFiltersComponent {
-  
+
   @Output() warningSelected = new EventEmitter<string>();
 
-  selectedRedWarning(){
+  selectedRedWarning() {
     this.warningSelected.emit('RED');
   }
 
-  selectedYellowWarning(){
+  selectedYellowWarning() {
     this.warningSelected.emit('YELLOW');
   }
 
-  selectedGreenWarning(){
+  selectedGreenWarning() {
     this.warningSelected.emit('GREEN');
   }
 

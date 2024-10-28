@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-form-responsible',
   standalone: true,
-  imports: [ErrorMessageComponent, CommonModule, ReactiveFormsModule, DropdowLocalComponent, TranslateModule], 
+  imports: [ErrorMessageComponent, CommonModule, ReactiveFormsModule, DropdowLocalComponent, TranslateModule],
   templateUrl: './form-responsible.component.html',
   styleUrl: './form-responsible.component.scss'
 })
@@ -22,7 +22,7 @@ export class FormResponsibleComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.cadastroResponsavel)
-    
+
   }
 
   showForm: boolean = false;
@@ -35,9 +35,9 @@ export class FormResponsibleComponent implements OnInit {
 
   //Definindo os valores do dropdown
   course = [
-    {value: 'ADMINISTRACAO', label: 'Administração'},
-    {value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions'},
-    {value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital'},
-    {value: 'MECATRONICA', label: 'Mecatrônica'}
+    { value: 'ADMINISTRACAO', label: 'Administração' },
+    { value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions' },
+    { value: 'MANUFATURA_DIGITAL', label: 'Manufatura Digital' },
+    { value: 'MECATRONICA', label: 'Mecatrônica' }
   ]
 }

@@ -44,22 +44,26 @@
   align-items: center;
 }
 
-.language-icon, .accessibility-icon, .sair-icon {
+.language-icon,
+.accessibility-icon,
+.sair-icon {
   margin-right: 8px;
 }
 
 .arrow-icon {
   margin-right: 8px;
-  transform: rotate(-90deg); /* Faz a seta apontar para a direita */
+  transform: rotate(-90deg);
+  /* Faz a seta apontar para a direita */
 }
 
 
- .mat-mdc-menu-item:hover{
- background-color: #ECE8F4 !important;/* Fundo roxo */
-   color: #000; 
-   border-radius: 16px;
+.mat-mdc-menu-item:hover {
+  background-color: #ECE8F4 !important;
+  /* Fundo roxo */
+  color: #000;
+  border-radius: 16px;
 
- }
+}
 
 
 /* Estilo para hover roxo dentro do mat-menu */
