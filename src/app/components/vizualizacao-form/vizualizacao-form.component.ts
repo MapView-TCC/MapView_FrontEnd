@@ -238,7 +238,7 @@ export class VizualizacaoFormComponent implements OnInit {
     updateData.admin_rights = this.vizualizarCadastro.get('admin_rights')?.value?.toUpperCase() || '';
     updateData.observation = this.vizualizarCadastro.get('observation')?.value?.toLowerCase() || '';
     updateData.id_environment = Number(this.vizualizarCadastro.get('id_environment')?.value || 0);
-    updateData.post = this.vizualizarCadastro.get('post')?.value || '';
+    updateData.post = this.vizualizarCadastro.get('id_post')?.value || '';
     updateData.id_owner = this.vizualizarCadastro.get('id_owner')?.value?.toUpperCase() || '';
     updateData.costCenter_name = this.vizualizarCadastro.get('constcenter')?.value || '';
 

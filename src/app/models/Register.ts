@@ -32,3 +32,4 @@ export class RegisterUpdate{
     costCenter_name: string = '';
     dataResponsible: DataResponsible[] = [];
 }
+
