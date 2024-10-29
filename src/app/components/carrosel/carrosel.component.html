@@ -1,71 +1,24 @@
-   <section class="product" *ngIf="equipamentos.length > 0">
-    <div class="container-fluid">
-       <mat-icon class="fechar" (click)="generalService.showCarroselog=false" >close</mat-icon>
-      <div class="slider-wrapper">
-        <div class="slider-main">
-          <div class="item" *ngFor="let equipment of equipamentos">
-            <div class="text">
-              <h2>{{ equipment.name_equipment }}</h2>
-              <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="Image of {{ equipment.name_equipment }}">
-              <p><strong>ID Notebook:</strong> <span>{{ equipment.id_equipment }}</span></p>
-              <p><strong>Localização de Origem:</strong> <span>{{ equipment.wrong_location}}</span></p>
-              <p><strong>Localização Atual:</strong> <span>{{ equipment.location }}</span></p>
-              <p><strong>Responsáveis:</strong> <span>{{ equipment.responsibles}}</span></p>
-            </div>
+<section class="product" *ngIf="equipamentos.length > 0">
+  <div class="container-fluid">
+    <mat-icon class="fechar" (click)="generalService.showCarroselog=false">close</mat-icon>
+    <div class="slider-wrapper">
+      <div class="slider-main">
+        <!--Consumindo os dados da api -->
+        <div class="item" *ngFor="let equipment of equipamentos">
+          <div class="text">
+            <h2>{{ equipment.name_equipment }}</h2>
+            <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="Image of {{ equipment.name_equipment }}">
+            <p><strong>ID Notebook:</strong> <span>{{ equipment.id_equipment }}</span></p>
+            <p><strong>Localização de Origem:</strong> <span>{{ equipment.wrong_location}}</span></p>
+            <p><strong>Localização Atual:</strong> <span>{{ equipment.location }}</span></p>
+            <p><strong>Responsáveis:</strong> <span>{{ equipment.responsibles}}</span></p>
           </div>
-        </div>
-        <div class="button-area">
-          <mat-icon type="button" class="prev" appPrev>keyboard_arrow_left</mat-icon>
-          <mat-icon type="button" class="next" appNext>keyboard_arrow_right</mat-icon>
         </div>
       </div>
-    </div>
-  </section>     
-
-
-  <!-- <section class="product">
-    <div class="container-fluid">
-      <mat-icon class="fechar" (click)="generalService.showCarroselog=false" >close</mat-icon>
-      <div class="slider-wrapper">
-        <div class="slider-main">
-          <div class="item">
-            <div class="text">
-                <h2>Notebook 12</h2>
-                <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="">
-                <p> <strong>ID Notebook:</strong> <span>JVL-C-0009X</span></p>
-                <p> <strong>Localização de origem:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Localização Atual:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Responsável 1:</strong> <span>Sarah Santos</span></p>
-                <p> <strong>Responsável 2:</strong> <span>thayna</span></p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="text">
-                <h2>Notebook 12</h2>
-                <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="">
-                <p> <strong>ID Notebook:</strong> <span>JVL-C-0009X</span></p>
-                <p> <strong>Localização de origem:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Localização Atual:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Responsável 1:</strong> <span>Sarah Santos</span></p>
-                <p> <strong>Responsável 2:</strong> <span>bruna</span></p>
-              </div>
-          </div>
-          <div class="item">
-            <div class="text">
-                <h2>Notebook 12</h2>
-                <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="">
-                <p> <strong>ID Notebook:</strong> <span>JVL-C-0009X</span></p>
-                <p> <strong>Localização de origem:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Localização Atual:</strong> <span>Laboratório 01</span></p>
-                <p> <strong>Responsável 1:</strong> <span>Sarah Santos</span></p>
-                <p> <strong>Responsável 2:</strong> <span>maria</span></p>
-              </div>
-          </div>
-        </div>
-        <div class="button-area">
-          <mat-icon type="button" class="prev" appPrev>keyboard_arrow_left</mat-icon>
-          <mat-icon type="button" class="next" appNext>keyboard_arrow_right</mat-icon>
-        </div>
+      <div class="button-area">
+        <mat-icon type="button" class="prev" appPrev>keyboard_arrow_left</mat-icon>
+        <mat-icon type="button" class="next" appNext>keyboard_arrow_right</mat-icon>
       </div>
     </div>
-  </section>   -->
+  </div>
+</section>

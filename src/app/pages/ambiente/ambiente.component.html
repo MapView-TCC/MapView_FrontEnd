@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 
-
+<!-- Laboratorios a esquerda do mapa -->
 <div class="container">
     <div class="grid_salas">
         <div class="lab">
@@ -21,8 +21,10 @@
             <button>{{'LABORATÓRIO' | translate}} 03</button>
         </div>
     </div>
+    <!-- mapa 3D -->
     <div id="webglContainer">
         <canvas id="webgl"></canvas>
+        <!-- Botão de ver detalhes -->
         <div class="details" *ngIf="getWrongLocation.length > 0">
             <label for="name_lab">{{'LABORATÓRIO' | translate}} 01</label>
             <app-carrosel *ngIf="generalService && generalService.showCarroselog"></app-carrosel>

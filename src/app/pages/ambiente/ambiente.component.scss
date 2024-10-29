@@ -199,31 +199,46 @@
     cursor: pointer;
 }
 
+
 @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
     .grid_salas {
-        width: 90%; /* Aumenta a largura em telas menores */
-        margin-right: 0; /* Remove margem direita */
+        width: 90%;
+        margin-right: 0;
     }
 
     #webglContainer {
-        max-width: 100%; /* Ajusta o contêiner do canvas */
-    }
-
-    #webgl{
-        width: 40%;
+        width: 90%;
     }
 
     .details {
-        top: 20px; /* Ajuste a posição em telas menores */
-        right: 20px; /* Ajuste a posição em telas menores */
+        top: 10px;
+        right: 10px;
     }
 }
 
 @media (max-width: 480px) {
+    .grid_salas {
+        width: 100%;
+    }
+
+    #webgl {
+        width: 100%;
+    }
+
     .lab button,
     .lab_01 button,
     .lab_02 button,
     .lab_03 button {
-        padding: 8px 20px; /* Ajusta o padding do botão em telas menores */
+        padding: 6px 15px;
+    }
+
+    .details label,
+    .details button {
+        padding: 6px 15px;
     }
 }

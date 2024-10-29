@@ -22,12 +22,12 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./iventario.component.scss']
 })
 export class IventarioComponent implements OnInit {
-  showFilro = false;
+
   showDialog = false;
   showFormlog = false;
   showOptionsIndex: number | null = null;
   equipment: Equipment[] = [];
-  itemToDelete: Equipment | null = null; // Adicione esta linha
+  itemToDelete: Equipment | null = null; 
   filteredEquipment: Equipment[] = [];  // Lista filtrada
   showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
 
@@ -47,6 +47,7 @@ export class IventarioComponent implements OnInit {
     this.loadItems();
   }
 
+  //careegar os itens da pagina
   loadItems() {
     this.inventarioService.getEquipments().subscribe(data => {
       this.equipment = data;
@@ -60,14 +61,14 @@ export class IventarioComponent implements OnInit {
     });
   }
 
+//Atualizar os números de páginas de acordo com a quantidade de quipamentos 
   updatePageNumbers() {
     this.pageNumbers = [];
     const maxPagesToShow = 3; // Número máximo de páginas para exibir
     const startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
     const endPage = Math.min(this.totalPages, startPage + maxPagesToShow - 1);
-
-    console.log(`Atualizando números de página. Páginas de: ${startPage} até: ${endPage}`);
-
+  
+  
     for (let i = startPage; i <= endPage; i++) {
       if (i <= this.totalPages) {
         this.pageNumbers.push(i);
@@ -129,8 +130,8 @@ export class IventarioComponent implements OnInit {
 
 
   toggleFiltro() {
-    this.showFilro = !this.showFilro;
-    console.log('teste:', this.showFilro);
+    this.showFiltro = !this.showFiltro;
+    console.log('teste:', this.showFiltro);
   }
 
 
@@ -139,18 +140,18 @@ export class IventarioComponent implements OnInit {
     if (this.showOptionsIndex === index) {
       this.showOptionsIndex = null; // Fecha se o mesmo for clicado
     } else {
-      this.showOptionsIndex = index; // Abre o novo
+      this.showOptionsIndex = index; 
     }
   }
 
   closeOptions() {
-    this.showOptionsIndex = null; // Fecha o menu
+    this.showOptionsIndex = null;
   }
 
   viewItem(item: Equipment) {
     this.generalService.showFormlog = true;
     this.selectedEquipment = item.id_equipment;
-    this.closeOptions(); // Usa 'this' para chamar o método
+    this.closeOptions(); 
     console.log(this.generalService.showFormlog);
     console.log(this.selectedEquipment);
   }
@@ -204,7 +205,7 @@ export class IventarioComponent implements OnInit {
       console.warn('Nenhum equipamento selecionado para exclusão');
     }
   }
-
+  
   cancelDelete() {
     this.generalService.showDialog = false; // Fecha o popup sem excluir
     this.itemToDelete = null; // Limpa a referência

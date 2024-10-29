@@ -196,9 +196,9 @@
                 <label class="label-dados">{{ 'NOME DO RESPONSÁVEL' | translate }}</label>
 
                 <input class="input-dados" style="text-transform: capitalize;" type="text" placeholder="Nome completo"
-                  [readonly]="!isEditing" formControlName="responsible" />
-                <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'responsible'"
-                  [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
+                  [readonly]="!isEditing" formControlName="   " />
+                <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'responsible'" [errorType]="'required'"
+                  [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
                 <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'responsible'"
                   [errorType]="'minlength'"
                   [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES' | translate"></app-error-message>
@@ -240,7 +240,7 @@
       </div>
 
 
-
+<!--Chamada das funções para troca de botão e funcionalidades-->
       <div class="actions">
         <button type="button" class="botao-voltar" (click)="isEditing ? cancel() : generalService.showFormlog=false">
           {{ isEditing ? 'Cancelar' : 'Voltar' }}

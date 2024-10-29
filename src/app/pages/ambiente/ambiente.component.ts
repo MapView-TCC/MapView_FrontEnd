@@ -6,6 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
 import { InventarioService } from '../../services/equipaments/inventario.service';
+import { NgOptimizedImage } from '@angular/common';
 
 import GUI from 'lil-gui';
 import gsap from 'gsap';
@@ -188,11 +189,15 @@ export class AmbienteComponent implements OnInit{
       const controls = new OrbitControls(camera, canvas)
       controls.enableRotate = false
       controls.enableZoom = false
+      controls.enablePan = false
 
       const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         alpha: true,
-        antialias: true
+        antialias: true,
+        powerPreference:'low-power',
+        preserveDrawingBuffer: false, // Tente 'true' se precisar manter o conteúdo
+        failIfMajorPerformanceCaveat: true
       });
 
       renderer.setSize(sizes.width, sizes.height)
