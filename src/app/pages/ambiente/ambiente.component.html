@@ -6,25 +6,25 @@
     <div class="grid_salas">
         <div class="lab">
             <img src="./assets/images/PNG/Lab04_05_Final.png" alt="">
-            <button>Laboratório 04 e 05</button>
+            <button>{{'LABORATÓRIO' | translate}} 04 e 05</button>
         </div>
         <div class="lab">
             <img src="./assets/images/PNG/Lab01Final.png" alt="">
-            <button>Laboratorio 03</button>
+            <button>{{'LABORATÓRIO' | translate}} 01</button>
         </div>
         <div class="lab">
             <img src="./assets/images/PNG/Lab02Final.png" alt="">
-            <button>Laboratório 02</button>
+            <button>{{'LABORATÓRIO' | translate}} 02</button>
         </div>
         <div class="lab">
             <img src="./assets/images/PNG/Lab03Final.png" alt="">
-            <button>Laboratorio 03</button>
+            <button>{{'LABORATÓRIO' | translate}} 03</button>
         </div>
     </div>
     <div id="webglContainer">
         <canvas id="webgl"></canvas>
         <div class="details" *ngIf="getWrongLocation.length > 0">
-            <label for="name_lab">Laboratorio 01</label>
+            <label for="name_lab">{{'LABORATÓRIO' | translate}} 01</label>
             <app-carrosel *ngIf="generalService && generalService.showCarroselog"></app-carrosel>
             <button id="details-button" (click)="generalService.showCarroselog = true">Ver Detalhes</button>
         </div>

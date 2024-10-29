@@ -38,8 +38,8 @@ export class CadastroPageComponent implements OnInit {
 
   //Form group equipamento
   cadastroEquipamento = this.fb.group({
-    idEquipamento: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
-    nomeEquipamento: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    id_equipment: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
+    name_equipment: new FormControl('', [Validators.required, Validators.minLength(4)]),
     rfid: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
     tipoEquipamento: [{ value: '', disabled: false }, Validators.required],
     modelo: new FormControl('', Validators.required),
@@ -54,8 +54,8 @@ export class CadastroPageComponent implements OnInit {
   cadastroLocalizacao = this.fb.group({
     id_building: [{ value: '', disabled: false }, Validators.required],
     id_environment: [{ value: '', disabled: false }, Validators.required],
-    area: new FormControl('', Validators.required),
-    posto: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')])
+    area: [{ value: '', disabled: false }, Validators.required],
+    posto: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
   //Form Array de FormGroup de Responsável
@@ -154,8 +154,8 @@ export class CadastroPageComponent implements OnInit {
     const registerData = new Register();
 
     //Passando dados dos controls para o objeto
-    registerData.id_equipment = this.cadastroEquipamento.get('idEquipamento')?.value?.toUpperCase() || '';
-    registerData.name_equipment = this.cadastroEquipamento.get('nomeEquipamento')?.value || '';
+    registerData.id_equipment = this.cadastroEquipamento.get('id_equipment')?.value?.toUpperCase() || '';
+    registerData.name_equipment = this.cadastroEquipamento.get('name_equipment')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
     registerData.type = this.cadastroEquipamento.get('tipoEquipamento')?.value || '';
     registerData.model = this.cadastroEquipamento.get('modelo')?.value || '';

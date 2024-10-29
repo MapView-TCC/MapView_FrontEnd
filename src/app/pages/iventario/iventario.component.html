@@ -70,4 +70,6 @@
     [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
 <app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form>
 
+<app-filter-popup *ngIf="generalService.showFilterlog"></app-filter-popup>
+
 <app-footer></app-footer>

@@ -19,11 +19,12 @@ import { GeneralService } from '../../services/general/general.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { WrongLocation } from '../../models/WrongLocation';
 import { CarrosselService } from '../../services/carrossel/carrossel.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ambiente',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent],
+  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent,  TranslateModule],
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss',
 

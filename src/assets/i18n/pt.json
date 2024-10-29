@@ -63,7 +63,7 @@
   "NOME DO RESPONSÁVEL": "Nome do Responsável",
   "CURSO": "Curso",
   "TURMA": "Turma",
-  "O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01": "O campo deve conter pelo menos 2 números. EX: 01",
+  "O CAMPO DEVE CONTER PELO MENOS 2 CARACTERES. EX: 01": "O campo deve conter pelo menos 2 caracteres. EX: 01",
   "O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES": "O campo deve conter pelo menos 03 caracteres",
   "O CAMPO DEVE CONTER 08 NÚMEROS": "O campo deve conter 08 números",
   "O CAMPO DEVE CONTER APENAS 08 NÚMEROS": "O campo deve conter apenas 8 números",

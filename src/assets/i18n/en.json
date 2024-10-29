@@ -63,7 +63,7 @@
   "NOME DO RESPONSÁVEL": "Responsible Name",
   "CURSO": "Course",
   "TURMA": "Class",
-  "O CAMPO DEVE CONTER PELO MENOS 2 NÚMEROS. EX: 01": "The field must contain at least 2 numbers. EX: 01",
+  "O CAMPO DEVE CONTER PELO MENOS 2 CARACTERES. EX: 01": "The field must contain at least 2 characters. EX: 01",
   "O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES": "The field must contain at least 3 characters",
   "O CAMPO DEVE CONTER 08 NÚMEROS": "The field must contain 8 numbers",
   "O CAMPO DEVE CONTER APENAS 08 NÚMEROS": "The field must contain only 8 numbers",
