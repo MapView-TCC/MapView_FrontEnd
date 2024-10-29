@@ -166,7 +166,7 @@ export class HeaderComponent  {
   }
 
 
-
+//Função para selecionar a página e trocar de acordo com a rota e o hover  ficar em baixo
   private updateSelectedItem() {
     const currentRoute = this.router.url;
     if (currentRoute.includes('ambiente')) {

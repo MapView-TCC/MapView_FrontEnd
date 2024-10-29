@@ -133,6 +133,7 @@ export class CadastroPageComponent implements OnInit{
   }
   
   
+  
   //métodode envio do formulário
   cadastroConcluido: boolean = false;
   submitForm() {

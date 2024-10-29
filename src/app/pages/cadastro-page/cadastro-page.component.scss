@@ -114,7 +114,7 @@
         content: ''; /* Inicialmente vazio */
         visibility: hidden; // Inicialmente escondido
         background-color: #1E1E1E; 
-        color:var(--white)#fff; 
+        color:var(--white); 
         text-align: center;
         border-radius: 5px;
         padding: 5px;
@@ -137,13 +137,7 @@
   }
 
   .removerResponsavel{
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    height: 12px;
-    position: absolute;
-    top: 60px;
-    right: 0px;
+    @extend .addResponsavel;
     
     .btn-removeResponsavel {
       background-color: var(--blue);
@@ -163,7 +157,7 @@
         content: ''; 
         visibility: hidden; 
         background-color: #1E1E1E; 
-        color:var(--white)#fff;
+        color:var(--white);
         text-align: center;
         border-radius: 5px;
         padding: 5px;

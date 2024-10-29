@@ -5,8 +5,10 @@
     <mat-icon class="fechar" (click)="generalService.showDialog=false">close</mat-icon>
     <div class="cabechalho"> {{'EXCLUIR' | translate}}?</div>
 
+    <!--Passagem da api no meu componete para ele excluir o equipamneto da página -->
     <div class="content">{{'TEM CERTEZA QUE DESEJA EXCLUIR AS INFORMAÇÕES DO EQUIPAMENTO' | translate}} {{ itemToDelete?.id_equipment }}? </div>
 
+    <!--Chamadda das funções-->
     <div class="actions">
         <button class="cancel" (click)="generalService.showDialog=false">{{'CANCELAR' | translate}}?</button>
         <button class="excluir"(click)="confirmDelete()">{{'EXCLUIR' | translate}}</button>

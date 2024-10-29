@@ -97,15 +97,15 @@ header .container {
 }
 
 .search-content {
-    position: absolute; /* Faz a lista aparecer em relação ao contêiner pai */
-    top: 100%; /* Coloca a lista logo abaixo do input */
-    left: 0; /* Alinha à esquerda do input */
-    right: 0; /* Faz a lista ter a mesma largura que o input */
-    background: #F2F4F5; /* Fundo branco para a lista */
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    right: 0; 
+    background: #F2F4F5; 
     border-radius: 10px;
-    z-index: 1; /* Garante que a lista fique acima de outros elementos */
-    max-height: 200px; /* Limita a altura da lista */
-    overflow-y: auto; /* Adiciona scroll se necessário */
+    z-index: 1; 
+    max-height: 200px; 
+    overflow-y: auto; 
     margin-top: 15px;
     border: none;
     overflow-y: scroll;
@@ -113,8 +113,8 @@ header .container {
 }
 
 .search-content li {
-    padding: 10px 15px; /* Espaçamento para os itens da lista */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    padding: 10px 15px; 
+    cursor: pointer; 
 }
 
 .search-content li:hover {
@@ -287,18 +287,18 @@ span{
 }
 
 button {
-    margin-top: 20px; /* Espaçamento acima do botão */
-    padding: 10px 20px; /* Espaçamento interno do botão */
-    background-color: #007bff; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    border: none; /* Sem borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor em forma de mão ao passar o mouse */
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
   }
   
   button:disabled {
-    background-color: #ccc; /* Cor de fundo quando desabilitado */
-    cursor: not-allowed; /* Cursor padrão ao passar o mouse */
+    background-color: #ccc; 
+    cursor: not-allowed; 
   }
 
   .search-content li{
