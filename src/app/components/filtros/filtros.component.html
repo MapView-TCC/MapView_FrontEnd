@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="showFiltro">
     <!-- Botão para Filtro por Laboratório -->
     <button mat-button [matMenuTriggerFor]="laboratorioMenu" (click)="setActive('laboratorio')"
             [ngClass]="{'active': activeButton === 'laboratorio'}">

@@ -4,7 +4,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     gap: 2px;
 }
@@ -17,10 +17,11 @@ header .container {
 
 .logo-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: inherit;
     align-items: center;
     width: 100%;
     padding: 0 25px;
+    margin-bottom: 30px;
 }
 
 .logo-container .heading {
@@ -107,6 +108,8 @@ header .container {
     overflow-y: auto; 
     margin-top: 15px;
     border: none;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .search-content li {
@@ -156,8 +159,19 @@ strong{
     border: none;  
     overflow-y: scroll;    
     overflow-x: hidden;
+    scrollbar-color: #D9D9D9 ;
+    scrollbar-width: thin;
+    cursor: pointer;
 }
 
+.notification-container li:hover .notification-text,
+.notification-container li:hover span {
+    color: #6338AF;
+}
+.notification-container li:hover .notification {
+    background-color: #ECE8F4; /* Fundo ao passar o mouse */
+    // border-radius: 5px;
+}
 
 //estiliza a barra de scroll como um todo
 .notification-container::-webkit-scrollbar{
@@ -174,8 +188,6 @@ strong{
 }
 
 
-
-
 h3 {
     margin: 0 0 10px; /* Margem inferior */
 }
@@ -187,14 +199,11 @@ ul {
 }
 
 .notification {
-    width: 100%;
-    height: fit-content;
-    margin-left: 10px;
-    padding-left: 8px;
-    border-radius: 0 10px 10px 0; /* Arredonda apenas as extremidades direita */
+    border-left: 4px solid #6338AF; /* Ajuste a espessura conforme necessário */
+    padding-left: 10px; /* Espaço entre o texto e a linha */
+    margin-left: 12px;
+
 }
-
-
 
 
 .notification-header {
@@ -218,22 +227,6 @@ span{
 
 }
 
-
-
-/* Estilos para a linha vertical dependendo da classe */
-.notification-alert {
-    border-left: 4px solid red; /* Vermelho para não cadastrados */
-
-}
-
-.notification-external {
-    border-left: 4px solid yellow; /* Amarelo para movimentações externas */
-
-}
-
-.notification-internal {
-    border-left: 4px solid green; /* Verde para movimentações internas */
-}
 
 
 // fim da estilização da notificação
@@ -319,99 +312,60 @@ button {
     background-color: #F2F4F5;
     border: none;
     color: #837777;
+    
   }
 
  
 /* Media query para dispositivos com largura máxima de 768px */
 @media (max-width: 768px) {
     .logo-container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; /* Mantém os itens na mesma linha */
+        justify-content: space-between; /* Garante o espaço entre logo e pesquisa */
+        align-items: center;
         padding: 0 15px;
     }
 
-    .logo-container .heading {
-        margin-bottom: 10px;
-    }
-
     .search-container {
-        flex-direction: column;
-        align-items: stretch;
-        margin-top: 10px;
-    }
-
-    .search-container form {
-        width: 100%;
-        max-width: none;
-        position: relative;
+        align-items: center; /* Mantém os itens alinhados */
     }
 
     .search-container input[type="text"] {
-        width: 100%;
-        padding-right: 50px;
-    }
-
-    .search-container button {
-        right: 10px; /* Mantém o botão da lupa sempre visível */
-        font-size: 16px;
+        font-size: 16px; /* Tamanho maior para melhor legibilidade */
+        padding: 12px; /* Ajuste no preenchimento */
     }
 
     .navbar {
-        flex-direction: column;
-        padding: 10px;
-        margin: 0;
-    }
-
-    .navbar h3 {
-        margin: 10px 0;
+        justify-content: flex-end; /* Continua alinhado à direita */
+        padding: 10px; /* Ajusta o espaçamento em telas menores */
     }
 
     .notification-icon,
     .circle-user {
-        font-size: 24px;
-        margin-left: 10px;
+        font-size: 24px; /* Leve redução do tamanho */
+        margin-left: 10px; /* Menos espaço entre os ícones */
     }
 }
 
 /* Media query para dispositivos com largura máxima de 480px */
 @media (max-width: 480px) {
     .logo-container {
-        padding: 0 10px;
-    }
-
-    .logo-container .heading img {
-        height: 18px;
+        flex-direction: column; /* Itens empilhados verticalmente */
+        align-items: flex-start; /* Alinhamento à esquerda */
+        padding: 0 10px; /* Menos preenchimento */
     }
 
     .search-container {
-        flex-direction: column;
-        align-items: stretch;
+        padding: 5px; /* Reduz ainda mais o espaçamento */
     }
 
     .search-container input[type="text"] {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-
-    .search-container button {
-        font-size: 14px;
-        padding: 6px;
-        right: 5px; /* Ajuste fino do botão para telas menores */
-    }
-
-    .navbar {
-        flex-direction: column;
-        padding: 5px;
-    }
-
-    .navbar h3 {
-        margin: 5px 0;
-        font-size: 14px;
+        font-size: 14px; /* Redução adicional para telas muito pequenas */
+        padding: 10px; /* Ajuste no preenchimento */
     }
 
     .notification-icon,
     .circle-user {
-        font-size: 22px;
-        margin-left: 8px;
+        font-size: 22px; /* Redução adicional para telas muito pequenas */
+        margin-left: 8px; /* Menos espaço entre os ícones */
     }
 }

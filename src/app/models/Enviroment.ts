@@ -6,6 +6,6 @@ export class Enviroment{
   environment_name: string = "";
   raspberry: Raspberry = new Raspberry();
   operative: boolean = false;
-  posts: Post = new Post;
+  posts: Post = new Post();
 };
 

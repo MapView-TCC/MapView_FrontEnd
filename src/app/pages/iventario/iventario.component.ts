@@ -22,7 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./iventario.component.scss'] 
 })
 export class IventarioComponent implements OnInit {
-  showFilro = false;
+
   showDialog = false;
   showFormlog = false;
   showOptionsIndex: number | null = null;
@@ -130,8 +130,8 @@ export class IventarioComponent implements OnInit {
   
 
   toggleFiltro() {
-    this.showFilro = !this.showFilro;
-    console.log('teste:', this.showFilro);
+    this.showFiltro = !this.showFiltro;
+    console.log('teste:', this.showFiltro);
   }
   
   

@@ -14,7 +14,7 @@
     </div>
 
     <!-- Filtros aparecem aqui -->
-    <app-filtros (filtrosAplicados)="aplicarFiltro($event)" *ngIf="showFilro"></app-filtros>
+    <app-filtros (filtrosAplicados)="aplicarFiltro($event)"[showFiltro]="showFiltro"></app-filtros>
 
     <table>
         <thead>

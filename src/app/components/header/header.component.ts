@@ -12,6 +12,7 @@ import { PopUpComponent } from '../popUp-Search/pop-up/pop-up.component';
 import { NotificacaoService } from '../../services/notificacao/notificacao.service';
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { SearchService } from '../../services/pop-upSearch/search.service';
+import { NgOptimizedImage } from '@angular/common';
 
 import { tick } from '@angular/core/testing';
 import { GeneralService } from '../../services/general/general.service';
@@ -28,6 +29,7 @@ import { GeneralService } from '../../services/general/general.service';
     TranslateModule,
     FormsModule,
     PopUpComponent,
+    NgOptimizedImage
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
@@ -111,34 +113,34 @@ export class HeaderComponent  {
 
   //notificação
   toggleNotification() {
+    console.log("Todas as notificações", this.notifications)
     this.showNotification = !this.showNotification
   }
 
-  getNotificationClass(notification: TrackingHistory): string {
-    console.log("notificações", notification)
-    const isRegistered = (equipment: Equipment): boolean => {
-      // Verifica se o equipamento está cadastrado
-      return equipment.id_equipment !== ''; // Verifique se id_equipment é uma string vazia
-    };
+  // getNotificationClass(notification: TrackingHistory): string {
+  //   const isRegistered = (equipment: Equipment): boolean => {
+  //     // Verifica se o equipamento está cadastrado
+  //     return equipment.id_equipment !== ''; // Verifique se id_equipment é uma string vazia
+  //   };
 
-    if (!isRegistered(notification.equipment)) {
-      console.log("Notification warning:", notification.warning);
-      console.log("Equipment ID:", notification.equipment.id_equipment); // Adicione este log para verificar o ID
-      return 'notification-alert'; // Vermelho para não cadastrados
-    }
+  //   if (!isRegistered(notification.equipment)) {
+  //     console.log("Notification warning:", notification.warning);
+  //     console.log("Equipment ID:", notification.equipment.id_equipment); // Adicione este log para verificar o ID
+  //     return 'notification-alert'; // Vermelho para não cadastrados
+  //   }
 
-    switch (notification.warning) {
-      case 'YELLOW':
-        return 'notification-external'; // Amarelo para movimentações externas
-      case 'GREEN':
-        return 'notification-internal'; // Verde para movimentações internas
-      case 'RED':
-        return 'notification-alert'; // Vermeio para nao sei
-      default:
-        return 'notification-default'; // Cor padrão
-    }
+  //   switch (notification.warning) {
+  //     case 'YELLOW':
+  //       return 'notification-external'; // Amarelo para movimentações externas
+  //     case 'GREEN':
+  //       return 'notification-internal'; // Verde para movimentações internas
+  //     case 'RED':
+  //       return 'notification-alert'; // Vermeio para nao sei
+  //     default:
+  //       return 'notification-default'; // Cor padrão
+  //   }
 
-  }
+  // }
 
 
 

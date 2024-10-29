@@ -1,3 +1,4 @@
+import { Location } from "./Location";
 import { Enviroment } from "./Enviroment";
 import { Equipment, EquipmentTrack } from "./Equipment";
 
