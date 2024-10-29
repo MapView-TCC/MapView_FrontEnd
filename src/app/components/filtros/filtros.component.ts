@@ -25,6 +25,7 @@ export class FiltrosComponent {
       validity: ''
     }; // Armazena os filtros selecionados
     activeButton: string = '';  // Botão ativo
+    
 
   @Output() filtrosAplicados = new EventEmitter<any>(); // Evento para emitir os filtros aplicados
   @Input() showFiltro: boolean = false; // Recebe o valor do componente pai
@@ -42,7 +43,14 @@ export class FiltrosComponent {
     this.activeButton = buttonName;
   }
 
- 
+  resetFiltros() {
+    this.filtros = {
+      owner: '',
+      environment: '',
+      validity: ''
+    };
+    this.aplicarFiltro();
+  }
 
   toggleFiltro() {
     this.showFiltro = !this.showFiltro;
