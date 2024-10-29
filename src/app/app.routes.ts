@@ -14,5 +14,5 @@ export const routes: Routes = [
     {path:'ambiente',component:AmbienteComponent},
     {path:'cadastro', component: CadastroPageComponent},
     {path:'historico', component:HistoricoComponent},
-    {path:'iventario',component:IventarioComponent}
+    {path:'inventario',component:IventarioComponent}
 ];

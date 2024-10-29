@@ -115,36 +115,7 @@ export class HeaderComponent  {
   toggleNotification() {
     console.log("Todas as notificações", this.notifications)
     this.showNotification = !this.showNotification
-  }
-
-  // getNotificationClass(notification: TrackingHistory): string {
-  //   const isRegistered = (equipment: Equipment): boolean => {
-  //     // Verifica se o equipamento está cadastrado
-  //     return equipment.id_equipment !== ''; // Verifique se id_equipment é uma string vazia
-  //   };
-
-  //   if (!isRegistered(notification.equipment)) {
-  //     console.log("Notification warning:", notification.warning);
-  //     console.log("Equipment ID:", notification.equipment.id_equipment); // Adicione este log para verificar o ID
-  //     return 'notification-alert'; // Vermelho para não cadastrados
-  //   }
-
-  //   switch (notification.warning) {
-  //     case 'YELLOW':
-  //       return 'notification-external'; // Amarelo para movimentações externas
-  //     case 'GREEN':
-  //       return 'notification-internal'; // Verde para movimentações internas
-  //     case 'RED':
-  //       return 'notification-alert'; // Vermeio para nao sei
-  //     default:
-  //       return 'notification-default'; // Cor padrão
-  //   }
-
-  // }
-
-
-
-  
+  } 
 
 
    // Método para exibir o pop-up ao clicar em um equipamento
@@ -175,8 +146,8 @@ export class HeaderComponent  {
       this.selectedItem = 'Cadastro';
     } else if (currentRoute.includes('historico')) {
       this.selectedItem = 'Historico';
-    } else if (currentRoute.includes('iventario')) {
-      this.selectedItem = 'Iventario';
+    } else if (currentRoute.includes('inventario')) {
+      this.selectedItem = 'Inventario';
     }
   }
 
@@ -192,8 +163,8 @@ export class HeaderComponent  {
     this.router.navigate(['/historico']);
   }
 
-  onIventario() {
-    this.router.navigate(['/iventario']);
+  onInventario() {
+    this.router.navigate(['/inventario']);
   }
 }
 
