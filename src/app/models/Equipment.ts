@@ -15,7 +15,7 @@ export class Equipment{
     location: Location = new Location();
     owner: OwnerIventario = new OwnerIventario();
     showOption?: boolean = false;
-    post: Post = new Post();
+    // post: Post = new Post();
     responsible: Responsible = new Responsible();    responsibles: Responsible[] = [];
 }
 

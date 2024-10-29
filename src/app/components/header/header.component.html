@@ -3,7 +3,7 @@
 
     <div class="logo-container">
         <div class="heading">
-            <img src="assets/images/svg/Logo_Mapview.svg" alt="Logo" />
+            <img src="assets/images/svg/Logo_Mapview.svg"  alt="Logo">
         </div>
 
         <div class="search-container">
@@ -27,12 +27,12 @@
                 <div *ngIf="showNotification" class="notification-container">
                         <ul>
                             <li *ngFor="let notification of notifications">
-                                <div class="notification" [ngClass]="getNotificationClass(notification)">
+                                <div class="notification">
                                     <div class="notification-header">
                                         <p class="notification-text">{{ notification.equipment.name_equipment }} vence em {{
                                             notification.equipment.validity }}</p>
-                                        <span class="notificaton-location">Localização: {{ notification.environment.environment_name }},
-                                            {{notification.equipment.location.post.post}}</span>
+                                        <span class="notificaton-location">Localização: {{ notification.environment.environment_name}},
+                                            {{notification.environment.posts.post}}</span>
                                     </div>  
                                 </div>
                             </li>
