@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import { Equipment } from '../../models/Equipment';
@@ -30,7 +30,7 @@ export class IventarioComponent implements OnInit {
   itemToDelete: Equipment | null = null; 
   filteredEquipment: Equipment[] = [];  // Lista filtrada
   showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
-
+  @ViewChild(FiltrosComponent) filtrosComponent!: FiltrosComponent; // Referência para app-filtros
 
   pageNumbers: number[] = [];
   currentPage: number = 0; // Página atual
@@ -105,6 +105,7 @@ export class IventarioComponent implements OnInit {
   }
 
   aplicarFiltro(filtros: any) {
+    this.generalService.showFilterlog = false;
     this.filteredEquipment = this.equipment.filter(eq => {
       const yearFromValidity = new Date(eq.validity).getUTCFullYear();
       const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
@@ -112,6 +113,11 @@ export class IventarioComponent implements OnInit {
       const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
       return matchEnvironment && matchValidity && matchOwner;
     });
+
+    if(this.filteredEquipment.length === 0){
+      this.filtrosComponent.resetFiltros(); // Chama a função de reset do componente filho
+      this.generalService.showFilterlog = true;
+    }
 
     this.totalItems = this.filteredEquipment.length;
     this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
