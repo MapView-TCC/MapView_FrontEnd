@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { DropdowLocalComponent } from '../../dropdown-local/dropdow-local.component';
+import { DropdowLocalComponent } from '../../drp-local/dropdow-local.component';
 import { GeneralService } from '../../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 

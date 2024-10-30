@@ -7,9 +7,9 @@ import { AbstractControl, FormControl, FormBuilder, FormGroup, ReactiveFormsModu
 import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
-import { DropdowLocalComponent } from '../dropdown-local/dropdow-local.component';
+import { DropdowLocalComponent } from '../drp-local/dropdow-local.component';
 import { Enviroment } from '../../models/Enviroment';
-import { DropdowDynamicComponent } from '../dropdown-dynamic/dropdow-dynamic.component';
+import { DrpApiComponent } from '../drp-api/drp-api.component';
 import { LocationPopupComponent } from '../location-popup/location-popup.component';
 import { ResponsibleByIDService } from '../../services/responsiblesById/responsible-by-id.service';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
@@ -33,7 +33,7 @@ import { EnvironmentService } from '../../services/location_popup/environment.se
     TranslateModule,
     ErrorMessageComponent,
     DropdowLocalComponent,
-    DropdowDynamicComponent,
+    DrpApiComponent,
     LocationPopupComponent,
   ],
   templateUrl: './vizualizacao-form.component.html',

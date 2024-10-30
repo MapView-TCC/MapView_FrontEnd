@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { DropdowDynamicComponent } from '../../dropdown-dynamic/dropdow-dynamic.component';
+import { DrpApiComponent } from '../../drp-api/drp-api.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
 import { Enviroment } from '../../../models/Enviroment';
@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-form-location',
   standalone: true,
-  imports: [ErrorMessageComponent, DropdowDynamicComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule, LocationPopupComponent, TranslateModule],
+  imports: [ErrorMessageComponent, DrpApiComponent, ReactiveFormsModule, ExcluirPopupComponent, CommonModule, LocationPopupComponent, TranslateModule],
   templateUrl: './form-location.component.html',
   styleUrl: './form-location.component.scss'
 })

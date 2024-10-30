@@ -12,13 +12,13 @@
         <div class="content-forms">
             <div class="content-cad-forms">
 
-                <!-- Dropdown dynamic: Environment -->
+                <!-- Dropdown API: Environment -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'LABORATÓRIO'| translate}}</label>
-                    <app-dropdow-dynamic [options]="environmentOptions" table="environment"
+                    <app-drp-api [options]="environmentOptions" table="environment"
                         [control]="convertToFormControl(cadastroLocalizacao.get('id_environment'))"
                         [generalService]="generalService">
-                    </app-dropdow-dynamic>
+                    </app-drp-api>
                     <!-- Modal de cadastro de novo ambiente -->
                     <app-location-popup *ngIf="generalService.showLocationlog"
                         (refreshData)="loadEnvironments()"></app-location-popup>

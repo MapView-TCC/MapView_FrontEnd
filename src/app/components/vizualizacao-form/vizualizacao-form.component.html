@@ -139,12 +139,12 @@
         </div>
         <div class="content-forms">
           <div class="content-cad-forms">
-            <!-- Input: Localização -->
+            <!-- Dropdown Environment -->
             <div class="input-cad-forms">
               <label class="label-dados">{{'LOCALIZAÇÃO' | translate}}</label>
-              <app-dropdow-dynamic [options]="environmentOptions"
+              <app-drp-api [options]="environmentOptions"
                 [control]="vizualizarCadastro.controls.id_environment">
-              </app-dropdow-dynamic>
+              </app-drp-api>
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'id_environment'"
                 [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
             </div>

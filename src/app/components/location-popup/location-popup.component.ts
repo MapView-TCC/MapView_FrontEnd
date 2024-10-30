@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { DropdowDynamicComponent } from '../dropdown-dynamic/dropdow-dynamic.component';
+import { DrpApiComponent } from '../drp-api/drp-api.component';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { GeneralService } from '../../services/general/general.service';
@@ -17,7 +17,7 @@ import { LocationRegister } from '../../models/Location';
 @Component({
   selector: 'app-location-popup',
   standalone: true,
-  imports: [CommonModule, MatIconModule, DropdowDynamicComponent, ErrorMessageComponent, ReactiveFormsModule, TranslateModule],
+  imports: [CommonModule, MatIconModule, DrpApiComponent, ErrorMessageComponent, ReactiveFormsModule, TranslateModule],
   templateUrl: './location-popup.component.html',
   styleUrls: ['./location-popup.component.scss']
 })

@@ -6,13 +6,13 @@ import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-dropdow-dynamic',
+  selector: 'app-drp-api',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, ExcluirPopupComponent, TranslateModule],
-  templateUrl: './dropdow-dynamic.component.html',
-  styleUrl: './dropdow-dynamic.component.scss'
+  templateUrl: './drp-api.component.html',
+  styleUrl: './drp-api.component.scss'
 })
-export class DropdowDynamicComponent{
+export class DrpApiComponent{
 
   @Input() options: { value: number | string, label: string }[] = [];
   @Input() selectedValue: string = '';
