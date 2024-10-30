@@ -199,10 +199,14 @@ ul {
 }
 
 .notification {
-    border-left: 4px solid #6338AF; /* Ajuste a espessura conforme necessário */
+    border-left: 4px solid #011D94; /* Ajuste a espessura conforme necessário */
     padding-left: 10px; /* Espaço entre o texto e a linha */
     margin-left: 12px;
+    transition: border-color 0.1s ease;
+}
 
+.notification:hover{
+    border-left-color: #6338AF; 
 }
 
 
