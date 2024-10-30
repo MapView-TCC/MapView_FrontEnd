@@ -12,6 +12,7 @@ import { RegisterService } from '../../services/cadastro/register.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
 import { capitalize } from 'vue';
+import { EnvironmentService } from '../../services/location_popup/environment.service';
 
 @Component({
   selector: 'app-cadastro-page',
@@ -24,7 +25,7 @@ export class CadastroPageComponent implements OnInit {
 
   cadastroResponsavelArray: FormGroup;
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private registerService: RegisterService, private snackBar: MatSnackBar, private environmentService: EnvironmentService) {
     this.cadastroResponsavelArray = this.fb.group({
       items: this.fb.array([])
     });
@@ -34,6 +35,24 @@ export class CadastroPageComponent implements OnInit {
 
   ngOnInit() {
     this.addCadastroResponsavel()
+
+    this.cadastroLocalizacao.get('id_environment')?.valueChanges.subscribe(id_environment => {
+      const idEnvironment = Number(id_environment); // Converte para número
+      if(idEnvironment){
+        this.environmentService.getEnvironmentById(idEnvironment, 1).subscribe(
+          environment => {
+            //Atualiza os campos com os dados do ambiente retornando da API
+            this.cadastroLocalizacao.patchValue({
+              building_code: environment.raspberry.building.building_code,
+              area_code: environment.raspberry.area.area_code
+            })
+          }, 
+          error => {
+            console.error('Erro ao carregar ambiente', error);
+          }
+        )
+      }
+    })
   }
 
   //Form group equipamento
@@ -41,21 +60,21 @@ export class CadastroPageComponent implements OnInit {
     id_equipment: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
     name_equipment: new FormControl('', [Validators.required, Validators.minLength(4)]),
     rfid: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
-    tipoEquipamento: [{ value: '', disabled: false }, Validators.required],
-    modelo: new FormControl('', Validators.required),
-    idUsuario: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
-    centroCustos: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]), // Aceita apenas dígitos 0-9
-    dataSubstituicao: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
-    adminRights: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
-    observacao: new FormControl('')  // Aqui não precisa de validador
+    type: [{ value: '', disabled: false }, Validators.required],
+    model: new FormControl('', Validators.required),
+    id_owner: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+    costCenter_name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]), // Aceita apenas dígitos 0-9
+    validity: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
+    admin_rights: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
+    observation: new FormControl('')  // Aqui não precisa de validador
   });
 
   //Form Group localização
   cadastroLocalizacao = this.fb.group({
-    id_building: [{ value: '', disabled: false }, Validators.required],
+    building_code: [{ value: '', disabled: true }, Validators.required],
     id_environment: [{ value: '', disabled: false }, Validators.required],
-    area: [{ value: '', disabled: false }, Validators.required],
-    posto: new FormControl('', [Validators.required, Validators.minLength(2)])
+    area_code: [{ value: '', disabled: true }, Validators.required],
+    post: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
   //Form Array de FormGroup de Responsável
@@ -74,10 +93,10 @@ export class CadastroPageComponent implements OnInit {
 
       this.returnFormArray.push(
         this.fb.group({
-          nome_responsavel: ['', [Validators.required, Validators.minLength(3)]],
+          responsible_name: ['', [Validators.required, Validators.minLength(3)]],
           edv: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
-          curso: [{ value: '', disabled: false }, [Validators.required]],
-          turma: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
+          enumCourse: [{ value: '', disabled: false }, [Validators.required]],
+          name_classes: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]]
         })
       );
       console.log(this.returnFormGroups);
@@ -157,23 +176,22 @@ export class CadastroPageComponent implements OnInit {
     registerData.id_equipment = this.cadastroEquipamento.get('id_equipment')?.value?.toUpperCase() || '';
     registerData.name_equipment = this.cadastroEquipamento.get('name_equipment')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
-    registerData.type = this.cadastroEquipamento.get('tipoEquipamento')?.value || '';
-    registerData.model = this.cadastroEquipamento.get('modelo')?.value || '';
-    registerData.validity = this.cadastroEquipamento.get('dataSubstituicao')?.value || '';
-    registerData.admin_rights = this.cadastroEquipamento.get('adminRights')?.value?.toUpperCase() || '';
-    registerData.observation = this.cadastroEquipamento.get('observacao')?.value?.toLowerCase() || '';
-    registerData.id_building = Number(this.cadastroLocalizacao.get('id_building')?.value || 0);
+    registerData.type = this.cadastroEquipamento.get('type')?.value || '';
+    registerData.model = this.cadastroEquipamento.get('model')?.value || '';
+    registerData.validity = this.cadastroEquipamento.get('validity')?.value || '';
+    registerData.admin_rights = this.cadastroEquipamento.get('admin_rights')?.value?.toUpperCase() || '';
+    registerData.observation = this.cadastroEquipamento.get('observation')?.value?.toLowerCase() || '';
     registerData.id_environment = Number(this.cadastroLocalizacao.get('id_environment')?.value || 0);
-    registerData.post = this.cadastroLocalizacao.get('posto')?.value || '';
-    registerData.id_owner = this.cadastroEquipamento.get('idUsuario')?.value?.toUpperCase() || '';
-    registerData.costCenter_name = this.cadastroEquipamento.get('centroCustos')?.value || '';
+    registerData.post = this.cadastroLocalizacao.get('post')?.value || '';
+    registerData.id_owner = this.cadastroEquipamento.get('id_owner')?.value?.toUpperCase() || '';
+    registerData.costCenter_name = this.cadastroEquipamento.get('costCenter_name')?.value || '';
 
     // Obtendo dados dos responsáveis
     registerData.dataResponsible = this.returnFormArray.controls.map(control => ({
-      responsible_name: control.get('nome_responsavel')?.value || '',
+      responsible_name: control.get('responsible_name')?.value || '',
       edv: control.get('edv')?.value || '',
-      enumCourse: control.get('curso')?.value || '',
-      name_classes: control.get('turma')?.value || ''
+      enumCourse: control.get('enumCourse')?.value || '',
+      name_classes: control.get('name_classes')?.value || ''
     }));
 
 

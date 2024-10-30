@@ -280,11 +280,10 @@ export class AmbienteComponent implements OnInit{
 
         raycaster.setFromCamera(mousePos, camera);
         const intersects = raycaster.intersectObjects(meshList);
-        console.log(intersects);
         // console.log("SAAAAAAAAAAAAAAAAAA")
         if (intersects.length > 0) {
           const pointerMesh = intersects[0].object;
-          console.log(pointerMesh);
+          
           const position = new THREE.Vector3();
           position.setFromMatrixPosition(pointerMesh.matrixWorld);
 
@@ -305,13 +304,11 @@ export class AmbienteComponent implements OnInit{
           //   e.location.post.id_post++;
           // })
           
-          console.log("os equipamentos",this.equipments)
 
           //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
           // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
           const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
           
-          console.log("os elementos",element)
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
           paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>ID Notebook:</strong>${element[0].id_equipment}<strong><br>Nome:</strong> ${element[0].name_equipment}<br><strong>Responsável:</strong> ${element[0].owner.id_owner}</p>`;

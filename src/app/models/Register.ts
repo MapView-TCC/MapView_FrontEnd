@@ -9,7 +9,6 @@ export class Register{
     validity: string = '';
     admin_rights: string = '';
     observation: string = '';
-    id_building: number = 0;
     id_environment: number = 0;
     post: string = '';
     id_owner: string = '';

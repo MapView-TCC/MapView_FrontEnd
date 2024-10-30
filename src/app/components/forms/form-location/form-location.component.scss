@@ -99,6 +99,12 @@
                         font-weight: 100;
                         color: var(--muted-brown);
                     }
+                    
+                    &:disabled{
+                        background-color: var(--white);
+                        color: var(--muted-brown);
+                        cursor: not-allowed;
+                    }
 
                 }
 
@@ -117,6 +123,7 @@
                 app-location-popup {
                     border: none;
                 }
+
 
             }
 

@@ -55,14 +55,14 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">Admin Rigths</label>
                     <input class="input-dados" style="text-transform: uppercase;" type="text"
-                        placeholder="Ex. RITMO0123456789" formControlName="adminRights">
+                        placeholder="Ex. RITMO0123456789" formControlName="admin_rights">
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'admin_rights'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'admin_rights'"
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER 13 CARACTERES' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'adminRights'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'admin_rights'"
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 13 CARACTERES' | translate"></app-error-message>
                 </div>
@@ -70,14 +70,14 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'ID DO USUÁRIO PRINCIPAL' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: uppercase;" placeholder="Ex. AAA1CA"
-                        formControlName="idUsuario">
+                        formControlName="id_owner">
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'id_owner'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'id_owner'"
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER 06 CARACTERES' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'idUsuario'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'id_owner'"
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 06 CARACTERES' | translate"></app-error-message>
                 </div>
@@ -85,15 +85,15 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'CENTRO DE CUSTOS' | translate}}</label>
                     <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ex. 123456"
-                        formControlName="centroCustos">
+                        formControlName="costCenter_name">
 
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'costCenter_name'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'costCenter_name'"
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER 06 NÚMEROS' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'centroCustos'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'costCenter_name'"
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 06 NÚMEROS' | translate"></app-error-message>
                 </div>
@@ -102,20 +102,20 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="equipamento">{{'TIPO DO EQUIPAMENTO' | translate}}</label>
                     <app-dropdow-local id='id-typeEquipament' table='typeEquipament' [options]="typeEquipamentOptions"
-                        [control]="convertToFormControl(cadastroEquipamento.get('tipoEquipamento'))">
+                        [control]="convertToFormControl(cadastroEquipamento.get('type'))">
                     </app-dropdow-local>
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'tipoEquipamento'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'type'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
                 </div>
                 <!-- Dropdown local: Modelo do equipamento -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'MODELO' | translate}}</label>
-                    <app-dropdow-local id='id-enumModelEquipment' table='modelEquipment' [options]="enumModelEquipment"
-                        [control]="convertToFormControl(cadastroEquipamento.get('modelo'))">
+                    <app-dropdow-local id='id-enumModelEquipment' [options]="enumModelEquipment"
+                        [control]="convertToFormControl(cadastroEquipamento.get('model'))">
                     </app-dropdow-local>
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'modelo'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'model'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
 
                 </div>
@@ -123,14 +123,14 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'DATA DE SUBSTITUIÇÃO' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: uppercase;" placeholder="Ex. 2024.Q1"
-                        formControlName="dataSubstituicao">
+                        formControlName="validity">
                     <!-- Mensagens de erro -->
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'validity'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'validity'"
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER 07 CARACTERES' | translate"></app-error-message>
-                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'dataSubstituicao'"
+                    <app-error-message [formGroup]="cadastroEquipamento" [inputSelect]="'validity'"
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 07 CARACTERES'| translate"></app-error-message>
                 </div>
@@ -138,7 +138,7 @@
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'OBSERVAÇÃO' | translate}}</label>
                     <input class="input-dados" type="text"
-                        placeholder="{{ 'COMENTÁRIO SOBRE O EQUIPAMENTO' | translate }}" formControlName="observacao">
+                        placeholder="{{ 'COMENTÁRIO SOBRE O EQUIPAMENTO' | translate }}" formControlName="observation">
                 </div>
             </div>
         </div>

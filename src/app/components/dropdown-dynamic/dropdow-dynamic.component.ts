@@ -20,4 +20,17 @@ export class DropdowDynamicComponent{
   @Input() control!: FormControl;
   @Input() generalService!: GeneralService;
   @Input() disabled: boolean = false;
+
+  @Output() selectedValueChanges = new EventEmitter<number | string>();
+
+  ngOnInit() {
+    this.selectedValue = this.control.value; // Inicializa selectedValue com o valor do control
+  }
+
+  onSelect() {
+    console.log(this.selectedValue);
+    this.selectedValue = this.control.value; // Atualiza selectedValue com o valor selecionado
+    this.selectedValueChanges.emit(this.control.value)
+    //this.control.setValue(value); // Atualiza o control do formulário também
+  }
 }
