@@ -11,13 +11,13 @@ import { CarrosselService } from '../../services/carrossel/carrossel.service';
 
 
 @Component({
-  selector: 'app-carrosel',
+  selector: 'app-carousel',
   standalone: true,
   imports: [PrevDirective, NextDirective, MatIconModule, CommonModule],
-  templateUrl: './carrosel.component.html',
-  styleUrls: ['./carrosel.component.scss'] 
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss'] 
 })
-export class CarroselComponent implements OnInit {
+export class CarouselComponent implements OnInit {
  equipamentos: WrongLocation[] = [];
 
  constructor(private carrosselService: CarrosselService, public generalService: GeneralService) {}

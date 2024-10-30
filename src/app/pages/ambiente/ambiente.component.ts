@@ -1,4 +1,4 @@
-//Imports for Angular
+//Imports
 import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three';
 import {GLTFLoader, GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -6,26 +6,20 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
 import { InventarioService } from '../../services/equipaments/inventario.service';
-import { NgOptimizedImage } from '@angular/common';
-
-import GUI from 'lil-gui';
-import gsap from 'gsap';
-
-//Imports for our components 
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { CarroselComponent } from '../../components/carrosel/carrosel.component';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { WrongLocation } from '../../models/WrongLocation';
 import { CarrosselService } from '../../services/carrossel/carrossel.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
 
 @Component({
   selector: 'app-ambiente',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent,  TranslateModule],
+  imports: [HeaderComponent, CommonModule, CarouselComponent, FooterComponent,  TranslateModule],
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss',
 
