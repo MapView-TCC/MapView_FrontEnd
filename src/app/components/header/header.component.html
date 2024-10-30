@@ -27,13 +27,11 @@
                 <div *ngIf="showNotification" class="notification-container">
                         <ul>
                             <li *ngFor="let notification of notifications">
-                                <div class="notification">
-                                    <div class="notification-header">
-                                        <p class="notification-text">{{ notification.equipment.name_equipment }} vence em {{
+                                <span class="notification"></span>
+                                <div class="notification-header">
+                                    <p class="notification-text">{{ notification.equipment.name_equipment }} vence em {{
                                             notification.equipment.validity }}</p>
-                                        <span class="notificaton-location">Localização: {{ notification.environment.environment_name}},
-                                            {{notification.environment.posts.post}}</span>
-                                    </div>  
+                                        <span class="notificaton-location">Localização: {{ notification.environment.environment_name}}</span>  
                                 </div>
                             </li>
                             
