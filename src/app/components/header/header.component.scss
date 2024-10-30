@@ -164,6 +164,31 @@ strong{
     cursor: pointer;
 }
 
+.notification-container li {
+    position: relative;
+    padding-left: 14px; /* Espaço para a linha à esquerda */
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background-color: #f5f5f5; /* Fundo para visualização */
+    transition: background-color 0.1s ease; /* Suaviza a transição */
+}
+
+.notification-container li::before {
+    content: '';
+    position: absolute;
+    left: 0; /* Posiciona a linha à esquerda */
+    top: 0;
+    width: 4px; /* Largura da linha */
+    height: 100%; /* Faz a linha cobrir toda a altura do item */
+    background-color: #011D94; /* Cor da linha */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: background-color 0.1s ease; /* Suaviza a transição de cor */
+}
+
+.notification-container li:hover::before {
+    background-color: #6338AF; /* Cor da linha ao passar o mouse */
+}
+
 .notification-container li:hover .notification-text,
 .notification-container li:hover span {
     color: #6338AF;
@@ -198,12 +223,12 @@ ul {
     margin: 0; /* Remove margem */
 }
 
-.notification {
-    border-left: 4px solid #011D94; /* Ajuste a espessura conforme necessário */
-    padding-left: 10px; /* Espaço entre o texto e a linha */
-    margin-left: 12px;
-    transition: border-color 0.1s ease;
-}
+// .notification {
+//     border-left: 4px solid #011D94; /* Ajuste a espessura conforme necessário */
+//     padding-left: 10px; /* Espaço entre o texto e a linha */
+//     margin-left: 12px;
+//     transition: border-color 0.1s ease;
+// }
 
 .notification:hover{
     border-left-color: #6338AF; 
