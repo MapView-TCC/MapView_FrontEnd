@@ -10,6 +10,7 @@
 
         <div class="content-forms">
             <div class="content-cad-forms">
+                <!-- Input: ID Equipamento -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'ID DO EQUIPAMENTO' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: uppercase;"
@@ -24,7 +25,7 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 15 CARACTERES' | translate"></app-error-message>
                 </div>
-
+                <!-- Input: Nome do Equipamento -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'NOME DO EQUIPAMENTO' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: capitalize;"
@@ -36,7 +37,7 @@
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER NO MÍN 04 CARACTERES' | translate"></app-error-message>
                 </div>
-
+                <!-- Input: RFID -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">RFID</label>
                     <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*"
@@ -51,7 +52,7 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER APENAS 16 NÚMEROS' | translate"></app-error-message>
                 </div>
-
+                <!-- Input: Admin Rigths-->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">Admin Rigths</label>
                     <input class="input-dados" style="text-transform: uppercase;" type="text"
@@ -66,7 +67,7 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 13 CARACTERES' | translate"></app-error-message>
                 </div>
-
+                <!-- Input: Usuário Principal-->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'ID DO USUÁRIO PRINCIPAL' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: uppercase;" placeholder="Ex. AAA1CA"
@@ -81,7 +82,7 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 06 CARACTERES' | translate"></app-error-message>
                 </div>
-
+                <!-- Input: Centro de Custos-->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'CENTRO DE CUSTOS' | translate}}</label>
                     <input class="input-dados" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ex. 123456"
@@ -97,7 +98,6 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 06 NÚMEROS' | translate"></app-error-message>
                 </div>
-
                 <!-- Dropdown local: Tipo do equipamento -->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="equipamento">{{'TIPO DO EQUIPAMENTO' | translate}}</label>
@@ -119,7 +119,7 @@
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
 
                 </div>
-
+                <!-- Input: Data de Substituição-->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'DATA DE SUBSTITUIÇÃO' | translate}}</label>
                     <input class="input-dados" type="text" style="text-transform: uppercase;" placeholder="Ex. 2024.Q1"
@@ -134,7 +134,7 @@
                         [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER ATÉ 07 CARACTERES'| translate"></app-error-message>
                 </div>
-
+                <!-- Input: Observação-->
                 <div class="input-cad-forms">
                     <label class="label-dados" for="">{{'OBSERVAÇÃO' | translate}}</label>
                     <input class="input-dados" type="text"

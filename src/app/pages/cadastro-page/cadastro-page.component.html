@@ -32,7 +32,6 @@
             </div>
         </form>
     </div>
-
     <!-- Mensagem de confirmação -->
     <div *ngIf="cadastroConcluido == true">
         <div class="step-4"></div>
@@ -44,7 +43,6 @@
             <p class="confirmacao">{{'EQUIPAMENTO CADASTRADO COM SUCESSO'| translate}}</p>
         </div>
     </div>
-
     <div class="btn-content">
         <!-- Botão de avançar -->
         <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"

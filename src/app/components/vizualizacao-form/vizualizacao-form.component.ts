@@ -8,23 +8,18 @@ import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { DropdowLocalComponent } from '../dropdown-local/dropdow-local.component';
-import { Building } from '../../models/Building';
 import { Enviroment } from '../../models/Enviroment';
-import { Area } from '../../models/Area';
 import { DropdowDynamicComponent } from '../dropdown-dynamic/dropdow-dynamic.component';
 import { LocationPopupComponent } from '../location-popup/location-popup.component';
 import { ResponsibleByIDService } from '../../services/responsiblesById/responsible-by-id.service';
-import { EquipmentByIDService } from '../../services/equipmentsById/equipment-by-id.service';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
 import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
 import { Responsible } from '../../models/DataResponsible';
-import e from 'express';
 import { RegisterService } from '../../services/cadastro/register.service';
 import { RegisterUpdate } from '../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EnvironmentService } from '../../services/location_popup/environment.service';
 
 @Component({
   selector: 'app-vizualizacao-form',
@@ -95,13 +90,14 @@ export class VizualizacaoFormComponent implements OnInit {
     public generalService: GeneralService,
     private responsibleService: ResponsibleByIDService,
     private buildingDrpService: BuildingDrpService,
+    private environmentService: EnvironmentService,
     private enviromentDrpService: EnviromentDrpService,
     private areaDrpService: AreaDrpService,
     private registerService: RegisterService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
-//Validação dos campos do formulário
+  //Validação dos campos do formulário
   vizualizarCadastro = this.fb.group({
     id_equipment: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
     name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
@@ -113,30 +109,36 @@ export class VizualizacaoFormComponent implements OnInit {
     validity: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
     admin_rights: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
     observation: [{ value: '', disabled: false }, []],
-    id_building: [{ value: 0, disabled: true }, Validators.required],
+    building_code: [{ value: '', disabled: true }, Validators.required],
     id_environment: [{ value: 0, disabled: true }, Validators.required],
-    id_area: [{ value: 0, disabled: true }, Validators.required],
+    area_code: [{ value: '', disabled: true }, Validators.required],
     id_post: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
     responsaveis: this.fb.array([])
   });
 
   ngOnInit(): void {
     const userLogId = 1;
-    this.loadBuildings();
     this.loadEnvironments();
-    this.loadAreas();
     this.loadData(this.equipmentId, userLogId);
-  }
-  // Função que pega os valores da tabela Building 
-  loadBuildings() {
-    this.buildingDrpService.getBulding().subscribe((buildings: Building[]) => {
-      console.log(buildings)
-      buildings.map(data => this.buildingOptions.push({
-        value: data.id_building,
-        label: data.building_code
-      }));
-    });
-    console.log(this.buildingOptions)
+
+    //Carrea o valor do predio e da area relacionada ao ambiente selecionado no dropdown
+    this.vizualizarCadastro.get('id_environment')?.valueChanges.subscribe(id_environment => {
+      const idEnvironment = Number(id_environment); // Converte para número
+      if (idEnvironment) {
+        this.environmentService.getEnvironmentById(idEnvironment, 1).subscribe(
+          environment => {
+            //Atualiza os campos com os dados do ambiente retornando da API
+            this.vizualizarCadastro.patchValue({
+              building_code: environment.raspberry.building.building_code,
+              area_code: environment.raspberry.area.area_code
+            })
+          },
+          error => {
+            console.error('Erro ao carregar ambiente', error);
+          }
+        )
+      }
+    })
   }
 
   // Função que pega os valores da tabela Environment
@@ -149,15 +151,6 @@ export class VizualizacaoFormComponent implements OnInit {
     });
   }
 
-  // Função que pega os valores da tabela Area
-  loadAreas() {
-    this.areaDrpService.getArea().subscribe((areas: Area[]) => {
-      areas.map(data => this.areaOptions.push({
-        value: data.id_area,
-        label: data.area_code
-      }));
-    });
-  }
 
   //Form Array de FormGroup de Responsável
   get returnFormArray(): FormArray {
@@ -184,10 +177,10 @@ export class VizualizacaoFormComponent implements OnInit {
         this.vizualizarCadastro.controls.admin_rights.setValue(equipResponsible.admin_rights);
         this.vizualizarCadastro.controls.observation.setValue(equipResponsible.observation);
         this.vizualizarCadastro.controls.constcenter.setValue(equipResponsible.owner.costCenter.constcenter);
-        this.vizualizarCadastro.controls.id_building.setValue(equipResponsible.location.environment.raspberry.building.id_building);
+        this.vizualizarCadastro.controls.building_code.setValue(equipResponsible.location.environment.raspberry.building.building_code);
         this.vizualizarCadastro.controls.id_environment.setValue(equipResponsible.location.environment.id_environment);
         this.vizualizarCadastro.controls.id_post.setValue(equipResponsible.location.post.post);
-        this.vizualizarCadastro.controls.id_area.setValue(equipResponsible.location.environment.raspberry.area.id_area);
+        this.vizualizarCadastro.controls.area_code.setValue(equipResponsible.location.environment.raspberry.area.area_code);
 
         equipResponsible.responsibles.forEach((responsavel: Responsible) => {
           this.returnFormArray.push(this.fb.group({
@@ -213,6 +206,9 @@ export class VizualizacaoFormComponent implements OnInit {
     if (this.isEditing) {
       this.vizualizarCadastro.enable(); // Habilita todos os controles do formulário
       this.vizualizarCadastro.controls.id_equipment.disable();
+      this.vizualizarCadastro.controls.building_code.disable();
+      this.vizualizarCadastro.controls.area_code.disable();
+
     } else {
       this.vizualizarCadastro.disable(); // Desabilita todos os controles do formulário
     }
@@ -220,9 +216,9 @@ export class VizualizacaoFormComponent implements OnInit {
     console.log('Is Editing:', this.isEditing); // Verifique o valor aqui
   }
 
-   // lógica para salvar os dados e fazer o update do cadastro
+  // lógica para salvar os dados e fazer o update do cadastro
   save() {
-    console.log(this.vizualizarCadastro.value); 
+    console.log(this.vizualizarCadastro.value);
 
     const id = this.vizualizarCadastro.controls.id_equipment.value || '';
     console.log('Id do equipamento selecionado ', id);
@@ -245,7 +241,7 @@ export class VizualizacaoFormComponent implements OnInit {
     // Obtendo dados dos responsáveis
     updateData.dataResponsible = this.returnFormArray.controls.map(control => ({
       responsible_name: control.get('responsible')?.value || '',
-      edv: control.get('edv')?.value || '', 
+      edv: control.get('edv')?.value || '',
       enumCourse: control.get('enumCourse')?.value || '',
       name_classes: control.get('classes')?.value || ''
     }));
@@ -258,13 +254,13 @@ export class VizualizacaoFormComponent implements OnInit {
         setTimeout(() => {
           window.location.reload();
         }, 1000); // 1000 milissegundos = 1 segundos, para fechar o popup
-        
+
       },
       error: (error) => {
         console.error('Erro ao enviar registro:', error);
         this.showErrorAlert('Não foi possível realizar a atualização.');
 
-    
+
       },
       complete: () => {
         console.log('Envio de registro concluído.');

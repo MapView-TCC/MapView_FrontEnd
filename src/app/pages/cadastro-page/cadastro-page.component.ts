@@ -35,7 +35,8 @@ export class CadastroPageComponent implements OnInit {
 
   ngOnInit() {
     this.addCadastroResponsavel()
-
+    
+    //Carrea o valor do predio e da area relacionada ao ambiente selecionado no dropdown
     this.cadastroLocalizacao.get('id_environment')?.valueChanges.subscribe(id_environment => {
       const idEnvironment = Number(id_environment); // Converte para número
       if(idEnvironment){
