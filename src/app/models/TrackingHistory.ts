@@ -20,3 +20,13 @@ export class Historico{
     warning: string = '';
 }
 
+export class HistoricoWebsocket{
+    id_tracking: number = 0;
+    datetime: string = '';
+    equipment: Equipment = new Equipment();
+    environment: Enviroment = new Enviroment();
+    action: string = '';
+    warning: string = '';
+}
+
+

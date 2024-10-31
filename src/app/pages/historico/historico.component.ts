@@ -1,5 +1,5 @@
 //Imports for angular
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
 import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
 import { GeneralService } from '../../services/general/general.service';
+import { WebsocketService } from '../../services/Websocket/websocket.service';
 
 
 @Component({
@@ -46,8 +47,9 @@ import { GeneralService } from '../../services/general/general.service';
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })
-export class HistoricoComponent {
+export class HistoricoComponent implements OnInit,OnDestroy {
   notifications: NotificationsAlert[] = [];
+  notification!: NotificationsAlert;
   displayNotifications: NotificationsAlert[] = []; // Para exibir as notificações
   initialCountNotifications = 9; //Quantidade inicial de notificaçõe a ser exibida na tela
 
@@ -58,6 +60,7 @@ export class HistoricoComponent {
   idEquipment: string[] = [];
 
   showFilterlog = false;
+  private websocketSubscrption: any
 
 
   constructor(
@@ -65,7 +68,9 @@ export class HistoricoComponent {
     private inventarioService: InventarioService,
     private fb: FormBuilder,
     private router: Router,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    private websocketService: WebsocketService
+    
   ) {
     this.stateForm = this.fb.group({
       stateGroup: [''], // FormControl para o autocomplete
@@ -75,6 +80,7 @@ export class HistoricoComponent {
   ngOnInit() {
     this.loadnotification(); // Carrega as notificações ao inicializar o componente
     this.loadEquipmentsID(); // Carregar as opções da API para o autocomplete
+    this.setupWebSocket();
   }
 
   // Função auxiliar para resetar as notificações à exibição inicial
@@ -87,7 +93,7 @@ export class HistoricoComponent {
   loadnotification() {
     this.trackingHistoryService.getHistory().subscribe((data: Historico[]) => {
       this.notifications = data.map(item => ({
-        idEquipment: item.equipment?.idEquipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        id_equipment: item.equipment?.id_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
         warning: item.warning,
         equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
         action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',
@@ -98,6 +104,41 @@ export class HistoricoComponent {
 
       this.resetNotifications();
     });
+  }
+
+  setupWebSocket() {
+    // Inscreve-se nas atualizações do WebSocket
+    this.websocketSubscrption = this.websocketService.notifications$.subscribe(notification => {
+     const transformedNotification = this.transformNotification(notification)
+      this.notifications.push(transformedNotification); // Adiciona a nova notificação ao array
+      this.resetNotifications(); // Atualiza a exibição
+    });
+  }
+
+  private transformNotification(item: TrackingHistory): NotificationsAlert {
+    // Exemplo de transformação: Você pode mapear os campos que precisa
+    return {
+        id_equipment: item.equipment?.id_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        warning: item.warning,
+        equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',
+        environmentName: item.environment?.environment_name || 'Ambiente não definido', // Checa se 'environment' existe
+        rfid: item.equipment?.rfid || 0, // Checa se 'equipment' e 'rfid' existem
+        dateTime: new Date(item.datetime),
+      // Adicione mais campos conforme necessário
+    };
+  }
+
+  ngOnDestroy() {
+    this.closeWebSocket(); // Fecha a conexão ao destruir o componente
+  }
+
+  private closeWebSocket() {
+    if (this.websocketSubscrption) {
+      this.websocketSubscrption.unsubscribe(); // Limpa a assinatura
+      this.websocketSubscrption = null; // Evita referências pendentes
+    }
+    this.websocketService.disconnect(); // Opcional: você pode criar um método para desconectar
   }
 
   //Exibe todas as notificações do mais recente para o mais antigo
@@ -153,7 +194,7 @@ export class HistoricoComponent {
   filterNotificationsByID(selectedOption: string) {
     if (selectedOption) {
       this.filteredNotifications = this.notifications.filter(notfication =>
-        notfication.idEquipment == selectedOption.toUpperCase()
+        notfication.id_equipment == selectedOption.toUpperCase()
       )
       this.isFiltered = true;
     }

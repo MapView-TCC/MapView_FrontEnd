@@ -1,5 +1,5 @@
 export class NotificationsAlert{
-    idEquipment: string = '';
+    id_equipment: string = '';
     warning: string = '';
     equipmentName: string = '';
     rfid: number = 0;

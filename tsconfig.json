@@ -23,6 +23,9 @@
       "dom"
     ]
   },
+  "include": [
+    "src/**/*.ts"  // Garante que todos os arquivos TypeScript na pasta src sejam incluídos
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

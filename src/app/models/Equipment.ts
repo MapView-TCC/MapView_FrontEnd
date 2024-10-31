@@ -5,6 +5,7 @@ import { Responsible } from "./DataResponsible";
 
 export class Equipment{
     id_equipment: string = "";
+    code: string ="";
     name_equipment: string ="";
     rfid: number = 0;
     type: string ="";
@@ -45,7 +46,7 @@ export class FilteredEquipment {
 }
 
 export class EquipmentTrack{
-    idEquipment: string = "";
+    id_equipment: string = "";
     name_equipment: string ="";
     rfid: number = 0;
     type: string ="";
