@@ -7,16 +7,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 //Imports from our componentes
-import { TranslationService } from '../../services/translate/translation.service';
+import { TranslationService } from '../../../services/translate/translation.service';
 
 @Component({
-  selector: 'app-traduzir',
+  selector: 'app-translate-card',
   standalone: true,
   imports: [CommonModule, TranslateModule, MatCommonModule, MatButtonModule, MatMenuModule, MatIconModule,],
-  templateUrl: './traduzir.component.html',
-  styleUrl: './traduzir.component.scss'
+  templateUrl: './translate-card.component.html',
+  styleUrl: './translate-card.component.scss'
 })
-export class TraduzirComponent {
+export class TranslateCardComponent {
 
   constructor(private translationService: TranslationService) { }
 

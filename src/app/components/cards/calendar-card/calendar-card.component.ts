@@ -5,13 +5,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import moment from 'moment';
 
 @Component({
-  selector: 'app-calendar',
+  selector: 'app-calendar-card',
   standalone: true,
   imports: [CommonModule, MatIconModule, TranslateModule],
-  templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss'
+  templateUrl: './calendar-card.component.html',
+  styleUrl: './calendar-card.component.scss'
 })
-export class CalendarComponent implements OnInit {
+export class CalendarCardComponent implements OnInit {
 
   // Armazena o mês atual sendo exibido no calendário
   currentMonth: moment.Moment;

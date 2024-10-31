@@ -8,7 +8,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from '../../components/header/header.component';
-import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
+import { NotificationCardComponent } from '../../components/cards/notification-card/notification-card.component';
 import { AutocompleteComponent } from "../../components/inputs/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { HistoryService } from '../../services/tracking-history/tracking-history.service';
@@ -17,10 +17,10 @@ import { NotificationsAlert } from '../../models/NotificationsAlert';
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import moment from 'moment';
 import { Router } from '@angular/router';
-import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
+import { WarningBtnFiltersComponent } from "../../components/cards/warning-btn-filters/warning-btn-filters.component";
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { GeneralService } from '../../services/general/general.service';
-import { CalendarComponent } from '../../components/calendar/calendar.component';
+import { CalendarCardComponent } from '../../components/cards/calendar-card/calendar-card.component';
 
 
 @Component({
@@ -41,7 +41,7 @@ import { CalendarComponent } from '../../components/calendar/calendar.component'
     FooterComponent,
     WarningBtnFiltersComponent,
     NoResultsPopupComponent,
-    CalendarComponent
+    CalendarCardComponent
 ],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'

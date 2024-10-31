@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
-import { ProfileCardComponent } from '../profile-card/profile-card.component';
+import { ProfileCardComponent } from '../cards/profile-card/profile-card.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { Equipment, FilteredEquipment } from '../../models/Equipment';
 import { FormsModule } from '@angular/forms';

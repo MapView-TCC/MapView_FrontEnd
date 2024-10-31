@@ -5,14 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Imports for our components
-import { TraduzirComponent } from '../../components/traduzir/traduzir.component';
+import { TranslateCardComponent } from '../../components/cards/translate-card/translate-card.component';
 import { TranslationService } from '../../services/translate/translation.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-inicial',
   standalone: true,
-  imports: [MatIconModule, CommonModule, TranslateModule, TraduzirComponent, FooterComponent],
+  imports: [MatIconModule, CommonModule, TranslateModule, TranslateCardComponent, FooterComponent],
   templateUrl: './inicial.component.html',
   styleUrl: './inicial.component.scss'
 })
