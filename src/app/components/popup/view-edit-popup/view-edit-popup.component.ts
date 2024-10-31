@@ -4,24 +4,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AbstractControl, FormControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
-import { GeneralService } from '../../services/general/general.service';
+import { GeneralService } from '../../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { ErrorMessageComponent } from '../error-message/error-message.component';
-import { Enviroment } from '../../models/Enviroment';
-import { DrpApiComponent } from '../inputs/drp-api/drp-api.component';
-import { ResponsibleByIDService } from '../../services/responsiblesById/responsible-by-id.service';
-import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
-import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
-import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
-import { Responsible } from '../../models/DataResponsible';
-import { RegisterService } from '../../services/cadastro/register.service';
-import { RegisterUpdate } from '../../models/Register';
+import { ErrorMessageComponent } from '../../error-message/error-message.component';
+import { Enviroment } from '../../../models/Enviroment';
+import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
+import { ResponsibleByIDService } from '../../../services/responsiblesById/responsible-by-id.service';
+import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
+import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
+import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
+import { Responsible } from '../../../models/DataResponsible';
+import { RegisterService } from '../../../services/cadastro/register.service';
+import { RegisterUpdate } from '../../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EnvironmentService } from '../../services/location_popup/environment.service';
-import { DrpStaticComponent } from '../inputs/drp-static/drp-static.component';
+import { EnvironmentService } from '../../../services/location_popup/environment.service';
+import { DrpStaticComponent } from '../../inputs/drp-static/drp-static.component';
 
 @Component({
-  selector: 'app-vizualizacao-form',
+  selector: 'app-view-edit-popup',
   standalone: true,
   imports: [
     CommonModule,
@@ -34,10 +34,10 @@ import { DrpStaticComponent } from '../inputs/drp-static/drp-static.component';
     DrpStaticComponent,
     DrpApiComponent,
   ],
-  templateUrl: './vizualizacao-form.component.html',
-  styleUrls: ['./vizualizacao-form.component.scss'],
+  templateUrl: './view-edit-popup.component.html',
+  styleUrls: ['./view-edit-popup.component.scss'],
 })
-export class VizualizacaoFormComponent implements OnInit {
+export class ViewEditPopupComponent implements OnInit {
 
   @Input() equipmentId!: string;
 

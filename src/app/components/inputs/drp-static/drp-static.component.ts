@@ -3,12 +3,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { GeneralService } from '../../../services/general/general.service';
-import { VizualizacaoFormComponent } from '../../vizualizacao-form/vizualizacao-form.component';
+
 
 @Component({
   selector: 'app-drp-static',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, TranslateModule, FormsModule, VizualizacaoFormComponent],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule, FormsModule],
   templateUrl: './drp-static.component.html',
   styleUrl: './drp-static.component.scss'
 })

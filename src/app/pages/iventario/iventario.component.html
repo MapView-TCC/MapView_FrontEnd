@@ -72,7 +72,7 @@
 <app-delete-popup *ngIf="generalService.showDialog" [itemToDelete]="itemToDelete"
     [onConfirm]="confirmDelete.bind(this)"></app-delete-popup>
 
-<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form>
+<app-view-edit-popup *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-view-edit-popup>
 
 <app-no-results-popup *ngIf="generalService.showFilterlog"></app-no-results-popup>
 
