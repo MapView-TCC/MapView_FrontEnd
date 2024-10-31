@@ -3,7 +3,7 @@
 
     <div class="logo-container">
         <div class="heading">
-            <img src="assets/images/svg/Logo_Mapview.svg"  alt="Logo">
+            <img src="assets/images/svg/Logo_Mapview.svg"  alt="Logo" (click)="onAmbiente()" style="cursor: pointer;">
         </div>
 
         <div class="search-container">
@@ -40,9 +40,6 @@
                             </div>
                         </ul>
                 </div>
-            
-           
-
         </div>
         <app-search-popup *ngIf="PopUpVisible" [equipment]="selectedEquipment" (close)="closePopUp()"></app-search-popup>
     </div>

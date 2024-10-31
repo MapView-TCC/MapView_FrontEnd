@@ -149,7 +149,7 @@ export class HeaderComponent  {
       this.selectedItem = 'Inventario';
     }
   }
-
+  
   onAmbiente() {
     this.router.navigate(['/ambiente']);
   }

@@ -17,16 +17,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 
 @Component({
-  selector: 'app-ambiente',
+  selector: 'app-environment',
   standalone: true,
   imports: [HeaderComponent, CommonModule, CarouselComponent, FooterComponent,  TranslateModule],
-  templateUrl: './ambiente.component.html',
-  styleUrl: './ambiente.component.scss',
+  templateUrl: './environment.component.html',
+  styleUrl: './environment.component.scss',
 
 })
 
 
-export class AmbienteComponent implements OnInit{ 
+export class EnvironmentComponent implements OnInit{ 
   equipments: Equipment[] = []
   wrongLocation: WrongLocation[]=[]
 
