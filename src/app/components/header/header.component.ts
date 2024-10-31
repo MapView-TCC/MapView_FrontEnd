@@ -151,19 +151,19 @@ export class HeaderComponent  {
   }
   
   onAmbiente() {
-    this.router.navigate(['/ambiente']);
+    this.router.navigate(['/environment']);
   }
 
   onCadastro() {
-    this.router.navigate(['/cadastro']);
+    this.router.navigate(['/register']);
   }
 
   onHistorico() {
-    this.router.navigate(['/historico']);
+    this.router.navigate(['/history']);
   }
 
   onInventario() {
-    this.router.navigate(['/inventario']);
+    this.router.navigate(['/inventory']);
   }
 }
 

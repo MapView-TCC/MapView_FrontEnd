@@ -9,8 +9,8 @@ export const routes: Routes = [
     // {path: 'mapview',loadChildren:()=> import( './mapview/mapview.module').then(m=>m.MapviewModule)},
 
     {path:'', component:HomeComponent},
-    {path:'ambiente',component:EnvironmentComponent},
-    {path:'cadastro', component: RegisterComponet},
-    {path:'historico', component:HistoryComponent},
-    {path:'inventario',component:InventoryComponent}
+    {path:'environment',component:EnvironmentComponent},
+    {path:'register', component: RegisterComponet},
+    {path:'history', component:HistoryComponent},
+    {path:'inventory',component:InventoryComponent}
 ];
