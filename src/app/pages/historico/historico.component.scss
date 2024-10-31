@@ -137,6 +137,7 @@
         height: auto;
 
         gap: 30px;
+        
 
         h3 {
             font-size: 24px;
@@ -155,7 +156,7 @@
             background-color: var(--background-off-white);
             border-radius: 15px;
 
-            app-calendario {
+            app-calendar {
                 width: 100%;
 
             }

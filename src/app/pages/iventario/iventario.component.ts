@@ -6,7 +6,7 @@ import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import {ViewEditPopupComponent } from '../../components/popup/view-edit-popup/view-edit-popup.component';
 import { DeletePopupComponent } from '../../components/popup/delete-popup/delete-popup.component';
-import { FiltrosComponent } from '../../components/filtros/filtros.component';
+import { FiltersComponent } from '../../components/filters/filters.component';
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { ExcelService } from '../../services/excel/excel.service';
 import { FooterComponent } from "../../components/footer/footer.component";
@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, DeletePopupComponent, CommonModule, FiltrosComponent, FooterComponent, MatIconModule, NoResultsPopupComponent, ViewEditPopupComponent],
+  imports: [HeaderComponent, DeletePopupComponent, CommonModule, FiltersComponent, FooterComponent, MatIconModule, NoResultsPopupComponent, ViewEditPopupComponent],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss']
 })
@@ -29,7 +29,7 @@ export class IventarioComponent implements OnInit {
   itemToDelete: Equipment | null = null; 
   filteredEquipment: Equipment[] = [];  // Lista filtrada
   showFiltro: boolean = false;  // Para controlar a exibição do componente de filtros
-  @ViewChild(FiltrosComponent) filtrosComponent!: FiltrosComponent; // Referência para app-filtros
+  @ViewChild(FiltersComponent) filtersComponent!: FiltersComponent; // Referência para app-filtros
 
   pageNumbers: number[] = [];
   currentPage: number = 0; // Página atual
@@ -114,7 +114,7 @@ export class IventarioComponent implements OnInit {
     });
 
     if(this.filteredEquipment.length === 0){
-      this.filtrosComponent.resetFiltros(); // Chama a função de reset do componente filho
+      this.filtersComponent.resetFiltros(); // Chama a função de reset do componente filho
       this.generalService.showFilterlog = true;
     }
 

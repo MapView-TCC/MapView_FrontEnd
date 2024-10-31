@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from '../../components/header/header.component';
 import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
-import { CalendarComponent } from '../../components/calendar/calendar.component';
 import { AutocompleteComponent } from "../../components/inputs/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { HistoryService } from '../../services/tracking-history/tracking-history.service';
@@ -21,6 +20,7 @@ import { Router } from '@angular/router';
 import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { GeneralService } from '../../services/general/general.service';
+import { CalendarComponent } from '../../components/calendar/calendar.component';
 
 
 @Component({
@@ -37,11 +37,11 @@ import { GeneralService } from '../../services/general/general.service';
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
-    CalendarComponent,
     AutocompleteComponent,
     FooterComponent,
     WarningBtnFiltersComponent,
-    NoResultsPopupComponent
+    NoResultsPopupComponent,
+    CalendarComponent
 ],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'

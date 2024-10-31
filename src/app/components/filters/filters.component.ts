@@ -9,15 +9,15 @@ import { GeneralService } from '../../services/general/general.service';
 import { Equipment } from '../../models/Equipment';
 
 @Component({
-  selector: 'app-filtros',
+  selector: 'app-filters',
   standalone: true,
   imports: [MatCommonModule, MatButtonModule, MatMenuModule, CommonModule, MatIconModule, TranslateModule],
-  templateUrl: './filtros.component.html',
-  styleUrl: './filtros.component.scss'
+  templateUrl: './filters.component.html',
+  styleUrl: './filters.component.scss'
 })
 
 
-export class FiltrosComponent {
+export class FiltersComponent {
     // showFilro: boolean = false;  // Controla exibição do filtro
     filtros = {
       owner: '',
