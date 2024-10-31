@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { GeneralService } from '../../services/general/general.service';
-import { VizualizacaoFormComponent } from '../vizualizacao-form/vizualizacao-form.component';
+import { GeneralService } from '../../../services/general/general.service';
+import { VizualizacaoFormComponent } from '../../vizualizacao-form/vizualizacao-form.component';
 
 @Component({
   selector: 'app-drp-static',

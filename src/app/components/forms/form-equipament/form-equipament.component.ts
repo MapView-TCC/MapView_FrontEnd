@@ -3,7 +3,7 @@ import { ErrorMessageComponent } from '../../error-message/error-message.compone
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { GeneralService } from '../../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { DrpStaticComponent } from "../../drp-static/drp-static.component";
+import { DrpStaticComponent } from "../../inputs/drp-static/drp-static.component";
 
 @Component({
   selector: 'app-form-equipament',

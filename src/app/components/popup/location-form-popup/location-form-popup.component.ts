@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { DrpApiComponent } from '../../drp-api/drp-api.component';
+import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
 import { GeneralService } from '../../../services/general/general.service';

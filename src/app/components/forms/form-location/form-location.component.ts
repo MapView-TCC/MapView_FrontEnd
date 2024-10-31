@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { DrpApiComponent } from '../../drp-api/drp-api.component';
+import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
 import { Enviroment } from '../../../models/Enviroment';

@@ -8,7 +8,7 @@ import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { Enviroment } from '../../models/Enviroment';
-import { DrpApiComponent } from '../drp-api/drp-api.component';
+import { DrpApiComponent } from '../inputs/drp-api/drp-api.component';
 import { ResponsibleByIDService } from '../../services/responsiblesById/responsible-by-id.service';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
@@ -18,7 +18,7 @@ import { RegisterService } from '../../services/cadastro/register.service';
 import { RegisterUpdate } from '../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
-import { DrpStaticComponent } from '../drp-static/drp-static.component';
+import { DrpStaticComponent } from '../inputs/drp-static/drp-static.component';
 
 @Component({
   selector: 'app-vizualizacao-form',

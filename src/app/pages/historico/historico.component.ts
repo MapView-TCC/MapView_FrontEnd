@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from '../../components/header/header.component';
 import { NotificationCardComponent } from '../../components/notification-card/notification-card.component';
 import { CalendarComponent } from '../../components/calendar/calendar.component';
-import { AutocompleteComponent } from "../../components/autocomplete/autocomplete.component";
+import { AutocompleteComponent } from "../../components/inputs/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { HistoryService } from '../../services/tracking-history/tracking-history.service';
 import { Historico, TrackingHistory } from '../../models/TrackingHistory';
