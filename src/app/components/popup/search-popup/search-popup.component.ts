@@ -1,18 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule} from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { EquipmentResponsible } from '../../../models/EquipmentResponsible';
 import { FilteredEquipment } from '../../../models/Equipment';
 
 @Component({
-  selector: 'app-pop-up',
+  selector: 'app-search-popup',
   standalone: true,
   imports: [TranslateModule, CommonModule, MatIcon],
-  templateUrl: './pop-up.component.html',
-  styleUrl: './pop-up.component.scss'
+  templateUrl: './search-popup.component.html',
+  styleUrl: './search-popup.component.scss'
 })
-export class PopUpComponent {
+export class SearchPopupComponent {
   @Input() equipment: FilteredEquipment[] = [];
   @Output() close = new EventEmitter<void>();
 

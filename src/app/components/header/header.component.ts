@@ -4,11 +4,9 @@ import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { Equipment, FilteredEquipment } from '../../models/Equipment';
-import { EquipmentResponsible } from '../../models/EquipmentResponsible';
 import { FormsModule } from '@angular/forms';
-import { PopUpComponent } from '../popUp-Search/pop-up/pop-up.component';
 import { NotificacaoService } from '../../services/notificacao/notificacao.service';
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { SearchService } from '../../services/pop-upSearch/search.service';
@@ -16,6 +14,7 @@ import { NgOptimizedImage } from '@angular/common';
 
 import { tick } from '@angular/core/testing';
 import { GeneralService } from '../../services/general/general.service';
+import { SearchPopupComponent } from "../popup/search-popup/search-popup.component";
 
 
 
@@ -28,9 +27,9 @@ import { GeneralService } from '../../services/general/general.service';
     ProfileCardComponent,
     TranslateModule,
     FormsModule,
-    PopUpComponent,
-    NgOptimizedImage
-  ],
+    NgOptimizedImage,
+    SearchPopupComponent
+],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
