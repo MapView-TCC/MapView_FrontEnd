@@ -20,8 +20,8 @@
                         [generalService]="generalService">
                     </app-drp-api>
                     <!-- Modal de cadastro de novo ambiente -->
-                    <app-location-popup *ngIf="generalService.showLocationlog"
-                        (refreshData)="loadEnvironments()"></app-location-popup>
+                    <app-location-form-popup *ngIf="generalService.showLocationlog"
+                        (refreshData)="loadEnvironments()"></app-location-form-popup>
                     <!-- Mensagens de erro -->
                     <app-error-message [formGroup]="cadastroLocalizacao" [inputSelect]="'id_environment'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>

@@ -2,26 +2,26 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { DrpApiComponent } from '../drp-api/drp-api.component';
-import { ErrorMessageComponent } from '../error-message/error-message.component';
-import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
-import { GeneralService } from '../../services/general/general.service';
-import { EnvironmentService } from '../../services/location_popup/environment.service';
-import { AreaDrpService } from '../../services/dropdow-area/area-drp.service';
-import { Building } from '../../models/Building';
-import { Area } from '../../models/Area';
+import { DrpApiComponent } from '../../drp-api/drp-api.component';
+import { ErrorMessageComponent } from '../../error-message/error-message.component';
+import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
+import { GeneralService } from '../../../services/general/general.service';
+import { EnvironmentService } from '../../../services/location_popup/environment.service';
+import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
+import { Building } from '../../../models/Building';
+import { Area } from '../../../models/Area';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
-import { LocationRegister } from '../../models/Location';
+import { LocationRegister } from '../../../models/Location';
 
 @Component({
-  selector: 'app-location-popup',
+  selector: 'app-location-form-popup',
   standalone: true,
   imports: [CommonModule, MatIconModule, DrpApiComponent, ErrorMessageComponent, ReactiveFormsModule, TranslateModule],
-  templateUrl: './location-popup.component.html',
-  styleUrls: ['./location-popup.component.scss']
+  templateUrl: './location-form-popup.component.html',
+  styleUrls: ['./location-form-popup.component.scss']
 })
-export class LocationPopupComponent implements OnInit {
+export class LocationFormPopupComponent implements OnInit {
   cadastroNovoLocalizacao: FormGroup;
   buildingOptions: { value: number, label: string }[] = [];
   areaOptions: { value: number, label: string }[] = [];

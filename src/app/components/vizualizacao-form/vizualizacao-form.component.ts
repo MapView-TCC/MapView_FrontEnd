@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { Enviroment } from '../../models/Enviroment';
 import { DrpApiComponent } from '../drp-api/drp-api.component';
-import { LocationPopupComponent } from '../location-popup/location-popup.component';
 import { ResponsibleByIDService } from '../../services/responsiblesById/responsible-by-id.service';
 import { BuildingDrpService } from '../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../services/dropdow-enviroment/enviroment-drp.service';
@@ -34,7 +33,6 @@ import { DrpStaticComponent } from '../drp-static/drp-static.component';
     ErrorMessageComponent,
     DrpStaticComponent,
     DrpApiComponent,
-    LocationPopupComponent,
   ],
   templateUrl: './vizualizacao-form.component.html',
   styleUrls: ['./vizualizacao-form.component.scss'],

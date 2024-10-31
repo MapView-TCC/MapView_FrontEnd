@@ -6,13 +6,13 @@ import { EnviromentDrpService } from '../../../services/dropdow-enviroment/envir
 import { Enviroment } from '../../../models/Enviroment';
 import { GeneralService } from '../../../services/general/general.service';
 import { CommonModule } from '@angular/common';
-import { LocationPopupComponent } from "../../location-popup/location-popup.component";
+import { LocationFormPopupComponent } from "../../popup/location-form-popup/location-form-popup.component";
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-location',
   standalone: true,
-  imports: [ErrorMessageComponent, DrpApiComponent, ReactiveFormsModule, CommonModule, LocationPopupComponent, TranslateModule],
+  imports: [ErrorMessageComponent, DrpApiComponent, ReactiveFormsModule, CommonModule, TranslateModule, LocationFormPopupComponent],
   templateUrl: './form-location.component.html',
   styleUrl: './form-location.component.scss'
 })

@@ -6,7 +6,6 @@ import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
 import { DeletePopupComponent } from '../../components/popup/delete-popup/delete-popup.component';
-import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { ExcelService } from '../../services/excel/excel.service';
@@ -17,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, DeletePopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FooterComponent, MatIconModule, NoResultsPopupComponent],
+  imports: [HeaderComponent, DeletePopupComponent, CommonModule, VizualizacaoFormComponent, FiltrosComponent, FooterComponent, MatIconModule, NoResultsPopupComponent],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss']
 })
