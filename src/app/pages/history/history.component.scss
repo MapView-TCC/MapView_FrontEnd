@@ -21,7 +21,7 @@
         width: 670px;
         max-height: 740px;
 
-        background-color: #FAFAFB;
+        background-color: var(--background-off-white);
         border-radius: 15px;
 
         overflow-y: auto;
@@ -130,7 +130,7 @@
 
     }
 
-    .calendar-filters {
+    .filters {
         display: flex;
         flex-direction: column;
         width: 440px;
