@@ -17,7 +17,7 @@ import { NotificationsAlert } from '../../models/NotificationsAlert';
 import { InventarioService } from '../../services/equipaments/inventario.service';
 import moment from 'moment';
 import { Router } from '@angular/router';
-import { WarningBtnFiltersComponent } from "../../components/cards/warning-btn-filters/warning-btn-filters.component";
+import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { GeneralService } from '../../services/general/general.service';
 import { CalendarCardComponent } from '../../components/cards/calendar-card/calendar-card.component';

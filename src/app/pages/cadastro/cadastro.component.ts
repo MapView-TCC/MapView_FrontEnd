@@ -15,13 +15,13 @@ import { capitalize } from 'vue';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
 
 @Component({
-  selector: 'app-cadastro-page',
+  selector: 'app-cadastro',
   standalone: true,
   imports: [CommonModule, HeaderComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule, TranslateModule],
-  templateUrl: './cadastro-page.component.html',
-  styleUrl: './cadastro-page.component.scss'
+  templateUrl: './cadastro.component.html',
+  styleUrl: './cadastro.component.scss'
 })
-export class CadastroPageComponent implements OnInit {
+export class CadastroComponent implements OnInit {
 
   cadastroResponsavelArray: FormGroup;
 
