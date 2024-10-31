@@ -5,10 +5,10 @@ import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { VizualizacaoFormComponent } from '../../components/vizualizacao-form/vizualizacao-form.component';
-import { ExcluirPopupComponent } from '../../components/excluir-popup/excluir-popup.component';
+import { DeletePopupComponent } from '../../components/popup/delete-popup/delete-popup.component';
 import { LocationPopupComponent } from "../../components/location-popup/location-popup.component";
 import { FiltrosComponent } from '../../components/filtros/filtros.component';
-import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
+import { FilterPopupComponent } from '../../components/popup/filter-popup/filter-popup.component';
 import { ExcelService } from '../../services/excel/excel.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { MatIconModule } from '@angular/material/icon';
@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent, FooterComponent, MatIconModule],
+  imports: [HeaderComponent, DeletePopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent, FooterComponent, MatIconModule],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss']
 })

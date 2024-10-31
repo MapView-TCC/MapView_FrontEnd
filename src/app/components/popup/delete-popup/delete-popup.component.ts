@@ -1,19 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { GeneralService } from '../../services/general/general.service';
-import { Equipment } from '../../models/Equipment'; // Certifique-se de que está importando Equipment
+import { GeneralService } from '../../../services/general/general.service';
+import { Equipment } from '../../../models/Equipment'; 
 
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-excluir-popup',
+  selector: 'app-delete-popup',
   standalone: true,
   imports: [CommonModule,MatIconModule, TranslateModule],
-  templateUrl: './excluir-popup.component.html',
-  styleUrls: ['./excluir-popup.component.scss']
+  templateUrl: './delete-popup.component.html',
+  styleUrls: ['./delete-popup.component.scss']
 })
-export class ExcluirPopupComponent implements OnInit {
+export class DeletePopupComponent implements OnInit {
   @Input() itemToDelete: Equipment | null = null; // Recebe o item a ser excluído
   @Input() onConfirm: (() => void) | undefined; // Função a ser chamada na confirmação
 

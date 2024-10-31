@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ExcluirPopupComponent } from '../excluir-popup/excluir-popup.component';
+
 import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-drp-api',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, ExcluirPopupComponent, TranslateModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
   templateUrl: './drp-api.component.html',
   styleUrl: './drp-api.component.scss'
 })

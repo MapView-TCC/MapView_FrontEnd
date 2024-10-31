@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExcluirPopupComponent } from './excluir-popup.component';
+import { DeletePopupComponent } from './delete-popup.component';
 
-describe('ExcluirPopupComponent', () => {
-  let component: ExcluirPopupComponent;
-  let fixture: ComponentFixture<ExcluirPopupComponent>;
+describe('DeletePopupComponent', () => {
+  let component: DeletePopupComponent;
+  let fixture: ComponentFixture<DeletePopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExcluirPopupComponent]
+      imports: [DeletePopupComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ExcluirPopupComponent);
+    fixture = TestBed.createComponent(DeletePopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

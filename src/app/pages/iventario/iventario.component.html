@@ -14,7 +14,7 @@
     </div>
 
     <!-- Filtros aparecem aqui -->
-    <app-filtros (filtrosAplicados)="aplicarFiltro($event)"[showFiltro]="showFiltro"></app-filtros>
+    <app-filtros (filtrosAplicados)="aplicarFiltro($event)" [showFiltro]="showFiltro"></app-filtros>
 
     <table>
         <thead>
@@ -66,17 +66,13 @@
     <button class="icon-button" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
         <mat-icon>arrow_right</mat-icon>
     </button>
-  </div>
-  
-  <!--Chamada dos metodos para excluir cadastro-->
-<app-excluir-popup
-  *ngIf="generalService.showDialog"
-  [itemToDelete]="itemToDelete"
-  [onConfirm]="confirmDelete.bind(this)"></app-excluir-popup>
+</div>
 
+<!--Chamada dos metodos para excluir cadastro-->
+<app-delete-popup *ngIf="generalService.showDialog" [itemToDelete]="itemToDelete"
+    [onConfirm]="confirmDelete.bind(this)"></app-delete-popup>
 
-  
-<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form> 
+<app-vizualizacao-form *ngIf="generalService.showFormlog" [equipmentId]="selectedEquipment"></app-vizualizacao-form>
 
 <app-filter-popup *ngIf="generalService.showFilterlog"></app-filter-popup>
 
