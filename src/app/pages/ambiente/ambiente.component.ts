@@ -50,6 +50,11 @@ export class AmbienteComponent implements OnInit{
     console.log(this.equipments)
   }
 
+  getCredencials():any{
+    
+
+  }
+
   loadEquipments(): void {
     this.equipmentService.getEquipments().subscribe((data) => {
       this.equipments = data;

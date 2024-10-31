@@ -4,3 +4,7 @@ export class User {
     role: string = '';
     operative: boolean = false
 }
+
+export class Token{
+    id_token: String=''
+}
