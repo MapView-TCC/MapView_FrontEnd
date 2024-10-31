@@ -7,7 +7,6 @@ import { AbstractControl, FormControl, FormBuilder, FormGroup, ReactiveFormsModu
 import { GeneralService } from '../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
-import { DropdowLocalComponent } from '../drp-local/dropdow-local.component';
 import { Enviroment } from '../../models/Enviroment';
 import { DrpApiComponent } from '../drp-api/drp-api.component';
 import { LocationPopupComponent } from '../location-popup/location-popup.component';
@@ -20,6 +19,7 @@ import { RegisterService } from '../../services/cadastro/register.service';
 import { RegisterUpdate } from '../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
+import { DrpStaticComponent } from '../drp-static/drp-static.component';
 
 @Component({
   selector: 'app-vizualizacao-form',
@@ -32,7 +32,7 @@ import { EnvironmentService } from '../../services/location_popup/environment.se
     MatInputModule,
     TranslateModule,
     ErrorMessageComponent,
-    DropdowLocalComponent,
+    DrpStaticComponent,
     DrpApiComponent,
     LocationPopupComponent,
   ],

@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { DropdowLocalComponent } from '../../drp-local/dropdow-local.component';
 import { GeneralService } from '../../../services/general/general.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { DrpStaticComponent } from "../../drp-static/drp-static.component";
 
 @Component({
   selector: 'app-form-equipament',
   standalone: true,
-  imports: [ErrorMessageComponent, DropdowLocalComponent, ReactiveFormsModule, TranslateModule],
+  imports: [ErrorMessageComponent, ReactiveFormsModule, TranslateModule, DrpStaticComponent],
   templateUrl: './form-equipament.component.html',
   styleUrl: './form-equipament.component.scss'
 })

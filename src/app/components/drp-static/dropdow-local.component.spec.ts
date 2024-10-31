@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdowLocalComponent } from './dropdow-local.component';
+import { DrpStaticComponent } from './drp-static.component';
 
-describe('DropdowLocalComponent', () => {
-  let component: DropdowLocalComponent;
-  let fixture: ComponentFixture<DropdowLocalComponent>;
+describe('DrpStaticComponent', () => {
+  let component: DrpStaticComponent;
+  let fixture: ComponentFixture<DrpStaticComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropdowLocalComponent]
+      imports: [DrpStaticComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DropdowLocalComponent);
+    fixture = TestBed.createComponent(DrpStaticComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,13 +6,13 @@ import { GeneralService } from '../../services/general/general.service';
 import { VizualizacaoFormComponent } from '../vizualizacao-form/vizualizacao-form.component';
 
 @Component({
-  selector: 'app-dropdow-local',
+  selector: 'app-drp-static',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, TranslateModule, FormsModule, VizualizacaoFormComponent],
-  templateUrl: './dropdow-local.component.html',
-  styleUrl: './dropdow-local.component.scss'
+  templateUrl: './drp-static.component.html',
+  styleUrl: './drp-static.component.scss'
 })
-export class DropdowLocalComponent {
+export class DrpStaticComponent {
 
   //Para a tradução
   constructor(public generalService: GeneralService) { }
