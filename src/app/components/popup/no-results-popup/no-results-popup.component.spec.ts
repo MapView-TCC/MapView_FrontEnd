@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterPopupComponent } from './filter-popup.component';
+import { NoResultsPopupComponent } from './no-results-popup.component';
 
-describe('FilterPopupComponent', () => {
-  let component: FilterPopupComponent;
-  let fixture: ComponentFixture<FilterPopupComponent>;
+describe('NoResultsPopupComponent', () => {
+  let component: NoResultsPopupComponent;
+  let fixture: ComponentFixture<NoResultsPopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilterPopupComponent]
+      imports: [NoResultsPopupComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FilterPopupComponent);
+    fixture = TestBed.createComponent(NoResultsPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

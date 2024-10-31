@@ -19,7 +19,7 @@ import { InventarioService } from '../../services/equipaments/inventario.service
 import moment from 'moment';
 import { Router } from '@angular/router';
 import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
-import { FilterPopupComponent } from '../../components/popup/filter-popup/filter-popup.component';
+import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { GeneralService } from '../../services/general/general.service';
 
 
@@ -41,8 +41,8 @@ import { GeneralService } from '../../services/general/general.service';
     AutocompleteComponent,
     FooterComponent,
     WarningBtnFiltersComponent,
-    FilterPopupComponent
-  ],
+    NoResultsPopupComponent
+],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'
 })

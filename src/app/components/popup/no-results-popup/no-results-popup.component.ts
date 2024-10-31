@@ -6,13 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-filter-popup',
+  selector: 'app-no-results-popup',
   standalone: true,
   imports: [CommonModule,MatCommonModule,MatIconModule, TranslateModule],
-  templateUrl: './filter-popup.component.html',
-  styleUrl: './filter-popup.component.scss'
+  templateUrl: './no-results-popup.component.html',
+  styleUrl: './no-results-popup.component.scss'
 })
-export class FilterPopupComponent {
+export class NoResultsPopupComponent {
 
  constructor( public generalService: GeneralService){}
 
