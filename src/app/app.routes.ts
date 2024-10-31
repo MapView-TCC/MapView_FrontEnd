@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { InicialComponent } from './pages/inicial/inicial.component';
+import { HomeComponent } from './pages/home/home.component';
 import { EnvironmentComponent } from './pages/environment/environment.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { InventarioComponent } from './pages/inventario/inventario.component';
@@ -8,7 +8,7 @@ import { RegisterComponet } from './pages/register/register.component';
 export const routes: Routes = [
     // {path: 'mapview',loadChildren:()=> import( './mapview/mapview.module').then(m=>m.MapviewModule)},
 
-    {path:'', component:InicialComponent},
+    {path:'', component:HomeComponent},
     {path:'ambiente',component:EnvironmentComponent},
     {path:'cadastro', component: RegisterComponet},
     {path:'historico', component:HistoryComponent},

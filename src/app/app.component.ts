@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
 import {  TranslateModule, TranslateService } from '@ngx-translate/core';
 import {  HttpClientModule } from '@angular/common/http';
-import { InicialComponent } from "./pages/inicial/inicial.component";
+import { HomeComponent} from "./pages/home/home.component";
 import { CommonModule } from '@angular/common';
 
 
@@ -16,7 +16,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent, 
     HttpClientModule, 
     TranslateModule,
-    InicialComponent, CommonModule
+    CommonModule,
+    HomeComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

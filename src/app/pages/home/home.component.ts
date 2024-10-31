@@ -10,13 +10,13 @@ import { TranslationService } from '../../services/translate/translation.service
 import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
-  selector: 'app-inicial',
+  selector: 'app-home',
   standalone: true,
   imports: [MatIconModule, CommonModule, TranslateModule, TranslateCardComponent, FooterComponent],
-  templateUrl: './inicial.component.html',
-  styleUrl: './inicial.component.scss'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss'
 })
-export class InicialComponent implements OnInit {
+export class HomeComponent implements OnInit {
   router: any;
 
   showCard = false;
