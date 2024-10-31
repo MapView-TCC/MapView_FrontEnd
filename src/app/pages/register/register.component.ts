@@ -9,19 +9,17 @@ import { CommonModule } from '@angular/common';
 import { FormResponsibleComponent } from "../../components/forms/form-responsible/form-responsible.component";
 import { Register } from '../../models/Register';
 import { RegisterService } from '../../services/cadastro/register.service';
-import { ToastrService } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
-import { capitalize } from 'vue';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
 
 @Component({
-  selector: 'app-cadastro',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, HeaderComponent, FooterComponent, FormEquipamentComponent, FormLocationComponent, FormResponsibleComponent, ReactiveFormsModule, TranslateModule],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class CadastroComponent implements OnInit {
+export class RegisterComponet implements OnInit {
 
   cadastroResponsavelArray: FormGroup;
 

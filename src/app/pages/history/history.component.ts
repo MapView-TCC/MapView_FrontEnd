@@ -24,7 +24,7 @@ import { CalendarCardComponent } from '../../components/cards/calendar-card/cale
 
 
 @Component({
-  selector: 'app-historico',
+  selector: 'app-history',
   standalone: true,
   imports: [
     HeaderComponent,
@@ -43,10 +43,10 @@ import { CalendarCardComponent } from '../../components/cards/calendar-card/cale
     NoResultsPopupComponent,
     CalendarCardComponent
 ],
-  templateUrl: './historico.component.html',
-  styleUrl: './historico.component.scss'
+  templateUrl: './history.component.html',
+  styleUrl: './history.component.scss'
 })
-export class HistoricoComponent {
+export class HistoryComponent {
   notifications: NotificationsAlert[] = [];
   displayNotifications: NotificationsAlert[] = []; // Para exibir as notificações
   initialCountNotifications = 9; //Quantidade inicial de notificaçõe a ser exibida na tela
