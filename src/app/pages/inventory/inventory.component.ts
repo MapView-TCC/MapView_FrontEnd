@@ -17,10 +17,10 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-iventario',
   standalone: true,
   imports: [HeaderComponent, DeletePopupComponent, CommonModule, FiltersComponent, FooterComponent, MatIconModule, NoResultsPopupComponent, ViewEditPopupComponent],
-  templateUrl: './inventario.component.html',
-  styleUrls: ['./inventario.component.scss']
+  templateUrl: './inventory.component.html',
+  styleUrls: ['./inventory.component.scss']
 })
-export class InventarioComponent implements OnInit {
+export class InventoryComponent implements OnInit {
 
   showDialog = false;
   showFormlog = false;
