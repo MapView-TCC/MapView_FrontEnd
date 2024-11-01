@@ -14,7 +14,7 @@ import { BuildingDrpService } from '../../../services/dropdow-building/building-
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
 import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
 import { Responsible } from '../../../models/DataResponsible';
-import { RegisterService } from '../../../services/cadastro/register.service';
+import { RegisterService } from '../../../services/register/register.service';
 import { RegisterUpdate } from '../../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnvironmentService } from '../../../services/location_popup/environment.service';

@@ -8,7 +8,7 @@ import { FormLocationComponent } from "../../components/forms/form-location/form
 import { CommonModule } from '@angular/common';
 import { FormResponsibleComponent } from "../../components/forms/form-responsible/form-responsible.component";
 import { Register } from '../../models/Register';
-import { RegisterService } from '../../services/cadastro/register.service';
+import { RegisterService } from '../../services/register/register.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { EnvironmentService } from '../../services/location_popup/environment.service';
 
