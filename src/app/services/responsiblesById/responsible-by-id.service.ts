@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataResponsible } from '../../models/DataResponsible';
-import { BACKEND_URL } from '../../models/App';
+import { BACKEND_URL } from '../../models/App.model';
 import { Observable } from 'rxjs';
 import { ResponsibleFilter } from '../../models/ResponsibleFilter';
 import { Responsible } from '../../models/Responsible';

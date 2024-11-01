@@ -12,7 +12,7 @@ import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { WrongLocation } from '../../models/WrongLocation';
-import { CarrosselService } from '../../services/carrossel/carrossel.service';
+import { CarrosselService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 

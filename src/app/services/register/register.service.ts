@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Register, RegisterUpdate } from '../../models/Register';
-import { BACKEND_URL } from '../../models/App';
+import { BACKEND_URL } from '../../models/App.model';
 
 @Injectable({
   providedIn: 'root'

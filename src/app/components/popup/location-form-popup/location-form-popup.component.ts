@@ -9,7 +9,7 @@ import { GeneralService } from '../../../services/general/general.service';
 import { EnvironmentService } from '../../../services/location_popup/environment.service';
 import { DrpAreaService } from '../../../services/drp-area/drp-area.service';
 import { Building } from '../../../models/Building';
-import { Area } from '../../../models/Area';
+import { Area } from '../../../models/Area.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocationRegister } from '../../../models/Location';

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../../services/general/general.service';
-import { PrevDirective } from '../../services/carrosel/prev.directive';
-import { NextDirective } from '../../services/carrosel/next.directive';
+import { PrevDirective } from '../../services/caroulsel/caroulsel-navigation/prev.directive';
+import { NextDirective } from '../../services/caroulsel/caroulsel-navigation/next.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { WrongLocation } from '../../models/WrongLocation';
 import { Equipment } from '../../models/Equipment';
-import { CarrosselService } from '../../services/carrossel/carrossel.service';
+import { CaroulselDataService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
 
 
 
@@ -20,10 +20,10 @@ import { CarrosselService } from '../../services/carrossel/carrossel.service';
 export class CarouselComponent implements OnInit {
  equipamentos: WrongLocation[] = [];
 
- constructor(private carrosselService: CarrosselService, public generalService: GeneralService) {}
+ constructor(private caroulseldataService: CaroulselDataService, public generalService: GeneralService) {}
 
   ngOnInit() {
-    this.carrosselService.getEquipamentos().subscribe({
+    this.caroulseldataService.getEquipamentos().subscribe({
    next: (data: WrongLocation[]) => {
   this.equipamentos = data;
     console.log('Dados recebidos:', this.equipamentos); // Verifique os dados

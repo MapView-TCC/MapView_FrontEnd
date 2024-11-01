@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TrackingHistory, Historico } from '../../models/TrackingHistory';
 import { Observable, catchError, throwError } from 'rxjs';
-import { BACKEND_URL } from '../../models/App';
+import { BACKEND_URL } from '../../models/App.model';
 
 @Injectable({
   providedIn: 'root'

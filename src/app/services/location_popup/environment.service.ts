@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { BACKEND_URL } from '../../models/App';
+import { BACKEND_URL } from '../../models/App.model';
 import { LocationRegister } from '../../models/Location';
 import { Enviroment } from '../../models/Enviroment';
 

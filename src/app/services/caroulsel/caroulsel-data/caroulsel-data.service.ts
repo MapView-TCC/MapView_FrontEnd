@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs'
-import { BACKEND_URL } from '../../models/App';
-import { WrongLocation } from '../../models/WrongLocation';
+import { BACKEND_URL } from '../../../models/App.model';
+import { WrongLocation } from '../../../models/WrongLocation';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarrosselService {
+export class CaroulselDataService {
 
   constructor(private http: HttpClient) {}
 

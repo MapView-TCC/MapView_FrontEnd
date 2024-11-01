@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map } from 'rxjs';
-import { BACKEND_URL} from '../../models/App';
+import { BACKEND_URL} from '../../models/App.model';
 import { Equipment, FilteredEquipment } from '../../models/Equipment';
 
 @Injectable({

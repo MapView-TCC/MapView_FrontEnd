@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Area } from '../../models/Area';
-import { BACKEND_URL } from '../../models/App';
+import { Area } from '../../models/Area.model';
+import { BACKEND_URL } from '../../models/App.model';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TrackingHistory } from '../../models/TrackingHistory';
-import { BACKEND_URL } from '../../models/App';
+import { BACKEND_URL } from '../../models/App.model';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
