@@ -11,8 +11,8 @@ export class DrpAreaService {
 
   constructor(private http: HttpClient) {}
 
-  getArea(page: number = 0): Observable<Array<Area>>{
-    return this.http.get<Array<Area>>(`${BACKEND_URL}/api/v1/area?page=${page}&items=10&userLog_id=1`)
+  getArea(userLog_id: number = 0): Observable<Array<Area>>{
+    return this.http.get<Array<Area>>(`${BACKEND_URL}/api/v1/area?userLog_id=${userLog_id}`)
     .pipe(
       catchError(error => {
         console.error("Erro de requisição: ", error);

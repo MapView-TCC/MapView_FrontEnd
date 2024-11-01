@@ -8,12 +8,12 @@ import { Building } from '../../models/Building';
   providedIn: 'root'
 })
 
-export class BuildingDrpService {
+export class DrpBuildingService {
 
   constructor(private http: HttpClient) {}
 
-  getBulding(page: number = 0): Observable<Array<Building>>{
-    return this.http.get<Array<Building>>(`${BACKEND_URL}/api/v1/building?page=${page}&items=10&userLog_id=1`)
+  getBulding(userLog_id: number = 1): Observable<Array<Building>>{
+    return this.http.get<Array<Building>>(`${BACKEND_URL}/api/v1/building?userLog_id=${userLog_id}`)
     .pipe(
       catchError(error => {
         console.error("Erro de requisição: ", error);

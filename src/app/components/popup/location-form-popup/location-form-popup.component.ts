@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
-import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
+import { DrpBuildingService } from '../../../services/drp-building/drp-building.service';
 import { GeneralService } from '../../../services/general/general.service';
 import { EnvironmentService } from '../../../services/location_popup/environment.service';
 import { DrpAreaService } from '../../../services/drp-area/drp-area.service';
@@ -31,7 +31,7 @@ export class LocationFormPopupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private buildingDrp: BuildingDrpService,
+    private buildingDrpService: DrpBuildingService,
     private areaDrpService: DrpAreaService,
     public generalService: GeneralService,
     private environmentService: EnvironmentService,
@@ -56,7 +56,7 @@ export class LocationFormPopupComponent implements OnInit {
 
   // Função que pega os valores da tabela Bulding
   loadBuildings() {
-    this.buildingDrp.getBulding().subscribe((buildings: Building[]) => {
+    this.buildingDrpService.getBulding().subscribe((buildings: Building[]) => {
       buildings.map(data => (this.buildingOptions.push({
         value: data.id_building,
         label: data.building_code
