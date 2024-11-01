@@ -10,9 +10,7 @@ import { ErrorMessageComponent } from '../../error-message/error-message.compone
 import { Enviroment } from '../../../models/Enviroment';
 import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { ResponsibleByIDService } from '../../../services/responsiblesById/responsible-by-id.service';
-import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
 import { EnviromentDrpService } from '../../../services/dropdow-enviroment/enviroment-drp.service';
-import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
 import { Responsible } from '../../../models/DataResponsible';
 import { RegisterService } from '../../../services/register/register.service';
 import { RegisterUpdate } from '../../../models/Register';
@@ -87,10 +85,8 @@ export class ViewEditPopupComponent implements OnInit {
     private fb: FormBuilder,
     public generalService: GeneralService,
     private responsibleService: ResponsibleByIDService,
-    private buildingDrpService: BuildingDrpService,
     private environmentService: EnvironmentService,
     private enviromentDrpService: EnviromentDrpService,
-    private areaDrpService: AreaDrpService,
     private registerService: RegisterService,
     private snackBar: MatSnackBar
   ) { }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AreaDrpService } from './area-drp.service';
+import { DrpAreaService } from './drp-area.service';
 
-describe('AreaDrpService', () => {
-  let service: AreaDrpService;
+describe('DrpAreaService', () => {
+  let service: DrpAreaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AreaDrpService);
+    service = TestBed.inject(DrpAreaService);
   });
 
   it('should be created', () => {

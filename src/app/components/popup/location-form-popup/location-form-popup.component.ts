@@ -7,7 +7,7 @@ import { ErrorMessageComponent } from '../../error-message/error-message.compone
 import { BuildingDrpService } from '../../../services/dropdow-building/building-drp.service';
 import { GeneralService } from '../../../services/general/general.service';
 import { EnvironmentService } from '../../../services/location_popup/environment.service';
-import { AreaDrpService } from '../../../services/dropdow-area/area-drp.service';
+import { DrpAreaService } from '../../../services/drp-area/drp-area.service';
 import { Building } from '../../../models/Building';
 import { Area } from '../../../models/Area';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -32,7 +32,7 @@ export class LocationFormPopupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private buildingDrp: BuildingDrpService,
-    private areaDrp: AreaDrpService,
+    private areaDrpService: DrpAreaService,
     public generalService: GeneralService,
     private environmentService: EnvironmentService,
     private snackBar: MatSnackBar
@@ -67,7 +67,7 @@ export class LocationFormPopupComponent implements OnInit {
 
   // Função que pega os valores da tabela Area
   loadAreas() {
-    this.areaDrp.getArea().subscribe((areas: Area[]) => {
+    this.areaDrpService.getArea().subscribe((areas: Area[]) => {
       areas.map(data => (this.areaOptions.push({
         value: data.id_area,
         label: data.area_code

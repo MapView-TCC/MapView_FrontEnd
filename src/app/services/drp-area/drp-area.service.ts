@@ -7,7 +7,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AreaDrpService {
+export class DrpAreaService {
 
   constructor(private http: HttpClient) {}
 
