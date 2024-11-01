@@ -1,4 +1,4 @@
-export class Cost_center{
+export class CostCenter{
     id_cost_center: number = 0;
     costCenter: string = "";
 }

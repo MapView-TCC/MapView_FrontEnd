@@ -1,4 +1,4 @@
-import { Cost_center, Cost_centerIventario } from "./Cost_center";
+import { Cost_center, Cost_centerIventario } from "./CostCenter";
 
 export class Owner{
     id_owner: string = "";
