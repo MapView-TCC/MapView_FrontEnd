@@ -7,7 +7,7 @@ import { BACKEND_URL } from '../../models/App';
 @Injectable({
   providedIn: 'root'
 })
-export class EnviromentDrpService {
+export class DrpEnvironmentService {
 
   constructor(private http: HttpClient) { }
 
