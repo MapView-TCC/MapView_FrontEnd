@@ -6,5 +6,4 @@ export class Classes {
     classes: string = "";
     user: User = new User();
     creation_date: string = "";
-    operative: boolean = false;
 }
