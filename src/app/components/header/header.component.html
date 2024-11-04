@@ -17,7 +17,7 @@
                         {{ equipment.name_equipment }}
                     </li>
                     <div *ngIf="noResult && searchItem" class="noResult">
-                        <p><strong>Dispositivo não encontrado</strong></p>
+                        <p><strong>{{ 'DISPOSITIVO_NAO_ENCONTRADO' | translate }}</strong></p>
                     </div>
                 </ul>
             </form>
@@ -29,14 +29,14 @@
                             <li *ngFor="let notification of notifications">
                                 <span class="notification"></span>
                                 <div class="notification-header">
-                                    <p class="notification-text">{{ notification.equipment.name_equipment }} vence em {{
+                                    <p class="notification-text">{{ notification.equipment.name_equipment }} {{ 'VENCE_EM' | translate }} {{
                                             notification.equipment.validity }}</p>
-                                        <span class="notificaton-location">Localização: {{ notification.environment.environment_name}}</span>  
+                                        <span class="notificaton-location">{{ 'LOCALIZACAO' | translate }}: {{ notification.environment.environment_name}}</span>  
                                 </div>
                             </li>
                             
                             <div *ngIf="notifications.length === 0">
-                                <p><strong>Nenhuma notificação disponível</strong></p>
+                                <p><strong>{{ 'NENHUMA_NOTIFICACAO_DISPONIVEL' | translate }}</strong></p>
                             </div>
                         </ul>
                 </div>

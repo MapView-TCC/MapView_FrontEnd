@@ -12,7 +12,7 @@ export class TranslationService {
     const storedLanguage = localStorage?.getItem('language') || 'pt';
     this.translate.setDefaultLang('pt');
     this.translate.use(storedLanguage);
-    // console.log('Idioma inicial:', this.translate.currentLang);
+    console.log('Idioma inicial:', this.translate.currentLang);
   }
 
   changeLanguage(language: string) {
