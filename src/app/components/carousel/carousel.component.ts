@@ -5,7 +5,6 @@ import { NextDirective } from '../../services/caroulsel/caroulsel-navigation/nex
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { WrongLocation } from '../../models/WrongLocation';
-import { Equipment } from '../../models/Equipment';
 import { CaroulselDataService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
 
 

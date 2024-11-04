@@ -93,7 +93,7 @@ export class ViewEditPopupComponent implements OnInit {
   ngOnInit(): void {
     const userLogId = 1;
     this.loadEnvironments();
-    this.loadData(this.equipmentId, userLogId);
+    this.loadData(this.equipmentId);
 
     //Carrea o valor do predio e da area relacionada ao ambiente selecionado no dropdown
     this.vizualizarCadastro.get('id_environment')?.valueChanges.subscribe(id_environment => {
@@ -158,8 +158,8 @@ export class ViewEditPopupComponent implements OnInit {
 
 
   //Pegar os dados da api para apresentar no vizualizar
-  loadData(equipmentId: string, userLogId: number) {
-    this.responsibleService.getResponsiblesByEquipment(0, 100, equipmentId).subscribe({
+  loadData(equipmentId: string) {
+    this.responsibleService.getResponsiblesByEquipment(equipmentId).subscribe({
       next: (equipResponsible) => {
 
         this.vizualizarCadastro.controls.id_equipment.setValue(equipResponsible.code);

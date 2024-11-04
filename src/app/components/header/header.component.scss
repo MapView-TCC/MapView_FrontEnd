@@ -10,7 +10,7 @@ header {
 }
 
 header .container {
-    background: linear-gradient(to left, #011D94, #6338AF, #DA203C);
+    background: linear-gradient(to left, var(--blue), var(--purple), var(--red));
     padding: 9px;
     width: 100%;
 }
@@ -82,7 +82,7 @@ header .container {
     transform: translateY(-50%);
     padding: 8px;
     font-size: 18px;
-    color: #011D94;
+    color: var(--blue);
     cursor: pointer;
     border: none;
     background: none;
@@ -93,7 +93,7 @@ header .container {
 }
 
 .search-container button:hover {
-    color: #6338AF;
+    color: var(--purple);
 }
 
 .search-content {
@@ -119,7 +119,7 @@ header .container {
 
 .search-content li:hover {
     background: #ECE8F4; /* Destaque ao passar o mouse */
-    color: #6338AF;
+    color: var(--purple);
 }
 
 .noResult p{
@@ -180,18 +180,22 @@ strong{
     top: 0;
     width: 4px; /* Largura da linha */
     height: 100%; /* Faz a linha cobrir toda a altura do item */
-    background-color: #011D94; /* Cor da linha */
+    background-color: var(--blue); /* Cor da linha */
     border-radius: 4px; /* Bordas arredondadas */
     transition: background-color 0.1s ease; /* Suaviza a transição de cor */
 }
 
 .notification-container li:hover::before {
-    background-color: #6338AF; /* Cor da linha ao passar o mouse */
+    background-color: var(--purple); /* Cor da linha ao passar o mouse */
 }
 
 .notification-container li:hover .notification-text,
 .notification-container li:hover span {
-    color: #6338AF;
+    color: var(--purple);
+}
+
+.notification-container li:hover{
+    background-color: var(--background-selected)
 }
 .notification-container li:hover .notification {
     background-color: #ECE8F4; /* Fundo ao passar o mouse */
@@ -219,19 +223,20 @@ h3 {
 
 ul {
     list-style: none; /* Remove marcadores da lista */
-    padding: 0; /* Remove preenchimento */
+    padding: 0 10px; /* Remove preenchimento */
     margin: 0; /* Remove margem */
 }
 
 // .notification {
-//     border-left: 4px solid #011D94; /* Ajuste a espessura conforme necessário */
+//     border-left: 4px solid var(--blue); /* Ajuste a espessura conforme necessário */
 //     padding-left: 10px; /* Espaço entre o texto e a linha */
 //     margin-left: 12px;
 //     transition: border-color 0.1s ease;
 // }
 
 .notification:hover{
-    border-left-color: #6338AF; 
+    border-left-color: var(--purple); 
+    
 }
 
 
@@ -283,7 +288,7 @@ span{
     display: block;
     width: 100%;
     height: 2px;
-    background: #6338AF;
+    background: var(--purple);
     margin-top: 5px;
     position: absolute;
     bottom: -10px;
@@ -300,7 +305,7 @@ span{
 /* Ajuste dos ícones */
 .notification-icon,
 .circle-user {
-    color: #011D94;
+    color: var(--blue);
     font-size: 26px;
     margin-left: 15px;
     cursor: pointer;
@@ -312,7 +317,7 @@ span{
 
 .notification-icon:hover,
 .circle-user:hover {
-    color: #6338AF;
+    color: var(--purple);
 }
 
 button {

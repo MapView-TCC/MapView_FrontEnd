@@ -13,8 +13,8 @@ export class ResponsibleByEquipmentService {
   constructor(private http: HttpClient) {}
 
 
-  getResponsiblesByEquipment(page: number = 0,itens: number=1, id: string = ''):Observable<Equipment>{
-    return this.http.get<Equipment>(`${BACKEND_URL}/api/v1/equipmentresponsible/filter?page=${page}&itens${itens}&id_equipment=${id}`);
+  getResponsiblesByEquipment(id: string = ''):Observable<Equipment>{
+    return this.http.get<Equipment>(`${BACKEND_URL}/api/v1/equipmentresponsible/filter?id_equipment=${id}`);
   }
 
 }

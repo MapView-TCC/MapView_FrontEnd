@@ -30,8 +30,8 @@
         <tbody>
             <!--Preparação do html para receber os dados da api-->
             <tr *ngFor="let item of currentPageItems; let i = index">
-                <td>{{item.id_equipment}}</td>
-                <td>{{ item.owner.id_owner}}</td>
+                <td>{{item.code}}</td>
+                <td>{{ item.owner.codOwner}}</td>
                 <td>{{ item.location.environment.environment_name }}</td>
                 <td>{{ item.location.post.post }}</td>
                 <td>{{ item.validity }}</td>

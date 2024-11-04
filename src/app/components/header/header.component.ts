@@ -8,13 +8,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Equipment} from '../../models/Equipment';
 import { FilteredEquipment } from '../../models/FilteredEquipment';
 import { FormsModule } from '@angular/forms';
-import { NotificacaoService } from '../../services/notificacao/notificacao.service';
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { SearchService } from '../../services/search/search.service';
 import { NgOptimizedImage } from '@angular/common';
-
-import { tick } from '@angular/core/testing';
-import { GeneralService } from '../../services/general/general.service';
 import { SearchPopupComponent } from "../popup/search-popup/search-popup.component";
 import { TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
 

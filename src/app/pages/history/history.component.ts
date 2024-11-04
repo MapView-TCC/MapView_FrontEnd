@@ -108,7 +108,7 @@ export class HistoryComponent {
   //Função para passar as opções do autocomplete
   loadEquipmentsID() {
     this.inventarioService.getEquipments().subscribe((data) => {
-      this.idEquipment = data.map(equipment => equipment.id_equipment)
+      this.idEquipment = data.map(equipment => equipment.code)
     })
   }
 
