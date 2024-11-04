@@ -1,15 +1,12 @@
-import { Cost_center, Cost_centerIventario } from "./CostCenter";
+import { CostCenter} from "./CostCenter";
 
 export class Owner{
     id_owner: string = "";
+    codOwner: string = "";
     owner_name: string = "";
-    cost_center: Cost_center = new Cost_center();
+    costCenter: CostCenter = new CostCenter();
 }
 
-export class OwnerIventario{
-    id_owner: string = "";
-    owner_name: string = "";
-    costCenter: Cost_centerIventario = new Cost_centerIventario();
-}
+
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InventarioService } from '../../services/equipaments/inventario.service';
+import { EquipmentService } from '../../services/equipment/equipment.service';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -8,7 +8,7 @@ import {ViewEditPopupComponent } from '../../components/popup/view-edit-popup/vi
 import { DeletePopupComponent } from '../../components/popup/delete-popup/delete-popup.component';
 import { FiltersComponent } from '../../components/filters/filters.component';
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
-import { ExcelService } from '../../services/excel/excel.service';
+import { ExportToExcelService } from '../../services/export-to-excel/export-to-excel.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { MatIconModule } from '@angular/material/icon';
 
@@ -40,7 +40,7 @@ export class InventoryComponent implements OnInit {
   currentPageItems: Equipment[] = [];
 
   selectedEquipment: string = '';
-  constructor(public generalService: GeneralService, private inventarioService: InventarioService, private excelService: ExcelService) { }
+  constructor(public generalService: GeneralService, private inventoryService: EquipmentService, private excelService: ExportToExcelService) { }
 
   ngOnInit(): void {
     this.loadItems();
@@ -48,7 +48,7 @@ export class InventoryComponent implements OnInit {
 
   //careegar os itens da pagina
   loadItems() {
-    this.inventarioService.getEquipments().subscribe(data => {
+    this.inventoryService.getEquipments().subscribe(data => {
       this.equipment = data;
       console.log("equipamentos carregados", this.equipment)
 
@@ -183,14 +183,14 @@ export class InventoryComponent implements OnInit {
     console.log('Tentando excluir o equipamento:', this.itemToDelete);
 
     if (this.itemToDelete) {
-      const equipmentId = this.itemToDelete.id_equipment; // ID como string
-      this.inventarioService.deleteEquipment(equipmentId).subscribe({
+      const equipmentId = this.itemToDelete.code; // ID como string
+      this.inventoryService.deleteEquipment(equipmentId).subscribe({
         next: () => {
           // Remover o equipamento da lista original
-          this.equipment = this.equipment.filter(e => e.id_equipment !== equipmentId);
+          this.equipment = this.equipment.filter(e => e.code !== equipmentId);
 
           // Atualizar a lista filtrada
-          this.filteredEquipment = this.filteredEquipment.filter(e => e.id_equipment !== equipmentId);
+          this.filteredEquipment = this.filteredEquipment.filter(e => e.code !== equipmentId);
 
           this.generalService.showDialog = false;
           this.itemToDelete = null;

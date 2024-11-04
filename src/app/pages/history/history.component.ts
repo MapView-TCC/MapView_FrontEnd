@@ -11,16 +11,16 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { NotificationCardComponent } from '../../components/cards/notification-card/notification-card.component';
 import { AutocompleteComponent } from "../../components/inputs/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import { HistoryService } from '../../services/tracking-history/tracking-history.service';
-import { Historico, TrackingHistory } from '../../models/TrackingHistory';
+import {TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
+import {  TrackingHistory } from '../../models/TrackingHistory';
 import { NotificationsAlert } from '../../models/NotificationsAlert';
-import { InventarioService } from '../../services/equipaments/inventario.service';
 import moment from 'moment';
 import { Router } from '@angular/router';
 import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 import { NoResultsPopupComponent } from '../../components/popup/no-results-popup/no-results-popup.component';
 import { GeneralService } from '../../services/general/general.service';
 import { CalendarCardComponent } from '../../components/cards/calendar-card/calendar-card.component';
+import { EquipmentService } from '../../services/equipment/equipment.service';
 
 
 @Component({
@@ -61,8 +61,8 @@ export class HistoryComponent {
 
 
   constructor(
-    private trackingHistoryService: HistoryService,
-    private inventarioService: InventarioService,
+    private trackingHistoryService: TrackingHistoryService,
+    private inventarioService: EquipmentService,
     private fb: FormBuilder,
     private router: Router,
     public generalService: GeneralService
@@ -85,9 +85,9 @@ export class HistoryComponent {
 
   //Carrega as notificações do trackingHistory
   loadnotification() {
-    this.trackingHistoryService.getHistory().subscribe((data: Historico[]) => {
+    this.trackingHistoryService.getTrackingHistory().subscribe((data: TrackingHistory[]) => {
       this.notifications = data.map(item => ({
-        idEquipment: item.equipment?.idEquipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        idEquipment: item.equipment?.code || 'Equipamento não definido', // Checa se 'equipment' existe
         warning: item.warning,
         equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
         action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',

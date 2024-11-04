@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Register, RegisterUpdate } from '../../models/Register';
-import { BACKEND_URL } from '../../models/App.model';
+import { Register } from '../../models/Register';
+import { BACKEND_URL } from '../../models/App';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class RegisterService {
   }
 
   //Atualização de dados do equipamento
-  putRegister(userLog_id : number = 1, id_equipment: string, data: RegisterUpdate): Observable<RegisterUpdate>{
+  putRegister(userLog_id : number = 1, id_equipment: string, data: Register): Observable<Register>{
     return this.http.put<Register>(`${BACKEND_URL}api/v1/register?userLog_id=${userLog_id }&id_equipment=${id_equipment}`, data)
     .pipe(
       catchError(error => {

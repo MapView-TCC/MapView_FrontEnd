@@ -9,14 +9,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { Enviroment } from '../../../models/Enviroment';
 import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
-import { ResponsibleByIDService } from '../../../services/responsiblesById/responsible-by-id.service';
-import { DrpEnvironmentService} from '../../../services/drp-environment/drp-environment.service';
-import { Responsible } from '../../../models/DataResponsible';
+import { ResponsibleByEquipmentService} from '../../../services/responsiblesById/responsible-by-id.service';
 import { RegisterService } from '../../../services/register/register.service';
-import { RegisterUpdate } from '../../../models/Register';
+import { Register } from '../../../models/Register';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EnvironmentService } from '../../../services/location_popup/environment.service';
+import { EnvironmentService } from '../../../services/environment/environment.service';
 import { DrpStaticComponent } from '../../inputs/drp-static/drp-static.component';
+import { Responsibles } from '../../../models/Responsibles';
 
 @Component({
   selector: 'app-view-edit-popup',
@@ -84,9 +83,9 @@ export class ViewEditPopupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public generalService: GeneralService,
-    private responsibleService: ResponsibleByIDService,
+    private responsibleService: ResponsibleByEquipmentService,
     private environmentService: EnvironmentService,
-    private enviromentDrpService: DrpEnvironmentService,
+    private enviromentDrpService: EnvironmentService,
     private registerService: RegisterService,
     private snackBar: MatSnackBar
   ) { }
@@ -170,13 +169,13 @@ export class ViewEditPopupComponent implements OnInit {
         this.vizualizarCadastro.controls.validity.setValue(equipResponsible.validity);
         this.vizualizarCadastro.controls.admin_rights.setValue(equipResponsible.admin_rights);
         this.vizualizarCadastro.controls.observation.setValue(equipResponsible.observation);
-        this.vizualizarCadastro.controls.constcenter.setValue(equipResponsible.owner.costCenter.constcenter);
+        this.vizualizarCadastro.controls.constcenter.setValue(equipResponsible.owner.costCenter.costCenter);
         this.vizualizarCadastro.controls.building_code.setValue(equipResponsible.location.environment.raspberry.building.building_code);
         this.vizualizarCadastro.controls.id_environment.setValue(equipResponsible.location.environment.id_environment);
         this.vizualizarCadastro.controls.id_post.setValue(equipResponsible.location.post.post);
         this.vizualizarCadastro.controls.area_code.setValue(equipResponsible.location.environment.raspberry.area.area_code);
 
-        equipResponsible.responsibles.forEach((responsavel: Responsible) => {
+        equipResponsible.responsibles.forEach((responsavel: Responsibles) => {
           this.returnFormArray.push(this.fb.group({
             responsible: [{ value: responsavel.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
             edv: [{ value: responsavel.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
@@ -217,9 +216,9 @@ export class ViewEditPopupComponent implements OnInit {
     const id = this.vizualizarCadastro.controls.id_equipment.value || '';
     console.log('Id do equipamento selecionado ', id);
 
-    const updateData = new RegisterUpdate();
+    const updateData = new Register();
 
-    updateData.id_equipment = this.vizualizarCadastro.get('id_equipment')?.value?.toUpperCase() || '';
+    updateData.code = this.vizualizarCadastro.get('id_equipment')?.value?.toUpperCase() || '';
     updateData.name_equipment = this.vizualizarCadastro.get('name_equipment')?.value || '';
     updateData.rfid = Number(this.vizualizarCadastro.get('rfid')?.value || 0);
     updateData.type = this.vizualizarCadastro.get('type')?.value || '';

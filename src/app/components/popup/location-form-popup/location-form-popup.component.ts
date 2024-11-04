@@ -6,13 +6,14 @@ import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { DrpBuildingService } from '../../../services/drp-building/drp-building.service';
 import { GeneralService } from '../../../services/general/general.service';
-import { EnvironmentService } from '../../../services/location_popup/environment.service';
+import { EnvironmentService } from '../../../services/environment/environment.service';
 import { DrpAreaService } from '../../../services/drp-area/drp-area.service';
 import { Building } from '../../../models/Building';
-import { Area } from '../../../models/Area.model';
+import { Area } from '../../../models/Area';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
-import { LocationRegister } from '../../../models/Location';
+import { RegisterEnvironment } from '../../../models/RegisterEnvironment';
+
 
 @Component({
   selector: 'app-location-form-popup',
@@ -86,12 +87,12 @@ export class LocationFormPopupComponent implements OnInit {
   onSubmit() {
     if (this.cadastroNovoLocalizacao.valid) {
 
-      const enviromentData = new LocationRegister();
+      const enviromentData = new RegisterEnvironment();
 
       enviromentData.id_building = Number(this.cadastroNovoLocalizacao.get('id_building')?.value || 0);
       enviromentData.id_area = Number(this.cadastroNovoLocalizacao.get('id_area')?.value || 0);
-      enviromentData.raspberry_name = this.cadastroNovoLocalizacao.get('raspberry_name')?.value || '';
       enviromentData.environment_name = this.cadastroNovoLocalizacao.get('environment_name')?.value || '';
+      enviromentData.raspberry_name = this.cadastroNovoLocalizacao.get('raspberry_name')?.value || '';
 
 
       console.log('Dados formatados para o envio:', JSON.stringify(enviromentData));

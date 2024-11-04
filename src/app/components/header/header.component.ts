@@ -5,16 +5,18 @@ import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileCardComponent } from '../cards/profile-card/profile-card.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { Equipment, FilteredEquipment } from '../../models/Equipment';
+import { Equipment} from '../../models/Equipment';
+import { FilteredEquipment } from '../../models/FilteredEquipment';
 import { FormsModule } from '@angular/forms';
 import { NotificacaoService } from '../../services/notificacao/notificacao.service';
 import { TrackingHistory } from '../../models/TrackingHistory';
-import { SearchService } from '../../services/pop-upSearch/search.service';
+import { SearchService } from '../../services/search/search.service';
 import { NgOptimizedImage } from '@angular/common';
 
 import { tick } from '@angular/core/testing';
 import { GeneralService } from '../../services/general/general.service';
 import { SearchPopupComponent } from "../popup/search-popup/search-popup.component";
+import { TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
 
 
 
@@ -57,7 +59,7 @@ export class HeaderComponent  {
   noResult: boolean = false;
 
 
-  constructor(private searchService:SearchService, private router: Router, private notificacaoService: NotificacaoService) {
+  constructor(private searchService:SearchService, private router: Router, private notificacaoService: TrackingHistoryService) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -75,7 +77,7 @@ export class HeaderComponent  {
     //   }
     // );
 
-    this.notificacaoService.getHistoric().subscribe(notifications => {
+    this.notificacaoService.getTrackingHistory().subscribe(notifications => {
       this.notifications = notifications
       // console.log("Essas são as notificações", this.notifications)
 

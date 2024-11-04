@@ -2,12 +2,12 @@ import { Component, Input } from '@angular/core';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { DrpApiComponent } from '../../inputs/drp-api/drp-api.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { EnviromentDrpService } from '../../../services/drp-environment/drp-environment.service';
-import { Enviroment } from '../../../models/Enviroment';
 import { GeneralService } from '../../../services/general/general.service';
 import { CommonModule } from '@angular/common';
 import { LocationFormPopupComponent } from "../../popup/location-form-popup/location-form-popup.component";
 import { TranslateModule } from '@ngx-translate/core';
+import { EnvironmentService } from '../../../services/environment/environment.service';
+import { Enviroment } from '../../../models/Enviroment';
 
 @Component({
   selector: 'app-form-location',
@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './form-location.component.scss'
 })
 export class FormLocationComponent {
-  constructor(private environmentDrop: EnviromentDrpService, public generalService: GeneralService) {
+  constructor(private environmentDropService: EnvironmentService, public generalService: GeneralService) {
     // Inicialize o FormGroup com os controles necessários
   }
 
@@ -37,7 +37,7 @@ export class FormLocationComponent {
   loadEnvironments() {
     this.environmentOptions = [];
     console.log(this.environmentOptions)
-    this.environmentDrop.getEnviroment().subscribe((enviroments: Enviroment[]) => {
+    this.environmentDropService.getEnviroment().subscribe((enviroments: Enviroment[]) => {
       enviroments.map(data => (this.environmentOptions.push({
         value: data.id_environment,
         label: data.environment_name

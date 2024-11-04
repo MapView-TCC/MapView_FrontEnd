@@ -5,14 +5,14 @@ import {GLTFLoader, GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
-import { InventarioService } from '../../services/equipaments/inventario.service';
+import { EquipmentService} from '../../services/equipment/equipment.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { Equipment } from '../../models/Equipment';
 import { GeneralService } from '../../services/general/general.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { WrongLocation } from '../../models/WrongLocation';
-import { CarrosselService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
+import { CaroulselDataService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 
@@ -31,9 +31,9 @@ export class EnvironmentComponent implements OnInit{
   wrongLocation: WrongLocation[]=[]
 
 
-  constructor(public equipmentService: InventarioService,
+  constructor(public equipmentService: EquipmentService,
     public generalService: GeneralService,
-    public wrongLocationEquipment: CarrosselService){
+    public wrongLocationEquipment: CaroulselDataService){
 
   }
 

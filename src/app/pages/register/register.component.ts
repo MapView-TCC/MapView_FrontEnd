@@ -10,7 +10,7 @@ import { FormResponsibleComponent } from "../../components/forms/form-responsibl
 import { Register } from '../../models/Register';
 import { RegisterService } from '../../services/register/register.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { EnvironmentService } from '../../services/location_popup/environment.service';
+import { EnvironmentService } from '../../services/environment/environment.service';
 
 @Component({
   selector: 'app-register',
@@ -172,7 +172,7 @@ export class RegisterComponet implements OnInit {
     const registerData = new Register();
 
     //Passando dados dos controls para o objeto
-    registerData.id_equipment = this.cadastroEquipamento.get('id_equipment')?.value?.toUpperCase() || '';
+    registerData.code = this.cadastroEquipamento.get('id_equipment')?.value?.toUpperCase() || '';
     registerData.name_equipment = this.cadastroEquipamento.get('name_equipment')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
     registerData.type = this.cadastroEquipamento.get('type')?.value || '';

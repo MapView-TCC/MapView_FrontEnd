@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { BACKEND_URL } from '../../models/App.model';
-import { LocationRegister } from '../../models/Location';
+import { BACKEND_URL } from '../../models/App';
+
 import { Enviroment } from '../../models/Enviroment';
+import { RegisterEnvironment } from '../../models/RegisterEnvironment';
 
 
 @Injectable({
@@ -13,8 +14,18 @@ export class EnvironmentService {
 
   constructor(private http: HttpClient) {}
 
+  //metodo que retorna todos os ambientes 
+  getEnviroment(userLog_id: number = 1): Observable<Array<Enviroment>>{
+    return this.http.get<Array<Enviroment>>(`${BACKEND_URL}/api/v1/environment?userLog_id=${userLog_id}`)
+    .pipe(
+      catchError(error => {
+        console.error("Erro de requisição: ", error);
+        return throwError(()=> new Error("Algo está errado."))
+      })
+    );
+  }
 
-  //metodo para pprocurar um ambiente por id
+  //metodo para procurar um ambiente por id
   getEnvironmentById(id_environment: number = 1, userLog_id: number = 1): Observable<Enviroment>{
     return this.http.get <Enviroment>(`${BACKEND_URL}/api/v1/environment/${id_environment}?userLog_id=${userLog_id}` ) 
     .pipe(
@@ -26,10 +37,8 @@ export class EnvironmentService {
   }
 
   // Método para cadastrar um novo ambiente
-  postEnvironment(userlog:number = 1, data: LocationRegister): Observable<LocationRegister> {
-    return this.http.post <LocationRegister>(`${BACKEND_URL}/api/V1/registerEnvironment?userlog=${userlog}`, data ) 
-    // return this.http.post<Forms_Register>(`${BACKEND_URL}/api/V1/registerEnvironment?id_building=39&id_area=1&environment_name=Laborat%C3%B3rio%2009&raspberry_name=RP009&userlog=1`, {} ) 
-    
+  postEnvironment(userlog:number = 1, data: RegisterEnvironment): Observable<RegisterEnvironment> {
+    return this.http.post <RegisterEnvironment>(`${BACKEND_URL}/api/V1/registerEnvironment?userlog=${userlog}`, data ) 
     .pipe(
       catchError(error => {
         console.error("Erro na postagem: ", error);

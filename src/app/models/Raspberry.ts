@@ -1,4 +1,4 @@
-import { Area } from "./Area.model";
+import { Area } from "./Area";
 import { Building } from "./Building";
 
 export class Raspberry{

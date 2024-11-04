@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ResponsibleByIDService } from './responsible-by-id.service';
+import { ResponsibleByEquipmentService } from './responsible-by-id.service';
 
-describe('ResponsibleByIDService', () => {
-  let service: ResponsibleByIDService;
+describe('ResponsibleByEquipmentService', () => {
+  let service: ResponsibleByEquipmentService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ResponsibleByIDService);
+    service = TestBed.inject(ResponsibleByEquipmentService);
   });
 
   it('should be created', () => {
