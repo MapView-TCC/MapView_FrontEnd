@@ -160,7 +160,7 @@ export class ViewEditPopupComponent implements OnInit {
     this.responsibleService.getResponsiblesByEquipment(0, 100, equipmentId).subscribe({
       next: (equipResponsible) => {
 
-        this.vizualizarCadastro.controls.id_equipment.setValue(equipResponsible.id_equipment);
+        this.vizualizarCadastro.controls.id_equipment.setValue(equipResponsible.code);
         this.vizualizarCadastro.controls.name_equipment.setValue(equipResponsible.name_equipment);
         this.vizualizarCadastro.controls.rfid.setValue(equipResponsible.rfid);
         this.vizualizarCadastro.controls.type.setValue(equipResponsible.type);
@@ -184,7 +184,7 @@ export class ViewEditPopupComponent implements OnInit {
           }));
 
         });
-
+        console.log("NOME ", equipResponsible )
       },
       error: err => console.error('Erro ao carregar equipamento:', err)
     },
