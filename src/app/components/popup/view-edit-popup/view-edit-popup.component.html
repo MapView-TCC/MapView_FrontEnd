@@ -152,7 +152,7 @@
             <!-- Input: Posto -->
             <div class="input-cad-forms">
               <label class="label-dados">{{'POSTO' | translate}}</label>
-              <input class="input-dados" type="text" placeholder="Ex. D123" formControlName="id_post"
+              <input class="input-dados" type="text" placeholder="Ex. D123" formControlName="post"
                 [readonly]="!isEditing">
               <app-error-message [formGroup]="vizualizarCadastro" [inputSelect]="'posto'" [errorType]="'required'"
                 [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>

@@ -46,7 +46,7 @@ export class HeaderComponent  {
     console.log('Profile card toggled:', this.showProfileCard); // Adicione log para depuração
   }
 
-  selectedItem: string = 'Ambientes'; // Item padrão selecionado
+  selectedItem: string = ''; // Item padrão selecionado
 
 
   searchItem: String = '';
@@ -69,13 +69,6 @@ export class HeaderComponent  {
 
 
   ngOnInit(): void {
-    // this.equipment.getEquipments().subscribe(
-    //   (data: Equipment[]) => {
-    //     this.equipmentList = data; // Preenchendo a equipmentList
-    //     this.filteredItem = data; // Inicialmente, mostra todos os equipamentos
-    //     console.log(this.equipmentList)
-    //   }
-    // );
 
     this.notificacaoService.getTrackingHistory().subscribe(notifications => {
       this.notifications = notifications
@@ -141,14 +134,16 @@ export class HeaderComponent  {
 //Função para selecionar a página e trocar de acordo com a rota e o hover  ficar em baixo
   private updateSelectedItem() {
     const currentRoute = this.router.url;
-    if (currentRoute.includes('ambiente')) {
+    if (currentRoute.includes('environment')) {
       this.selectedItem = 'Ambientes';
-    } else if (currentRoute.includes('cadastro')) {
+    } else if (currentRoute.includes('register')) {
       this.selectedItem = 'Cadastro';
-    } else if (currentRoute.includes('historico')) {
+    } else if (currentRoute.includes('history')) {
       this.selectedItem = 'Historico';
-    } else if (currentRoute.includes('inventario')) {
+    } else if (currentRoute.includes('inventory')) {
       this.selectedItem = 'Inventario';
+    } else {
+      this.selectedItem = ''; // Ou um valor padrão se não for nenhuma das rotas
     }
   }
   

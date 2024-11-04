@@ -90,25 +90,6 @@ export class ViewEditPopupComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
-  //Validação dos campos do formulário
-  vizualizarCadastro = this.fb.group({
-    id_equipment: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-    name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
-    rfid: [{ value: 0, disabled: false }, [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
-    type: [{ value: '', disabled: true }, [Validators.required]],
-    model: [{ value: '', disabled: true }, [Validators.required]],
-    id_owner: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-    constcenter: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]], // Aceita apenas dígitos 0-9
-    validity: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
-    admin_rights: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
-    observation: [{ value: '', disabled: false }, []],
-    building_code: [{ value: '', disabled: true }, Validators.required],
-    id_environment: [{ value: 0, disabled: true }, Validators.required],
-    area_code: [{ value: '', disabled: true }, Validators.required],
-    id_post: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
-    responsaveis: this.fb.array([])
-  });
-
   ngOnInit(): void {
     const userLogId = 1;
     this.loadEnvironments();
@@ -132,7 +113,28 @@ export class ViewEditPopupComponent implements OnInit {
         )
       }
     })
+    
   }
+
+  //Validação dos campos do formulário
+  vizualizarCadastro = this.fb.group({
+    id_equipment: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+    name_equipment: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4)]],
+    rfid: [{ value: 0, disabled: false }, [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
+    type: [{ value: '', disabled: true }, [Validators.required]],
+    model: [{ value: '', disabled: true }, [Validators.required]],
+    id_owner: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+    constcenter: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]], // Aceita apenas dígitos 0-9
+    validity: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
+    admin_rights: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
+    observation: [{ value: '', disabled: false }, []],
+    building_code: [{ value: '', disabled: true }, Validators.required],
+    id_environment: [{ value: 0, disabled: true }, Validators.required],
+    area_code: [{ value: '', disabled: true }, Validators.required],
+    post: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+    responsaveis: this.fb.array([])
+  });
+
 
   // Função que pega os valores da tabela Environment
   loadEnvironments() {
@@ -172,19 +174,23 @@ export class ViewEditPopupComponent implements OnInit {
         this.vizualizarCadastro.controls.constcenter.setValue(equipResponsible.owner.costCenter.costCenter);
         this.vizualizarCadastro.controls.building_code.setValue(equipResponsible.location.environment.raspberry.building.building_code);
         this.vizualizarCadastro.controls.id_environment.setValue(equipResponsible.location.environment.id_environment);
-        this.vizualizarCadastro.controls.id_post.setValue(equipResponsible.location.post.post);
+        this.vizualizarCadastro.controls.post.setValue(equipResponsible.location.post.post);
         this.vizualizarCadastro.controls.area_code.setValue(equipResponsible.location.environment.raspberry.area.area_code);
 
-        equipResponsible.responsibles.forEach((responsavel: Responsibles) => {
-          this.returnFormArray.push(this.fb.group({
-            responsible: [{ value: responsavel.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
-            edv: [{ value: responsavel.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
-            enumCourse: [{ value: responsavel.classes.enumCourse, disabled: true }, [Validators.required]],
-            classes: [{ value: responsavel.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
-          }));
-
-        });
-        console.log("NOME ", equipResponsible )
+        //Condição para que mesmo que a lista de responsaveis venha vazia ele apresentre os campos do input para vizualização e edição
+        if(equipResponsible.responsibles && equipResponsible.responsibles.length === 0){
+          this.addResponsavel()
+        }else{
+          equipResponsible.responsibles.forEach((responsavel: Responsibles) => {
+            this.returnFormArray.push(this.fb.group({
+              responsible: [{ value: responsavel.responsible, disabled: false }, [Validators.required, Validators.minLength(3)]],
+              edv: [{ value: responsavel.edv, disabled: false }, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]*$')]],
+              enumCourse: [{ value: responsavel.classes.enumCourse, disabled: true }, [Validators.required]],
+              classes: [{ value: responsavel.classes.classes, disabled: false }, [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+            }));
+  
+          });
+        }
       },
       error: err => console.error('Erro ao carregar equipamento:', err)
     },
@@ -218,17 +224,17 @@ export class ViewEditPopupComponent implements OnInit {
 
     const updateData = new Register();
 
-    updateData.code = this.vizualizarCadastro.get('id_equipment')?.value?.toUpperCase() || '';
+    updateData.code = this.vizualizarCadastro.get('id_equipment')?.value || '';
     updateData.name_equipment = this.vizualizarCadastro.get('name_equipment')?.value || '';
     updateData.rfid = Number(this.vizualizarCadastro.get('rfid')?.value || 0);
     updateData.type = this.vizualizarCadastro.get('type')?.value || '';
     updateData.model = this.vizualizarCadastro.get('model')?.value || '';
     updateData.validity = this.vizualizarCadastro.get('validity')?.value || '';
-    updateData.admin_rights = this.vizualizarCadastro.get('admin_rights')?.value?.toUpperCase() || '';
-    updateData.observation = this.vizualizarCadastro.get('observation')?.value?.toLowerCase() || '';
+    updateData.admin_rights = this.vizualizarCadastro.get('admin_rights')?.value || '';
+    updateData.observation = this.vizualizarCadastro.get('observation')?.value || '';
     updateData.id_environment = Number(this.vizualizarCadastro.get('id_environment')?.value || 0);
-    updateData.post = this.vizualizarCadastro.get('id_post')?.value || '';
-    updateData.id_owner = this.vizualizarCadastro.get('id_owner')?.value?.toUpperCase() || '';
+    updateData.post = this.vizualizarCadastro.get('post')?.value || '';
+    updateData.id_owner = this.vizualizarCadastro.get('id_owner')?.value || '';
     updateData.costCenter_name = this.vizualizarCadastro.get('constcenter')?.value || '';
 
     // Obtendo dados dos responsáveis

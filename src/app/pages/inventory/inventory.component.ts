@@ -125,15 +125,6 @@ export class InventoryComponent implements OnInit {
     this.paginateFilteredItems(); // Reaplica a paginação nos itens filtrados
   }
 
-
-
-  loadEquipment(): Equipment[] {
-    return []
-  }
-
-
-
-
   toggleFiltro() {
     this.showFiltro = !this.showFiltro;
     console.log('teste:', this.showFiltro);
