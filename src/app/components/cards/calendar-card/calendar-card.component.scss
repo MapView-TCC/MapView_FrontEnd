@@ -3,6 +3,7 @@
   margin: 0 auto;
   font-family: Arial, sans-serif;
 
+  // Estilização do cabeçalho
   header {
     display: flex;
     justify-content: space-between;
@@ -19,8 +20,9 @@
       color: #011D94;
     }
 
-    .buttons {
-      .btn-changeMonth {
+    // Estilização dos componentes de navegação
+    .navigation {
+      .nav-btn-changeMonth {
         padding-left: 15px;
         border: none;
         background: none;
@@ -31,6 +33,7 @@
 
   }
 
+  // Estilização da tabela
   table {
     width: 100%;
     border: none;
