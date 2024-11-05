@@ -12,25 +12,26 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './drp-api.component.html',
   styleUrl: './drp-api.component.scss'
 })
-export class DrpApiComponent{
+export class DrpApiComponent {
 
-  @Input() options: { value: number | string, label: string }[] = [];
-  @Input() selectedValue: string = '';
-  @Input() table: string = '';
-  @Input() control!: FormControl;
-  @Input() generalService!: GeneralService;
-  @Input() disabled: boolean = false;
+  @Input() options: { value: number | string, label: string }[] = []; // Opções para o dropdown, recebidas do componente pai 
+  @Input() selectedValue: string = ''; // Valor selecionado no componente pai(FormControl)
+  @Input() table: string = ''; // Nome da tabela, usado para condições específicas no template
+  @Input() control!: FormControl; // FormControl recebido do componente pai
+  @Input() generalService!: GeneralService; // Serviço general para acesso a métodos e propriedades globais
+  @Input() disabled: boolean = false; // Define se o dropdown está desabilitado
 
-  @Output() selectedValueChanges = new EventEmitter<number | string>();
+  @Output() selectedValueChanges = new EventEmitter<number | string>(); // Emite o valor selecionado para o componente pai quando há uma mudança
 
+  // Inicializa selectedValue com o valor do control
   ngOnInit() {
-    this.selectedValue = this.control.value; // Inicializa selectedValue com o valor do control
+    this.selectedValue = this.control.value;
   }
 
+  // Método chamado ao selecionar uma nova opção
   onSelect() {
     console.log(this.selectedValue);
     this.selectedValue = this.control.value; // Atualiza selectedValue com o valor selecionado
     this.selectedValueChanges.emit(this.control.value)
-    //this.control.setValue(value); // Atualiza o control do formulário também
   }
 }

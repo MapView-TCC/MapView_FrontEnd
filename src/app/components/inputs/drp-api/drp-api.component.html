@@ -1,12 +1,25 @@
 <div class="input-cad-forms">
-    <select class="input-dados" [value]="selectedValue" (change)="onSelect()" [formControl]="control"  [disabled]="disabled">
-        <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
-        <!-- Se tentar puxar dados de enviroment, mostra uma opção de lab não cadastrado -->
+    <!-- Dropdown (select) que exibe as opções carregadas e permite selecionar uma -->
+    <select class="input-dados" 
+        [value]="selectedValue" 
+        (change)="onSelect()" 
+        [formControl]="control"
+        [disabled]="disabled">
+        
+        <!-- Exibe cada opção disponível no dropdown -->
+        <option *ngFor="let option of options" [value]="option.value">
+            {{ option.label }}
+        </option>
+        
+        <!-- Adiciona uma opção extra se a tabela for de ambientes ('environment') -->
         <ng-container *ngIf="table === 'environment'">
-            <option class="notEnviroment" value="notEnviroment">{{'LABORATÓRIO NÃO CADASTRADO?' | translate}}</option>
+            <!-- Opção 'Laboratório não cadastrado' visível apenas em 'environment' -->
+            <option class="notEnviroment" value="notEnviroment">
+                {{'LABORATÓRIO NÃO CADASTRADO?' | translate}}
+            </option>
         </ng-container>
     </select>
-    <!-- Libera o botão para cadastrar ambiente -->
+     <!-- Exibe o botão para cadastrar um ambiente se a opção 'notEnviroment' for selecionada -->
     <ng-container *ngIf="selectedValue === 'notEnviroment'">
         <button (click)="generalService.showLocationlog = true">
             {{'CLIQUE AQUI PARA CADASTRAR UM LABORATÓRIO' | translate}}
