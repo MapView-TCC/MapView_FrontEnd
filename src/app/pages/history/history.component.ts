@@ -48,7 +48,7 @@ import { WebsocketService } from '../../services/Websocket/websocket.service';
   styleUrl: './history.component.scss'
 })
 
-export class HistoryComponent {
+export class HistoryComponent implements OnInit,OnDestroy {
 
   notifications: NotificationsAlert[] = []; // Armazena todas as notificações
   displayNotifications: NotificationsAlert[] = []; // Notificações a serem exibidas
@@ -81,9 +81,10 @@ export class HistoryComponent {
     })
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.loadnotification(); // Carrega as notificações ao inicializar o componente
     this.loadEquipmentsID(); // Carregar as opções da API para o autocomplete
+    this.setupWebSocket();
   }
 
   setupWebSocket() {
@@ -110,7 +111,7 @@ export class HistoryComponent {
   }
 
   ngOnDestroy() {
-    this.closeWebSocket(); // Fecha a conexão ao destruir o componente
+    //this.closeWebSocket(); // Fecha a conexão ao destruir o componente
   }
 
   
