@@ -42,8 +42,8 @@ export class NotificationCardComponent {
   //Método para exibir o título correspondente
   formatTitle(warning: string, equipmentName: string = 'Sem equipamento', rfid: number, action: string, environmentName: string) {
     if (warning == "RED") {
-      // return (`Etiqueta ${rfid} não cadastrada`)
-      return (`Etiqueta RFID não cadastrada`)
+      return (`Etiqueta ${rfid} não cadastrada`)
+      // return (`Etiqueta RFID não cadastrada`)
     } else {
       return (`${equipmentName} ${action} ${environmentName}`)
     }
