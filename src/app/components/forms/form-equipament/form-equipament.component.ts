@@ -14,25 +14,25 @@ import { DrpStaticComponent } from "../../inputs/drp-static/drp-static.component
 })
 export class FormEquipamentComponent {
 
-  constructor(public generalService: GeneralService) { }
+  constructor(public generalService: GeneralService) { } // Injeta o serviço geral
 
-  @Input() cadastroEquipamento!: FormGroup; //Recebe o form group da página incial
+  @Input() cadastroEquipamento!: FormGroup; //Recebe o formgroup para cadastro do equipamento
 
-  //Converte o tipo para passar apr o Dropdown
+  //Converte um AbstractControl para FormControl para facilitar o uso no dropdown
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl;
   }
 
 
-  //Definindo conteúdo do Dropdown
+  // Opções para o dropdown de tipo de equipamento
   typeEquipamentOptions = [
     { value: 'Desktop', label: 'Desktop' },
     { value: 'Notebook', label: 'Notebook' },
     { value: 'Outro', label: 'Outro' }
   ]
 
-  //Definindo conteúdo do Dropdown
+  // Opções para o dropdown de modelos de equipamento
   enumModelEquipment = [
     { value: 'DESKTOP_TINK', label: 'Desktop Tink' },
     { value: 'NOTEBOOK_STANDARD', label: 'Notebook Standard' },
