@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderComponent } from "../../components/header/header.component";
 import { FooterComponent } from "../../components/footer/footer.component";
@@ -21,40 +21,19 @@ import { EnvironmentService } from '../../services/environment/environment.servi
 })
 export class RegisterComponet implements OnInit {
 
+  currentStep: number = 1; // Etapa inicial
+  cadastroConcluido: boolean = false; // Flag para controle de conclusão do cadastro
+
+  // Form Group responsável
   cadastroResponsavelArray: FormGroup;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService, private snackBar: MatSnackBar, private environmentService: EnvironmentService) {
     this.cadastroResponsavelArray = this.fb.group({
-      items: this.fb.array([])
+      items: this.fb.array([])  // Inicializa como um FormArray
     });
   }
 
-  currentStep: number = 1; // Etapa inicial
-
-  ngOnInit() {
-    this.addCadastroResponsavel()
-    
-    //Carrea o valor do predio e da area relacionada ao ambiente selecionado no dropdown
-    this.cadastroLocalizacao.get('id_environment')?.valueChanges.subscribe(id_environment => {
-      const idEnvironment = Number(id_environment); // Converte para número
-      if(idEnvironment){
-        this.environmentService.getEnvironmentById(idEnvironment, 1).subscribe(
-          environment => {
-            //Atualiza os campos com os dados do ambiente retornando da API
-            this.cadastroLocalizacao.patchValue({
-              building_code: environment.raspberry.building.building_code,
-              area_code: environment.raspberry.area.area_code
-            })
-          }, 
-          error => {
-            console.error('Erro ao carregar ambiente', error);
-          }
-        )
-      }
-    })
-  }
-
-  //Form group equipamento
+  //Inicializa o FormGroup para equipamento
   cadastroEquipamento = this.fb.group({
     id_equipment: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
     name_equipment: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -68,7 +47,7 @@ export class RegisterComponet implements OnInit {
     observation: new FormControl('')  // Aqui não precisa de validador
   });
 
-  //Form Group localização
+  //Inicializa o FormGroup para localização
   cadastroLocalizacao = this.fb.group({
     building_code: [{ value: '', disabled: true }, Validators.required],
     id_environment: [{ value: '', disabled: false }, Validators.required],
@@ -76,20 +55,46 @@ export class RegisterComponet implements OnInit {
     post: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
-  //Form Array de FormGroup de Responsável
+
+  ngOnInit() {
+    // Adiciona o primeiro responsável ao iniciar o componente
+    this.addCadastroResponsavel()
+
+    // Carrega dados do ambiente relacionado ao prédio quando o valor do dropdown muda
+    this.cadastroLocalizacao.get('id_environment')?.valueChanges.subscribe(id_environment => {
+      const idEnvironment = Number(id_environment); // Converte para número
+      if (idEnvironment) {
+        this.environmentService.getEnvironmentById(idEnvironment, 1).subscribe(
+          environment => {
+            // Atualiza os campos com os dados do ambiente retornados da API
+            this.cadastroLocalizacao.patchValue({
+              building_code: environment.raspberry.building.building_code,
+              area_code: environment.raspberry.area.area_code
+            })
+          },
+          error => {
+            console.error('Erro ao carregar ambiente', error);
+          }
+        )
+      }
+    })
+  }
+
+
+  // Getter para o FormArray de responsáveis
   get returnFormArray(): FormArray {
     return this.cadastroResponsavelArray.get('items') as FormArray
   }
 
+  // Getter para acessar os FormGroups dentro do FormArray
   get returnFormGroups(): FormGroup[] {
     return this.returnFormArray.controls as FormGroup[];
   }
 
-  // Método para adicionar mais um responsável
+
+  // Método para adicionar um novo responsável
   addCadastroResponsavel(): void {
-
     if (this.returnFormArray.length < 2) {
-
       this.returnFormArray.push(
         this.fb.group({
           responsible_name: ['', [Validators.required, Validators.minLength(3)]],
@@ -105,13 +110,12 @@ export class RegisterComponet implements OnInit {
     }
   }
 
-  //Método para remover o respónsável da lista através do index
+  //Método para remover o respónsável da lista através do índice
   removerResponsavel(index: number) {
     this.returnFormArray.removeAt(index);
   }
 
-
-  //método para passar pro proxímo formulário
+  // Método para passar para o próximo formulário
   goToNextStep() {
     if (this.currentStep == 1 && this.cadastroEquipamento.invalid) {
       this.cadastroEquipamento.markAllAsTouched();
@@ -122,7 +126,6 @@ export class RegisterComponet implements OnInit {
     } else if (this.currentStep == 3 && this.cadastroResponsavelArray.invalid) {
       this.cadastroResponsavelArray.markAllAsTouched();
       return;
-
     }
 
     this.currentStep++;
@@ -133,7 +136,7 @@ export class RegisterComponet implements OnInit {
   }
 
 
-  //Função que verifica se os formsGroups estão validos
+  // Função que verifica se os FormGroups estão válidos
   isCurrentStepValid(): boolean {
     if (this.currentStep == 1) {
       return this.cadastroEquipamento.valid;
@@ -151,9 +154,7 @@ export class RegisterComponet implements OnInit {
   }
 
 
-
-  //métodode envio do formulário
-  cadastroConcluido: boolean = false;
+  // Método de envio do formulário
   submitForm() {
     console.log('Etapa válida:', this.isCurrentStepValid());
 
@@ -163,15 +164,15 @@ export class RegisterComponet implements OnInit {
     console.log("Dados do Formulário de Localização:", this.cadastroLocalizacao.value);
     console.log("Dados do Formulário de Responsáveis:", this.cadastroResponsavelArray.value);
 
-    //Verifica se a etapa atual é valida, caso não seja, o método é encerrado (com o return)
+    // Verifica se a etapa atual é válida; caso não seja, encerra o método
     if (!this.isCurrentStepValid()) {
       return; //impede o envio de dados inválidos.
     }
 
-    //Objeto do tipo Register com os dados dos formulários
+    // Cria objeto do tipo Register com os dados dos formulários
     const registerData = new Register();
 
-    //Passando dados dos controls para o objeto
+    // Passa dados dos controls para o objeto
     registerData.code = this.cadastroEquipamento.get('id_equipment')?.value?.toUpperCase() || '';
     registerData.name_equipment = this.cadastroEquipamento.get('name_equipment')?.value || '';
     registerData.rfid = Number(this.cadastroEquipamento.get('rfid')?.value || 0);
@@ -185,7 +186,7 @@ export class RegisterComponet implements OnInit {
     registerData.id_owner = this.cadastroEquipamento.get('id_owner')?.value?.toUpperCase() || '';
     registerData.costCenter_name = this.cadastroEquipamento.get('costCenter_name')?.value || '';
 
-    // Obtendo dados dos responsáveis
+    // Obtém dados dos responsáveis
     registerData.dataResponsible = this.returnFormArray.controls.map(control => ({
       responsible_name: control.get('responsible_name')?.value || '',
       edv: control.get('edv')?.value || '',
@@ -194,20 +195,19 @@ export class RegisterComponet implements OnInit {
     }));
 
 
-    //Executando o POST
+    // Envia os dados para o backend através do serviço
     this.registerService.postRegister(1, registerData).subscribe({
       next: (response) => {
-        console.log('Registro enviado com sucesso:', response);
-        this.cadastroConcluido = true;
-        // Atraso de 3 segundos (3000 ms) antes de recarregar a página
+        console.log('Dados enviados com sucesso!', response);
+        this.cadastroConcluido = true; // Atualiza a flag de conclusão
         setTimeout(() => {
           window.location.reload();
-        }, 2000); // 2000 milissegundos = 2 segundos
-
+        }, 2000);
         this.goToNextStep();
       },
       error: (error) => {
         console.error('Erro ao enviar registro:', error);
+
         // Exibe o alerta em caso de erro
         this.showErrorAlert('Não foi possível realizar o cadastro.');
       },

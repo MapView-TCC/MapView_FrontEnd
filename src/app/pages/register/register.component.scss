@@ -2,6 +2,7 @@
   font-family: 'Inter', sans-serif;
 }
 
+//Estilização do conteúdo principal da página 
 .main-cadastro {
   margin: 0;
 
@@ -12,6 +13,7 @@
 
   flex-direction: column;
 
+  //Estilização do step
   .step-4 {
     display: flex;
     flex-direction: column;
@@ -24,18 +26,17 @@
     padding-top: 20px;
   }
 
-
+  //Início da estilização do card de confirmação de cadastro
   .card-confirmacao {
     width: 800px;
     height: auto;
-
 
     background-color: var(--background-gray);
     border-radius: 15px;
 
     padding-bottom: 50px;
 
-
+    //Estilização do ícone check
     .icon-cad-forms {
       display: flex;
       align-items: center;
@@ -60,17 +61,7 @@
       }
     }
 
-    .title-forms {
-      font-family: 'Inter', sans-serif;
-      font-weight: 'Medium';
-      font-size: 24px;
-
-      padding-left: 35px;
-      margin-top: 18px;
-
-      color: var(--blue);
-    }
-
+    //Estilização da mensagem de confirmação
     .confirmacao {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
@@ -85,7 +76,8 @@
   .container-forms {
     position: relative;
   }
-
+  
+  //Início da estilização dos botões
   .addResponsavel {
     display: flex;
     align-items: flex-end;
@@ -110,12 +102,12 @@
 
 
       position: relative;
-      /* Necessário para o pseudo-elemento */
+      
 
+      /* Estilização da legenda auxiliar que aparece ao selecionar o botão */
       &::after {
         content: '';
-        /* Inicialmente vazio */
-        visibility: hidden; // Inicialmente escondido
+        visibility: hidden; 
         background-color: #1E1E1E;
         color: var(--white);
         text-align: center;
@@ -123,17 +115,17 @@
         padding: 5px;
         position: absolute;
         bottom: -45px; // Posiciona a mensagem abaixo do botão
-        left: 50%; // Centraliza em relação ao botão
+        left: 50%; 
         transform: translateX(-50%);
         z-index: 1;
-        transition: visibility 0s, opacity 0.2s linear; // Transição suave
-        opacity: 0; // Oculto inicialmente
+        transition: visibility 0s, opacity 0.2s linear; 
+        opacity: 0; 
       }
 
       &:hover::after {
         content: 'Adicionar Responsável'; // Texto da mensagem
         visibility: visible; // Mostra a mensagem ao passar o mouse sobre o botão
-        opacity: 1; // Torna visível
+        opacity: 1; 
       }
     }
 
@@ -156,8 +148,9 @@
       background-color: transparent;
 
       position: relative;
-      /* Necessário para o pseudo-elemento */
+      
 
+      /* Estilização da legenda auxiliar que aparece ao selecionar o botão */
       &::after {
         content: '';
         visibility: hidden;
@@ -176,14 +169,13 @@
       }
 
       &:hover::after {
-        content: 'Remover Responsável';
-        visibility: visible;
+        content: 'Remover Responsável';  // Texto da mensagem
+        visibility: visible; // Mostra a mensagem ao passar o mouse sobre o botão
         opacity: 1;
       }
     }
 
   }
-
 
   .fa-x,
   .fa-plus {
@@ -206,6 +198,7 @@
     }
   }
 
+  //Início da estilização dos botões 
   .btn-content {
     width: 800px;
     display: flex;

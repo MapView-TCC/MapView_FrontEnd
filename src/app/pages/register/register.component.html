@@ -1,18 +1,24 @@
+<!-- Cabeçalho da aplicação -->
 <app-header></app-header>
 
 <main class="main-cadastro">
-    <!-- Formulário de Equipamento -->
+    <!-- Formulário de Equipamento: Passa o FormGroup para o componente -->
     <app-form-equipament [cadastroEquipamento]="cadastroEquipamento"></app-form-equipament>
+
+    <!-- Exibe o Formulário de localização se o passo atual for 2 ou superior -->
     <div *ngIf="currentStep >= 2">
-        <!-- Formulário de Localização -->
         <app-form-location [cadastroLocalizacao]="cadastroLocalizacao"></app-form-location>
     </div>
+
+    <!-- Exibe o Formulário de responsáveis se o passo atual for 3 ou superior -->
     <div *ngIf="currentStep >= 3">
-        <!-- Início do FormGroup de FormArray -->
+        <!-- Início do FormGroup que contém um FormArray -->
         <form [formGroup]="cadastroResponsavelArray">
             <div formArrayName="items">
-
+                <!-- Loop pelos FormGroups no FormArray -->
                 <div *ngFor="let item of returnFormGroups; let i = index" [formGroupName]="i" class="container-forms">
+
+                    <!-- Exibe botão para adicionar responsável se menos de 2 responsáveis forem cadastrados -->
                     <ng-container *ngIf="returnFormGroups.length < 2">
                         <div class="addResponsavel">
                             <button type="button" class="btn-addResponsavel" (click)="addCadastroResponsavel()">
@@ -21,18 +27,21 @@
                         </div>
                     </ng-container>
 
+                    <!-- Exibe botão para remover responsável se mais de 1 responsável estiver presente -->
                     <div class="removerResponsavel" *ngIf="returnFormGroups.length > 1">
                         <button type="button" class="btn-removeResponsavel" (click)="removerResponsavel(i)">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </div>
-                    <!-- Formulário de Responsável -->
+
+                    <!-- Formulário de Responsável: Passa o FormGroup para o componente -->
                     <app-form-responsible [cadastroResponsavel]="item"></app-form-responsible>
                 </div>
             </div>
         </form>
     </div>
-    <!-- Mensagem de confirmação -->
+
+    <!-- Mensagem de confirmação após cadastro -->
     <div *ngIf="cadastroConcluido == true">
         <div class="step-4"></div>
         <div class="card-confirmacao">
@@ -44,12 +53,13 @@
         </div>
     </div>
     <div class="btn-content">
-        <!-- Botão de avançar -->
+        <!-- Botão de avançar para o próximo passo -->
         <button class="btn-next" *ngIf="currentStep<3" [disabled]="!isCurrentStepValid()"
             (click)="goToNextStep()">{{'AVANÇAR' | translate}}</button>
-        <!-- Botão de CADASTRAR -->
+        <!-- Botão de CADASTRAR, visível somente no passo 3 -->
         <button class="btn-next" *ngIf="currentStep==3" [disabled]="!isCurrentStepValid()"
             (click)="submitForm()">{{'CADASTRAR' | translate}}</button>
     </div>
 </main>
+<!-- Rodapé da aplicação -->
 <app-footer></app-footer>
