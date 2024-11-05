@@ -1,5 +1,7 @@
 <div class="input-cad-forms">
+    <!-- Dropdown de seleção, vinculado a um FormControl para gerenciamento de estado e validação -->
     <select [id]="id" class="input-dados" [formControl]="control" [disabled]="disabled">
+         <!-- Itera sobre as opções recebidas para criar cada item do dropdown -->
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
     </select>
 </div>

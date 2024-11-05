@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { GeneralService } from '../../../services/general/general.service';
 
@@ -14,10 +14,10 @@ import { GeneralService } from '../../../services/general/general.service';
 })
 export class DrpStaticComponent {
 
-  //Para a tradução
+  // Injeção do serviço geral para tradução e outras funcionalidades
   constructor(public generalService: GeneralService) { }
 
-  //Parametros do dropdown
+  //Parametros do dropdown  recebidos do componente pai
   @Input() id: string = '';
   @Input() options: { value: number | string; label: string }[] = [];
   @Input() selectedValue!: string | null;
@@ -26,10 +26,11 @@ export class DrpStaticComponent {
   @Input() disabled: boolean = false;
 
 
-    ngOnInit() {
+  // Método chamado na inicialização do componente
+  ngOnInit() {
     console.log(this.control);
     console.log(this.control.value);
-    this.selectedValue = this.control.value;
+    this.selectedValue = this.control.value; // Inicializa selectedValue com o valor atual do controle
   }
 
 
