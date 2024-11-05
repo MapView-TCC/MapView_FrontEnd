@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Client,Message } from '@stomp/stompjs';
-import SockJS from 'sockjs-client'
+import SockJS from 'sockjs-client/dist/sockjs'
 import { Observable,Subject } from 'rxjs';
 import { TrackingHistory } from '../../models/TrackingHistory';
-import { NotificationsAlert } from '../../models/NotificationsAlert';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class WebsocketService {
   private connect() {
     this.client = new Client({
       webSocketFactory: () => {
-        return new SockJS(''); // URL do SockJS
+        return new SockJS('http://localhost:9000/connect'); // URL do SockJS
       },
       onConnect: () => {
         console.log('Connected to WebSocket via SockJS');
