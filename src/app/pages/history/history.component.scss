@@ -1,3 +1,4 @@
+/* Estilos globais */
 * {
     margin: 0px;
     padding: 0px;
@@ -5,6 +6,7 @@
 
 }
 
+/* Início da estilização do container principal */
 .container-inventory {
     display: flex;
     padding: 60px 75px 0px;
@@ -15,6 +17,7 @@
 
     justify-content: center;
 
+    /* Início da estilização da área de notificações */
     .container-notifications {
         display: flex;
         flex-direction: column;
@@ -29,39 +32,33 @@
         overflow-x: hidden;
         /* Esconde o scroll horizontal, se necessário */
 
+        /* Estilização do scrollbar */
         &::-webkit-scrollbar {
             width: 6px;
-            /* Largura do scrollbar */
         }
 
         &::-webkit-scrollbar-track {
             background: #f1f1f1;
-            /* Cor de fundo do scrollbar */
             border-radius: 3px;
-            /* Arredondar os cantos da track */
         }
 
         &::-webkit-scrollbar-thumb {
             background-color: #D9D9D9;
             border-radius: 15px;
-
         }
 
         &::-webkit-scrollbar-thumb:hover {
             background: var(--muted-brown);
-            /* Cor do thumb ao passar o mouse */
         }
 
         &::-webkit-scrollbar-button {
             display: none;
-            /* Oculta as setas de navegação */
         }
 
+        /* Início da estilização do cabeçalho das notificações */
         .header-notifications {
             display: flex;
-            /* Usar flexbox para alinhar elementos */
             justify-content: space-between;
-            /* Espaço entre os itens, empurrando o botão para a direita */
             align-items: center;
             padding: 25px 30px 0;
 
@@ -72,7 +69,8 @@
 
             }
 
-            .btn-romove-filter {
+            /* Estilização do botão de remover filtro */
+            .btn-remove-filter {
                 width: 100px;
                 font-family: 'Inter', sans-serif;
                 font-size: 14px;
@@ -85,7 +83,6 @@
                 border: none;
                 cursor: pointer;
                 color: var(--gray-brown);
-                /* Cor dos ícones */
 
                 &:hover {
                     background-color: var(--background-selected);
@@ -95,9 +92,9 @@
             }
         }
 
-
+        /* Início da estilização do conteúdo das notificações */
         .content-notification {
-            @extend .container-notifications;
+            @extend .container-notifications; // Estilização que pode ser herdada de outra classe
 
             app-notification-card {
                 padding: 0 30px 15px;
@@ -105,6 +102,7 @@
         }
 
 
+        /* Início da estilização do botão "Ver mais" */
         .button-more {
             display: flex;
             justify-content: center;
@@ -130,6 +128,7 @@
 
     }
 
+    /* Início da estilização dos filtros */
     .filters {
         display: flex;
         flex-direction: column;
@@ -137,7 +136,7 @@
         height: auto;
 
         gap: 30px;
-        
+
 
         h3 {
             font-size: 24px;
@@ -148,6 +147,7 @@
 
         }
 
+        /* Início da estilização do calendário mensal */
         .monthly-calendar {
             width: 100%;
             min-height: 365px;
@@ -162,16 +162,16 @@
             }
         }
 
+        /* Início da estilização do filtro de localização */
         .warning-filter {
             width: 100%;
             height: 152px;
 
             background-color: var(--background-off-white);
             border-radius: 15px;
-
-
         }
 
+        /* Início da estilização do filtro de equipamentos */
         .equipament-filter {
             width: 100%;
             height: 152px;
@@ -187,15 +187,13 @@
 
                     position: relative;
 
+                    /* Início da estilização do ícone de seta */
                     .arrow-icon {
                         position: absolute;
                         right: 10px;
-                        /* Ajuste a distância do ícone do lado direito conforme necessário */
                         top: 50%;
                         transform: translateY(-50%);
-                        /* Centraliza verticalmente */
                         pointer-events: none;
-                        /* Evita que o ícone interfira na interação com o input */
                         color: #B6B2B2;
 
                     }
@@ -209,7 +207,7 @@
 
 }
 
-// responsividade
+// Responsividade
 @media (min-width: 1700px) {
     .container-inventory {
         display: flex;
@@ -225,6 +223,7 @@
         .calendar-filters {
             width: 450px;
 
+            /* Início da estilização do calendário em telas grandes */
             .monthly-calendar {
                 width: 100%;
             }

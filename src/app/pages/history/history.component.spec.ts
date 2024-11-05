@@ -22,8 +22,8 @@ describe('HistoryComponent', () => {
         MatIconModule
       ]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(HistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

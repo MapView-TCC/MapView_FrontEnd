@@ -1,4 +1,4 @@
-//Imports for angular
+//Imports
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,8 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { NotificationCardComponent } from '../../components/cards/notification-card/notification-card.component';
 import { AutocompleteComponent } from "../../components/inputs/autocomplete/autocomplete.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import {TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
-import {  TrackingHistory } from '../../models/TrackingHistory';
+import { TrackingHistoryService } from '../../services/tracking-history/tracking-history.service';
+import { TrackingHistory } from '../../models/TrackingHistory';
 import { NotificationsAlert } from '../../models/NotificationsAlert';
 import moment from 'moment';
 import { Router } from '@angular/router';
@@ -42,22 +42,24 @@ import { EquipmentService } from '../../services/equipment/equipment.service';
     WarningBtnFiltersComponent,
     NoResultsPopupComponent,
     CalendarCardComponent
-],
+  ],
   templateUrl: './history.component.html',
   styleUrl: './history.component.scss'
 })
+
 export class HistoryComponent {
-  notifications: NotificationsAlert[] = [];
-  displayNotifications: NotificationsAlert[] = []; // Para exibir as notificações
-  initialCountNotifications = 9; //Quantidade inicial de notificaçõe a ser exibida na tela
 
-  filteredNotifications: NotificationsAlert[] = []; // Lista de notificações filtradas
-  stateForm: FormGroup;
-  isFiltered: boolean = false;
+  notifications: NotificationsAlert[] = []; // Armazena todas as notificações
+  displayNotifications: NotificationsAlert[] = []; // Notificações a serem exibidas
+  initialCountNotifications = 9; // Quantidade inicial de notificações a ser exibida na tela
 
-  idEquipment: string[] = [];
+  filteredNotifications: NotificationsAlert[] = [];  // Lista de notificações filtradas
+  stateForm: FormGroup; // FormGroup para o estado do filtro
+  isFiltered: boolean = false; // Indica se há um filtro ativo
 
-  showFilterlog = false;
+  idEquipment: string[] = []; // Armazena IDs de equipamentos
+
+  showFilterlog = false; // Indica se o log de filtro deve ser exibido
 
 
   constructor(
@@ -67,6 +69,7 @@ export class HistoryComponent {
     private router: Router,
     public generalService: GeneralService
   ) {
+    // Inicializa o FormGroup com um controle para o filtro de estado
     this.stateForm = this.fb.group({
       stateGroup: [''], // FormControl para o autocomplete
     })
@@ -77,7 +80,8 @@ export class HistoryComponent {
     this.loadEquipmentsID(); // Carregar as opções da API para o autocomplete
   }
 
-  // Função auxiliar para resetar as notificações à exibição inicial
+
+  // Reseta as notificações à exibição inicial
   resetNotifications() {
     this.displayNotifications = this.notifications.slice(-this.initialCountNotifications).reverse();
     this.filteredNotifications = this.notifications;
@@ -86,91 +90,104 @@ export class HistoryComponent {
   //Carrega as notificações do trackingHistory
   loadnotification() {
     this.trackingHistoryService.getTrackingHistory().subscribe((data: TrackingHistory[]) => {
+      // Mapeia os dados para criar notificações
       this.notifications = data.map(item => ({
-        idEquipment: item.equipment?.code || 'Equipamento não definido', // Checa se 'equipment' existe
+        idEquipment: item.equipment?.code || 'Equipamento não definido',
         warning: item.warning,
-        equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        equipmentName: item.equipment?.name_equipment || 'Equipamento não definido',
         action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',
-        environmentName: item.environment?.environment_name || 'Ambiente não definido', // Checa se 'environment' existe
-        rfid: item.equipment?.rfid || 0, // Checa se 'equipment' e 'rfid' existem
+        environmentName: item.environment?.environment_name || 'Ambiente não definido',
+        rfid: item.equipment?.rfid || 0,
         dateTime: new Date(item.datetime),
       }));
 
-      this.resetNotifications();
+      this.resetNotifications(); // Reseta as notificações após o carregamento
     });
   }
 
-  //Exibe todas as notificações do mais recente para o mais antigo
+  // Exibe todas as notificações do mais recente para o mais antigo
   showMoreNotifications() {
     this.displayNotifications = this.notifications.slice().reverse();
   }
 
-  //Função para passar as opções do autocomplete
+  // Carrega os IDs dos equipamentos para o autocomplete
   loadEquipmentsID() {
     this.inventarioService.getEquipments().subscribe((data) => {
       this.idEquipment = data.map(equipment => equipment.code)
-    })
+    }) // Mapeia os códigos dos equipamentos
   }
 
-  // Filtrar as notificações por data
+  // Filtra as notificações por data
   filterNotificationsByDate(selectedDate: moment.Moment) {
     if (selectedDate) {
       const selectedDateString = selectedDate.format('YYYY-MM-DD');
+      // Filtra notificações pela data selecionada
       this.filteredNotifications = this.notifications.filter(notification =>
         moment(notification.dateTime).format('YYYY-MM-DD') === selectedDateString
       );
       this.isFiltered = true;
     }
+
+    // Se não houver notificações filtradas, reseta a lista
     if (this.filteredNotifications.length === 0) {
       this.filteredNotifications = this.notifications;
       this.generalService.showFilterlog = true;
       this.isFiltered = false;
     }
+
     // Atualiza a lista de exibição com base nas notificações filtradas
     this.displayNotifications = this.filteredNotifications.slice(-this.initialCountNotifications).reverse();
 
   }
 
-  //Filtrar as notificações pelo status ('RED', 'YELLOW' or 'Green')
+  // Filtra as notificações pelo status ('RED', 'YELLOW' ou 'Green')
   filterByWarnin(warning: string) {
     if (warning) {
+      // Filtra notificações pelo warning selecionado
       this.filteredNotifications = this.notifications.filter(notification =>
         notification.warning === warning);
       this.isFiltered = true;
     }
+
+    // Se não houver notificações filtradas, reseta a lista
     if (this.filteredNotifications.length === 0) {
       this.filteredNotifications = this.notifications;
       this.filteredNotifications = this.notifications.slice(-9).reverse(); // Se nenhum filtro, mostra os 9 últimos
       this.generalService.showFilterlog = true;
       this.isFiltered = false;
     }
+
     // Atualiza a lista de exibição com base nas notificações filtradas
     this.displayNotifications = this.filteredNotifications.slice(-this.initialCountNotifications).reverse();
   }
 
 
-  //Filtro das notificações pelo código (id) do equipamento
+  // Filtra as notificações pelo código (id) do equipamento
   filterNotificationsByID(selectedOption: string) {
     if (selectedOption) {
+      // Filtra notificações pelo ID selecionado
       this.filteredNotifications = this.notifications.filter(notfication =>
         notfication.idEquipment == selectedOption.toUpperCase()
       )
       this.isFiltered = true;
     }
+
+    // Se não houver notificações filtradas, reseta a lista
     if (this.filteredNotifications.length === 0) {
       this.filteredNotifications = this.notifications;
       this.generalService.showFilterlog = true;
       this.isFiltered = false;
     }
+
     // Atualiza a lista de exibição com base nas notificações filtradas
     this.displayNotifications = this.filteredNotifications.slice(-this.initialCountNotifications).reverse();
   }
 
-  //Remove os filtros resetando a página 
+  // Remove os filtros e reseta a página
   removeFilter() {
     const currentURL = this.router.url
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentURL])
+      this.router.navigate([currentURL]) // Navega de volta para a URL atual
     })
   }
 

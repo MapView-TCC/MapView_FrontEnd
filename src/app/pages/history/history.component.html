@@ -1,14 +1,20 @@
+<!-- Cabeçalho da aplicação -->
 <app-header></app-header>
+
 <div class="container-inventory">
-    <!-- Área das notificações -->
+    <!-- Seção de notificações -->
     <section class="container-notifications">
+        <!-- Cabeçalho das notificações -->
         <div class="header-notifications">
             <h1>Notificações</h1>
-            <button class="btn-romove-filter" (click)="removeFilter()" *ngIf="isFiltered">
+            <!-- Botão para remover filtro, visível somente se houver filtro aplicado -->
+            <button class="btn-remove-filter" (click)="removeFilter()" *ngIf="isFiltered">
                 <i class="fa-solid fa-filter-circle-xmark"></i>
                 Limpar
             </button>
         </div>
+
+        <!-- Conteúdo das notificações -->
         <div class="content-notification">
             <!-- Renderiza apenas as notificações exibidas -->
             <app-notification-card *ngFor="let notification of displayNotifications" [warning]="notification.warning"
@@ -18,29 +24,28 @@
 
         </div>
 
-        <!-- Botão Ver mais -->
+        <!-- Botão para carregar mais notificações -->
         <div class="button-more"
             *ngIf=" displayNotifications.length > 0 && ((displayNotifications.length < notifications.length && !isFiltered) || (displayNotifications.length < filteredNotifications.length && isFiltered))  ">
             <button class="button-view-more" (click)="showMoreNotifications()">Ver mais</button>
         </div>
-
     </section>
 
+    <!-- Seção de filtros -->
     <section class="filters">
 
-        <!-- Calendário mensal -->
+        <!-- Calendário mensal para seleção de data -->
         <div class="monthly-calendar">
             <app-calendar-card (dateSelected)="filterNotificationsByDate($event)"></app-calendar-card>
-
         </div>
 
-        <!-- Filtro de avisos -->
+        <!-- Filtro de localização -->
         <div class="warning-filter">
             <h3>Localização</h3>
             <app-warning-btn-filters (warningSelected)="filterByWarnin($event)"> </app-warning-btn-filters>
         </div>
 
-        <!-- Filtro de notrbooks -->
+        <!-- Filtro de equipamentos com Autocomplete-->
         <div class="equipament-filter">
             <h3>Equipamento</h3>
             <app-autocomplete [options]="this.idEquipment" (optionSelected)="filterNotificationsByID($event)">
@@ -49,6 +54,8 @@
     </section>
 </div>
 
+<!-- Popup de nenhum resultado encontrado -->
 <app-no-results-popup *ngIf="generalService.showFilterlog"></app-no-results-popup>
 
+<!-- Footer da aplicação -->
 <app-footer></app-footer>
