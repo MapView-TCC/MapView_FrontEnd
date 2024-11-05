@@ -110,6 +110,7 @@ export class InventoryComponent implements OnInit {
       const matchValidity = filtros.validity === '' || yearFromValidity === Number(filtros.validity);
       const matchEnvironment = filtros.environment === '' || eq.location.environment.id_environment === Number(filtros.environment);
       const matchOwner = filtros.owner === '' || eq.owner.id_owner === filtros.owner;
+      console.log("apliquei")
       return matchEnvironment && matchValidity && matchOwner;
     });
 
