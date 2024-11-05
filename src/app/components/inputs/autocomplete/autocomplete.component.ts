@@ -12,11 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 
 export class AutocompleteComponent {
-  @Input() stateForm!: FormGroup;
-  @Input() options: string[] = [];
-  filteredOptions: string[] = [];
-  showOptions = false;
+  @Input() stateForm!: FormGroup; //Recebe o FormGroup do componente pai para controle do formulário
+  @Input() options: string[] = []; //Recebe a lista de opções que serão exibidas no autocomplete
 
+  filteredOptions: string[] = []; //Armazena as opções filtradas com base no que o usuário digita
+  showOptions = false; //Controla a visibilidade da lista de opções
+
+  // Emite o evento de seleção da opção para o componente pai
   @Output() optionSelected = new EventEmitter<string>();
 
 
@@ -40,16 +42,19 @@ export class AutocompleteComponent {
     );
   }
 
+  //Define a opção selecionada no campo de input e emite o valor selecionado para o componente pai
   selectOption(option: string) {
     this.stateForm.patchValue({ stateGroup: option });
     this.showOptions = false;
-    this.optionSelected.emit(option);//Emite a opção escolhida para o pai
+    this.optionSelected.emit(option);//Emite a opção escolhida
     this.showOptions = false;
   }
 
+  //Oculta a lista de opções ao perder o foco
   onBlur() {
     setTimeout(() => {
       this.showOptions = false;
     }, 100); // Delay para permitir o clique nas opções
   }
 }
+ 
