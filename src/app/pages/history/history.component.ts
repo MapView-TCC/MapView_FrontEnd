@@ -1,5 +1,5 @@
 //Imports
-import { Component } from '@angular/core';
+import { Component,OnDestroy,OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { NoResultsPopupComponent } from '../../components/popup/no-results-popup
 import { GeneralService } from '../../services/general/general.service';
 import { CalendarCardComponent } from '../../components/cards/calendar-card/calendar-card.component';
 import { EquipmentService } from '../../services/equipment/equipment.service';
+import { WebsocketService } from '../../services/Websocket/websocket.service';
 
 
 @Component({
@@ -61,13 +62,18 @@ export class HistoryComponent {
 
   showFilterlog = false; // Indica se o log de filtro deve ser exibido
 
+  private websocketSubscrption: any
+
+
+
 
   constructor(
     private trackingHistoryService: TrackingHistoryService,
     private inventarioService: EquipmentService,
     private fb: FormBuilder,
     private router: Router,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    private websocketService: WebsocketService
   ) {
     // Inicializa o FormGroup com um controle para o filtro de estado
     this.stateForm = this.fb.group({
@@ -79,6 +85,43 @@ export class HistoryComponent {
     this.loadnotification(); // Carrega as notificações ao inicializar o componente
     this.loadEquipmentsID(); // Carregar as opções da API para o autocomplete
   }
+
+  setupWebSocket() {
+    // Inscreve-se nas atualizações do WebSocket
+    this.websocketSubscrption = this.websocketService.notifications$.subscribe(notification => {
+     const transformedNotification = this.transformNotification(notification)
+      this.notifications.push(transformedNotification); // Adiciona a nova notificação ao array
+      this.resetNotifications(); // Atualiza a exibição
+    });
+  }
+
+  private transformNotification(item: TrackingHistory): NotificationsAlert {
+    // Exemplo de transformação: Você pode mapear os campos que precisa
+    return {
+        idEquipment: item.equipment?.code || 'Equipamento não definido', // Checa se 'equipment' existe
+        warning: item.warning,
+        equipmentName: item.equipment?.name_equipment || 'Equipamento não definido', // Checa se 'equipment' existe
+        action: item.action === 'ENTER' ? 'entrou no' : 'saiu do',
+        environmentName: item.environment?.environment_name || 'Ambiente não definido', // Checa se 'environment' existe
+        rfid: item.equipment?.rfid || 0, // Checa se 'equipment' e 'rfid' existem
+        dateTime: new Date(item.datetime),
+      // Adicione mais campos conforme necessário
+    };
+  }
+
+  ngOnDestroy() {
+    this.closeWebSocket(); // Fecha a conexão ao destruir o componente
+  }
+
+  
+  private closeWebSocket() {
+    if (this.websocketSubscrption) {
+      this.websocketSubscrption.unsubscribe(); // Limpa a assinatura
+      this.websocketSubscrption = null; // Evita referências pendentes
+    }
+    this.websocketService.disconnect(); // Opcional: você pode criar um método para desconectar
+  }
+
 
 
   // Reseta as notificações à exibição inicial
