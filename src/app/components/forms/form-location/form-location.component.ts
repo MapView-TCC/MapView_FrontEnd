@@ -17,23 +17,23 @@ import { Enviroment } from '../../../models/Enviroment';
   styleUrl: './form-location.component.scss'
 })
 export class FormLocationComponent {
+  //Construtor para injetar os serviços necessários
   constructor(private environmentDropService: EnvironmentService, public generalService: GeneralService) {
-    // Inicialize o FormGroup com os controles necessários
+    
   }
 
   @Input() cadastroLocalizacao!: FormGroup; //Recebe o form group da página incial
 
-
+  // Opções para o dropdown de ambientes
   environmentOptions: { value: number, label: string }[] = [];
 
-  //Converte o tipo para passar apr o Dropdown
+  //Converte o controle abstrato para FormControl
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl;
   }
 
-
-  // Função que pega os valores da tabela Evironment
+  // Função para carregar os valores da tabela Environment
   loadEnvironments() {
     this.environmentOptions = [];
     console.log(this.environmentOptions)
@@ -45,6 +45,7 @@ export class FormLocationComponent {
     })
   }
 
+  // Método de inicialização do componente
   ngOnInit(): void {
     this.loadEnvironments()
   }
