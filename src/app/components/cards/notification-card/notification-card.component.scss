@@ -1,20 +1,18 @@
+// Elização do container 
 .card-notification {
   width: 100%;
   height: 55px;
   position: relative;
-  overflow: hidden;
-  /* Garante que o conteúdo não ultrapasse a altura */
+  overflow: hidden; //Garante que o conteúdo não ultrapasse a altura 
   display: flex;
-  /* Ativa o Flexbox */
   align-items: center;
-  /* Centraliza verticalmente */
-
   
   &:hover{
     background-color: var(--background-selected);
     border-radius: 10px;
   }
 
+  // Estilização geral do span com classe dinamica 
   .border-color {
     position: absolute;
     left: 0;
@@ -39,7 +37,7 @@
     background-color: var(--red);
   }
 
-
+  // Estilização do container de conteudo do card
   .content-card {
     padding: 0 15px;
 

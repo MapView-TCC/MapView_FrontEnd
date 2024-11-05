@@ -1,5 +1,6 @@
 <div 
-  class="container-error-message" 
-  *ngIf="formGroup.get(inputSelect)?.hasError(errorType) && formGroup.get(inputSelect)?.touched">
-  <p class="error-message">{{ errorMessage }}</p>
+class="container-error-message" 
+*ngIf="formGroup.get(inputSelect)?.hasError(errorType) && formGroup.get(inputSelect)?.touched">
+<!-- Exibe a mensagem de erro quando o campo está inválido e foi tocado pelo usuário -->
+<p class="error-message">{{ errorMessage }}</p>
 </div>

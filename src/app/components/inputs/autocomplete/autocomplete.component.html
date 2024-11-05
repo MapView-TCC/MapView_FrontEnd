@@ -1,5 +1,5 @@
-<!-- Autocomplete -->
-<form class="equipment-form" [formGroup]="stateForm">
+<!-- Formulário de Autocomplete para seleção de itens -->
+<form class="aoutocomplete-form" [formGroup]="stateForm">
   <div class="form-field">
     <input type="text" placeholder="Selecione um notebook" formControlName="stateGroup" required
       (input)="onInput($event)" (focus)="onFocus()" (blur)="onBlur()" />

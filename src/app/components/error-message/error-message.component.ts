@@ -13,7 +13,7 @@ export class ErrorMessageComponent {
 
 
   @Input() formGroup!: FormGroup; // Recebe o FormGroup do componente pai
-  @Input() inputSelect!: string; // Nome do campo (FormControl)
+  @Input() inputSelect!: string; // Recebe o nome do campo (formControl) do componente pai
   @Input() errorType!: string; // Tipo de erro a ser verificado (ex: 'required')
   @Input() errorMessage!: string; // Mensagem de erro a ser exibida
 

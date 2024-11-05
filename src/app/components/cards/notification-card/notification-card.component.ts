@@ -9,14 +9,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './notification-card.component.scss'
 })
 export class NotificationCardComponent {
-  @Input() warning: string = ''; //pensar se n da para fazer com numeros
-  @Input() equipmentName: string = '';
-  @Input() rfid: number = 0; // Recebe a data como string
-  @Input() action: string = '';
-  @Input() environmentName: string = '';
-  @Input() dateTime: Date = new Date(); // Recebe a data como string
+  @Input() warning: string = ''; //Recebe e armazena o valor de warning do componente pai
+  @Input() equipmentName: string = ''; //Recebe e armazena o nome do equipamento do componente pai
+  @Input() rfid: number = 0; // Recebe e armazena o valor do rfid do compoennte pai
+  @Input() action: string = ''; // Recebe e armazena o valor da action do compoennte pai
+  @Input() environmentName: string = ''; // Recebe e armazena o o nome do equipamento do compoennte pai
+  @Input() dateTime: Date = new Date(); // Recebe a data 
 
-  // Método para verificar se a data é hoje
+  // Método para verificar se a data é a mesma do dia atual
   isToday(date: Date): boolean {
     const today = new Date();
 
@@ -49,7 +49,7 @@ export class NotificationCardComponent {
     }
   }
 
-  //Método para exibir o subtitulo correspondente
+  //Método para exibir o subtítulo correspondente de acordo com o status
   formatSubtitle(warning: string, action: string, environmentName: string) {
     if (warning === 'RED' && action === 'entrou no') {
       return ("Entrou no " + environmentName);
