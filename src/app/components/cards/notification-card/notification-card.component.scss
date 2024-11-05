@@ -6,8 +6,8 @@
   overflow: hidden; //Garante que o conteúdo não ultrapasse a altura 
   display: flex;
   align-items: center;
-  
-  &:hover{
+
+  &:hover {
     background-color: var(--background-selected);
     border-radius: 10px;
   }
