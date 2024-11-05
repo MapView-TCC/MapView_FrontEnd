@@ -11,16 +11,19 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class WarningBtnFiltersComponent {
 
-  @Output() warningSelected = new EventEmitter<string>();
+  @Output() warningSelected = new EventEmitter<string>(); //Emite o botão selecionado para o componenente pai
 
+  // Emite a opção RED
   selectedRedWarning() {
     this.warningSelected.emit('RED');
   }
 
+  // Emite a opção YELLOW
   selectedYellowWarning() {
     this.warningSelected.emit('YELLOW');
   }
 
+  // Emite a opção GREEN
   selectedGreenWarning() {
     this.warningSelected.emit('GREEN');
   }
