@@ -2,6 +2,7 @@
     font-family: 'Inter', sans-serif;
 }
 
+//Estilização do step
 .step-3 {
     display: flex;
     flex-direction: column;
@@ -15,6 +16,7 @@
     padding-bottom: 20px;
 }
 
+//Estilização do Contêiner principal do formulário
 .container-forms {
     width: 800px;
     height: auto;
@@ -23,8 +25,8 @@
     border-radius: 15px;
 
     padding-bottom: 60px;
-    /* Para dar espaço antes do botão */
 
+    //Estilização do ícone
     .icon-forms {
         display: flex;
         align-items: center;
@@ -49,6 +51,7 @@
         }
     }
 
+    //Estilização do título
     .title-forms {
         font-family: 'Inter', sans-serif;
         font-weight: 'Medium';
@@ -60,6 +63,7 @@
         color: var(--blue);
     }
 
+    //Início da estilização do Conteúdo do formulário
     .content-forms {
         display: flex;
         align-items: center;
@@ -73,11 +77,11 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
 
+            // Início da estilização dos inputs 
             .input-cad-forms {
                 display: flex;
                 flex-direction: column;
                 width: 330px;
-
 
                 .input-dados {
                     width: 100%;
@@ -101,12 +105,14 @@
 
                 }
 
+                //Posiciona a mensagem de erro corretamente
                 app-error-message {
                     padding-left: 20px;
                 }
 
             }
 
+            //Estilização das legendas dos inputs
             .label-dados {
                 font-size: 18px;
                 padding-left: 20px;

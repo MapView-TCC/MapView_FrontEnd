@@ -15,25 +15,28 @@ import { DrpStaticComponent } from "../../inputs/drp-static/drp-static.component
 })
 export class FormResponsibleComponent implements OnInit {
 
+  // Serviço geral injetado no construtor
   constructor(public generalService: GeneralService) {
-    // Inicialize o FormGroup com os controles necessários
   }
-  @Input() cadastroResponsavel!: FormGroup; //Recebe o form group da página incial
 
+  @Input() cadastroResponsavel!: FormGroup; //Recebe o form group do componente pai
+
+  showForm: boolean = false;  // Controla a exibição do formulário
+
+  // Método chamado ao inicializar o componente
   ngOnInit(): void {
     console.log(this.cadastroResponsavel)
 
   }
 
-  showForm: boolean = false;
 
-  //Converte o tipo para passar apr o Dropdown
+  // Converte AbstractControl em FormControl
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl;
   }
 
-  //Definindo os valores do dropdown
+  // Definindo os valores do dropdown para cursos(É um campo enum no banco)
   course = [
     { value: 'ADMINISTRACAO', label: 'Administração' },
     { value: 'DIGITAL_SOLUTIONS', label: 'Digital Solutions' },

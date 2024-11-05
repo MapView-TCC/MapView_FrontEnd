@@ -1,15 +1,20 @@
+<!-- Início do formulário para cadastro do responsável -->
 <div [formGroup]="cadastroResponsavel">
+    <!-- Indicador visual para a etapa do formulário -->
     <div class="step-3"></div>
 
     <div class="container-forms">
+        <!-- Ícone user -->
         <div class="icon-forms">
             <i class="fa-solid fa-user"></i>
         </div>
 
+        <!-- Título do formulário -->
         <h3 class="title-forms">{{'DADOS DO RESPONSÁVEL'| translate}}</h3>
 
         <div class="content-forms">
             <div class="content-cad-forms">
+
                 <!-- Input: Nome Responsável -->
                 <div class="input-cad-forms">
                     <label class="label-dados">{{'NOME DO RESPONSÁVEL'| translate}}</label>
@@ -22,6 +27,7 @@
                         [errorType]="'minlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER PELO MENOS 03 CARACTERES'| translate"></app-error-message>
                 </div>
+
                 <!-- Input: EDV -->
                 <div class="input-cad-forms">
                     <label class="label-dados">EDV</label>
@@ -35,6 +41,7 @@
                     <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'edv'" [errorType]="'maxlength'"
                         [errorMessage]="'O CAMPO DEVE CONTER APENAS 08 NÚMEROS' | translate"></app-error-message>
                 </div>
+
                 <!-- Dropdown Static: Course -->
                 <div class="input-cad-forms">
                     <label class="label-dados">{{'CURSO' | translate}}</label>
@@ -44,6 +51,7 @@
                     <app-error-message [formGroup]="cadastroResponsavel" [inputSelect]="'enumCourse'"
                         [errorType]="'required'" [errorMessage]="'CAMPO OBRIGATÓRIO' | translate"></app-error-message>
                 </div>
+                
                 <!-- Input: Turma -->
                 <div class="input-cad-forms">
                     <label class="label-dados">{{'TURMA' | translate}}</label>
