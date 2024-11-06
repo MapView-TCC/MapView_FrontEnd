@@ -7,13 +7,14 @@ import { CommonModule } from '@angular/common';
 import { WrongLocation } from '../../models/WrongLocation';
 import { Equipment } from '../../models/Equipment';
 import { CarrosselService } from '../../services/carrossel/carrossel.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-carrosel',
   standalone: true,
-  imports: [PrevDirective, NextDirective, MatIconModule, CommonModule],
+  imports: [PrevDirective, NextDirective, MatIconModule, CommonModule, TranslateModule],
   templateUrl: './carrosel.component.html',
   styleUrls: ['./carrosel.component.scss'] 
 })

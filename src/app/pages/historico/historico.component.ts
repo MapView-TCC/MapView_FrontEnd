@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
 import { WarningBtnFiltersComponent } from "../../components/warning-btn-filters/warning-btn-filters.component";
 import { FilterPopupComponent } from '../../components/filter-popup/filter-popup.component';
 import { GeneralService } from '../../services/general/general.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
@@ -41,7 +42,8 @@ import { GeneralService } from '../../services/general/general.service';
     AutocompleteComponent,
     FooterComponent,
     WarningBtnFiltersComponent,
-    FilterPopupComponent
+    FilterPopupComponent,
+    TranslateModule
   ],
   templateUrl: './historico.component.html',
   styleUrl: './historico.component.scss'

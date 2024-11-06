@@ -12,12 +12,22 @@ import { FilterPopupComponent } from '../../components/filter-popup/filter-popup
 import { ExcelService } from '../../services/excel/excel.service';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { MatIconModule } from '@angular/material/icon';
-
+import { TranslationService } from '../../services/translate/translation.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-iventario',
   standalone: true,
-  imports: [HeaderComponent, ExcluirPopupComponent, CommonModule, VizualizacaoFormComponent, LocationPopupComponent, FiltrosComponent, FilterPopupComponent, FooterComponent,MatIconModule],
+  imports: [HeaderComponent, 
+    ExcluirPopupComponent, 
+    CommonModule, 
+    VizualizacaoFormComponent, 
+    LocationPopupComponent, 
+    FiltrosComponent, 
+    FilterPopupComponent, 
+    FooterComponent,
+    MatIconModule,
+    TranslateModule],
   templateUrl: './iventario.component.html',
   styleUrls: ['./iventario.component.scss'] 
 })
@@ -41,7 +51,7 @@ export class IventarioComponent implements OnInit {
   currentPageItems: Equipment[] = []; 
 
   selectedEquipment: string = '';
-  constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService) {}
+  constructor(public generalService: GeneralService, private inventarioService: InventarioService  ,private excelService: ExcelService, private translationService: TranslationService) {}
 
   ngOnInit(): void {
     this.loadItems();

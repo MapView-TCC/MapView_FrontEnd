@@ -2,13 +2,13 @@
 
 <div class="container_inventario">
     <div class="header_container">
-        <h2>Equipamentos Registrados</h2>
+        <h2>{{'EQUIPAMENTOS_REGISTRADOS' | translate}}</h2>
         <div class="filtro">
             <button (click)="onExport()">
-                <i class="fa-solid fa-download filter"></i> Exportar
+                <i class="fa-solid fa-download filter"></i> {{'EXPORTAR' | translate}}
               </button>
             <button (click)="toggleFiltro()">
-                <i class="fa-solid fa-filter filter"></i>Filtros
+                <i class="fa-solid fa-filter filter"></i>{{'FILTROS' | translate}}
             </button>
         </div>
     </div>
@@ -19,12 +19,12 @@
     <table>
         <thead>
             <tr>
-                <th>Identificação</th>
-                <th>Usuário</th>
-                <th>Laboratório</th>
-                <th>Posto</th>
-                <th>Validade</th>
-                <th>Ações</th>
+                <th>{{ 'IDENTIFICACAO' | translate }}</th>
+                <th>{{ 'USUARIO' | translate }}</th>
+                <th>{{ 'LABORATÓRIO' | translate }}</th>
+                <th>{{ 'POSTO' | translate }}</th>
+                <th>{{ 'VALIDADE' | translate }}</th>
+                <th>{{ 'ACOES' | translate }}</th>
             </tr>
         </thead>
         <tbody>

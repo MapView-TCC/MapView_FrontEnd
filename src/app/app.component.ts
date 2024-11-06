@@ -5,6 +5,7 @@ import {  TranslateModule, TranslateService } from '@ngx-translate/core';
 import {  HttpClientModule } from '@angular/common/http';
 import { InicialComponent } from "./pages/inicial/inicial.component";
 import { CommonModule } from '@angular/common';
+import { TranslationService } from './services/translate/translation.service';
 
 
 
@@ -24,11 +25,13 @@ import { CommonModule } from '@angular/common';
 export class AppComponent{
   title = 'mapview';
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private translation: TranslationService) {
     // Defina o idioma padrão
-    this.translate.setDefaultLang('pt');
+    // this.translate.setDefaultLang('pt');
     // Use um idioma ao inicializar
-    this.translate.use('pt');
+    this.translate.use(this.translation.getCurrentLanguage());
+
+    console.log(this.translate.currentLang);
   }
 
 }

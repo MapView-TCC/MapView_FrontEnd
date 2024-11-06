@@ -7,27 +7,31 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TranslationService {
 
+  private localStorage: Storage | null;
+
   constructor(private translate: TranslateService, @Inject(DOCUMENT) private document: Document) {
-    const localStorage = this.document.defaultView?.localStorage as Storage;
-    const storedLanguage = localStorage?.getItem('language') || 'pt';
+    this.localStorage = this.document.defaultView?.localStorage || null;
+
+    // Usa o idioma armazenado no localStorage, se disponível, ou define como português
+    const storedLanguage = this.localStorage?.getItem('language') || 'pt';
+    console.log('Idioma armazenado ao iniciar:', storedLanguage);
     this.translate.setDefaultLang('pt');
     this.translate.use(storedLanguage);
-    console.log('Idioma inicial:', this.translate.currentLang);
   }
 
   changeLanguage(language: string) {
-    // Verifica se o idioma é diferente do atual antes de mudar
     if (this.translate.currentLang !== language) {
       console.log('Mudando para o idioma:', language);
-      this.translate.use(language);
-      localStorage.setItem('language', language); // Atualiza o localStorage
+      this.translate.use(language).subscribe(() => {
+        localStorage.setItem('language', language); // Atualiza o localStorage
+        console.log(this.translate.instant('DISPOSITIVO_NAO_ENCONTRADO')); // Verifica a tradução após a mudança
+      });
     }
   }
 
   getCurrentLanguage(): string {
     return this.translate.currentLang;
   }
-
   isCurrentLanguage(language: string): boolean {
     return this.translate.currentLang === language;
   }

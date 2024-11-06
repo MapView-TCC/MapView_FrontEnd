@@ -3,7 +3,7 @@
     <!-- Área das notificações -->
     <section class="container-notifications">
         <div class="header-notifications">
-            <h1>Notificações</h1>
+            <h1>{{'NOTIFICAÇÕES' | translate}}</h1>
             <button class="btn-romove-filter" (click)="removeFilter()" *ngIf="isFiltered">
                 <i class="fa-solid fa-filter-circle-xmark"></i>
                 Limpar
@@ -36,13 +36,13 @@
 
         <!-- Filtro de avisos -->
         <div class="warning-filter">
-            <h3>Localização</h3>
+            <h3>{{'LOCALIZAÇÃO' | translate}}</h3>
             <app-warning-btn-filters (warningSelected)="filterByWarnin($event)"> </app-warning-btn-filters>
         </div>
 
         <!-- Filtro de notrbooks -->
         <div class="equipament-filter">
-            <h3>Equipamento</h3>
+            <h3>{{'EQUIPAMENTO' | translate}}</h3>
             <app-autocomplete [options]="this.idEquipment" (optionSelected)="filterNotificationsByID($event)">
             </app-autocomplete>
         </div>

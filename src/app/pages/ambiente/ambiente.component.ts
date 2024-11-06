@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/Addons.js'
 import { InventarioService } from '../../services/equipaments/inventario.service';
-import { NgOptimizedImage } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 import GUI from 'lil-gui';
 import gsap from 'gsap';
@@ -24,7 +24,7 @@ import { CarrosselService } from '../../services/carrossel/carrossel.service';
 @Component({
   selector: 'app-ambiente',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent],
+  imports: [HeaderComponent, CommonModule, CarroselComponent, FooterComponent, TranslateModule],
   templateUrl: './ambiente.component.html',
   styleUrl: './ambiente.component.scss',
 
@@ -305,10 +305,17 @@ export class AmbienteComponent implements OnInit{
           // })
           
           console.log("os equipamentos",this.equipments)
-
+          this.equipments.splice(this.equipments.length-2, 2)
           //ele compara o nome do shape com a string 'Shape_' + cada id recebido pelo backend+1
           // ao fazer this.equipments.filter ele entra dentro do array de Equipments e percorre os equipamentos dentro dela
-          const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post+1}`);
+          console.log( "OI",pointerMesh.name); // Verifica o valor do nome do pointerMesh
+          this.equipments.forEach((pc) => {
+            console.log(`Comparando: ${pointerMesh.name} com Shape_${pc.location.post.id_post + 1}`);
+            console.log(pointerMesh.name == 'Shape_'+(pc.location.post.id_post + 1));
+          });
+          const element = this.equipments.filter((pc) => pointerMesh.name == `Shape_${pc.location.post.id_post + 1}`);
+          
+          
           
           console.log("os elementos",element)
 

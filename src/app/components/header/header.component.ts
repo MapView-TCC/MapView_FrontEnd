@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
-import { TranslateLoader, TranslateModule, } from '@ngx-translate/core';
+import {  TranslateModule,TranslateService } from '@ngx-translate/core';
 import { Equipment, FilteredEquipment } from '../../models/Equipment';
 import { EquipmentResponsible } from '../../models/EquipmentResponsible';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,6 @@ import { NotificacaoService } from '../../services/notificacao/notificacao.servi
 import { TrackingHistory } from '../../models/TrackingHistory';
 import { SearchService } from '../../services/pop-upSearch/search.service';
 import { NgOptimizedImage } from '@angular/common';
-import { TranslationService } from '../../services/translate/translation.service';
 
 import { tick } from '@angular/core/testing';
 import { GeneralService } from '../../services/general/general.service';
@@ -61,7 +60,7 @@ export class HeaderComponent  {
 
 
 
-  constructor(private searchService:SearchService, private router: Router, private notificacaoService: NotificacaoService, private translationService: TranslationService) {
+  constructor(private searchService:SearchService, private router: Router, private notificacaoService: NotificacaoService, private translationService: TranslateService) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -82,17 +81,12 @@ export class HeaderComponent  {
     this.notificacaoService.getHistoric().subscribe(notifications => {
       this.notifications = notifications
       // console.log("Essas são as notificações", this.notifications)
+
     });
-    this.currentLanguage = this.translationService.getCurrentLanguage();
 
   }
 
-  changeLanguage(language: string) {
-    console.log("acessando a minha funcao")
-    this.translationService.changeLanguage(language);
-    this.currentLanguage = language;  // Atualiza a propriedade local para refletir a mudança
-    console.log("mudei", this.changeLanguage)
-  }
+
 
   onSearch() {
     if (this.searchItem.length > 2) { 

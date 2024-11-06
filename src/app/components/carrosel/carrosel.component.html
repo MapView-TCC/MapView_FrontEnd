@@ -8,10 +8,11 @@
           <div class="text">
             <h2>{{ equipment.name_equipment }}</h2>
             <img src="assets/images/svg/Lenovo - TinkPad 4.svg" alt="Image of {{ equipment.name_equipment }}">
-            <p><strong>ID Notebook:</strong> <span>{{ equipment.id_equipment }}</span></p>
-            <p><strong>Localização de Origem:</strong> <span>{{ equipment.wrong_location}}</span></p>
-            <p><strong>Localização Atual:</strong> <span>{{ equipment.location }}</span></p>
-            <p><strong>Responsáveis:</strong> <span>{{ equipment.responsibles}}</span></p>
+            <p><strong>{{ 'ID_NOTEBOOK' | translate }}:</strong> <span>{{ equipment.id_equipment }}</span></p>
+            <p><strong>{{ 'LOCALIZACAO_DE_ORIGEM' | translate }}:</strong> <span>{{ equipment.wrong_location }}</span></p>
+            <p><strong>{{ 'LOCALIZACAO_ATUAL' | translate }}:</strong> <span>{{ equipment.location }}</span></p>
+            <p><strong>{{ 'RESPONSAVEIS' | translate }}:</strong> <span>{{ equipment.responsibles }}</span></p>
+
           </div>
         </div>
       </div>
