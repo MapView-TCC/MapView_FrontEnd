@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { BACKEND_URL } from '../../models/App';
 
 import { Enviroment } from '../../models/Enviroment';
 import { RegisterEnvironment } from '../../models/RegisterEnvironment';
+import { StorageServiceService } from '../storageService/storage-service.service';
 
 
 @Injectable({
@@ -12,11 +13,15 @@ import { RegisterEnvironment } from '../../models/RegisterEnvironment';
 })
 export class EnvironmentService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private localstorage: StorageServiceService) {}
 
   //metodo que retorna todos os ambientes 
   getEnviroment(userLog_id: number = 1): Observable<Array<Enviroment>>{
-    return this.http.get<Array<Enviroment>>(`${BACKEND_URL}/api/v1/environment?userLog_id=${userLog_id}`)
+
+    const token= this.localstorage.getLocalStorage("id_token");
+    const headers = token ? new HttpHeaders({ 'Authorization': `Bearer ${token}` }) : undefined;
+
+    return this.http.get<Array<Enviroment>>(`${BACKEND_URL}/api/v1/environment?userLog_id=${userLog_id}`,{headers})
     .pipe(
       catchError(error => {
         console.error("Erro de requisição: ", error);
@@ -27,7 +32,11 @@ export class EnvironmentService {
 
   //metodo para procurar um ambiente por id
   getEnvironmentById(id_environment: number = 1, userLog_id: number = 1): Observable<Enviroment>{
-    return this.http.get <Enviroment>(`${BACKEND_URL}/api/v1/environment/${id_environment}?userLog_id=${userLog_id}` ) 
+
+    const token= this.localstorage.getLocalStorage("id_token");
+    const headers = token ? new HttpHeaders({ 'Authorization': `Bearer ${token}` }) : undefined;
+
+    return this.http.get <Enviroment>(`${BACKEND_URL}/api/v1/environment/${id_environment}?userLog_id=${userLog_id}`,{headers} ) 
     .pipe(
       catchError(error => {
         console.error("Erro na requisição: ", error);
@@ -38,7 +47,10 @@ export class EnvironmentService {
 
   // Método para cadastrar um novo ambiente
   postEnvironment(userlog:number = 1, data: RegisterEnvironment): Observable<RegisterEnvironment> {
-    return this.http.post <RegisterEnvironment>(`${BACKEND_URL}/api/V1/registerEnvironment?userlog=${userlog}`, data ) 
+
+    const token= this.localstorage.getLocalStorage("id_token");
+    const headers = token ? new HttpHeaders({ 'Authorization': `Bearer ${token}` }) : undefined;
+    return this.http.post <RegisterEnvironment>(`${BACKEND_URL}/api/V1/registerEnvironment?userlog=${userlog}`, data,{headers} ) 
     .pipe(
       catchError(error => {
         console.error("Erro na postagem: ", error);

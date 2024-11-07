@@ -1,6 +1,14 @@
 {
   "/backend-mapview-api": {
-      "target": "http://10.234.82.71:8081",
+      "target": "http://localhost:8000",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/backend-mapview-api": ""
+      }
+    },
+    "/token": {
+      "target": "http://localhost:8000",
       "changeOrigin": true,
       "secure": false,
       "pathRewrite": {
@@ -41,6 +49,15 @@
       }
     },
     "/ ": {
+      "target": "http://localhost:8000/login/oauth2/code/azure",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/callback": ""
+      }
+    },
+
+    "/callback": {
       "target": "http://localhost:8000/login/oauth2/code/azure",
       "changeOrigin": true,
       "secure": false,

@@ -149,6 +149,7 @@ export class HistoryComponent implements OnInit,OnDestroy {
     });
   }
 
+
   // Exibe todas as notificações do mais recente para o mais antigo
   showMoreNotifications() {
     this.displayNotifications = this.notifications.slice().reverse();

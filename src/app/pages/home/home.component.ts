@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslateCardComponent } from '../../components/cards/translate-card/translate-card.component';
 import { TranslationService } from '../../services/translate/translation.service';
 import { FooterComponent } from "../../components/footer/footer.component";
+import { RedirectService } from '../../redirect.service';
 
 @Component({
   selector: 'app-home',
@@ -30,11 +31,24 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  constructor(private translator: TranslationService) { }
+  constructor(
+    private translator: TranslationService,
+  private redirectService: RedirectService) { }
 
   ngOnInit(): void {
     this.translator.getCurrentLanguage();
     console.log(this.translator.getCurrentLanguage());
   }
 
+  onButtonClick(): void {
+    // Redireciona para uma página interna (exemplo: '/home')
+    this.redirectService.redirectToExternal('http://localhost:4200/oauth2/authorization/azure'); // Para navegação interna
+
+    // Ou, se for necessário redirecionar para uma URL externa
+    // this.redirectService.redirectToExternal('https://www.exemplo.com');
+  }
+
+
 }
+
+

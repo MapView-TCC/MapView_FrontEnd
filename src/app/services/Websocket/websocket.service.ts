@@ -1,5 +1,5 @@
 import { Injectable,NgZone } from '@angular/core';
-import { Client,Message } from '@stomp/stompjs';
+import { Client,Message,StompConfig } from '@stomp/stompjs';
 import SockJS from 'sockjs-client/dist/sockjs'
 import { Observable,Subject } from 'rxjs';
 import { TrackingHistory } from '../../models/TrackingHistory';

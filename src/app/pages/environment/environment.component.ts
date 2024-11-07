@@ -15,6 +15,11 @@ import { WrongLocation } from '../../models/WrongLocation';
 import { CaroulselDataService } from '../../services/caroulsel/caroulsel-data/caroulsel-data.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
+import { TokenService } from '../../services/Token/token.service';
+import { Token } from '../../models/Token';
+import { response } from 'express';
+import { lastValueFrom } from 'rxjs';
+import { StorageServiceService } from '../../services/storageService/storage-service.service';
 
 @Component({
   selector: 'app-environment',
@@ -29,19 +34,43 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 export class EnvironmentComponent implements OnInit{ 
   equipments: Equipment[] = []
   wrongLocation: WrongLocation[]=[]
+  token!: Token ;
+  userInfo: any;
+  erromessage: string = '';
+  id_token: string = '';
 
 
-  constructor(public equipmentService: EquipmentService,
+  constructor(
+    public equipmentService: EquipmentService,
+    private  tokenservice: TokenService,
     public generalService: GeneralService,
-    public wrongLocationEquipment: CaroulselDataService){
+    public wrongLocationEquipment: CaroulselDataService,
+    private storageService: StorageServiceService){
 
   }
 
 
   ngOnInit(): void {
+    this.getToken();
     this.createThreeJsBox();
     this.loadEquipments();
     console.log(this.equipments)
+
+  }
+
+  async getToken() {
+    try {
+      const response = await lastValueFrom(this.tokenservice.getCredentials());
+      this.userInfo = response;
+      this.id_token = this.userInfo.id_token;
+
+      this.storageService.localStorage("id_token",this.id_token);
+
+
+      console.log('Token:', this.id_token);
+    } catch (error) {
+      console.error('Erro ao obter o token', (error as any).message);
+    }
   }
 
   loadEquipments(): void {
@@ -305,7 +334,7 @@ export class EnvironmentComponent implements OnInit{
           
 
           //colocando o 0 entre colchetes eu estou pegando o primeiro elemento de um array
-          paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>ID Notebook:</strong>${element[0].id_equipment}<strong><br>Nome:</strong> ${element[0].name_equipment}<br><strong>Responsável:</strong> ${element[0].owner.id_owner}</p>`;
+          paragraph.innerHTML = `<strong>${element[0].name_equipment}</strong> <p><strong>Id Notebook: </strong>${element[0].code}<strong><br>Validade: </strong> ${element[0].validity}<br><strong>Responsável:</strong> ${element[0].owner.owner_name}</p>`;
           paragraph.style.display = 'flex'
           // paragraph.style.flexDirection = 'column'
           // paragraph.style.zIndex = '5'
